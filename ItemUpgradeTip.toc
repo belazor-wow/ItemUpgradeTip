@@ -2,7 +2,7 @@
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
 ## Author: Belazor
-## Version: 1.0.0
+## Version: @project-version@
 ## X-Curse-Project-ID: 709548
 ## X-Wago-ID: WYK938NL
 ## X-Source-URL: https://github.com/filliph/ItemUpgradeTip

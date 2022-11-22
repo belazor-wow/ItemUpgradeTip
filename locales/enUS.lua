@@ -2,7 +2,6 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("ItemUpgradeTip", "enUS", true, true)
 
 --Strings
-L["%s upgrades"] = true
 L["(Weekly cap reached)"] = true
 L["M+ runs left: %s"] = true
 L["Rare callings left: %s"] = true
