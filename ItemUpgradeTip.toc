@@ -1,0 +1,18 @@
+## Interface: 100002
+## Title: ItemUpgradeTip
+## Notes: Add information to item tooltips for item upgrade costs
+## Author: Belazor
+## Version: 1.0.0
+## X-Curse-Project-ID: 709548
+## X-Wago-ID: WYK938NL
+## X-Source-URL: https://github.com/filliph/ItemUpgradeTip
+## X-Issues-URL: https://github.com/filliph/ItemUpgradeTip/issues
+
+libs\libs.xml
+
+locales\enUS.lua
+
+core\init.lua
+core\bonusIds.lua
+
+ItemUpgradeTip.lua
