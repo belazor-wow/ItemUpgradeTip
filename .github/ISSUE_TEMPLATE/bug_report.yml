@@ -42,8 +42,8 @@ body:
     label: Tested with only ItemUpgradeTip
     description: Did you try having ItemUpgradeTip as the only enabled addos and everything else (especially something like ElvUI) disabled?
     options:
-      - Yes
-      - No
+      - "Yes"
+      - "No"
   validations:
     required: true
 
