@@ -49,14 +49,6 @@ body:
 
 - type: textarea
   attributes:
-    label: Lua Error
-    description: |
-      Do you have an error log of what happened? If you don't see any errors, make sure that error reporting is enabled (`/console scriptErrors 1`) or install [BugSack](https://www.curseforge.com/wow/addons/bugsack) & [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber) - yes, both are needed.
-  validations:
-    required: false
-
-- type: textarea
-  attributes:
     label: Reproduction Steps
     description: Please list out the steps to reproduce your bug.
     placeholder: |
@@ -66,6 +58,14 @@ body:
       4. See error
   validations:
     required: true
+    
+- type: textarea
+  attributes:
+    label: Lua Error
+    description: |
+      Do you have an error log of what happened? If you don't see any errors, make sure that error reporting is enabled (`/console scriptErrors 1`) or install [BugSack](https://www.curseforge.com/wow/addons/bugsack) & [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber) - yes, both are needed.
+  validations:
+    required: false
 
 - type: textarea
   attributes:
