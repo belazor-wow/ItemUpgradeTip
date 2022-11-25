@@ -1,0 +1,76 @@
+name: "Bug report"
+description: Create a report to help us improve
+labels: bug
+assignees: filliph
+body:
+- type: markdown
+  attributes:
+    value: |
+      Please [search for existing issues](https://github.com/filliph/ItemUpgradeTip/issues) before creating a new one.
+
+- type: textarea
+  attributes:
+    label: Description
+    description: What did you expect to happen and what happened instead?
+  validations:
+    required: true
+
+- type: dropdown
+  id: flavor
+  attributes:
+    label: World of Warcraft Flavor
+    description: What version of World of Warcraft are are you running?
+    options:
+      - Retail (Default)
+      - Retail PTR
+  validations:
+    required: true
+ 
+- type: input
+  attributes:
+    label: ItemUpgradeTip Version
+    description: |
+      You can see the current version in the CurseForge app or similar
+    placeholder: "1.0.0"
+  validations:
+    required: true    
+
+
+- type: checkboxes
+  id: testing
+  attributes:
+    label: Tested with only ItemUpgradeTip
+    description: Did you try having ItemUpgradeTip as the only enabled addos and everything else (especially something like ElvUI) disabled?
+    options:
+      - label: "Yes"
+      - label: "No"
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Lua Error
+    description: |
+      Do you have an error log of what happened? If you don't see any errors, make sure that error reporting is enabled (`/console scriptErrors 1`) or install [BugSack](https://www.curseforge.com/wow/addons/bugsack) & [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber) - yes, both are needed.
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Reproduction Steps
+    description: Please list out the steps to reproduce your bug.
+    placeholder: |
+      1. Go to '...'
+      2. Click on '....'
+      3. Scroll down to '....'
+      4. See error
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Screenshots
+    description: If applicable, add screenshots to help explain your problem.
+    placeholder: Click here to attach your screenshots via the editor button in the top right.
+  validations:
+    required: false
