@@ -1,4 +1,16 @@
+package-as: ItemUpgradeTip
+enable-nolib-creation: no
+
+externals:
+  libs/AceLocale-3.0:
+    url: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
+    tag: latest
+  libs/LibStub:
+    url: https://repos.wowace.com/wow/libstub/trunk
+    tag: latest
+
 manual-changelog: CHANGELOG.txt
+license-output: LICENSE.txt
 ignore:
   - README.md
   - _MACOSX

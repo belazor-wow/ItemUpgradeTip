@@ -8,7 +8,7 @@
 ## X-Source-URL: https://github.com/filliph/ItemUpgradeTip
 ## X-Issues-URL: https://github.com/filliph/ItemUpgradeTip/issues
 
-libs\libs.xml
+embeds.xml
 
 locales\enUS.lua
 
