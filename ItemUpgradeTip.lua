@@ -56,6 +56,24 @@ local function HandleHeirloom(tooltip, currentUpgrade, maxUpgrade)
 end
 ItemUpgradeTip.HandleHeirloom = HandleHeirloom
 
+--- Checks for valid bonus IDs and chains call to HandleCurrency if found
+---@param tooltip GameTooltipTemplate
+---@param currentUpgrade number
+---@param maxUpgrade number
+---@return boolean
+local function CheckBonusIDs(tooltip, currentUpgrade, maxUpgrade, bonusIds, bonusTable)
+    for i = 1, #bonusIds do
+        local bonusInfo = bonusTable[bonusIds[i]]
+        if bonusInfo ~= nil then
+            HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
+            return true
+        end
+    end
+
+    return false
+end
+ItemUpgradeTip.CheckBonusIDs = CheckBonusIDs
+
 
 --- Handles updating an item tooltip to add additional information about upgrade costs
 ---@param tooltip GameTooltipTemplate
@@ -70,22 +88,101 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
 
     for _, tooltipLine in pairs(tooltipData.lines) do
         local currentUpgrade, maxUpgrade = tooltipLine.leftText:match(searchValue .. "(%d+)/(%d+)")
-        if currentUpgrade ~= nil and maxUpgrade ~= nil then
-            local itemName, itemLink = tooltip:GetItem()
+        if currentUpgrade ~= nil and maxUpgrade ~= nil then            
             local isHeirloom = C_Heirloom.GetHeirloomInfo(tooltipData.id)
-            local numBonusIDs, bonusID1, bonusID2, bonusID3, bonusID4, bonusID5, bonusID6 = select(13, strsplit(":", itemLink))
-
             if isHeirloom then
-                ItemUpgradeTip.HandleHeirloom(tooltip, currentUpgrade, maxUpgrade)
-            elseif numBonusIDs ~= nil and numBonusIDs ~= "" then
-                local bonusIds = {bonusID1, bonusID2, bonusID3, bonusID4, bonusID5, bonusID6}
-                for i = 1, tonumber(numBonusIDs) do
-                    local bonusInfo = ItemUpgradeTip.bonusIds[tonumber(bonusIds[i])]
-                    if bonusInfo ~= nil then
-                        ItemUpgradeTip.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
-                    end
+                HandleHeirloom(tooltip, currentUpgrade, maxUpgrade)
+                return
+            end
+
+            local itemName, itemLink = tooltip:GetItem()
+            local equipLoc, _, _, classID, subclassID = select(9, GetItemInfo(itemLink))
+            if classID == nil or subclassID == nil or (tonumber(classID) ~= 2 and tonumber(classID) ~= 4) then
+                return
+            end
+
+            local itemString = string.match(itemLink, "item:([%-?%d:]+)")
+            if not itemString then
+                return
+            end
+
+            local bonusIds = {}
+            local itemSplit = {}
+            local itemId = tonumber(itemSplit[1])
+
+            for v in string.gmatch(itemString, "(%d*:?)") do
+                if v == ":" then
+                    itemSplit[#itemSplit + 1] = 0
+                else
+                    itemSplit[#itemSplit + 1] = string.gsub(v, ":", "")
                 end
             end
+
+            for index = 1, tonumber(itemSplit[13]) do
+                bonusIds[#bonusIds + 1] = tonumber(itemSplit[13 + index])
+            end
+
+            -- Scan all bonusIds for Anima upgrade bonus IDs
+            local handled = CheckBonusIDs(
+                tooltip, 
+                currentUpgrade, 
+                maxUpgrade, 
+                bonusIds, 
+                ItemUpgradeTip.bonusIds[ItemUpgradeTip.animaUpgradeIndex]
+            )
+
+            if handled then 
+                return
+            end
+
+            if ItemUpgradeTip.honorUpgradeIndexes[itemId] ~= nil then
+                -- Hardcoded honor item IDs
+                CheckBonusIDs(
+                    tooltip, 
+                    currentUpgrade, 
+                    maxUpgrade, 
+                    bonusIds, 
+                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.honorUpgradeIndexes[itemId]]
+                )
+            elseif ItemUpgradeTip.conquestUpgradeIndexes[itemId] ~= nil then
+                -- Hardcoded conquest item IDs
+                CheckBonusIDs(
+                    tooltip, 
+                    currentUpgrade, 
+                    maxUpgrade, 
+                    bonusIds, 
+                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.conquestUpgradeIndexes[itemId]]
+                )
+            elseif ItemUpgradeTip.valorUpgradeIndexes[itemId] ~= nil then
+                -- Hardcoded valor item IDs (unused at the moment, but maybe this ends up being needed for int weapons)
+                CheckBonusIDs(
+                    tooltip, 
+                    currentUpgrade, 
+                    maxUpgrade, 
+                    bonusIds, 
+                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.valorUpgradeIndexes[itemId]]
+                )
+            elseif tonumber(classID) == 2 and ItemUpgradeTip.weaponUpgradeIndexes[subclassID] ~= nil then
+                -- Weapon
+                CheckBonusIDs(
+                    tooltip, 
+                    currentUpgrade, 
+                    maxUpgrade, 
+                    bonusIds, 
+                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.weaponUpgradeIndexes[subclassID]]
+                )
+            elseif tonumber(classID) == 4 and ItemUpgradeTip.armorUpgradeIndexes[equipLoc] ~= nil then
+                -- Armor
+                CheckBonusIDs(
+                    tooltip, 
+                    currentUpgrade, 
+                    maxUpgrade, 
+                    bonusIds, 
+                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.armorUpgradeIndexes[equipLoc]]
+                )
+            end
+
+            return
         end
     end
 end
@@ -102,28 +199,28 @@ local function HandleTooltipCurrency(tooltip, tooltipData)
     if tooltipData.id == ItemUpgradeTip.currencyIds.Valor and tooltipData.type == Enum.TooltipDataType.Currency then
         local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(tooltipData.id)
 
-        if not currencyInfo.canEarnPerWeek then
+        if not currencyInfo.maxQuantity then
             -- Valor is not capped at the moment
             return
         end
 
-        local quantity, maxWeeklyQuantity = currencyInfo.quantityEarnedThisWeek, currencyInfo.maxWeeklyQuantity
+        local quantity, maxQuantity = currencyInfo.quantityEarnedThisWeek, currencyInfo.maxQuantity
         local remaining = {
             mPlus = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
             rareCallings = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
             epicCallings = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r"
         }
-        if quantity < maxWeeklyQuantity then
-            local outstanding = maxWeeklyQuantity - quantity
+        if quantity < maxQuantity then
+            local outstanding = maxQuantity - quantity
             remaining.mPlus = "|cffffffee" .. ceil(outstanding / 135) .. "|r"
-            remaining.rareCallings = "|cffffffee" .. ceil(outstanding / 35) .. "|r"
-            remaining.epicCallings = "|cffffffee" .. ceil(outstanding / 50) .. "|r"
+            --remaining.rareCallings = "|cffffffee" .. ceil(outstanding / 35) .. "|r"
+            --remaining.epicCallings = "|cffffffee" .. ceil(outstanding / 50) .. "|r"
         end
 
         tooltip:AddLine("\n")
         tooltip:AddLine(L["M+ runs left: %s"]:format(remaining.mPlus))
-        tooltip:AddLine(L["Rare callings left: %s"]:format(remaining.rareCallings))
-        tooltip:AddLine(L["Epic callings left: %s"]:format(remaining.epicCallings))
+        --tooltip:AddLine(L["Rare callings left: %s"]:format(remaining.rareCallings))
+        --tooltip:AddLine(L["Epic callings left: %s"]:format(remaining.epicCallings))
     end
 end
 ItemUpgradeTip.HandleTooltipCurrency = HandleTooltipCurrency
