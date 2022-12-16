@@ -44,8 +44,9 @@ ItemUpgradeTip.honorUpgradeIndexes = {
     [201769] = 5
 }
 
-ItemUpgradeTip.valorUpgradeIndexes = {
-}
+-- TODO
+ItemUpgradeTip.conquestUpgradeIndexes = {}
+ItemUpgradeTip.valorUpgradeIndexes = {}
 
 ItemUpgradeTip.animaUpgradeIndex = 17
 
