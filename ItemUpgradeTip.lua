@@ -108,7 +108,6 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
 
             local bonusIds = {}
             local itemSplit = {}
-            local itemId = tonumber(itemSplit[1])
 
             for v in string.gmatch(itemString, "(%d*:?)") do
                 if v == ":" then
@@ -117,6 +116,8 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
                     itemSplit[#itemSplit + 1] = string.gsub(v, ":", "")
                 end
             end
+
+            local itemId = tonumber(itemSplit[1])
 
             for index = 1, tonumber(itemSplit[13]) do
                 bonusIds[#bonusIds + 1] = tonumber(itemSplit[13 + index])
@@ -204,7 +205,7 @@ local function HandleTooltipCurrency(tooltip, tooltipData)
             return
         end
 
-        local quantity, maxQuantity = currencyInfo.quantityEarnedThisWeek, currencyInfo.maxQuantity
+        local quantity, maxQuantity = currencyInfo.totalEarned, currencyInfo.maxQuantity
         local remaining = {
             mPlus = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
             rareCallings = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
@@ -229,3 +230,31 @@ ItemUpgradeTip.HandleTooltipCurrency = HandleTooltipCurrency
 -- Tooltip integration
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Currency, ItemUpgradeTip.HandleTooltipCurrency)
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, ItemUpgradeTip.HandleTooltipSetItem)
+
+--[[
+local honorItemIds = {
+    201764,
+    201770,
+    201771,
+    201774
+}
+
+for v in pairs(honorItemIds) do
+    local equipLoc, _, _, classID, subclassID = select(9, GetItemInfo(honorItemIds[v]))
+    local upgradeIndex = equipLoc;
+
+    if equipLoc == "INVTYPE_WEAPONOFFHAND" then
+        upgradeIndex = 6
+    elseif equipLoc == "INVTYPE_TRINKET" or equipLoc == "INVTYPE_WRIST" or equipLoc == "INVTYPE_CLOAK" or equipLoc == "INVTYPE_FINGER" or equipLoc == "INVTYPE_NECK" then
+        upgradeIndex = 7
+    elseif equipLoc == "INVTYPE_FEET" or equipLoc == "INVTYPE_HAND" or equipLoc == "INVTYPE_SHOULDER" or equipLoc == "INVTYPE_WAIST" then
+        upgradeIndex = 8
+    elseif equipLoc == "INVTYPE_HEAD" or equipLoc == "INVTYPE_LEGS" or equipLoc == "INVTYPE_CHEST" or equipLoc == "INVTYPE_ROBE" then
+        upgradeIndex = 9
+    elseif equipLoc == "INVTYPE_2HWEAPON" then
+        upgradeIndex = 11
+    end
+
+    print("["..honorItemIds[v].."] = "..(upgradeIndex or equipLoc)..",")
+end
+]]
