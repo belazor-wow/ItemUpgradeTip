@@ -1,3 +1,5 @@
+1.1.1
+    - Fixed deDE localisation not loading (Thanks @Winglord89)
 1.1.0
     - Initial update for DF Season 1 (Valor & Honor mostly complete, Conquest & data validation missing)
 1.0.1

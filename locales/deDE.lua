@@ -1,5 +1,5 @@
 -- deDE localization
-local L = LibStub("AceLocale-3.0"):NewLocale("GW2_UI", "deDE")
+local L = LibStub("AceLocale-3.0"):NewLocale("ItemUpgradeTip", "deDE")
 if not L then return end
 
 L["%s Upgrades"] = "%s Aufwertungen"

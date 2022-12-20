@@ -11,6 +11,7 @@
 embeds.xml
 
 locales\enUS.lua
+locales\deDE.lua
 
 core\init.lua
 core\bonusIds.lua
