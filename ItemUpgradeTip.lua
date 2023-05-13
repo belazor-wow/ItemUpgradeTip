@@ -69,9 +69,18 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         return
     end
 
-    local characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
+    local watermarkSlot = C_ItemUpgrade.GetHighWatermarkSlotForItem(itemLink);
+    local characterHighWatermark, accountHighWatermark
+    if (watermarkSlot) then
+        -- This seems more accurate for Wands
+        characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(watermarkSlot)
+    else
+        characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
+    end
 
     local nextUpgradeCost = nil
+    local nextUpgrade = nil
+    local maxUpgrade = nil
     local totalUpgradeCosts = {
         whelpCrests = 0,
         drakeCrests = 0,
@@ -92,6 +101,8 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             local flightstones = Round(upgradeInfo.flightstoneCosts[itemGroup] * (isAccountDiscounted and 0.5 or 1))
             
             if not nextUpgradeCost then
+                nextUpgrade = upgradeInfo
+
                 nextUpgradeCost = {
                     whelpCrests = whelpCrests,
                     drakeCrests = drakeCrests,
@@ -105,6 +116,8 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             totalUpgradeCosts.wyrmCrests = totalUpgradeCosts.wyrmCrests + wyrmCrests
             totalUpgradeCosts.aspectCrests = totalUpgradeCosts.aspectCrests + aspectCrests
             totalUpgradeCosts.flightstones = totalUpgradeCosts.flightstones + flightstones
+
+            maxUpgrade = upgradeInfo
         end
     end
 
@@ -144,7 +157,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["Flightstone / Crest Upgrades"]))
 
             if nextLevelLines then
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"]))
+                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
                 for index, newLine in pairs(nextLevelLines) do
                     tooltip:AddDoubleLine(newLine[1], newLine[2])
@@ -156,7 +169,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                     tooltip:AddLine("\n")
                 end
 
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"]))
+                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
                 for index, newLine in pairs(totalLines) do
                     tooltip:AddDoubleLine(newLine[1], newLine[2])
@@ -171,6 +184,8 @@ ItemUpgradeTip.HandleFlightstones = HandleFlightstones
 ---@param tooltip GameTooltipTemplate
 ---@param currentUpgrade number
 ---@param maxUpgrade number
+---@param bonusIds table
+---@param bonusTable table
 ---@return boolean
 local function CheckBonusIDs(tooltip, currentUpgrade, maxUpgrade, bonusIds, bonusTable)
     for i = 1, #bonusIds do
