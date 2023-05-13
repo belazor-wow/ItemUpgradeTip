@@ -482,7 +482,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -494,7 +494,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -506,7 +506,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -518,7 +518,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -530,7 +530,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -542,7 +542,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -554,7 +554,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -566,7 +566,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
             170, -- Helms, Chests, Legs
             175, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
+            275, -- 1H Intellect Weapon
             350 -- 2H Weapon
         }
     },
@@ -574,12 +574,12 @@ ItemUpgradeTip.flightstoneBonusIds = {
     -- Hero 5/5
     [9334] = { itemLevel = 441, rank = 5, currentUpgradeLevel = 5, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 1,
         flightstoneCosts = {
-            -1, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            -1, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            -1, -- Helms, Chests, Legs
-            -1, -- 1H Agility/Strength Weapon
-            -1, -- 1H Intellect Weapon
-            -1 -- 2H Weapon
+            0, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
+            0, -- Shoulders, Gloves, Trinkets, Boots, Belts
+            0, -- Helms, Chests, Legs
+            0, -- 1H Agility/Strength Weapon
+            300, -- 1H Intellect Weapon
+            0 -- 2H Weapon
         }
     }
 }
