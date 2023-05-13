@@ -1,6 +1,7 @@
 local _, ItemUpgradeTip = ...
 local L = ItemUpgradeTip.L
 
+local flightstoneUpgradePattern = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(%%a+)")
 
 --- Generic currency handler based on bonusInfo table
 ---@param tooltip GameTooltipTemplate
@@ -56,6 +57,116 @@ local function HandleHeirloom(tooltip, currentUpgrade, maxUpgrade)
 end
 ItemUpgradeTip.HandleHeirloom = HandleHeirloom
 
+
+--- Updates the tooltip when a Flightstone item is the item in question
+---@param tooltip GameTooltipTemplate
+---@param itemGroup number
+---@param bonusId number
+---@param bonusInfo table
+---@param itemLink string
+local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLink)
+    if not bonusId or not bonusInfo then
+        return
+    end
+
+    local characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
+
+    local nextUpgradeCost = nil
+    local totalUpgradeCosts = {
+        whelpCrests = 0,
+        drakeCrests = 0,
+        wyrmCrests = 0,
+        aspectCrests = 0,
+        flightstones = 0,
+    }
+
+    for bonusID, upgradeInfo in pairs(ItemUpgradeTip.flightstoneBonusIds) do
+        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.currentUpgradeLevel > bonusInfo.currentUpgradeLevel then
+            local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
+            local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
+
+            local whelpCrests = upgradeInfo.whelpCrestCost * (isCharacterDiscounted and 0 or 1)
+            local drakeCrests = upgradeInfo.drakeCrestCost * (isCharacterDiscounted and 0 or 1)
+            local wyrmCrests = upgradeInfo.wyrmCrestCost * (isCharacterDiscounted and 0 or 1)
+            local aspectCrests = upgradeInfo.aspectCrestCost * (isCharacterDiscounted and 0 or 1)
+            local flightstones = Round(upgradeInfo.flightstoneCosts[itemGroup] * (isAccountDiscounted and 0.5 or 1))
+            
+            if not nextUpgradeCost then
+                nextUpgradeCost = {
+                    whelpCrests = whelpCrests,
+                    drakeCrests = drakeCrests,
+                    wyrmCrests = wyrmCrests,
+                    aspectCrests = aspectCrests,
+                    flightstones = flightstones,
+                }
+            end
+            totalUpgradeCosts.whelpCrests = totalUpgradeCosts.whelpCrests + whelpCrests
+            totalUpgradeCosts.drakeCrests = totalUpgradeCosts.drakeCrests + drakeCrests
+            totalUpgradeCosts.wyrmCrests = totalUpgradeCosts.wyrmCrests + wyrmCrests
+            totalUpgradeCosts.aspectCrests = totalUpgradeCosts.aspectCrests + aspectCrests
+            totalUpgradeCosts.flightstones = totalUpgradeCosts.flightstones + flightstones
+        end
+    end
+
+    if nextUpgradeCost then
+        local nextLevelLines = {}
+        local totalLines = {}
+
+        for i, j in pairs(nextUpgradeCost) do
+            if j > 0 then
+                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[i]
+                local color = upgradeItem.color
+                local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
+
+                table.insert(nextLevelLines, {
+                    icon .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name),
+                    color:WrapTextInColorCode(j),
+                })
+            end
+        end
+
+        for i, j in pairs(totalUpgradeCosts) do
+            if j > 0 then
+                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[i]
+                local color = upgradeItem.color
+                local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
+            
+                table.insert(totalLines, {
+                    icon .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name), 
+                    color:WrapTextInColorCode(j)
+                })
+            end
+        end
+
+        if #nextLevelLines > 0 or #totalLines > 0 then
+            tooltip:AddLine("\n")
+            tooltip:AddLine("\n")
+            tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["Flightstone / Crest Upgrades"]))
+
+            if nextLevelLines then
+                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"]))
+
+                for index, newLine in pairs(nextLevelLines) do
+                    tooltip:AddDoubleLine(newLine[1], newLine[2])
+                end
+            end
+            
+            if totalLines then
+                if nextLevelLines then
+                    tooltip:AddLine("\n")
+                end
+
+                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"]))
+
+                for index, newLine in pairs(totalLines) do
+                    tooltip:AddDoubleLine(newLine[1], newLine[2])
+                end
+            end
+        end
+    end
+end
+ItemUpgradeTip.HandleFlightstones = HandleFlightstones
+
 --- Checks for valid bonus IDs and chains call to HandleCurrency if found
 ---@param tooltip GameTooltipTemplate
 ---@param currentUpgrade number
@@ -74,6 +185,41 @@ local function CheckBonusIDs(tooltip, currentUpgrade, maxUpgrade, bonusIds, bonu
 end
 ItemUpgradeTip.CheckBonusIDs = CheckBonusIDs
 
+--- Checks for valid bonus IDs and chains call to HandleFlightstones if found
+---@param tooltip GameTooltipTemplate
+---@param itemLink string
+---@param bonusIds table
+---@return boolean
+local function CheckFlightstoneBonusIDs(tooltip, itemLink, bonusIds)
+    local equipLoc = select(9, GetItemInfo(itemLink))
+
+    local itemGroup = ItemUpgradeTip.itemUpgradeIndexes[equipLoc]
+    if not itemGroup then
+        return
+    end
+
+    if itemGroup == 4 then
+        local stats = GetItemStats(itemLink)
+        if not stats then
+            return
+        end
+        local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
+        if hasInt then
+            itemGroup = 5
+        end
+    end
+
+    for i = 1, #bonusIds do
+        local bonusInfo = ItemUpgradeTip.flightstoneBonusIds[bonusIds[i]]
+        if bonusInfo ~= nil then
+            HandleFlightstones(tooltip, itemGroup, i, bonusInfo, itemLink)
+            return true
+        end
+    end
+
+    return false
+end
+ItemUpgradeTip.CheckFlightstoneBonusIDs = CheckFlightstoneBonusIDs
 
 --- Handles updating an item tooltip to add additional information about upgrade costs
 ---@param tooltip GameTooltipTemplate
@@ -83,12 +229,13 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
         return
     end
 
-    local clipAfter = string.find(ITEM_UPGRADE_TOOLTIP_FORMAT, "%%d") -1
-    local searchValue = string.sub(ITEM_UPGRADE_TOOLTIP_FORMAT, 1, clipAfter)
-
     for _, tooltipLine in pairs(tooltipData.lines) do
-        local currentUpgrade, maxUpgrade = tooltipLine.leftText:match(searchValue .. "(%d+)/(%d+)")
-        if currentUpgrade ~= nil and maxUpgrade ~= nil then            
+        local rank, currentUpgrade, maxUpgrade = tooltipLine.leftText:match(flightstoneUpgradePattern)
+        if rank and currentUpgrade and maxUpgrade then
+            if currentUpgrade == maxUpgrade then
+                return
+            end
+
             local isHeirloom = C_Heirloom.GetHeirloomInfo(tooltipData.id)
             if isHeirloom then
                 HandleHeirloom(tooltip, currentUpgrade, maxUpgrade)
@@ -96,10 +243,6 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
             end
 
             local itemName, itemLink = tooltip:GetItem()
-            local equipLoc, _, _, classID, subclassID = select(9, GetItemInfo(itemLink))
-            if classID == nil or subclassID == nil or (tonumber(classID) ~= 2 and tonumber(classID) ~= 4) then
-                return
-            end
 
             local itemString = string.match(itemLink, "item:([%-?%d:]+)")
             if not itemString then
@@ -125,14 +268,25 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
 
             -- Scan all bonusIds for Anima upgrade bonus IDs
             local handled = CheckBonusIDs(
-                tooltip, 
+                tooltip,
                 currentUpgrade, 
                 maxUpgrade, 
                 bonusIds, 
                 ItemUpgradeTip.bonusIds[ItemUpgradeTip.animaUpgradeIndex]
             )
 
-            if handled then 
+            if handled then
+                return
+            end
+
+             -- Scan all bonusIds for Flightstone upgrade bonus IDs
+            local handled = CheckFlightstoneBonusIDs(
+                tooltip,
+                itemLink,
+                bonusIds
+            )
+
+            if handled then
                 return
             end
 
@@ -154,33 +308,6 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
                     bonusIds, 
                     ItemUpgradeTip.bonusIds[ItemUpgradeTip.conquestUpgradeIndexes[itemId]]
                 )
-            elseif ItemUpgradeTip.valorUpgradeIndexes[itemId] ~= nil then
-                -- Hardcoded valor item IDs (unused at the moment, but maybe this ends up being needed for int weapons)
-                CheckBonusIDs(
-                    tooltip, 
-                    currentUpgrade, 
-                    maxUpgrade, 
-                    bonusIds, 
-                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.valorUpgradeIndexes[itemId]]
-                )
-            elseif tonumber(classID) == 2 and ItemUpgradeTip.weaponUpgradeIndexes[subclassID] ~= nil then
-                -- Weapon
-                CheckBonusIDs(
-                    tooltip, 
-                    currentUpgrade, 
-                    maxUpgrade, 
-                    bonusIds, 
-                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.weaponUpgradeIndexes[subclassID]]
-                )
-            elseif tonumber(classID) == 4 and ItemUpgradeTip.armorUpgradeIndexes[equipLoc] ~= nil then
-                -- Armor
-                CheckBonusIDs(
-                    tooltip, 
-                    currentUpgrade, 
-                    maxUpgrade, 
-                    bonusIds, 
-                    ItemUpgradeTip.bonusIds[ItemUpgradeTip.armorUpgradeIndexes[equipLoc]]
-                )
             end
 
             return
@@ -189,46 +316,7 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
 end
 ItemUpgradeTip.HandleTooltipSetItem = HandleTooltipSetItem
 
---- Handles updating a currency tooltip to add additional information (currently only Valor is supported)
----@param tooltip GameTooltipTemplate
----@param tooltipData table
-local function HandleTooltipCurrency(tooltip, tooltipData)
-    if tooltip ~= _G.GameTooltip then
-        return
-    end
-
-    if tooltipData.id == ItemUpgradeTip.currencyIds.Valor and tooltipData.type == Enum.TooltipDataType.Currency then
-        local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(tooltipData.id)
-
-        if not currencyInfo.maxQuantity then
-            -- Valor is not capped at the moment
-            return
-        end
-
-        local quantity, maxQuantity = currencyInfo.totalEarned, currencyInfo.maxQuantity
-        local remaining = {
-            mPlus = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
-            rareCallings = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r",
-            epicCallings = "|cffcc00000 |cffffffee" .. L["(Weekly cap reached)"] .. "|r"
-        }
-        if quantity < maxQuantity then
-            local outstanding = maxQuantity - quantity
-            remaining.mPlus = "|cffffffee" .. ceil(outstanding / 135) .. "|r"
-            --remaining.rareCallings = "|cffffffee" .. ceil(outstanding / 35) .. "|r"
-            --remaining.epicCallings = "|cffffffee" .. ceil(outstanding / 50) .. "|r"
-        end
-
-        tooltip:AddLine("\n")
-        tooltip:AddLine(L["M+ runs left: %s"]:format(remaining.mPlus))
-        --tooltip:AddLine(L["Rare callings left: %s"]:format(remaining.rareCallings))
-        --tooltip:AddLine(L["Epic callings left: %s"]:format(remaining.epicCallings))
-    end
-end
-ItemUpgradeTip.HandleTooltipCurrency = HandleTooltipCurrency
-
-
 -- Tooltip integration
-TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Currency, ItemUpgradeTip.HandleTooltipCurrency)
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, ItemUpgradeTip.HandleTooltipSetItem)
 
 --[[
