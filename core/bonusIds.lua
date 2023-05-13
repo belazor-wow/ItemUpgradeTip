@@ -325,8 +325,8 @@ ItemUpgradeTip.flightstoneBonusIds = {
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
             120, -- Helms, Chests, Legs
             125, -- 1H Agility/Strength Weapon
-            -1 -- 1H Intellect Weapon
-            ,250 -- 2H Weapon
+            -1, -- 1H Intellect Weapon
+            250 -- 2H Weapon
         }
     },
 
