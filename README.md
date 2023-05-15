@@ -4,10 +4,9 @@ ItemUpgradeTip is a lightweight, zero-config addon that shows the cost of upgrad
 
 ### Features:
 - Displays upgrade information in the tooltip of an item that can be upgraded
-- Shows number of M+ dungeons left to reach cap (when Valor is weekly capped)
  
 ### Supported item types / currencies:
-- Valor gear (Valor)
+- Flightstone / Crest gear
 - Honor gear (Honor)
 - Conquest gear (Honor)
 - Covenant gear (Reservoir Anima)
