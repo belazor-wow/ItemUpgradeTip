@@ -137,7 +137,9 @@ ItemUpgradeTip.conquestUpgradeIndexes = {}
 
 ItemUpgradeTip.animaUpgradeIndex = 18
 
-
+--[[
+    Flightstone cost data taken from https://wago.io/upgradehelper
+]]
 ItemUpgradeTip.flightstoneBonusIds = {
     -- Explorer 1/8
     [9294] = { itemLevel = 376, rank = 1, currentUpgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
