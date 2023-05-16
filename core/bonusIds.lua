@@ -33,8 +33,7 @@ ItemUpgradeTip.itemUpgradeIndexes = {
     ["INVTYPE_ROBE"] = 3,
     ["INVTYPE_LEGS"] = 3,
     ["INVTYPE_WEAPONMAINHAND"] = 4,
-    ["INVTYPE_RANGEDRIGHT"] = 4,
-    --["INVTYPE_WEAPONMAINHAND"] = 5, -- Intellect weapons
+    ["INVTYPE_RANGEDRIGHT"] = 5,
     ["INVTYPE_WEAPON"] = 4,
     ["INVTYPE_2HWEAPON"] = 6,
 }
@@ -576,12 +575,12 @@ ItemUpgradeTip.flightstoneBonusIds = {
     -- Hero 5/5
     [9334] = { itemLevel = 441, rank = 5, currentUpgradeLevel = 5, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 1,
         flightstoneCosts = {
-            0, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            0, -- Helms, Chests, Legs
-            0, -- 1H Agility/Strength Weapon
+            100, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
+            160, -- Shoulders, Gloves, Trinkets, Boots, Belts
+            190, -- Helms, Chests, Legs
+            200, -- 1H Agility/Strength Weapon
             300, -- 1H Intellect Weapon
-            0 -- 2H Weapon
+            400 -- 2H Weapon
         }
     }
 }
