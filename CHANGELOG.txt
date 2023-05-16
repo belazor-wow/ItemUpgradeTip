@@ -1,3 +1,5 @@
+1.2.1
+    - Added missing costs for 5/5 Hero upgrades (Thanks Nerc @ Wago)
 1.2.0
     - Update for 10.1, will now show flightstone and crest update costs (5/5 Hero item data missing)
 1.1.1
