@@ -1,3 +1,5 @@
+1.2.2
+    - Fix Hero item upgrades not having the correct final item level
 1.2.1
     - Added missing costs for 5/5 Hero upgrades (Thanks Nerc @ Wago)
 1.2.0

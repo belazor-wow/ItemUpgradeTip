@@ -7,7 +7,7 @@ ItemUpgradeTip is a lightweight, zero-config addon that shows the cost of upgrad
 - Supports character and account wide discounts for Flightstones and Crests
  
 ### Supported item types / currencies:
-- Flightstone / Crest (Flightstone cost data and discount checking methodology taken from [10.1 Upgrade Helper | Wago.io](https://wago.io/upgradehelper))
+- Flightstone / Crest (Flightstone cost data and discount checking methodology provided by Nerc @ Wago)
 - Honor gear (Honor)
 - Conquest gear (Honor)
 - Covenant gear (Reservoir Anima)
