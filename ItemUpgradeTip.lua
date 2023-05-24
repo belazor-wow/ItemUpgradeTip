@@ -134,7 +134,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
 
                 table.insert(nextLevelLines, {
-                    icon .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name),
+                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name),
                     color:WrapTextInColorCode(j),
                 })
             end
@@ -147,7 +147,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
             
                 table.insert(totalLines, {
-                    icon .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name), 
+                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name), 
                     color:WrapTextInColorCode(j)
                 })
             end
@@ -179,6 +179,25 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             end
         end
     end
+
+    local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(2245)
+    local flightstoneLine = "";
+
+    if currencyInfo.maxQuantity > 0 then
+        flightstoneLine = string.format("%s / %s", BreakUpLargeNumbers(currencyInfo.quantity), BreakUpLargeNumbers(currencyInfo.maxQuantity))
+
+        if currencyInfo.quantity == currencyInfo.maxQuantity then
+            flightstoneLine = ERROR_COLOR:WrapTextInColorCode(flightstoneLine)
+        end
+    else
+        flightstoneLine = BreakUpLargeNumbers(currencyInfo.quantity)
+    end
+
+    tooltip:AddLine("\n")
+    tooltip:AddDoubleLine(
+        string.format("|T%s:0|t", currencyInfo.iconFileID) .. " " .. currencyInfo.name, 
+        flightstoneLine
+    )
 end
 ItemUpgradeTip.HandleFlightstones = HandleFlightstones
 

@@ -1,3 +1,7 @@
+1.3.0
+    - Add Flightstone currency display to the tooltip for Flightstone items, coloured red if you're capped
+1.2.2.1
+    - Fix item upgrades not having the correct next item level
 1.2.2
     - Fix Hero item upgrades not having the correct final item level
 1.2.1
