@@ -90,7 +90,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
     }
 
     for bonusID, upgradeInfo in pairs(ItemUpgradeTip.flightstoneBonusIds) do
-        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.currentUpgradeLevel > bonusInfo.currentUpgradeLevel then
+        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
             local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
             local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
 
@@ -117,7 +117,9 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             totalUpgradeCosts.aspectCrests = totalUpgradeCosts.aspectCrests + aspectCrests
             totalUpgradeCosts.flightstones = totalUpgradeCosts.flightstones + flightstones
 
-            maxUpgrade = upgradeInfo
+            if not maxUpgrade or maxUpgrade.upgradeLevel < upgradeInfo.upgradeLevel then
+                maxUpgrade = upgradeInfo
+            end
         end
     end
 

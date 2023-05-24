@@ -141,7 +141,7 @@ ItemUpgradeTip.animaUpgradeIndex = 18
 ]]
 ItemUpgradeTip.flightstoneBonusIds = {
     -- Explorer 1/8
-    [9294] = { itemLevel = 376, rank = 1, currentUpgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9294] = { itemLevel = 376, rank = 1, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             40, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -153,7 +153,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 2/8
-    [9295] = { itemLevel = 379, rank = 1, currentUpgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9295] = { itemLevel = 379, rank = 1, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             40, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -165,7 +165,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 3/8
-    [9296] = { itemLevel = 382, rank = 1, currentUpgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9296] = { itemLevel = 382, rank = 1, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             40, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -177,7 +177,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 4/8
-    [9297] = { itemLevel = 385, rank = 1, currentUpgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9297] = { itemLevel = 385, rank = 1, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             40, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -189,7 +189,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 5/8
-    [9298] = { itemLevel = 389, rank = 1, currentUpgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9298] = { itemLevel = 389, rank = 1, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -201,7 +201,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 6/8
-    [9299] = { itemLevel = 392, rank = 1, currentUpgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9299] = { itemLevel = 392, rank = 1, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -213,7 +213,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 7/8
-    [9300] = { itemLevel = 395, rank = 1, currentUpgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9300] = { itemLevel = 395, rank = 1, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -225,7 +225,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Explorer 8/8
-    [9301] = { itemLevel = 398, rank = 1, currentUpgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9301] = { itemLevel = 398, rank = 1, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -237,7 +237,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     }, 
 
     -- Adventurer 1/8
-    [9302] = { itemLevel = 389, rank = 2, currentUpgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9302] = { itemLevel = 389, rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -249,7 +249,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 2/8
-    [9303] = { itemLevel = 392, rank = 2, currentUpgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9303] = { itemLevel = 392, rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -261,7 +261,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 3/8
-    [9304] = { itemLevel = 395, rank = 2, currentUpgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9304] = { itemLevel = 395, rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -273,7 +273,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 4/8
-    [9305] = { itemLevel = 398, rank = 2, currentUpgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9305] = { itemLevel = 398, rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             66, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -285,7 +285,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 5/8
-    [9306] = { itemLevel = 402, rank = 2, currentUpgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9306] = { itemLevel = 402, rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -297,7 +297,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 6/8
-    [9307] = { itemLevel = 405, rank = 2, currentUpgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9307] = { itemLevel = 405, rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -309,7 +309,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 7/8
-    [9308] = { itemLevel = 408, rank = 2, currentUpgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9308] = { itemLevel = 408, rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -321,7 +321,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Adventurer 8/8
-    [9309] = { itemLevel = 411, rank = 2, currentUpgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9309] = { itemLevel = 411, rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -333,7 +333,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 1/8
-    [9313] = { itemLevel = 402, rank = 3, currentUpgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9313] = { itemLevel = 402, rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -345,7 +345,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 2/8
-    [9314] = { itemLevel = 405, rank = 3, currentUpgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9314] = { itemLevel = 405, rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -357,7 +357,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 3/8
-    [9315] = { itemLevel = 408, rank = 3, currentUpgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9315] = { itemLevel = 408, rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -369,7 +369,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 4/8
-    [9316] = { itemLevel = 411, rank = 3, currentUpgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9316] = { itemLevel = 411, rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             100, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -381,7 +381,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 5/8
-    [9317] = { itemLevel = 415, rank = 3, currentUpgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9317] = { itemLevel = 415, rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -393,7 +393,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 6/8
-    [9318] = { itemLevel = 418, rank = 3, currentUpgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9318] = { itemLevel = 418, rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -405,7 +405,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 7/8
-    [9319] = { itemLevel = 421, rank = 3, currentUpgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9319] = { itemLevel = 421, rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -417,7 +417,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Veteran 8/8
-    [9320] = { itemLevel = 424, rank = 3, currentUpgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9320] = { itemLevel = 424, rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -429,7 +429,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 1/8
-    [9321] = { itemLevel = 415, rank = 4, currentUpgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9321] = { itemLevel = 415, rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -441,7 +441,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 2/8
-    [9322] = { itemLevel = 418, rank = 4, currentUpgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9322] = { itemLevel = 418, rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -453,7 +453,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 3/8
-    [9323] = { itemLevel = 421, rank = 4, currentUpgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9323] = { itemLevel = 421, rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -465,7 +465,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 4/8
-    [9324] = { itemLevel = 424, rank = 4, currentUpgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
+    [9324] = { itemLevel = 424, rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
             75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             120, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -477,7 +477,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 5/8
-    [9325] = { itemLevel = 428, rank = 4, currentUpgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9325] = { itemLevel = 428, rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -489,7 +489,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 6/8
-    [9327] = { itemLevel = 431, rank = 4, currentUpgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9327] = { itemLevel = 431, rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -501,7 +501,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 7/8
-    [9328] = { itemLevel = 434, rank = 4, currentUpgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9328] = { itemLevel = 434, rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -513,7 +513,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Champion 8/8
-    [9329] = { itemLevel = 437, rank = 4, currentUpgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9329] = { itemLevel = 437, rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -525,7 +525,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Hero 1/5
-    [9330] = { itemLevel = 428, rank = 5, currentUpgradeLevel = 1, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9330] = { itemLevel = 428, rank = 5, upgradeLevel = 1, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -537,7 +537,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Hero 2/5
-    [9331] = { itemLevel = 431, rank = 5, currentUpgradeLevel = 2, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9331] = { itemLevel = 431, rank = 5, upgradeLevel = 2, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -549,7 +549,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Hero 3/5
-    [9332] = { itemLevel = 434, rank = 5, currentUpgradeLevel = 3, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9332] = { itemLevel = 434, rank = 5, upgradeLevel = 3, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -561,7 +561,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Hero 4/5
-    [9333] = { itemLevel = 437, rank = 5, currentUpgradeLevel = 4, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
+    [9333] = { itemLevel = 437, rank = 5, upgradeLevel = 4, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
         flightstoneCosts = {
             90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             140, -- Shoulders, Gloves, Trinkets, Boots, Belts
@@ -573,7 +573,7 @@ ItemUpgradeTip.flightstoneBonusIds = {
     },
 
     -- Hero 5/5
-    [9334] = { itemLevel = 441, rank = 5, currentUpgradeLevel = 5, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 1,
+    [9334] = { itemLevel = 441, rank = 5, upgradeLevel = 5, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 1,
         flightstoneCosts = {
             100, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
             160, -- Shoulders, Gloves, Trinkets, Boots, Belts
