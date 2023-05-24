@@ -188,9 +188,11 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
 
         if currencyInfo.quantity == currencyInfo.maxQuantity then
             flightstoneLine = ERROR_COLOR:WrapTextInColorCode(flightstoneLine)
+        else
+            flightstoneLine = WHITE_FONT_COLOR:WrapTextInColorCode(flightstoneLine)
         end
     else
-        flightstoneLine = BreakUpLargeNumbers(currencyInfo.quantity)
+        flightstoneLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
     end
 
     tooltip:AddLine("\n")
