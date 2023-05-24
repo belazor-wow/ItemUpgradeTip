@@ -100,7 +100,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             local aspectCrests = upgradeInfo.aspectCrestCost * (isCharacterDiscounted and 0 or 1)
             local flightstones = Round(upgradeInfo.flightstoneCosts[itemGroup] * (isAccountDiscounted and 0.5 or 1))
             
-            if not nextUpgradeCost then
+            if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
                 nextUpgrade = upgradeInfo
 
                 nextUpgradeCost = {
