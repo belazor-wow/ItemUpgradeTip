@@ -75,6 +75,11 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         return
     end
 
+    local flightstoneCurrencyInfo = ItemUpgradeTip.currencyInfo[ItemUpgradeTip.currencyIds.Flightstones]
+    if not flightstoneCurrencyInfo then
+        return
+    end
+
     local watermarkSlot = C_ItemUpgrade.GetHighWatermarkSlotForItem(itemLink);
     local characterHighWatermark, accountHighWatermark
     if (watermarkSlot) then
@@ -137,13 +142,29 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         for _, j in ipairs(upgradeCostKeys) do
             if nextUpgradeCost[j] > 0 then
                 local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[j]
-                local color = upgradeItem.color
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
+                local upgradeCost = ""
+
+                if j == "flightstones" then
+                    -- Check currency against cap
+                    local itemCount = flightstoneCurrencyInfo.quantity;
+                    local requiredColor = itemCount >= nextUpgradeCost[j] and GREEN_FONT_COLOR or ERROR_COLOR;
+                    local heldColor = (flightstoneCurrencyInfo.maxQuantity and flightstoneCurrencyInfo.quantity == flightstoneCurrencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
+
+                    upgradeCost = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j])) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity))
+                elseif ItemUpgradeTip.flightstoneUpgradeItems[j].id then
+                    -- Get item count and compare to required
+                    local itemCount = GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true);
+                    local color = itemCount >= nextUpgradeCost[j] and GREEN_FONT_COLOR or ERROR_COLOR;
+
+                    upgradeCost = color:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+                else
+                    upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j]))
+                end
 
                 table.insert(nextLevelLines, {
-                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
-                    color:WrapTextInColorCode(nextUpgradeCost[j]),
-                    (ItemUpgradeTip.flightstoneUpgradeItems[j].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true)) or nil)
+                    icon .. " " .. upgradeItem.color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
+                    upgradeCost
                 })
             end
         end
@@ -151,13 +172,29 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         for _, j in pairs(upgradeCostKeys) do
             if totalUpgradeCosts[j] > 0 then
                 local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[j]
-                local color = upgradeItem.color
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
+                local upgradeCost = ""
+
+                if j == "flightstones" then
+                    -- Check currency against cap
+                    local itemCount = flightstoneCurrencyInfo.quantity;
+                    local requiredColor = itemCount >= totalUpgradeCosts[j] and GREEN_FONT_COLOR or ERROR_COLOR;
+                    local heldColor = (flightstoneCurrencyInfo.maxQuantity and flightstoneCurrencyInfo.quantity == flightstoneCurrencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
+
+                    upgradeCost = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j])) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity))
+                elseif ItemUpgradeTip.flightstoneUpgradeItems[j].id then
+                    -- Get item count and compare to required
+                    local itemCount = GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true);
+                    local color = itemCount >= totalUpgradeCosts[j] and GREEN_FONT_COLOR or ERROR_COLOR;
+
+                    upgradeCost = color:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+                else
+                    upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j]))
+                end
 
                 table.insert(totalLines, {
-                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
-                    color:WrapTextInColorCode(totalUpgradeCosts[j]),
-                    (ItemUpgradeTip.flightstoneUpgradeItems[j].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true)) or nil)
+                    icon .. " " .. upgradeItem.color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
+                    upgradeCost
                 })
             end
         end
@@ -171,7 +208,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
                 for _, newLine in pairs(nextLevelLines) do
-                    tooltip:AddDoubleLine(newLine[1], (newLine[3] and newLine[2] .. " / " .. newLine[3] or newLine[2]))
+                    tooltip:AddDoubleLine(newLine[1], newLine[2])
                 end
             end
 
@@ -183,35 +220,11 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
                 for _, newLine in pairs(totalLines) do
-                    tooltip:AddDoubleLine(newLine[1], (newLine[3] and newLine[2] .. " / " .. newLine[3] or newLine[2]))
+                    tooltip:AddDoubleLine(newLine[1], newLine[2])
                 end
             end
         end
     end
-
-    local currencyInfo = ItemUpgradeTip.currencyInfo[ItemUpgradeTip.currencyIds.Flightstones]
-    if not currencyInfo then
-        return
-    end
-    local flightstoneLine = "";
-
-    if currencyInfo.maxQuantity > 0 then
-        flightstoneLine = string.format("%s / %s", BreakUpLargeNumbers(currencyInfo.quantity), BreakUpLargeNumbers(currencyInfo.maxQuantity))
-
-        if currencyInfo.quantity == currencyInfo.maxQuantity then
-            flightstoneLine = ERROR_COLOR:WrapTextInColorCode(flightstoneLine)
-        else
-            flightstoneLine = WHITE_FONT_COLOR:WrapTextInColorCode(flightstoneLine)
-        end
-    else
-        flightstoneLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
-    end
-
-    tooltip:AddLine("\n")
-    tooltip:AddDoubleLine(
-        string.format("|T%s:0|t", currencyInfo.iconFileID) .. " " .. currencyInfo.name,
-        flightstoneLine
-    )
 end
 ItemUpgradeTip.HandleFlightstones = HandleFlightstones
 
