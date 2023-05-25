@@ -1,10 +1,16 @@
 local _, ItemUpgradeTip = ...
 local L = ItemUpgradeTip.L
 
+ItemUpgradeTip.currencyIndexes = {
+    [1813] = true,
+    [1792] = true,
+    [2245] = true
+}
+
 ItemUpgradeTip.currencyIds = {
-	Anima = 1813,
-	Valor = 1191,
-	Honor = 1792
+    Anima = 1813,
+    Honor = 1792,
+    Flightstones = 2245
 }
 
 ItemUpgradeTip.flightstoneUpgradeItems = {
