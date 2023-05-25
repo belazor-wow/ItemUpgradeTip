@@ -1,23 +1,17 @@
 local _, ItemUpgradeTip = ...
 local L = ItemUpgradeTip.L
 
-ItemUpgradeTip.currencyIndexes = {
-    [1813] = true,
-    [1792] = true,
-    [2245] = true
-}
-
 ItemUpgradeTip.currencyIds = {
-    Anima = 1813,
-    Honor = 1792,
-    Flightstones = 2245
+	Anima = 1813,
+	Valor = 1191,
+	Honor = 1792
 }
 
 ItemUpgradeTip.flightstoneUpgradeItems = {
-    whelpCrests = { name = L["Whelpling's Crests"], color = UNCOMMON_GREEN_COLOR, icon = 5062634 },
-    drakeCrests = { name = L["Drake's Crests"], color = RARE_BLUE_COLOR, icon = 5062613 },
-    wyrmCrests = { name = L["Wyrm's Crests"], color = EPIC_PURPLE_COLOR, icon = 5062637 },
-    aspectCrests = { name = L["Aspect's Crests"], color = LEGENDARY_ORANGE_COLOR, icon = 5062582 },
+    whelpCrests = { name = L["Whelpling's Crests"], color = UNCOMMON_GREEN_COLOR, icon = 5062634, id = 204193 },
+    drakeCrests = { name = L["Drake's Crests"], color = RARE_BLUE_COLOR, icon = 5062613, id = 204195 },
+    wyrmCrests = { name = L["Wyrm's Crests"], color = EPIC_PURPLE_COLOR, icon = 5062637, id = 204196 },
+    aspectCrests = { name = L["Aspect's Crests"], color = LEGENDARY_ORANGE_COLOR, icon = 5062582, id = 204194 },
     flightstones = { name = L["Flightstones"], color = WHITE_FONT_COLOR, icon = 5172976 },
 }
 
