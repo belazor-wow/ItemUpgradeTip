@@ -87,6 +87,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
     local nextUpgradeCost = nil
     local nextUpgrade = nil
     local maxUpgrade = nil
+    local upgradeCostKeys = {'flightstones', 'whelpCrests', 'drakeCrests', 'wyrmCrests', 'aspectCrests'}
     local totalUpgradeCosts = {
         whelpCrests = 0,
         drakeCrests = 0,
@@ -133,30 +134,30 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         local nextLevelLines = {}
         local totalLines = {}
 
-        for i, j in pairs(nextUpgradeCost) do
-            if j > 0 then
-                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[i]
+        for _, j in ipairs(upgradeCostKeys) do
+            if nextUpgradeCost[j] > 0 then
+                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[j]
                 local color = upgradeItem.color
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
 
                 table.insert(nextLevelLines, {
-                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name),
-                    color:WrapTextInColorCode(j),
-                    (ItemUpgradeTip.flightstoneUpgradeItems[i].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[i].id, true)) or nil)
+                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
+                    color:WrapTextInColorCode(nextUpgradeCost[j]),
+                    (ItemUpgradeTip.flightstoneUpgradeItems[j].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true)) or nil)
                 })
             end
         end
 
-        for i, j in pairs(totalUpgradeCosts) do
-            if j > 0 then
-                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[i]
+        for _, j in pairs(upgradeCostKeys) do
+            if totalUpgradeCosts[j] > 0 then
+                local upgradeItem = ItemUpgradeTip.flightstoneUpgradeItems[j]
                 local color = upgradeItem.color
                 local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
 
                 table.insert(totalLines, {
-                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[i].name),
-                    color:WrapTextInColorCode(j),
-                    (ItemUpgradeTip.flightstoneUpgradeItems[i].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[i].id, true)) or nil)
+                    icon .. " " .. color:WrapTextInColorCode(ItemUpgradeTip.flightstoneUpgradeItems[j].name),
+                    color:WrapTextInColorCode(totalUpgradeCosts[j]),
+                    (ItemUpgradeTip.flightstoneUpgradeItems[j].id and color:WrapTextInColorCode(GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true)) or nil)
                 })
             end
         end
