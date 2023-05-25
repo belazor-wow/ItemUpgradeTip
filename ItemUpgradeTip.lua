@@ -3,6 +3,8 @@ local L = ItemUpgradeTip.L
 
 local flightstoneUpgradePattern = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(%%a+)")
 
+ItemUpgradeTip.currencyInfo = {};
+
 --- Generic currency handler based on bonusInfo table
 ---@param tooltip GameTooltipTemplate
 ---@param currentUpgrade number
@@ -10,7 +12,11 @@ local flightstoneUpgradePattern = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d",
 ---@param bonusInfo table
 local function HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
     local upgradesRemaining = maxUpgrade - currentUpgrade
-    local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(bonusInfo.currencyId)
+    local currencyInfo = ItemUpgradeTip.currencyInfo[bonusInfo.currencyId]
+    if not currencyInfo then
+        return
+    end
+
     local currencyOwned = currencyInfo.quantity
     local currencyIconId = currencyInfo.iconFileID
 
@@ -180,7 +186,10 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
         end
     end
 
-    local currencyInfo = C_CurrencyInfo.GetCurrencyInfo(2245)
+    local currencyInfo = ItemUpgradeTip.currencyInfo[ItemUpgradeTip.currencyIds.Flightstones]
+    if not currencyInfo then
+        return
+    end
     local flightstoneLine = "";
 
     if currencyInfo.maxQuantity > 0 then
@@ -354,8 +363,31 @@ local function HandleTooltipSetItem(tooltip, tooltipData)
 end
 ItemUpgradeTip.HandleTooltipSetItem = HandleTooltipSetItem
 
+local function OnEvent(_, event, ...)
+    if event == "PLAYER_LOGIN" then
+        for currencyId, _ in pairs(ItemUpgradeTip.currencyIndexes) do
+            ItemUpgradeTip.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
+        end
+    elseif event == "CURRENCY_DISPLAY_UPDATE" then
+        local currencyId, _, quantity = ...
+        if currencyId and quantity and quantity > 0 then
+            if ItemUpgradeTip.currencyIndexes[currencyId] then
+                -- Refresh the entire currency info in case there's info other than quantity that also updated
+                ItemUpgradeTip.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
+            end
+        end
+    end
+end
+ItemUpgradeTip.OnEvent = OnEvent
+
 -- Tooltip integration
 TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, ItemUpgradeTip.HandleTooltipSetItem)
+
+-- Event helper
+local loadHelper = CreateFrame("Frame");
+loadHelper:SetScript("OnEvent", ItemUpgradeTip.OnEvent);
+loadHelper:RegisterEvent("PLAYER_LOGIN");
+loadHelper:RegisterEvent("CURRENCY_DISPLAY_UPDATE");
 
 --[[
 local honorItemIds = {
