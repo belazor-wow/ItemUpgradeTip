@@ -61,7 +61,6 @@ ItemUpgradeTip.flightstoneUpgradeData = {
         fragment = { 
             name = L["Wyrm's Crest Fragments"],
             itemId = 204077,
-            icon = 5062636,
             icon = 5062642
         },
         currencyId = nil
