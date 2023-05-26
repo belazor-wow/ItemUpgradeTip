@@ -1,24 +1,85 @@
 local _, ItemUpgradeTip = ...
 local L = ItemUpgradeTip.L
 
-ItemUpgradeTip.currencyIndexes = {
-    [1813] = true,
-    [1792] = true,
-    [2245] = true
-}
-
 ItemUpgradeTip.currencyIds = {
     Anima = 1813,
     Honor = 1792,
     Flightstones = 2245
 }
 
-ItemUpgradeTip.flightstoneUpgradeItems = {
-    whelpCrests = { name = L["Whelpling's Crests"], color = UNCOMMON_GREEN_COLOR, icon = 5062634, id = 204193 },
-    drakeCrests = { name = L["Drake's Crests"], color = RARE_BLUE_COLOR, icon = 5062613, id = 204195 },
-    wyrmCrests = { name = L["Wyrm's Crests"], color = EPIC_PURPLE_COLOR, icon = 5062637, id = 204196 },
-    aspectCrests = { name = L["Aspect's Crests"], color = LEGENDARY_ORANGE_COLOR, icon = 5062582, id = 204194 },
-    flightstones = { name = L["Flightstones"], color = WHITE_FONT_COLOR, icon = 5172976 },
+ItemUpgradeTip.currencyIndexes = {
+    [ItemUpgradeTip.currencyIds.Anima] = true,
+    [ItemUpgradeTip.currencyIds.Honor] = true,
+    [ItemUpgradeTip.currencyIds.Flightstones] = true
+}
+
+ItemUpgradeTip.flightstoneUpgradeData = {
+    { 
+        id = "flightstones",
+        name = L["Flightstones"],
+        color = WHITE_FONT_COLOR,
+        icon = 5172976,
+        itemId = nil,
+        fragment = nil,
+        currencyId = ItemUpgradeTip.currencyIds.Flightstones
+    },
+
+    {
+        id = "whelpCrests",
+        name = L["Whelpling's Crests"],
+        color = UNCOMMON_GREEN_COLOR,
+        icon = 5062634,
+        itemId = 204193,
+        fragment = {
+            name = L["Whelpling's Crest Fragments"],
+            itemId = 204075,
+            icon = 5062636
+        },
+        currencyId = nil
+    },
+
+    {
+        id = "drakeCrests",
+        name = L["Drake's Crests"],
+        color = RARE_BLUE_COLOR,
+        icon = 5062613,
+        itemId = 204195,
+        fragment = {
+            name = L["Drake's Crest Fragments"],
+            itemId = 204076,
+            icon = 5062624
+        },
+        currencyId = nil
+    },
+
+    {
+        id = "wyrmCrests",
+        name = L["Wyrm's Crests"],
+        color = EPIC_PURPLE_COLOR,
+        icon = 5062637,
+        itemId = 204196,
+        fragment = { 
+            name = L["Wyrm's Crest Fragments"],
+            itemId = 204077,
+            icon = 5062636,
+            icon = 5062642
+        },
+        currencyId = nil
+    },
+
+    {
+        id = "aspectCrests",
+        name = L["Aspect's Crests"],
+        color = LEGENDARY_ORANGE_COLOR,
+        icon = 5062582,
+        itemId = 204194,
+        fragment = { 
+            name = L["Aspect's Crest Fragments"],
+            itemId = 204078,
+            icon = 5062612
+        },
+        currencyId = nil
+    },
 }
 
 ItemUpgradeTip.itemUpgradeIndexes = {
