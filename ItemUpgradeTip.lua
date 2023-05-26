@@ -151,13 +151,13 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                     local requiredColor = itemCount >= nextUpgradeCost[j] and GREEN_FONT_COLOR or ERROR_COLOR;
                     local heldColor = (flightstoneCurrencyInfo.maxQuantity and flightstoneCurrencyInfo.quantity == flightstoneCurrencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
 
-                    upgradeCost = heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity)) .. " / " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j]))
+                    upgradeCost = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j])) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity))
                 elseif ItemUpgradeTip.flightstoneUpgradeItems[j].id then
                     -- Get item count and compare to required
                     local itemCount = GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true);
                     local color = itemCount >= nextUpgradeCost[j] and GREEN_FONT_COLOR or ERROR_COLOR;
 
-                    upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount)) .. " / " .. color:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j]))
+                    upgradeCost = color:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
                 else
                     upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(nextUpgradeCost[j]))
                 end
@@ -181,13 +181,13 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                     local requiredColor = itemCount >= totalUpgradeCosts[j] and GREEN_FONT_COLOR or ERROR_COLOR;
                     local heldColor = (flightstoneCurrencyInfo.maxQuantity and flightstoneCurrencyInfo.quantity == flightstoneCurrencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
 
-                    upgradeCost = heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity)) .. " / " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j]))
+                    upgradeCost = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j])) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(flightstoneCurrencyInfo.quantity))
                 elseif ItemUpgradeTip.flightstoneUpgradeItems[j].id then
                     -- Get item count and compare to required
                     local itemCount = GetItemCount(ItemUpgradeTip.flightstoneUpgradeItems[j].id, true);
                     local color = itemCount >= totalUpgradeCosts[j] and GREEN_FONT_COLOR or ERROR_COLOR;
 
-                    upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount)) .. " / " .. color:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j]))
+                    upgradeCost = color:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
                 else
                     upgradeCost = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(totalUpgradeCosts[j]))
                 end
