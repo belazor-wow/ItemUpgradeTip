@@ -13,7 +13,7 @@ local function ParseUpgradeCost(upgradeCost)
 
     for _, upgradeItem in ipairs(ItemUpgradeTip.flightstoneUpgradeData) do
         if upgradeCost[upgradeItem.id] ~= nil and upgradeCost[upgradeItem.id] > 0 then
-            local icon = upgradeItem.icon and string.format("|T%s:0|t", upgradeItem.icon) or ""
+            local icon = upgradeItem.icon and CreateTextureMarkup(upgradeItem.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
             local costLine = ""
 
             if upgradeItem.currencyId ~= nil then
@@ -208,7 +208,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
 
     for _, upgradeItem in ipairs(ItemUpgradeTip.flightstoneUpgradeData) do
         if upgradeItem.fragment ~= nil then
-            local icon = upgradeItem.fragment.icon and string.format("|T%s:0|t", upgradeItem.fragment.icon) or ""
+            local icon = upgradeItem.fragment.icon and CreateTextureMarkup(upgradeItem.fragment.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
             -- Get item count and compare to required
             local itemCount = GetItemCount(upgradeItem.fragment.itemId, true);
