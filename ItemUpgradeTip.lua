@@ -15,6 +15,7 @@ local function ParseUpgradeCost(upgradeCost)
         if upgradeCost[upgradeItem.id] ~= nil and upgradeCost[upgradeItem.id] > 0 then
             local icon = upgradeItem.icon and CreateTextureMarkup(upgradeItem.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
             local costLine = ""
+            local fragmentName, fragmentId, fragmentIcon = nil, nil, nil
 
             if upgradeItem.currencyId ~= nil then
                 -- Check currency against cap
@@ -30,17 +31,24 @@ local function ParseUpgradeCost(upgradeCost)
                 end
             elseif upgradeItem.itemId ~= nil then
                 -- Get item count and compare to required
+                -- Means we can also have matching fragments
                 local itemCount = GetItemCount(upgradeItem.itemId, true);
                 local color = itemCount >= upgradeCost[upgradeItem.id] and GREEN_FONT_COLOR or ERROR_COLOR;
 
                 costLine = color:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+
+                fragmentName = upgradeItem.fragment and upgradeItem.fragment.name or nil
+                fragmentId = upgradeItem.fragment and upgradeItem.fragment.itemId or nil
+                fragmentIcon = upgradeItem.fragment and upgradeItem.fragment.icon or nil
             else
                 costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id]))
-            end                
+            end
 
             table.insert(lines, {
-                icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.name),
-                costLine
+                left = icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.name),
+                right = costLine,
+                color = upgradeItem.color,
+                fragmentData = {name = fragmentName, itemId = fragmentId, icon = fragmentIcon}
             })
         end
     end
@@ -186,7 +194,7 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
                 for _, newLine in pairs(nextLevelLines) do
-                    tooltip:AddDoubleLine(newLine[1], newLine[2])
+                    tooltip:AddDoubleLine(newLine.left, newLine.right)
                 end
             end
 
@@ -198,35 +206,27 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
                 tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
                 for _, newLine in pairs(totalLines) do
-                    tooltip:AddDoubleLine(newLine[1], newLine[2])
+                    tooltip:AddDoubleLine(newLine.left, newLine.right)
                 end
             end
         end
-    end
 
-    local fragmentLines = {}
-
-    for _, upgradeItem in ipairs(ItemUpgradeTip.flightstoneUpgradeData) do
-        if upgradeItem.fragment ~= nil then
-            local icon = upgradeItem.fragment.icon and CreateTextureMarkup(upgradeItem.fragment.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-
-            -- Get item count and compare to required
-            local itemCount = GetItemCount(upgradeItem.fragment.itemId, true);
-            if itemCount and itemCount > 15 then
-                -- No point showing fragments we don't have, or fragments we can't turn into crests
-                table.insert(fragmentLines, {
-                    icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.fragment.name),
-                    WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
-                })
+        -- Fragment data collection: use the 'totalLines' because that have all needed crest in it
+        local emptyLineAdded = false
+        for _, data in ipairs(totalLines) do
+            if data.fragmentData and data.fragmentData.name then
+                local itemCount = GetItemCount(data.fragmentData.itemId, true)
+                if itemCount and itemCount >= 15 then
+                    if not emptyLineAdded then
+                        tooltip:AddLine("\n")
+                        emptyLineAdded = true
+                    end
+                    tooltip:AddDoubleLine(
+                        (CreateTextureMarkup(data.fragmentData.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or "") .. " " .. data.color:WrapTextInColorCode(data.fragmentData.name),
+                        WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+                    )
+                end
             end
-        end
-    end
-
-    if #fragmentLines > 0 then
-        tooltip:AddLine("\n")
-
-        for _, newLine in pairs(fragmentLines) do
-            tooltip:AddDoubleLine(newLine[1], newLine[2])
         end
     end
 end
