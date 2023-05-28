@@ -5,6 +5,18 @@ local private = select(2, ...) ---@class PrivateNamespace
 ---@field AceLocale AceLocale-3.0
 private.Libs = {}
 
+---@class private.currencyInfo : { [number]: CurrencyInfo }
+private.currencyInfo = {}
+
+---@class private.currencyIds : { [string]: number }
+private.currencyIds = {}
+
+---@class private.currencyIndexes : { [number]: boolean }
+private.currencyIndexes = {}
+
+---@class private.upgradeHandlers : { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
+private.upgradeHandlers = {}
+
 do
     ---@paramsig name, libname[, silent]
     ---@param name string

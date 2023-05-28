@@ -8,18 +8,6 @@ local L = private.L
 local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
 local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(%%a+)") -- "Upgrade Level: %s %d/%d"
 
----@class private.currencyInfo : { [number]: CurrencyInfo }
-private.currencyInfo = {}
-
----@class private.currencyIds : { [string]: number }
-private.currencyIds = {}
-
----@class private.currencyIndexes : { [number]: boolean }
-private.currencyIndexes = {}
-
----@class private.upgradeHandlers : { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
-private.upgradeHandlers = {}
-
 --- Generic currency handler based on bonusInfo table
 ---@param tooltip GameTooltip
 ---@param currentUpgrade number
