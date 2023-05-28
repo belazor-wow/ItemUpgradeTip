@@ -10,7 +10,7 @@ private.currencyIndexes[private.currencyIds.Honor] = true
 ---@type { [number] : honorBonusData }
 local conquestBonusIds = {
     -- 1/9
-    [9426] = { itemLevel = 366, upgradeLevel = 1, maxUpgradeLevel = 9,
+    [9426] = { itemLevel = 408, upgradeLevel = 1, maxUpgradeLevel = 9,
         honorCosts = {
             875, -- 1h Melee Weapon, Helms, Chests, Legs
             525, -- Trinket #1, Rings, Cloaks, Bracers, Necks
@@ -22,97 +22,97 @@ local conquestBonusIds = {
     },
 
     -- 2/9
-    [9427] = { itemLevel = 372, upgradeLevel = 2, maxUpgradeLevel = 9,
+    [9427] = { itemLevel = 411, upgradeLevel = 2, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
     -- 3/9
-    [9428] = { itemLevel = 379, upgradeLevel = 3, maxUpgradeLevel = 9,
+    [9428] = { itemLevel = 415, upgradeLevel = 3, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
     -- 4/9
-    [9429] = { itemLevel = 385, upgradeLevel = 4, maxUpgradeLevel = 9,
+    [9429] = { itemLevel = 418, upgradeLevel = 4, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
     -- 5/9
-    [9430] = { itemLevel = 392, upgradeLevel = 5, maxUpgradeLevel = 9,
+    [9430] = { itemLevel = 421, upgradeLevel = 5, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
-    -- 5/9
-    [9431] = { itemLevel = 392, upgradeLevel = 6, maxUpgradeLevel = 9,
+    -- 6/9
+    [9431] = { itemLevel = 424, upgradeLevel = 6, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
-    -- 5/9
-    [9432] = { itemLevel = 392, upgradeLevel = 7, maxUpgradeLevel = 9,
+    -- 7/9
+    [9432] = { itemLevel = 428, upgradeLevel = 7, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
-    -- 5/9
-    [9433] = { itemLevel = 392, upgradeLevel = 8, maxUpgradeLevel = 9,
+    -- 8/9
+    [9433] = { itemLevel = 431, upgradeLevel = 8, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
 
     -- 9/9
-    [9434] = { itemLevel = 392, upgradeLevel = 9, maxUpgradeLevel = 9,
+    [9434] = { itemLevel = 434, upgradeLevel = 9, maxUpgradeLevel = 9,
         honorCosts = {
-            0, -- 1h Melee Weapon, Helms, Chests, Legs
-            0, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            0, -- Shoulders, Gloves, Trinket #2, Boots, Belts
+            1175, -- 1h Melee Weapon, Helms, Chests, Legs
+            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
+            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
             0, -- 1H Caster Weapon
-            0, -- Offhand (caster)
+            600, -- Offhand (caster)
             0 -- 2H Weapon
         }
     },
