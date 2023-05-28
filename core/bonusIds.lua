@@ -1,27 +1,34 @@
-local _, ItemUpgradeTip = ...
-local L = ItemUpgradeTip.L
+-- ----------------------------------------------------------------------------
+-- AddOn Namespace
+-- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
+local private = select(2, ...) ---@class PrivateNamespace
+local L = private.L
 
-ItemUpgradeTip.currencyIds = {
+---@class private.currencyIds : { [string]: number }
+private.currencyIds = {
     Anima = 1813,
     Honor = 1792,
     Flightstones = 2245
 }
 
-ItemUpgradeTip.currencyIndexes = {
-    [ItemUpgradeTip.currencyIds.Anima] = true,
-    [ItemUpgradeTip.currencyIds.Honor] = true,
-    [ItemUpgradeTip.currencyIds.Flightstones] = true
+---@class private.currencyIndexes : { [number]: boolean }
+private.currencyIndexes = {
+    [private.currencyIds.Anima] = true,
+    [private.currencyIds.Honor] = true,
+    [private.currencyIds.Flightstones] = true
 }
 
-ItemUpgradeTip.flightstoneUpgradeData = {
-    { 
+---@class private.flightstoneUpgradeData : { [number] : flightstoneUpgradeData }
+private.flightstoneUpgradeData = {
+    {
         id = "flightstones",
         name = L["Flightstones"],
         color = WHITE_FONT_COLOR,
         icon = 5172976,
         itemId = nil,
         fragment = nil,
-        currencyId = ItemUpgradeTip.currencyIds.Flightstones
+        currencyId = private.currencyIds.Flightstones
     },
 
     {
@@ -81,7 +88,8 @@ ItemUpgradeTip.flightstoneUpgradeData = {
     },
 }
 
-ItemUpgradeTip.itemUpgradeIndexes = {
+---@class private.itemUpgradeIndexes : { [string]: number }
+private.itemUpgradeIndexes = {
     ["INVTYPE_WEAPONOFFHAND"] = 1,
     ["INVTYPE_SHIELD"] = 1,
     ["INVTYPE_FINGER"] = 1,
@@ -104,7 +112,8 @@ ItemUpgradeTip.itemUpgradeIndexes = {
     ["INVTYPE_2HWEAPON"] = 6,
 }
 
-ItemUpgradeTip.honorUpgradeIndexes = {
+---@class private.itemUpgradeIndexes : { [number]: number }
+private.honorUpgradeIndexes = {
     [201093] = 9,
     [201094] = 9,
     [201095] = 9,
@@ -197,15 +206,13 @@ ItemUpgradeTip.honorUpgradeIndexes = {
     [201964] = 11,
 }
 
--- TODO
-ItemUpgradeTip.conquestUpgradeIndexes = {}
+---@class private.conquestUpgradeIndexes : { [number]: number }
+private.conquestUpgradeIndexes = {}
 
-ItemUpgradeTip.animaUpgradeIndex = 18
+private.animaUpgradeIndex = 18
 
---[[
-    Flightstone cost data taken from https://wago.io/upgradehelper
-]]
-ItemUpgradeTip.flightstoneBonusIds = {
+---@class private.flightstoneBonusIds : { [number] : flightstoneBonusData }
+private.flightstoneBonusIds = {
     -- Explorer 1/8
     [9294] = { itemLevel = 376, rank = 1, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
         flightstoneCosts = {
@@ -651,62 +658,63 @@ ItemUpgradeTip.flightstoneBonusIds = {
     }
 }
 
-ItemUpgradeTip.bonusIds = {
+---@class private.bonusIds : { [number] : bonusData }
+private.bonusIds = {
 
     --[[ Honor ]]
 
     -- Off-Hands
     [6] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 250, toMax = 1625},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 300, toMax = 1375},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 500, toMax = 1125},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 625, toMax = 625},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 625, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 250, toMax = 1625},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 300, toMax = 1375},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 500, toMax = 1125},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 625, toMax = 625},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 625, toMax = 0},
     },
 
     -- Gladiator Trinkets, Wrists, Cloaks, Rings, Necks
     [7] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 300, toMax = 2025},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 375, toMax = 1725},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 600, toMax = 1350},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 750, toMax = 750},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 750, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 300, toMax = 2025},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 375, toMax = 1725},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 600, toMax = 1350},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 750, toMax = 750},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 750, toMax = 0},
     },
 
     -- Damage Trinkets, Boots, Gloves, Shoulder, Belt
     [8] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 400,  toMax = 2700},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 500,  toMax = 2300},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 800,  toMax = 1800},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1000, toMax = 1000},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1000, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 400,  toMax = 2700},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 500,  toMax = 2300},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 800,  toMax = 1800},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 1000, toMax = 1000},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 1000, toMax = 0},
     },
 
     -- Melee One Handed Weapons, Shields, Chest, Helms, Legs
     [9] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 500,  toMax = 3375},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 625,  toMax = 2875},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1000, toMax = 2250},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1250, toMax = 1250},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1250, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 500,  toMax = 3375},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 625,  toMax = 2875},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 1000, toMax = 2250},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 1250, toMax = 1250},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 1250, toMax = 0},
     },
 
     -- Intellect One-Handed Weapons
     [10] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 750,  toMax = 5075},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 950,  toMax = 4325},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1500, toMax = 3375},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1875, toMax = 1875},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1875, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 750,  toMax = 5075},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 950,  toMax = 4325},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 1500, toMax = 3375},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 1875, toMax = 1875},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 1875, toMax = 0},
     },
 
     -- Two-Handed Weapons
     [11] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1000, toMax = 7750},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 1250, toMax = 6750},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 2000, toMax = 5500},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 2500, toMax = 2500},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 2500, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 1000, toMax = 7750},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 1250, toMax = 6750},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 2000, toMax = 5500},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 2500, toMax = 2500},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 2500, toMax = 0},
     },
 
 
@@ -715,56 +723,56 @@ ItemUpgradeTip.bonusIds = {
 
     -- Off-Hands
     [12] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
     -- Gladiator Trinkets, Wrists, Cloaks, Rings, Necks
     [13] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
     -- Damage Trinkets, Boots, Gloves, Shoulder, Belt
     [14] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
     -- Melee One Handed Weapons, Shields, Chest, Helms, Legs
     [15] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
     -- Intellect One-Handed Weapons
     [16] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
     -- Two-Handed Weapons
     [17] = {
-        [8985] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8986] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8987] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8988] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
-        [8989] = {currencyId = ItemUpgradeTip.currencyIds.Honor, amount = 0, toMax = 0},
+        [8985] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8986] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8987] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8988] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
+        [8989] = {currencyId = private.currencyIds.Honor, amount = 0, toMax = 0},
     },
 
 
@@ -772,12 +780,12 @@ ItemUpgradeTip.bonusIds = {
     --[[ Anima ]]
 
     [18] = {
-        [7195] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 50,  toMax = 1050},
-        [7196] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 100, toMax = 1000},
-        [7197] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 150, toMax = 900},
-        [7198] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 200, toMax = 750},
-        [7199] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 250, toMax = 550},
-        [7200] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 300, toMax = 300},
-        [7201] = {currencyId = ItemUpgradeTip.currencyIds.Anima, amount = 0,   toMax = 0},
+        [7195] = {currencyId = private.currencyIds.Anima, amount = 50,  toMax = 1050},
+        [7196] = {currencyId = private.currencyIds.Anima, amount = 100, toMax = 1000},
+        [7197] = {currencyId = private.currencyIds.Anima, amount = 150, toMax = 900},
+        [7198] = {currencyId = private.currencyIds.Anima, amount = 200, toMax = 750},
+        [7199] = {currencyId = private.currencyIds.Anima, amount = 250, toMax = 550},
+        [7200] = {currencyId = private.currencyIds.Anima, amount = 300, toMax = 300},
+        [7201] = {currencyId = private.currencyIds.Anima, amount = 0,   toMax = 0},
     }
 }

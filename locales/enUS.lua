@@ -1,7 +1,16 @@
--- enUS localization
-local L = LibStub("AceLocale-3.0"):NewLocale("ItemUpgradeTip", "enUS", true, true)
+-- ----------------------------------------------------------------------------
+-- AddOn Namespace
+-- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
+local private = select(2, ...) ---@class PrivateNamespace
 
---Strings
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):NewLocale(AddOnFolderName, "enUS", true, true)
+
+if not L then
+    return
+end
+
 L["(Weekly cap reached)"] = true
 L["M+ runs left: %s"] = true
 L["Rare callings left: %s"] = true

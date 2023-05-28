@@ -1,6 +1,15 @@
--- deDE localization
-local L = LibStub("AceLocale-3.0"):NewLocale("ItemUpgradeTip", "deDE")
-if not L then return end
+-- ----------------------------------------------------------------------------
+-- AddOn Namespace
+-- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
+local private = select(2, ...) ---@class PrivateNamespace
+
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):NewLocale(AddOnFolderName, "deDE", false)
+
+if not L then
+    return
+end
 
 L["%s Upgrades"] = "%s Aufwertungen"
 L["(Weekly cap reached)"] = "(Wöchentliches Limit erreicht)"
