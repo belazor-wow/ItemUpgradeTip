@@ -22,7 +22,12 @@ locales\ruRU.lua
 locales\zhCN.lua
 locales\zhTW.lua
 
-core\init.lua
-core\bonusIds.lua
+Init.lua
+
+upgradeHandlers\Heirloom.lua
+upgradeHandlers\Flightstones.lua
+upgradeHandlers\Anima.lua
+upgradeHandlers\Honor.lua
+upgradeHandlers\Conquest.lua
 
 ItemUpgradeTip.lua

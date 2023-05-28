@@ -52,6 +52,16 @@
 
 
 -- ----------------------------------------------------------------------------
+-- Honor Bonus Data
+-- ----------------------------------------------------------------------------
+---@class honorBonusData
+---@field itemLevel number
+---@field upgradeLevel number
+---@field maxUpgradeLevel number
+---@field honorCosts table { [number] : number } For the first upgrade level, this is the vendor cost
+
+
+-- ----------------------------------------------------------------------------
 -- Bonus Data
 -- ----------------------------------------------------------------------------
 ---@class bonusData

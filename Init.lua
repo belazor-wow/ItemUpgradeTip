@@ -5,9 +5,6 @@ local private = select(2, ...) ---@class PrivateNamespace
 ---@field AceLocale AceLocale-3.0
 private.Libs = {}
 
----@class private.currencyInfo : { [number]: CurrencyInfo }
-private.currencyInfo = {};
-
 do
     ---@paramsig name, libname[, silent]
     ---@param name string
