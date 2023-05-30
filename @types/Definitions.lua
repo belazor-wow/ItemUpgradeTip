@@ -41,11 +41,7 @@
 ---@field rank number
 ---@field upgradeLevel number
 ---@field maxUpgradeLevel number
----@field whelpCrestCost number
----@field drakeCrestCost number
----@field wyrmCrestCost number
----@field aspectCrestCost number
----@field flightstoneCosts table { [number] : number }
+---@field upgradeGroup number
 
 
 -- ----------------------------------------------------------------------------

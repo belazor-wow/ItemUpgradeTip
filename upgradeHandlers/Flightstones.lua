@@ -8,451 +8,358 @@ local L = private.L
 private.currencyIds.Flightstones = 2245
 private.currencyIndexes[private.currencyIds.Flightstones] = true
 
+---@type { [number]: flightstoneUpgradeCostData }
+local itemExtendedCosts = {
+
+    [7984] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 50},
+    [7991] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
+    [7992] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 25},
+    [7993] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 40},
+    [7997] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 100},
+    [7998] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
+    [8003] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 160},
+
+    [8045] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
+    [8046] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 100},
+    [8047] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 65},
+    [8049] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 125},
+    [8050] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 250},
+    [8051] = {whelpCrests = 1, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 200},
+
+    [8053] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 145},
+    [8054] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
+    [8055] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
+    [8056] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 150},
+    [8057] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 300},
+    [8058] = {whelpCrests = 0, drakeCrests = 1, wyrmCrests = 0, aspectCrests = 0, flightstones = 225},
+
+    [8059] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 170},
+    [8060] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 140},
+    [8061] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 90},
+    [8062] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 175},
+    [8063] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 350},
+    [8064] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 1, aspectCrests = 0, flightstones = 275},
+
+    [8065] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 190},
+    [8066] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 160},
+    [8067] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 100},
+    [8068] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 200},
+    [8069] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 400},
+    [8070] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 1, flightstones = 300},
+}
+
+---@type { [string]: { [number]: flightstoneUpgradeCostData } }
+local itemUpgradeCosts = {
+
+    -- InventoryTypeSlotMask 1048738
+    ["INVTYPE_HEAD"] = {
+        [12] = itemExtendedCosts[7984],
+        [13] = itemExtendedCosts[7991],
+        [14] = itemExtendedCosts[8045],
+        [15] = itemExtendedCosts[8053],
+        [16] = itemExtendedCosts[8059],
+        [17] = itemExtendedCosts[8065],
+    },
+    ["INVTYPE_CHEST"] = {
+        [12] = itemExtendedCosts[7984],
+        [13] = itemExtendedCosts[7991],
+        [14] = itemExtendedCosts[8045],
+        [15] = itemExtendedCosts[8053],
+        [16] = itemExtendedCosts[8059],
+        [17] = itemExtendedCosts[8065],
+    },
+    ["INVTYPE_LEGS"] = {
+        [12] = itemExtendedCosts[7984],
+        [13] = itemExtendedCosts[7991],
+        [14] = itemExtendedCosts[8045],
+        [15] = itemExtendedCosts[8053],
+        [16] = itemExtendedCosts[8059],
+        [17] = itemExtendedCosts[8065],
+    },
+    ["INVTYPE_ROBE"] = {
+        [12] = itemExtendedCosts[7984],
+        [13] = itemExtendedCosts[7991],
+        [14] = itemExtendedCosts[8045],
+        [15] = itemExtendedCosts[8053],
+        [16] = itemExtendedCosts[8059],
+        [17] = itemExtendedCosts[8065],
+    },
+
+    -- InventoryTypeSlotMask 5448
+    ["INVTYPE_SHOULDER"] = {
+        [12] = itemExtendedCosts[7993],
+        [13] = itemExtendedCosts[7994],
+        [14] = itemExtendedCosts[8046],
+        [15] = itemExtendedCosts[8054],
+        [16] = itemExtendedCosts[8060],
+        [17] = itemExtendedCosts[8066],
+    },
+    ["INVTYPE_WAIST"] = {
+        [12] = itemExtendedCosts[7993],
+        [13] = itemExtendedCosts[7994],
+        [14] = itemExtendedCosts[8046],
+        [15] = itemExtendedCosts[8054],
+        [16] = itemExtendedCosts[8060],
+        [17] = itemExtendedCosts[8066],
+    },
+    ["INVTYPE_FEET"] = {
+        [12] = itemExtendedCosts[7993],
+        [13] = itemExtendedCosts[7994],
+        [14] = itemExtendedCosts[8046],
+        [15] = itemExtendedCosts[8054],
+        [16] = itemExtendedCosts[8060],
+        [17] = itemExtendedCosts[8066],
+    },
+    ["INVTYPE_HAND"] = {
+        [12] = itemExtendedCosts[7993],
+        [13] = itemExtendedCosts[7994],
+        [14] = itemExtendedCosts[8046],
+        [15] = itemExtendedCosts[8054],
+        [16] = itemExtendedCosts[8060],
+        [17] = itemExtendedCosts[8066],
+    },
+    ["INVTYPE_TRINKET"] = {
+        [12] = itemExtendedCosts[7993],
+        [13] = itemExtendedCosts[7994],
+        [14] = itemExtendedCosts[8046],
+        [15] = itemExtendedCosts[8054],
+        [16] = itemExtendedCosts[8060],
+        [17] = itemExtendedCosts[8066],
+    },
+
+    -- InventoryTypeSlotMask 68100
+    ["INVTYPE_NECK"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+    ["INVTYPE_WRIST"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+    ["INVTYPE_FINGER"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+    ["INVTYPE_CLOAK"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+
+    -- InventoryTypeSlotMask 8404992
+    ["INVTYPE_HOLDABLE"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+    ["INVTYPE_SHIELD"] = {
+        [12] = itemExtendedCosts[7992],
+        [13] = itemExtendedCosts[7993],
+        [14] = itemExtendedCosts[8047],
+        [15] = itemExtendedCosts[8055],
+        [16] = itemExtendedCosts[8061],
+        [17] = itemExtendedCosts[8067],
+    },
+
+    -- InventoryTypeSlotMask 8192
+    ["INVTYPE_WEAPON"] = {
+        [12] = itemExtendedCosts[7984],
+        [13] = itemExtendedCosts[7995],
+        [14] = itemExtendedCosts[8049],
+        [15] = itemExtendedCosts[8056],
+        [16] = itemExtendedCosts[8062],
+        [17] = itemExtendedCosts[8068],
+    },
+
+    -- InventoryTypeSlotMask 67272704
+    ["INVTYPE_RANGED"] = {
+        [12] = itemExtendedCosts[7997],
+        [13] = itemExtendedCosts[8003],
+        [14] = itemExtendedCosts[8050],
+        [15] = itemExtendedCosts[8057],
+        [16] = itemExtendedCosts[8063],
+        [17] = itemExtendedCosts[8069],
+    },
+    ["INVTYPE_2HWEAPON"] = {
+        [12] = itemExtendedCosts[7997],
+        [13] = itemExtendedCosts[8003],
+        [14] = itemExtendedCosts[8050],
+        [15] = itemExtendedCosts[8057],
+        [16] = itemExtendedCosts[8063],
+        [17] = itemExtendedCosts[8069],
+    },
+    ["INVTYPE_RANGEDRIGHT"] = {
+        [12] = itemExtendedCosts[7997],
+        [13] = itemExtendedCosts[8003],
+        [14] = itemExtendedCosts[8050],
+        [15] = itemExtendedCosts[8057],
+        [16] = itemExtendedCosts[8063],
+        [17] = itemExtendedCosts[8069],
+    },
+}
+
+-- Override costs for Intellect items
+---@type { [string]: { [number]: flightstoneUpgradeCostData } }
+local itemUpgradeCostOverrides = {
+    -- InventoryTypeSlotMask 131072
+    ["INVTYPE_2HWEAPON"] = {
+        [12] = itemExtendedCosts[7997],
+        [13] = itemExtendedCosts[8003],
+        [14] = itemExtendedCosts[8050],
+        [15] = itemExtendedCosts[8057],
+        [16] = itemExtendedCosts[8063],
+        [17] = itemExtendedCosts[8069],
+    },
+
+    -- InventoryTypeSlotMask 67117056
+    ["INVTYPE_WEAPON"] = {
+        [12] = itemExtendedCosts[7991],
+        [13] = itemExtendedCosts[7998],
+        [14] = itemExtendedCosts[8051],
+        [15] = itemExtendedCosts[8058],
+        [16] = itemExtendedCosts[8064],
+        [17] = itemExtendedCosts[8070],
+    },
+    ["INVTYPE_RANGEDRIGHT"] = {
+        [12] = itemExtendedCosts[7991],
+        [13] = itemExtendedCosts[7998],
+        [14] = itemExtendedCosts[8051],
+        [15] = itemExtendedCosts[8058],
+        [16] = itemExtendedCosts[8064],
+        [17] = itemExtendedCosts[8070],
+    },
+}
+
 ---@type { [number] : flightstoneBonusData }
 local flightstoneBonusIds = {
     -- Explorer 1/8
-    [9294] = { itemLevel = 376, rank = 1, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            40, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            50, -- Helms, Chests, Legs
-            50, -- 1H Agility/Strength Weapon
-            75, -- 1H Intellect Weapon
-            100 -- 2H Weapon
-        }
-    },
+    [9294] = {itemLevel = 376, rank = 1, upgradeLevel = 1, maxUpgradeLevel = 8, upgradeGroup = 12},
 
     -- Explorer 2/8
-    [9295] = { itemLevel = 379, rank = 1, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            40, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            50, -- Helms, Chests, Legs
-            50, -- 1H Agility/Strength Weapon
-            75, -- 1H Intellect Weapon
-            100 -- 2H Weapon
-        }
-    },
+    [9295] = {itemLevel = 379, rank = 1, upgradeLevel = 2, maxUpgradeLevel = 8, upgradeGroup = 12},
 
     -- Explorer 3/8
-    [9296] = { itemLevel = 382, rank = 1, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            40, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            50, -- Helms, Chests, Legs
-            50, -- 1H Agility/Strength Weapon
-            75, -- 1H Intellect Weapon
-            100 -- 2H Weapon
-        }
-    },
+    [9296] = {itemLevel = 382, rank = 1, upgradeLevel = 3, maxUpgradeLevel = 8, upgradeGroup = 12},
 
     -- Explorer 4/8
-    [9297] = { itemLevel = 385, rank = 1, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            25, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            40, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            50, -- Helms, Chests, Legs
-            50, -- 1H Agility/Strength Weapon
-            75, -- 1H Intellect Weapon
-            100 -- 2H Weapon
-        }
-    },
+    [9297] = {itemLevel = 385, rank = 1, upgradeLevel = 4, maxUpgradeLevel = 8, upgradeGroup = 12},
 
     -- Explorer 5/8
-    [9298] = { itemLevel = 389, rank = 1, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9298] = {itemLevel = 389, rank = 1, upgradeLevel = 5, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Explorer 6/8
-    [9299] = { itemLevel = 392, rank = 1, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9299] = {itemLevel = 392, rank = 1, upgradeLevel = 6, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Explorer 7/8
-    [9300] = { itemLevel = 395, rank = 1, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9300] = {itemLevel = 395, rank = 1, upgradeLevel = 7, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Explorer 8/8
-    [9301] = { itemLevel = 398, rank = 1, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    }, 
+    [9301] = {itemLevel = 398, rank = 1, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 13}, 
 
     -- Adventurer 1/8
-    [9302] = { itemLevel = 389, rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9302] = {itemLevel = 389, rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Adventurer 2/8
-    [9303] = { itemLevel = 392, rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9303] = {itemLevel = 392, rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Adventurer 3/8
-    [9304] = { itemLevel = 395, rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9304] = {itemLevel = 395, rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Adventurer 4/8
-    [9305] = { itemLevel = 398, rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            40, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            66, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            75, -- Helms, Chests, Legs
-            80, -- 1H Agility/Strength Weapon
-            120, -- 1H Intellect Weapon
-            160 -- 2H Weapon
-        }
-    },
+    [9305] = {itemLevel = 398, rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Adventurer 5/8
-    [9306] = { itemLevel = 402, rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9306] = {itemLevel = 402, rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Adventurer 6/8
-    [9307] = { itemLevel = 405, rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9307] = {itemLevel = 405, rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Adventurer 7/8
-    [9308] = { itemLevel = 408, rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9308] = {itemLevel = 408, rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Adventurer 8/8
-    [9309] = { itemLevel = 411, rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9309] = {itemLevel = 411, rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Veteran 1/8
-    [9313] = { itemLevel = 402, rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9313] = {itemLevel = 402, rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Veteran 2/8
-    [9314] = { itemLevel = 405, rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9314] = {itemLevel = 405, rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Veteran 3/8
-    [9315] = { itemLevel = 408, rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9315] = {itemLevel = 408, rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Veteran 4/8
-    [9316] = { itemLevel = 411, rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 1, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            66, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            100, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            120, -- Helms, Chests, Legs
-            125, -- 1H Agility/Strength Weapon
-            200, -- 1H Intellect Weapon
-            250 -- 2H Weapon
-        }
-    },
+    [9316] = {itemLevel = 411, rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8, upgradeGroup = 14},
 
     -- Veteran 5/8
-    [9317] = { itemLevel = 415, rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9317] = {itemLevel = 415, rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Veteran 6/8
-    [9318] = { itemLevel = 418, rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9318] = {itemLevel = 418, rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Veteran 7/8
-    [9319] = { itemLevel = 421, rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9319] = {itemLevel = 421, rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Veteran 8/8
-    [9320] = { itemLevel = 424, rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9320] = {itemLevel = 424, rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Champion 1/8
-    [9321] = { itemLevel = 415, rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9321] = {itemLevel = 415, rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Champion 2/8
-    [9322] = { itemLevel = 418, rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9322] = {itemLevel = 418, rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Champion 3/8
-    [9323] = { itemLevel = 421, rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9323] = {itemLevel = 421, rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Champion 4/8
-    [9324] = { itemLevel = 424, rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 1, wyrmCrestCost = 0, aspectCrestCost = 0,
-        flightstoneCosts = {
-            75, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            120, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            145, -- Helms, Chests, Legs
-            150, -- 1H Agility/Strength Weapon
-            225, -- 1H Intellect Weapon
-            300 -- 2H Weapon
-        }
-    },
+    [9324] = {itemLevel = 424, rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8, upgradeGroup = 15},
 
     -- Champion 5/8
-    [9325] = { itemLevel = 428, rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9325] = {itemLevel = 428, rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8, upgradeGroup = 16},
 
     -- Champion 6/8
-    [9327] = { itemLevel = 431, rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9327] = {itemLevel = 431, rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8, upgradeGroup = 16},
 
     -- Champion 7/8
-    [9328] = { itemLevel = 434, rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9328] = {itemLevel = 434, rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8, upgradeGroup = 16},
 
     -- Champion 8/8
-    [9329] = { itemLevel = 437, rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9329] = {itemLevel = 437, rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 16},
 
     -- Hero 1/5
-    [9330] = { itemLevel = 428, rank = 5, upgradeLevel = 1, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9330] = {itemLevel = 428, rank = 5, upgradeLevel = 1, maxUpgradeLevel = 5, upgradeGroup = 16},
 
     -- Hero 2/5
-    [9331] = { itemLevel = 431, rank = 5, upgradeLevel = 2, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9331] = {itemLevel = 431, rank = 5, upgradeLevel = 2, maxUpgradeLevel = 5, upgradeGroup = 16},
 
     -- Hero 3/5
-    [9332] = { itemLevel = 434, rank = 5, upgradeLevel = 3, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9332] = {itemLevel = 434, rank = 5, upgradeLevel = 3, maxUpgradeLevel = 5, upgradeGroup = 16},
 
     -- Hero 4/5
-    [9333] = { itemLevel = 437, rank = 5, upgradeLevel = 4, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 1, aspectCrestCost = 0,
-        flightstoneCosts = {
-            90, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            140, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            170, -- Helms, Chests, Legs
-            175, -- 1H Agility/Strength Weapon
-            275, -- 1H Intellect Weapon
-            350 -- 2H Weapon
-        }
-    },
+    [9333] = {itemLevel = 437, rank = 5, upgradeLevel = 4, maxUpgradeLevel = 5, upgradeGroup = 16},
 
     -- Hero 5/5
-    [9334] = { itemLevel = 441, rank = 5, upgradeLevel = 5, maxUpgradeLevel = 5, whelpCrestCost = 0, drakeCrestCost = 0, wyrmCrestCost = 0, aspectCrestCost = 1,
-        flightstoneCosts = {
-            100, -- Off-Hands, Shields, Rings, Cloaks, Bracers, Necks
-            160, -- Shoulders, Gloves, Trinkets, Boots, Belts
-            190, -- Helms, Chests, Legs
-            200, -- 1H Agility/Strength Weapon
-            300, -- 1H Intellect Weapon
-            400 -- 2H Weapon
-        }
-    }
+    [9334] = {itemLevel = 441, rank = 5, upgradeLevel = 5, maxUpgradeLevel = 5, upgradeGroup = 17}
 }
 
 ---@type { [number] : flightstoneUpgradeData }
@@ -501,7 +408,7 @@ local flightstoneUpgradeData = {
         color = EPIC_PURPLE_COLOR,
         icon = 5062637,
         itemId = 204196,
-        fragment = { 
+        fragment = {
             name = L["Wyrm's Crest Fragments"],
             itemId = 204077,
             icon = 5062642
@@ -515,37 +422,13 @@ local flightstoneUpgradeData = {
         color = LEGENDARY_ORANGE_COLOR,
         icon = 5062582,
         itemId = 204194,
-        fragment = { 
+        fragment = {
             name = L["Aspect's Crest Fragments"],
             itemId = 204078,
             icon = 5062612
         },
         currencyId = nil
     },
-}
-
----@type { [string]: number }
-local itemUpgradeIndexes = {
-    ["INVTYPE_WEAPONOFFHAND"] = 1,
-    ["INVTYPE_SHIELD"] = 1,
-    ["INVTYPE_FINGER"] = 1,
-    ["INVTYPE_CLOAK"] = 1,
-    ["INVTYPE_WRIST"] = 1,
-    ["INVTYPE_NECK"] = 1,
-    ["INVTYPE_HOLDABLE"] = 1,
-    ["INVTYPE_SHOULDER"] = 2,
-    ["INVTYPE_HAND"] = 2,
-    ["INVTYPE_TRINKET"] = 2,
-    ["INVTYPE_FEET"] = 2,
-    ["INVTYPE_WAIST"] = 2,
-    ["INVTYPE_HEAD"] = 3,
-    ["INVTYPE_CHEST"] = 3,
-    ["INVTYPE_ROBE"] = 3,
-    ["INVTYPE_LEGS"] = 3,
-    ["INVTYPE_WEAPONMAINHAND"] = 4,
-    ["INVTYPE_RANGEDRIGHT"] = 5,
-    ["INVTYPE_WEAPON"] = 4,
-    ["INVTYPE_2HWEAPON"] = 6,
 }
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
@@ -600,11 +483,11 @@ end
 
 --- Updates the tooltip when a Flightstone item is the item in question
 ---@param tooltip GameTooltip
----@param itemGroup number
+---@param upgradeCosts { [number]: flightstoneUpgradeCostData }
 ---@param bonusId number
 ---@param bonusInfo flightstoneBonusData
 ---@param itemLink string
-local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLink)
+local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
         return
     end
@@ -641,11 +524,11 @@ local function HandleFlightstones(tooltip, itemGroup, bonusId, bonusInfo, itemLi
             local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
             local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
 
-            local whelpCrests = upgradeInfo.whelpCrestCost * (isCharacterDiscounted and 0 or 1)
-            local drakeCrests = upgradeInfo.drakeCrestCost * (isCharacterDiscounted and 0 or 1)
-            local wyrmCrests = upgradeInfo.wyrmCrestCost * (isCharacterDiscounted and 0 or 1)
-            local aspectCrests = upgradeInfo.aspectCrestCost * (isCharacterDiscounted and 0 or 1)
-            local flightstones = Round(upgradeInfo.flightstoneCosts[itemGroup] * (isAccountDiscounted and 0.5 or 1))
+            local whelpCrests = upgradeCosts[upgradeInfo.upgradeGroup].whelpCrests * (isCharacterDiscounted and 0 or 1)
+            local drakeCrests = upgradeCosts[upgradeInfo.upgradeGroup].drakeCrests * (isCharacterDiscounted and 0 or 1)
+            local wyrmCrests = upgradeCosts[upgradeInfo.upgradeGroup].wyrmCrests * (isCharacterDiscounted and 0 or 1)
+            local aspectCrests = upgradeCosts[upgradeInfo.upgradeGroup].aspectCrests * (isCharacterDiscounted and 0 or 1)
+            local flightstones = Round(upgradeCosts[upgradeInfo.upgradeGroup].flightstones * (isAccountDiscounted and 0.5 or 1))
 
             if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
                 nextUpgrade = upgradeInfo
@@ -732,19 +615,20 @@ end
 local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
     local equipLoc = select(9, GetItemInfo(itemLink))
 
-    local itemGroup = itemUpgradeIndexes[equipLoc]
-    if not itemGroup then
+    local upgradeCosts = itemUpgradeCosts[equipLoc]
+    if not upgradeCosts then
         return false
     end
 
-    if itemGroup == 4 then
+    local upgradeCostOverride = itemUpgradeCostOverrides[equipLoc];
+    if upgradeCostOverride then
         local stats = GetItemStats(itemLink)
         if not stats then
             return false
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
         if hasInt then
-            itemGroup = 5
+            upgradeCosts = upgradeCostOverride
         end
     end
 
@@ -752,7 +636,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         ---@type flightstoneBonusData?
         local bonusInfo = flightstoneBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
-            HandleFlightstones(tooltip, itemGroup, i, bonusInfo, itemLink)
+            HandleFlightstones(tooltip, upgradeCosts, i, bonusInfo, itemLink)
             return true
         end
     end
