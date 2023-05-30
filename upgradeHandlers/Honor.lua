@@ -80,12 +80,12 @@ local itemUpgradeCosts = {
 -- Override costs for Intellect items
 ---@type { [string]: number }
 local itemUpgradeCostOverrides = {
+    -- InventoryTypeSlotMask 131072
+    ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7630],
+    
     -- InventoryTypeSlotMask 67117056
     ["INVTYPE_WEAPON"] = itemExtendedCosts[7629],
     ["INVTYPE_RANGEDRIGHT"] = itemExtendedCosts[7629],
-
-    -- InventoryTypeSlotMask 131072
-    ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7630],
 }
 
 -- Override costs for non-Gladiator trinkets
