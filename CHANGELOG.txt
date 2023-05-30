@@ -1,5 +1,6 @@
 1.5.0
     - Honor upgrade support
+    - Conquest upgrade support
     - Further refactoring to be more future proof
 1.4.0
     - Add owned crests / flightstones to main tooltip area
