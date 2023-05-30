@@ -82,7 +82,7 @@ local itemUpgradeCosts = {
 local itemUpgradeCostOverrides = {
     -- InventoryTypeSlotMask 67117056
     ["INVTYPE_WEAPON"] = itemExtendedCosts[7629],
-    ["INVTYPE_RANGED"] = itemExtendedCosts[7629],
+    ["INVTYPE_RANGEDRIGHT"] = itemExtendedCosts[7629],
 
     -- InventoryTypeSlotMask 131072
     ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7630],
