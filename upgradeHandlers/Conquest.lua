@@ -7,145 +7,100 @@ local L = private.L
 private.currencyIds.Honor = 1792
 private.currencyIndexes[private.currencyIds.Honor] = true
 
+--[[
+    ItemBonusListGroupEntry.ItemBonusListID
+    ItemBonusListGroup.ItemLogicalCostGroupID
+    ItemLogicalCost.ItemExtendedCostID
+    ItemExtendedCost.CurrencyID_0 / ItemExtendedCost.CurrencyCount_0
+
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9426&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9427&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9428&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9429&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9430&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9431&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9431&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9433&page=1
+    https://wago.tools/db2/ItemBonusListGroupEntry?filter[ItemBonusListID]=9434&page=1
+    https://wago.tools/db2/ItemLogicalCost?filter[ItemLogicalCostGroupID]=exact%3A3&page=1&sort[ItemExtendedCostID]=asc
+]]
+
 ---@type { [number] : honorBonusData }
 local conquestBonusIds = {
-    -- 1/9
-    [9426] = { itemLevel = 408, upgradeLevel = 1, maxUpgradeLevel = 9,
-        honorCosts = {
-            875, -- 1h Melee Weapon, Helms, Chests, Legs
-            525, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            700, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            1350, -- 1H Caster Weapon
-            450, -- Offhand (caster)
-            1800 -- 2H Weapon
-        }
-    },
+    [9426] = { itemLevel = 408, upgradeLevel = 1, maxUpgradeLevel = 9},
+    [9427] = { itemLevel = 411, upgradeLevel = 2, maxUpgradeLevel = 9},
+    [9428] = { itemLevel = 415, upgradeLevel = 3, maxUpgradeLevel = 9},
+    [9429] = { itemLevel = 418, upgradeLevel = 4, maxUpgradeLevel = 9},
+    [9430] = { itemLevel = 421, upgradeLevel = 5, maxUpgradeLevel = 9},
+    [9431] = { itemLevel = 424, upgradeLevel = 6, maxUpgradeLevel = 9},
+    [9432] = { itemLevel = 428, upgradeLevel = 7, maxUpgradeLevel = 9},
+    [9433] = { itemLevel = 431, upgradeLevel = 8, maxUpgradeLevel = 9},
+    [9434] = { itemLevel = 434, upgradeLevel = 9, maxUpgradeLevel = 9},
+}
 
-    -- 2/9
-    [9427] = { itemLevel = 411, upgradeLevel = 2, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 3/9
-    [9428] = { itemLevel = 415, upgradeLevel = 3, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 4/9
-    [9429] = { itemLevel = 418, upgradeLevel = 4, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 5/9
-    [9430] = { itemLevel = 421, upgradeLevel = 5, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 6/9
-    [9431] = { itemLevel = 424, upgradeLevel = 6, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 7/9
-    [9432] = { itemLevel = 428, upgradeLevel = 7, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 8/9
-    [9433] = { itemLevel = 431, upgradeLevel = 8, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
-
-    -- 9/9
-    [9434] = { itemLevel = 434, upgradeLevel = 9, maxUpgradeLevel = 9,
-        honorCosts = {
-            1175, -- 1h Melee Weapon, Helms, Chests, Legs
-            700, -- Trinket #1, Rings, Cloaks, Bracers, Necks
-            950, -- Shoulders, Gloves, Trinket #2, Boots, Belts
-            0, -- 1H Caster Weapon
-            600, -- Offhand (caster)
-            0 -- 2H Weapon
-        }
-    },
+---@type { [number]: number }
+local itemExtendedCosts = {
+    [7690] = 1175,
+    [7691] = 950,
+    [7692] = 700,
+    [7693] = 600,
+    [7694] = 1175,
+    [7695] = 2375,
+    [7696] = 1775,
+    [7697] = 2375,
 }
 
 ---@type { [string]: number }
-local itemUpgradeIndexes = {
-    ["INVTYPE_WEAPONOFFHAND"] = 5,
-    ["INVTYPE_SHIELD"] = 5,
-    ["INVTYPE_FINGER"] = 2,
-    ["INVTYPE_CLOAK"] = 2,
-    ["INVTYPE_WRIST"] = 2,
-    ["INVTYPE_NECK"] = 2,
-    ["INVTYPE_HOLDABLE"] = 2,
-    ["INVTYPE_SHOULDER"] = 3,
-    ["INVTYPE_HAND"] = 3,
-    ["INVTYPE_TRINKET"] = 3,
-    ["INVTYPE_FEET"] = 3,
-    ["INVTYPE_WAIST"] = 3,
-    ["INVTYPE_HEAD"] = 1,
-    ["INVTYPE_CHEST"] = 1,
-    ["INVTYPE_ROBE"] = 1,
-    ["INVTYPE_LEGS"] = 1,
-    ["INVTYPE_WEAPONMAINHAND"] = 1,
-    ["INVTYPE_RANGEDRIGHT"] = 5,
-    ["INVTYPE_WEAPON"] = 1,
-    ["INVTYPE_2HWEAPON"] = 6,
+local itemUpgradeCosts = {
+
+    -- InventoryTypeSlotMask 1048738
+    ["INVTYPE_HEAD"] = itemExtendedCosts[7690],
+    ["INVTYPE_CHEST"] = itemExtendedCosts[7690],
+    ["INVTYPE_LEGS"] = itemExtendedCosts[7690],
+    ["INVTYPE_ROBE"] = itemExtendedCosts[7690],
+
+    -- InventoryTypeSlotMask 5448
+    ["INVTYPE_SHOULDER"] = itemExtendedCosts[7691],
+    ["INVTYPE_WAIST"] = itemExtendedCosts[7691],
+    ["INVTYPE_FEET"] = itemExtendedCosts[7691],
+    ["INVTYPE_HAND"] = itemExtendedCosts[7691],
+    ["INVTYPE_TRINKET"] = itemExtendedCosts[7691],
+
+    -- InventoryTypeSlotMask 72196
+    ["INVTYPE_NECK"] = itemExtendedCosts[7692],
+    ["INVTYPE_WRIST"] = itemExtendedCosts[7692],
+    ["INVTYPE_FINGER"] = itemExtendedCosts[7692],
+    ["INVTYPE_CLOAK"] = itemExtendedCosts[7692],
+
+    -- InventoryTypeSlotMask 8404992
+    ["INVTYPE_HOLDABLE"] = itemExtendedCosts[7693],
+    ["INVTYPE_SHIELD"] = itemExtendedCosts[7693],
+
+    -- InventoryTypeSlotMask 8192
+    ["INVTYPE_WEAPON"] = itemExtendedCosts[7694],
+
+    -- InventoryTypeSlotMask 67272704
+    ["INVTYPE_RANGED"] = itemExtendedCosts[7695],
+    ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7695],
+    ["INVTYPE_RANGEDRIGHT"] = itemExtendedCosts[7695],
 }
 
----@type { [number]: boolean } }
-local trinketOverrides = {
-    [205711] = true,
-    [205712] = true,
+-- Override costs for Intellect items
+---@type { [string]: number }
+local itemUpgradeCostOverrides = {
+    -- InventoryTypeSlotMask 67117056
+    ["INVTYPE_WEAPON"] = itemExtendedCosts[7696],
+    ["INVTYPE_RANGED"] = itemExtendedCosts[7696],
+
+    -- InventoryTypeSlotMask 131072
+    ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7697],
+}
+
+-- Override costs for non-Gladiator trinkets
+---@type { [number]: number } }
+local trinketUpgradeCostOverrides = {
+    [205711] = itemExtendedCosts[7692],
+    [205712] = itemExtendedCosts[7692],
 }
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
@@ -178,10 +133,10 @@ end
 
 --- Updates the tooltip when parsing a Conquest item
 ---@param tooltip GameTooltip
----@param itemGroup number
+---@param upgradeCost number
 ---@param bonusId number
 ---@param bonusInfo honorBonusData
-local function HandleConquest(tooltip, itemGroup, bonusId, bonusInfo)
+local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
     if not bonusId or not bonusInfo then
         return
     end
@@ -203,14 +158,12 @@ local function HandleConquest(tooltip, itemGroup, bonusId, bonusInfo)
 
     for _, upgradeInfo in pairs(conquestBonusIds) do
         if upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
-            local honor = Round(upgradeInfo.honorCosts[itemGroup])
-
             if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
                 nextUpgrade = upgradeInfo
 
-                nextUpgradeCost = honor
+                nextUpgradeCost = upgradeCost
             end
-            totalUpgradeCost = totalUpgradeCost + honor
+            totalUpgradeCost = totalUpgradeCost + upgradeCost
 
             if not maxUpgrade or maxUpgrade.upgradeLevel < upgradeInfo.upgradeLevel then
                 maxUpgrade = upgradeInfo
@@ -262,23 +215,25 @@ end
 local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
     local equipLoc = select(9, GetItemInfo(itemLink))
 
-    local itemGroup = itemUpgradeIndexes[equipLoc]
-    if not itemGroup then
+    local upgradeCost = itemUpgradeCosts[equipLoc]
+    if not upgradeCost then
         return false
     end
 
-    if itemGroup == 1 then
+    local upgradeCostOverride = itemUpgradeCostOverrides[equipLoc];
+    if upgradeCostOverride then
         local stats = GetItemStats(itemLink)
         if not stats then
             return false
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
         if hasInt then
-            itemGroup = 4
+            upgradeCost = upgradeCostOverride
         end
-    elseif itemGroup == 3 and equipLoc == "INVTYPE_TRINKET" then
-        if trinketOverrides[itemId] then
-            itemGroup = 2
+    elseif equipLoc == "INVTYPE_TRINKET" then
+        local trinketUpgradeCostOverride = trinketUpgradeCostOverrides[itemId];
+        if trinketUpgradeCostOverride ~= nil then
+            upgradeCost = trinketUpgradeCostOverride
         end
     end
 
@@ -286,7 +241,7 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
         ---@type honorBonusData?
         local bonusInfo = conquestBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
-            HandleConquest(tooltip, itemGroup, i, bonusInfo)
+            HandleConquest(tooltip, upgradeCost, i, bonusInfo)
             return true
         end
     end
