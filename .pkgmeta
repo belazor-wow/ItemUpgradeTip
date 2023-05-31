@@ -1,5 +1,6 @@
 package-as: ItemUpgradeTip
 enable-nolib-creation: no
+wowi-archive-previous: no
 
 externals:
   libs/AceLocale-3.0:
@@ -9,7 +10,6 @@ externals:
     url: https://repos.wowace.com/wow/libstub/trunk
     tag: latest
 
-manual-changelog: CHANGELOG.txt
 license-output: LICENSE.txt
 ignore:
   - README.md
