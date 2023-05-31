@@ -15,6 +15,7 @@ local itemExtendedCosts = {
     [7991] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
     [7992] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 25},
     [7993] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 40},
+    [7994] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 65},
     [7997] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 100},
     [7998] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
     [8003] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 160},
@@ -272,7 +273,7 @@ local flightstoneBonusIds = {
     [9300] = {itemLevel = 395, rank = 1, upgradeLevel = 7, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Explorer 8/8
-    [9301] = {itemLevel = 398, rank = 1, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 13}, 
+    [9301] = {itemLevel = 398, rank = 1, upgradeLevel = 8, maxUpgradeLevel = 8, upgradeGroup = 13},
 
     -- Adventurer 1/8
     [9302] = {itemLevel = 389, rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8, upgradeGroup = 13},
@@ -622,6 +623,8 @@ end
 local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
     local equipLoc = select(9, GetItemInfo(itemLink))
 
+    private.Debug(itemLink, "has equipLoc", equipLoc);
+
     local upgradeCosts = itemUpgradeCosts[equipLoc]
     if not upgradeCosts then
         private.Debug(equipLoc, "was not found in the Flightstones upgrade cost table");
@@ -637,6 +640,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
         if hasInt then
+            private.Debug("Upgrade cost for has been overridden because the item has Intellect on it.");
             upgradeCosts = upgradeCostOverride
         end
     end
