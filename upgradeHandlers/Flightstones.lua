@@ -478,6 +478,10 @@ local function ParseUpgradeCost(upgradeCost)
         end
     end
 
+    if #lines == 0 then
+        private.Debug("Parsing Flightstones upgrade cost returned no tooltip lines");
+    end
+
     return lines;
 end
 
@@ -489,6 +493,7 @@ end
 ---@param itemLink string
 local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
+        private.Debug(bonusId, "or Flightstones bonus info table was not found");
         return
     end
 
@@ -600,6 +605,8 @@ local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, ite
                 end
             end
         end
+    else
+        private.Debug("No next Flightstones upgrade cost could be found for", itemLink);
     end
 end
 
@@ -617,6 +624,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
 
     local upgradeCosts = itemUpgradeCosts[equipLoc]
     if not upgradeCosts then
+        private.Debug(equipLoc, "was not found in the Flightstones upgrade cost table");
         return false
     end
 
@@ -624,6 +632,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
     if upgradeCostOverride then
         local stats = GetItemStats(itemLink)
         if not stats then
+            private.Debug("Could not extract Flightstones item stats from", itemLink);
             return false
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
@@ -636,11 +645,13 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         ---@type flightstoneBonusData?
         local bonusInfo = flightstoneBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
+            private.Debug(bonusIds[i], "matched a Flighstones bonus ID");
             HandleFlightstones(tooltip, upgradeCosts, i, bonusInfo, itemLink)
             return true
         end
     end
 
+    private.Debug(itemId, "did not match a Flightstones bonus ID");
     return false
 end
 

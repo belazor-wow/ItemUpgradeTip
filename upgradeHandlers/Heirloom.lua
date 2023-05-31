@@ -15,6 +15,7 @@ local L = private.L
 ---@return boolean
 local function HandleHeirloom(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
     if not C_Heirloom.GetHeirloomInfo(itemId) then
+        private.Debug(itemId, "was not an Heirloom item");
         return false
     end
 
@@ -30,6 +31,7 @@ local function HandleHeirloom(tooltip, itemId, itemLink, currentUpgrade, maxUpgr
         tooltip:AddLine("|cffffffee" .. L["Upgrade level: %d / %d"]:format(currentUpgrade, maxUpgrade) .. "|r")
     end
 
+    private.Debug(itemId, "did not match a Heirloom bonus ID");
     return true
 end
 

@@ -103,6 +103,7 @@ local function ParseUpgradeCost(upgradeCost)
     ---@type CurrencyInfo
     local currencyInfo = private.currencyInfo[private.currencyIds.Honor];
     if currencyInfo == nil then
+        private.Debug(private.currencyIds.Honor, "was not found in currency info table when parsing Honor upgrade costs");
         return lines
     end
 
@@ -130,6 +131,7 @@ end
 ---@param bonusInfo honorBonusData
 local function HandleHonor(tooltip, upgradeCost, bonusId, bonusInfo)
     if not bonusId or not bonusInfo then
+        private.Debug(bonusId, "or Honor bonus info table was not found");
         return
     end
 
@@ -192,6 +194,8 @@ local function HandleHonor(tooltip, upgradeCost, bonusId, bonusInfo)
                 end
             end
         end
+    else
+        private.Debug("No next Honor upgrade cost could be found for provided item");
     end
 end
 
@@ -209,6 +213,7 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
 
     local upgradeCost = itemUpgradeCosts[equipLoc]
     if not upgradeCost then
+        private.Debug(equipLoc, "was not found in the Honor upgrade cost table");
         return false
     end
 
@@ -216,6 +221,7 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
     if upgradeCostOverride then
         local stats = GetItemStats(itemLink)
         if not stats then
+            private.Debug("Could not extract Honor item stats from", itemLink);
             return false
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
@@ -233,11 +239,13 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
         ---@type honorBonusData?
         local bonusInfo = honorBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
+            private.Debug(bonusIds[i], "matched an Honor bonus ID");
             HandleHonor(tooltip, upgradeCost, i, bonusInfo)
             return true
         end
     end
 
+    private.Debug(itemId, "did not match an Honor bonus ID");
     return false
 end
 

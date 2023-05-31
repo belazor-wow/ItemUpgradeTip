@@ -111,6 +111,7 @@ local function ParseUpgradeCost(upgradeCost)
     ---@type CurrencyInfo
     local currencyInfo = private.currencyInfo[private.currencyIds.Honor];
     if currencyInfo == nil then
+        private.Debug(private.currencyIds.Honor, "was not found in currency info table when parsing Conquest upgrade costs");
         return lines
     end
 
@@ -138,6 +139,7 @@ end
 ---@param bonusInfo honorBonusData
 local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
     if not bonusId or not bonusInfo then
+        private.Debug(bonusId, "or Conquest bonus info table was not found");
         return
     end
 
@@ -200,6 +202,8 @@ local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
                 end
             end
         end
+    else
+        private.Debug("No next Conquest upgrade cost could be found for provided item");
     end
 end
 
@@ -217,6 +221,7 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
 
     local upgradeCost = itemUpgradeCosts[equipLoc]
     if not upgradeCost then
+        private.Debug(equipLoc, "was not found in the Conquest upgrade cost table");
         return false
     end
 
@@ -224,6 +229,7 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
     if upgradeCostOverride then
         local stats = GetItemStats(itemLink)
         if not stats then
+            private.Debug("Could not extract Conquest item stats from", itemLink);
             return false
         end
         local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
@@ -241,11 +247,13 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
         ---@type honorBonusData?
         local bonusInfo = conquestBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
+            private.Debug(bonusIds[i], "matched a Conquest bonus ID");
             HandleConquest(tooltip, upgradeCost, i, bonusInfo)
             return true
         end
     end
 
+    private.Debug(itemId, "did not match a Conquest bonus ID");
     return false
 end
 

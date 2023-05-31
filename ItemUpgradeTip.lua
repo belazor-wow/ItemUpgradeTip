@@ -17,6 +17,7 @@ function private.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
     local upgradesRemaining = maxUpgrade - currentUpgrade
     local currencyInfo = private.currencyInfo[bonusInfo.currencyId]
     if not currencyInfo then
+        private.Debug(bonusInfo.currencyId, "was not found in the currency info cache");
         return
     end
 
@@ -71,17 +72,20 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
 
             if currentUpgrade and maxUpgrade then
                 if currentUpgrade == maxUpgrade then
+                    private.Debug(currentUpgrade, "was equal to", maxUpgrade)
                     return
                 end
 
                 local _, itemLink = tooltip:GetItem()
                 if not itemLink then
+                    private.Debug("Tooltip does not have a valid item link")
                     return
                 end
 
                 ---@type string?
                 local itemString = string.match(itemLink, "item:([%-?%d:]+)")
                 if not itemString then
+                    private.Debug(itemLink, "does not appear to be a valid item string (did not match \"item:([%-?%d:]+)\")");
                     return
                 end
 
@@ -102,12 +106,14 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
                 ---@type number?
                 local itemId = tonumber(itemSplit[1])
                 if not itemId then
+                    private.Debug(itemString, "does not appear to contain a valid item ID (found", itemId, ")");
                     return
                 end
 
                 ---@type number?
                 local numBonusIds = tonumber(itemSplit[13])
                 if not numBonusIds then
+                    private.Debug(itemString, "does not appear to contain the number of bonuses (found", numBonusIds, ")");
                     return
                 end
 

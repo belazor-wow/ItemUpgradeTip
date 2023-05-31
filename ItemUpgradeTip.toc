@@ -1,6 +1,7 @@
 ## Interface: 100100
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
+## OptionalDeps: _DebugLog
 ## Author: Belazor
 ## Version: @project-version@
 ## X-Curse-Project-ID: 709548
@@ -23,6 +24,7 @@ locales\zhCN.lua
 locales\zhTW.lua
 
 Init.lua
+Debug.lua
 
 upgradeHandlers\Heirloom.lua
 upgradeHandlers\Flightstones.lua

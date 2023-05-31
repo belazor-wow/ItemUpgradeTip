@@ -34,11 +34,13 @@ local function CheckAnimaBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
         local bonusInfo = animaBonusIds[bonusIds[i]]
 
         if bonusInfo ~= nil then
+            private.Debug(bonusIds[i], "matched an Anima bonus ID");
             private.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
             return true
         end
     end
 
+    private.Debug(itemId, "did not match an Anima bonus ID");
     return false
 end
 
