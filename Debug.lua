@@ -2,6 +2,7 @@ local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
 -- the DebugLog addon
+---@diagnostic disable-next-line: undefined-global
 local D = DLAPI
 
 --- An empty function

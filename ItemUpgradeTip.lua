@@ -62,15 +62,23 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
             ---@type TooltipDataLine
             local tooltipLine = tooltipData.lines[i]
 
+            private.Debug(tooltipLine.leftText)
+
+            local debugPattern = ITEM_UPGRADE_LEVEL
+
             local currentUpgrade, ---@type number?
                 maxUpgrade ---@type number?
             = tooltipLine.leftText:match(ITEM_UPGRADE_LEVEL)
 
             if not currentUpgrade or not maxUpgrade then
                 _, currentUpgrade, maxUpgrade = tooltipLine.leftText:match(ITEM_UPGRADE_TRACK)
+
+                debugPattern = ITEM_UPGRADE_TRACK
             end
 
             if currentUpgrade and maxUpgrade then
+                private.Debug(debugPattern, "-", currentUpgrade, "/", maxUpgrade)
+
                 if currentUpgrade == maxUpgrade then
                     private.Debug(currentUpgrade, "was equal to", maxUpgrade)
                     return
