@@ -5,6 +5,7 @@
 ## Author: Belazor
 ## Version: @project-version@
 ## X-Curse-Project-ID: 709548
+## X-WoWI-ID: 26580
 ## X-Wago-ID: WYK938NL
 ## X-Source-URL: https://github.com/filliph/ItemUpgradeTip
 ## X-Issues-URL: https://github.com/filliph/ItemUpgradeTip/issues
