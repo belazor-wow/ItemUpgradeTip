@@ -6,7 +6,7 @@ local private = select(2, ...) ---@class PrivateNamespace
 local L = private.L
 
 local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
-local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(%%a+)") -- "Upgrade Level: %s %d/%d"
+local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
 
 --- Generic currency handler based on bonusInfo table
 ---@param tooltip GameTooltip
