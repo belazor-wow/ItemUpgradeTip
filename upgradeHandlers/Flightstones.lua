@@ -16,6 +16,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Flightstones = fa
 private.Preferences.DisabledIntegrations.Flightstones = {
     type = "toggle",
     name = L["Flightstone / Crest Upgrades"],
+    order = 10,
     width = "double",
 }
 

@@ -16,6 +16,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Conquest = false;
 private.Preferences.DisabledIntegrations.Conquest = {
     type = "toggle",
     name = L["Conquest Upgrades"],
+    order = 40,
     width = "double",
 }
 
