@@ -39,3 +39,5 @@ L["Honor Upgrades"] = true
 L["Conquest Upgrades"] = true
 L["Disabled Integrations"] = true
 L["If you wish to disable certain tooltip integrations, you can do so via the options below."] = true
+L["Compact tooltips"] = true
+L["If enabled, compatible tooltip integrations will use a more compact format rather than showing the full upgrade info."] = true
