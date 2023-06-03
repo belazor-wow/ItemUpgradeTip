@@ -184,7 +184,6 @@ local function HandleHonor(tooltip, upgradeCost, bonusId, bonusInfo)
 
         if #nextLevelLines > 0 or #totalLines > 0 then
             tooltip:AddLine("\n")
-            tooltip:AddLine("\n")
             tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["%s Upgrades"]:format(currencyInfo.name)))
 
             if nextLevelLines then

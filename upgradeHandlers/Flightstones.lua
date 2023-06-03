@@ -598,10 +598,6 @@ local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, ite
         local totalLines = ParseUpgradeCost(totalUpgradeCosts)
 
         if #nextLevelLines > 0 or #totalLines > 0 then
-            if not private.DB.profile.CompactTooltips then
-                -- Add one extra space for non-compact tooltips
-                tooltip:AddLine("\n")
-            end
             tooltip:AddLine("\n")
             tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["Flightstone / Crest Upgrades"]))
 
