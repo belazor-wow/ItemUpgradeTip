@@ -1,11 +1,23 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
 
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Add currency information
 private.currencyIds.Honor = 1792
 private.currencyIndexes[private.currencyIds.Honor] = true
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Honor = false;
+private.Preferences.DisabledIntegrations.Honor = {
+    type = "toggle",
+    name = L["Honor Upgrades"],
+    width = "double",
+}
 
 --[[
     ItemBonusListGroupEntry.ItemBonusListID
@@ -209,6 +221,12 @@ end
 ---@param bonusIds table<number, number>
 ---@return boolean
 local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Honor then
+        private.Debug("Honor integration is disabled");
+
+        return false
+    end
+
     local equipLoc = select(9, GetItemInfo(itemLink))
 
     local upgradeCost = itemUpgradeCosts[equipLoc]

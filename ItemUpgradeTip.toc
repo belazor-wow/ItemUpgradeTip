@@ -2,6 +2,7 @@
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
 ## OptionalDeps: _DebugLog
+## SavedVariables: ItemUpgradeTipDB
 ## Author: Belazor
 ## Version: @project-version@
 ## X-Curse-Project-ID: 709548
@@ -33,4 +34,5 @@ upgradeHandlers\Anima.lua
 upgradeHandlers\Honor.lua
 upgradeHandlers\Conquest.lua
 
+Tooltip.lua
 ItemUpgradeTip.lua

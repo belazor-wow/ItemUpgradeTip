@@ -1,9 +1,8 @@
+-- ----------------------------------------------------------------------------
+-- AddOn Namespace
+-- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-
----@class private.Libs
----@field AceLocale AceLocale-3.0
-private.Libs = {}
 
 ---@class private.currencyInfo : { [number]: CurrencyInfo }
 private.currencyInfo = {}
@@ -17,18 +16,87 @@ private.currencyIndexes = {}
 ---@class private.upgradeHandlers : { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
 private.upgradeHandlers = {}
 
-do
-    ---@paramsig name, libname[, silent]
-    ---@param name string
-    ---@param libname string
-    ---@param silent? boolean If true, the locale is optional, silently return nil if it's not found (defaults to false, optional)
-    local function AddLib(name, libname, silent)
-        if not name then return end
-        private.Libs[name] = _G.LibStub(libname, silent)
-    end
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
-    AddLib("AceLocale", "AceLocale-3.0", true)
-end
+-- ----------------------------------------------------------------------------
+-- Preferences
+-- ----------------------------------------------------------------------------
+local metaVersion = GetAddOnMetadata(AddOnFolderName, "Version")
+local isDevelopmentVersion = metaVersion == "@project-version@"
 
----@class private.L : Localizations
-private.L = private.Libs.AceLocale:GetLocale(AddOnFolderName)
+local buildVersion = isDevelopmentVersion and "Development Version" or metaVersion
+
+---@type table
+local Options
+
+---@class Preferences
+---@field OptionsFrame Frame
+local Preferences = {
+    DisabledIntegrations = {
+        help = {
+            type = "description",
+            name = L["If you wish to disable certain tooltip integrations, you can do so via the options below."],
+            order = 1,
+        }
+    },
+    DefaultValues = {
+        profile = {
+            CompactTooltips = false,
+
+            DisabledIntegrations = {},
+        },
+    },
+    GetOptions = function()
+        if not Options then
+            local DB = private.DB.profile
+
+            local count = 1;
+            local function increment() count = count + 1; return count end;
+
+            Options = {
+                type = "group",
+                name = ("%s - %s"):format(AddOnFolderName, buildVersion),
+                childGroups = "tab",
+                args = {
+                    general = {
+                        order = increment(),
+                        type = "group",
+                        name = L["General"],
+                        args = {
+                            DisabledIntegrations = {
+                                order = increment(),
+                                type = "group",
+                                inline = true,
+                                name = L["Disabled Integrations"],
+                                get = function(info)
+                                    return DB.DisabledIntegrations[info[#info]]
+                                end,
+                                set = function(info, value)
+                                    DB.DisabledIntegrations[info[#info]] = value;
+                                end,
+                                args = private.Preferences.DisabledIntegrations,
+                            },
+                        }
+                    }
+                },
+            }
+
+            -- Get the option table for profiles
+	        Options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(private.DB)
+        end
+
+        return Options
+    end,
+    ---@param self Preferences
+    InitializeDatabase = function(self)
+        return LibStub("AceDB-3.0"):New(AddOnFolderName .. "DB", self.DefaultValues, true)
+    end,
+    ---@param self Preferences
+    SetupOptions = function(self)
+        LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable(AddOnFolderName, self.GetOptions)
+        self.OptionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(AddOnFolderName)
+    end,
+}
+
+private.Preferences = Preferences

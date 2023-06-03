@@ -1,12 +1,23 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
+
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 -- Add currency information
 private.currencyIds.Flightstones = 2245
 private.currencyIndexes[private.currencyIds.Flightstones] = true
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Flightstones = false;
+private.Preferences.DisabledIntegrations.Flightstones = {
+    type = "toggle",
+    name = L["Flightstone / Crest Upgrades"],
+    width = "double",
+}
 
 ---@type { [number]: flightstoneUpgradeCostData }
 local itemExtendedCosts = {
@@ -622,6 +633,12 @@ end
 ---@param bonusIds table<number, number>
 ---@return boolean
 local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Flightstones then
+        private.Debug("Flightstones integration is disabled");
+
+        return false
+    end
+
     local equipLoc = select(9, GetItemInfo(itemLink))
 
     private.Debug(itemLink, "has equipLoc", equipLoc);

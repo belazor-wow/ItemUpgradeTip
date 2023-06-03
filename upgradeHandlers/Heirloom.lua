@@ -1,8 +1,19 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
+
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Heirloom = false;
+private.Preferences.DisabledIntegrations.Heirloom = {
+    type = "toggle",
+    name = L["Heirloom Upgrades"],
+    width = "double",
+}
 
 --- Updates the tooltip when a Heirloom is the item in question
 ---@diagnostic disable: unused-local
@@ -14,6 +25,12 @@ local L = private.L
 ---@param bonusIds table<number, number>
 ---@return boolean
 local function HandleHeirloom(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Heirloom then
+        private.Debug("Heirloom integration is disabled");
+
+        return false
+    end
+
     if not C_Heirloom.GetHeirloomInfo(itemId) then
         private.Debug(itemId, "was not an Heirloom item");
         return false

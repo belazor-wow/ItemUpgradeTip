@@ -1,11 +1,23 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
 
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Add currency information
 private.currencyIds.Honor = 1792
 private.currencyIndexes[private.currencyIds.Honor] = true
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Conquest = false;
+private.Preferences.DisabledIntegrations.Conquest = {
+    type = "toggle",
+    name = L["Conquest Upgrades"],
+    width = "double",
+}
 
 --[[
     ItemBonusListGroupEntry.ItemBonusListID
@@ -217,6 +229,12 @@ end
 ---@param bonusIds table<number, number>
 ---@return boolean
 local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Conquest then
+        private.Debug("Conquest integration is disabled");
+
+        return false
+    end
+
     local equipLoc = select(9, GetItemInfo(itemLink))
 
     local upgradeCost = itemUpgradeCosts[equipLoc]
