@@ -4,7 +4,8 @@
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
-local L = private.L
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
 local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
