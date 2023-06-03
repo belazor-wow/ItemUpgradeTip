@@ -602,7 +602,7 @@ local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, ite
         end
 
         if not private.DB.profile.CompactTooltips then
-           -- Fragment data collection: use the 'totalLines' because that have all needed crest in it
+           -- Fragment data collection: use the 'totalLines' because that have all needed crests in it
             local emptyLineAdded = false
             for _, data in ipairs(totalLines) do
                 if data.fragmentData and data.fragmentData.name then
