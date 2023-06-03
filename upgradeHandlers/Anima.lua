@@ -1,8 +1,20 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
+
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Heirloom = false;
+private.Preferences.DisabledIntegrations.Heirloom = {
+    type = "toggle",
+    name = L["Anima Upgrades"],
+    order = 20,
+    width = "double",
+}
 
 private.currencyIds.Anima = 1813
 private.currencyIndexes[private.currencyIds.Anima] = true

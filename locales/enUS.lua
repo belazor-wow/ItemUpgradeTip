@@ -35,6 +35,7 @@ L["Wyrm's Crest Fragments"] = true
 L["Aspect's Crest Fragments"] = true
 L["Flightstones"] = true
 L["General"] = true
+L["Anima Upgrades"] = true
 L["Honor Upgrades"] = true
 L["Conquest Upgrades"] = true
 L["Disabled Integrations"] = true
