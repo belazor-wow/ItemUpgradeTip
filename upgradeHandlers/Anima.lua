@@ -1,8 +1,20 @@
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
+
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Add preferences
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Anima = false;
+private.Preferences.DisabledIntegrations.Anima = {
+    type = "toggle",
+    name = L["Anima Upgrades"],
+    order = 20,
+    width = "double",
+}
 
 private.currencyIds.Anima = 1813
 private.currencyIndexes[private.currencyIds.Anima] = true
@@ -29,6 +41,12 @@ local animaBonusIds = {
 ---@param bonusIds table<number, number>
 ---@return boolean
 local function CheckAnimaBonusIds(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Anima then
+        private.Debug("Anima integration is disabled");
+
+        return false
+    end
+
     for i = 1, #bonusIds do
         ---@type bonusData?
         local bonusInfo = animaBonusIds[bonusIds[i]]

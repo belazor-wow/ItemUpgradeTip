@@ -16,6 +16,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Conquest = false;
 private.Preferences.DisabledIntegrations.Conquest = {
     type = "toggle",
     name = L["Conquest Upgrades"],
+    order = 40,
     width = "double",
 }
 
@@ -134,12 +135,19 @@ local function ParseUpgradeCost(upgradeCost)
     local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
     local heldColor = (currencyInfo.maxQuantity and currencyInfo.quantity == currencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
 
-    local costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
+    if not private.DB.profile.CompactTooltips then
+        local costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
 
-    table.insert(lines, {
-        left = icon .. " " .. EPIC_PURPLE_COLOR:WrapTextInColorCode(currencyInfo.name),
-        right = costLine,
-    })
+        table.insert(lines, {
+            left = icon .. " " .. EPIC_PURPLE_COLOR:WrapTextInColorCode(currencyInfo.name),
+            right = costLine,
+        })
+    else
+        table.insert(lines, {
+            left = "",
+            right = icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)),
+        })
+    end
 
     return lines;
 end
@@ -191,26 +199,43 @@ local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
 
         if #nextLevelLines > 0 or #totalLines > 0 then
             tooltip:AddLine("\n")
-            tooltip:AddLine("\n")
             tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["%s Upgrades"]:format(currencyInfo.name)))
 
             if nextLevelLines then
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
-                for _, newLine in pairs(nextLevelLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    for _, newLine in pairs(nextLevelLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Next Upgrade (%d):"]:format(nextUpgrade.itemLevel)),
+                        nextLevelLines[1].right
+                    )
                 end
             end
 
             if totalLines and maxUpgrade then
-                if nextLevelLines then
-                    tooltip:AddLine("\n")
-                end
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    if nextLevelLines then
+                        tooltip:AddLine("\n")
+                    end
 
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
-                for _, newLine in pairs(totalLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    for _, newLine in pairs(totalLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Max Upgrade (%d):"]:format(maxUpgrade.itemLevel)),
+                        totalLines[1].right
+                    )
                 end
             end
         end

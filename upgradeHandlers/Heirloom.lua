@@ -12,6 +12,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Heirloom = false;
 private.Preferences.DisabledIntegrations.Heirloom = {
     type = "toggle",
     name = L["Heirloom Upgrades"],
+    order = 5,
     width = "double",
 }
 
@@ -43,7 +44,9 @@ local function HandleHeirloom(tooltip, itemId, itemLink, currentUpgrade, maxUpgr
 
     local upgradesRemaining = maxUpgrade - currentUpgrade
     if upgradesRemaining == 0 then
-        tooltip:AddLine("|cffffffee" .. L["Item upgraded to max level!"] .. "|r")
+        if not private.DB.profile.CompactTooltips then
+            tooltip:AddLine("|cffffffee" .. L["Item upgraded to max level!"] .. "|r")
+        end
     else
         tooltip:AddLine("|cffffffee" .. L["Upgrade level: %d / %d"]:format(currentUpgrade, maxUpgrade) .. "|r")
     end

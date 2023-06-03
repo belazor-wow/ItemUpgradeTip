@@ -4,7 +4,8 @@
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
-local L = private.L
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
 local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
@@ -30,19 +31,24 @@ function private.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
     tooltip:AddLine("|cffa335ee" .. L["%s Upgrades"]:format(currencyInfo.name) .. "|r")
     tooltip:AddTexture(currencyIconId)
 
-    if currencyOwned >= bonusInfo.toMax and upgradesRemaining > 0 then
+    if currencyOwned >= bonusInfo.toMax and upgradesRemaining > 0 and not private.DB.profile.CompactTooltips then
         tooltip:AddLine(L["Item can be upgraded to max level!"])
     end
 
     if upgradesRemaining == 0 then
-        tooltip:AddLine("|cffffffee" .. L["Item upgraded to max level!"] .. "|r")
+        if not private.DB.profile.CompactTooltips then
+            tooltip:AddLine("|cffffffee" .. L["Item upgraded to max level!"] .. "|r")
+        end
     else
         tooltip:AddDoubleLine("|cffffffee" .. L["Cost for next level:"] .. "|r", "|cffffffee" .. bonusInfo.amount .. "|r")
         tooltip:AddDoubleLine("|cffffffee" .. L["Cost to upgrade to max level:"] .. "|r", "|cffffffee" .. bonusInfo.toMax .. "|r")
-        if currencyOwned >= bonusInfo.toMax then
-            tooltip:AddDoubleLine("|cffffffee" .. L["Currency remaining after upgrading:"] .. "|r", "|cffffffee" .. (currencyOwned - bonusInfo.toMax) .. "|r")
-        else
-            tooltip:AddDoubleLine("|cffffffee" .. L["Currency needed for max level:"] .. "|r", "|cffffffee" .. (bonusInfo.toMax - currencyOwned) .. "|r")
+
+        if not private.DB.profile.CompactTooltips then
+            if currencyOwned >= bonusInfo.toMax then
+                tooltip:AddDoubleLine("|cffffffee" .. L["Currency remaining after upgrading:"] .. "|r", "|cffffffee" .. (currencyOwned - bonusInfo.toMax) .. "|r")
+            else
+                tooltip:AddDoubleLine("|cffffffee" .. L["Currency needed for max level:"] .. "|r", "|cffffffee" .. (bonusInfo.toMax - currencyOwned) .. "|r")
+            end
         end
     end
 end

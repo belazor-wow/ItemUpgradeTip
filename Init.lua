@@ -64,6 +64,20 @@ local Preferences = {
                         type = "group",
                         name = L["General"],
                         args = {
+                            CompactTooltips = {
+                                order = increment(),
+                                type = "toggle",
+                                name = L["Compact tooltips"],
+                                desc = L["If enabled, compatible tooltip integrations will use a more compact format rather than showing the full upgrade info."],
+                                width = "double",
+                                get = function()
+                                    return DB.CompactTooltips
+                                end,
+                                set = function(info, value)
+                                    DB.CompactTooltips = value
+                                end,
+                            },
+
                             DisabledIntegrations = {
                                 order = increment(),
                                 type = "group",
