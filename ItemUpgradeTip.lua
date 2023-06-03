@@ -3,172 +3,78 @@
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
-local L = private.L
 
-local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
-local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
+---@type Localizations
+local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
---- Generic currency handler based on bonusInfo table
----@param tooltip GameTooltip
----@param currentUpgrade number
----@param maxUpgrade number
----@param bonusInfo bonusData
-function private.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
-    local upgradesRemaining = maxUpgrade - currentUpgrade
-    local currencyInfo = private.currencyInfo[bonusInfo.currencyId]
-    if not currencyInfo then
-        private.Debug(bonusInfo.currencyId, "was not found in the currency info cache");
-        return
+---@class ItemUpgradeTip: AceAddon, AceConsole-3.0, AceEvent-3.0
+local ItemUpgradeTip = LibStub("AceAddon-3.0"):NewAddon(AddOnFolderName, "AceConsole-3.0", "AceEvent-3.0")
+
+-- Core initialisation
+function ItemUpgradeTip:OnInitialize()
+    local DB = private.Preferences:InitializeDatabase()
+
+    private.DB = DB
+
+    private.Preferences:SetupOptions()
+
+    self:RegisterChatCommand("itemupgradetip", "ChatCommand")
+    self:RegisterChatCommand("iut", "ChatCommand")
+end
+
+-- Ran during PLAYER_LOGIN
+function ItemUpgradeTip:OnEnable()
+    for currencyId, _ in pairs(private.currencyIndexes) do
+        private.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
     end
 
-    local currencyOwned = currencyInfo.quantity
-    local currencyIconId = currencyInfo.iconFileID
+    self:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
+end
 
-    tooltip:AddLine("\n")
+-- Not super useful just now, but might be in the future
+function ItemUpgradeTip:OnDisable()
+    self:UnregisterEvent("CURRENCY_DISPLAY_UPDATE")
+    self:UnregisterChatCommand("itemupgradetip")
+    self:UnregisterChatCommand("iut")
+end
 
-    tooltip:AddLine("|cffa335ee" .. L["%s Upgrades"]:format(currencyInfo.name) .. "|r")
-    tooltip:AddTexture(currencyIconId)
+---Currency updated
+---@diagnostic disable: unused-local
+---@param event string
+---@param currencyType number?
+---@param quantity number?
+---@param quantityChange number?
+---@param quantityGainSource number?
+---@param quantityLostSource number?
+function ItemUpgradeTip:CURRENCY_DISPLAY_UPDATE(event, currencyType, quantity, quantityChange, quantityGainSource, quantityLostSource)
 
-    if currencyOwned >= bonusInfo.toMax and upgradesRemaining > 0 then
-        tooltip:AddLine(L["Item can be upgraded to max level!"])
+    if currencyType and quantity then
+        if private.currencyIndexes[currencyType] then
+            -- Refresh the entire currency info in case there's info other than quantity that also updated
+            private.currencyInfo[currencyType] = C_CurrencyInfo.GetCurrencyInfo(currencyType)
+        end
     end
+end
 
-    if upgradesRemaining == 0 then
-        tooltip:AddLine("|cffffffee" .. L["Item upgraded to max level!"] .. "|r")
+local SUBCOMMAND_FUNCS = {}
+
+---@param input string
+function ItemUpgradeTip:ChatCommand(input)
+    local subcommand, arguments = self:GetArgs(input, 2)
+
+    if subcommand then
+        local func = SUBCOMMAND_FUNCS[subcommand:upper()]
+
+        if func then
+            func(arguments or "")
+        end
     else
-        tooltip:AddDoubleLine("|cffffffee" .. L["Cost for next level:"] .. "|r", "|cffffffee" .. bonusInfo.amount .. "|r")
-        tooltip:AddDoubleLine("|cffffffee" .. L["Cost to upgrade to max level:"] .. "|r", "|cffffffee" .. bonusInfo.toMax .. "|r")
-        if currencyOwned >= bonusInfo.toMax then
-            tooltip:AddDoubleLine("|cffffffee" .. L["Currency remaining after upgrading:"] .. "|r", "|cffffffee" .. (currencyOwned - bonusInfo.toMax) .. "|r")
+        local settingsPanel = SettingsPanel
+
+        if settingsPanel:IsVisible() then
+            settingsPanel:Hide()
         else
-            tooltip:AddDoubleLine("|cffffffee" .. L["Currency needed for max level:"] .. "|r", "|cffffffee" .. (bonusInfo.toMax - currencyOwned) .. "|r")
+            Settings.OpenToCategory(private.Preferences.OptionsFrame)
         end
     end
 end
-
---- Handles updating an item tooltip to add additional information about upgrade costs
----@param tooltip GameTooltip
----@param tooltipData TooltipData
-function private.HandleTooltipSetItem(tooltip, tooltipData)
-    if tooltip ~= _G.GameTooltip then
-        return
-    end
-
-    ---@type table<number, boolean>
-    local processed = {};   --process each line once
-
-    for i = 1, #tooltipData.lines do
-        if not processed[i] then
-            ---@type TooltipDataLine
-            local tooltipLine = tooltipData.lines[i]
-
-            private.Debug(tooltipLine.leftText)
-
-            local debugPattern = ITEM_UPGRADE_LEVEL
-
-            local currentUpgrade, ---@type number?
-                maxUpgrade ---@type number?
-            = tooltipLine.leftText:match(ITEM_UPGRADE_LEVEL)
-
-            if not currentUpgrade or not maxUpgrade then
-                _, currentUpgrade, maxUpgrade = tooltipLine.leftText:match(ITEM_UPGRADE_TRACK)
-
-                debugPattern = ITEM_UPGRADE_TRACK
-            end
-
-            if currentUpgrade and maxUpgrade then
-                private.Debug(debugPattern, "-", currentUpgrade, "/", maxUpgrade)
-
-                if currentUpgrade == maxUpgrade then
-                    private.Debug(currentUpgrade, "was equal to", maxUpgrade)
-                    return
-                end
-
-                local _, itemLink = tooltip:GetItem()
-                if not itemLink then
-                    private.Debug("Tooltip does not have a valid item link")
-                    return
-                end
-
-                ---@type string?
-                local itemString = string.match(itemLink, "item:([%-?%d:]+)")
-                if not itemString then
-                    private.Debug(itemLink, "does not appear to be a valid item string (did not match \"item:([%-?%d:]+)\")");
-                    return
-                end
-
-                ---@type table<number, number>
-                local bonusIds = {}
-
-                ---@type table<number,any>
-                local itemSplit = {}
-
-                for v in string.gmatch(itemString, "(%d*:?)") do
-                    if v == ":" then
-                        itemSplit[#itemSplit + 1] = 0
-                    else
-                        itemSplit[#itemSplit + 1] = string.gsub(v, ":", "")
-                    end
-                end
-
-                ---@type number?
-                local itemId = tonumber(itemSplit[1])
-                if not itemId then
-                    private.Debug(itemString, "does not appear to contain a valid item ID (found", itemId, ")");
-                    return
-                end
-
-                ---@type number?
-                local numBonusIds = tonumber(itemSplit[13])
-                if not numBonusIds then
-                    private.Debug(itemString, "does not appear to contain the number of bonuses (found", numBonusIds, ")");
-                    return
-                end
-
-                for index = 1, numBonusIds do
-                    bonusIds[#bonusIds + 1] = tonumber(itemSplit[13 + index])
-                end
-
-                processed[i] = true;
-
-                for j = 1, #private.upgradeHandlers do
-                    local callback = private.upgradeHandlers[j]
-
-                    if type(callback) == "function" and callback(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds) then return end
-                end
-
-                return
-            end
-        end
-    end
-end
-
-function private.OnEvent(_, event, ...)
-    if event == "PLAYER_LOGIN" then
-        for currencyId, _ in pairs(private.currencyIndexes) do
-            private.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
-        end
-    elseif event == "CURRENCY_DISPLAY_UPDATE" then
-        ---@type number?
-        local currencyId = ...
-
-        ---@type number?
-        local quantity = select(3, ...)
-
-        if currencyId and quantity then
-            if private.currencyIndexes[currencyId] then
-                -- Refresh the entire currency info in case there's info other than quantity that also updated
-                private.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
-            end
-        end
-    end
-end
-
--- Tooltip integration
-TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Item, private.HandleTooltipSetItem)
-
--- Event helper
-local loadHelper = CreateFrame("Frame");
-loadHelper:SetScript("OnEvent", private.OnEvent);
-loadHelper:RegisterEvent("PLAYER_LOGIN");
-loadHelper:RegisterEvent("CURRENCY_DISPLAY_UPDATE");
