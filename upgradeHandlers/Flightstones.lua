@@ -446,8 +446,10 @@ local flightstoneUpgradeData = {
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
 ---@param upgradeCost table
+---@return table
 local function ParseUpgradeCost(upgradeCost)
     local lines = {}
+    local compactCostLine = {}
 
     for _, upgradeItem in ipairs(flightstoneUpgradeData) do
         if upgradeCost[upgradeItem.id] ~= nil and upgradeCost[upgradeItem.id] > 0 then
@@ -460,35 +462,54 @@ local function ParseUpgradeCost(upgradeCost)
                 local currencyInfo = private.currencyInfo[upgradeItem.currencyId]
                 if currencyInfo == nil then
                     costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id]))
+
+                    table.insert(compactCostLine, icon .. " " .. costLine)
                 else
                     local itemCount = currencyInfo.quantity;
                     local requiredColor = itemCount >= upgradeCost[upgradeItem.id] and GREEN_FONT_COLOR or ERROR_COLOR;
                     local heldColor = (currencyInfo.maxQuantity and currencyInfo.quantity == currencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
 
                     costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
+
+                    table.insert(compactCostLine, icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])))
                 end
             elseif upgradeItem.itemId ~= nil then
                 -- Get item count and compare to required
                 -- Means we can also have matching fragments
                 local itemCount = GetItemCount(upgradeItem.itemId, true);
-                local color = itemCount >= upgradeCost[upgradeItem.id] and GREEN_FONT_COLOR or ERROR_COLOR;
+                local requiredColor = itemCount >= upgradeCost[upgradeItem.id] and GREEN_FONT_COLOR or ERROR_COLOR;
 
-                costLine = color:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+                costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+
+                table.insert(compactCostLine, icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id])))
 
                 fragmentName = upgradeItem.fragment and upgradeItem.fragment.name or nil
                 fragmentId = upgradeItem.fragment and upgradeItem.fragment.itemId or nil
                 fragmentIcon = upgradeItem.fragment and upgradeItem.fragment.icon or nil
             else
                 costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost[upgradeItem.id]))
+
+                table.insert(compactCostLine, icon .. " " .. costLine)
             end
 
-            table.insert(lines, {
-                left = icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.name),
-                right = costLine,
-                color = upgradeItem.color,
-                fragmentData = {name = fragmentName, itemId = fragmentId, icon = fragmentIcon}
-            })
+            if not private.DB.profile.CompactTooltips then
+                table.insert(lines, {
+                    left = icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.name),
+                    right = costLine,
+                    color = upgradeItem.color,
+                    fragmentData = {name = fragmentName, itemId = fragmentId, icon = fragmentIcon}
+                })
+            end
         end
+    end
+
+    if private.DB.profile.CompactTooltips then
+        table.insert(lines, {
+            left = "",
+            right = table.concat(compactCostLine, "  "),
+            color = WHITE_FONT_COLOR,
+            fragmentData = nil
+        })
     end
 
     if #lines == 0 then
@@ -576,27 +597,48 @@ local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, ite
         local totalLines = ParseUpgradeCost(totalUpgradeCosts)
 
         if #nextLevelLines > 0 or #totalLines > 0 then
-            tooltip:AddLine("\n")
+            if not private.DB.profile.CompactTooltips then
+                -- Add one extra space for non-compact tooltips
+                tooltip:AddLine("\n")
+            end
             tooltip:AddLine("\n")
             tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["Flightstone / Crest Upgrades"]))
 
             if nextLevelLines then
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
-                for _, newLine in pairs(nextLevelLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    for _, newLine in pairs(nextLevelLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Next Upgrade (%d):"]:format(nextUpgrade.itemLevel)),
+                        nextLevelLines[1].right
+                    )
                 end
             end
 
             if totalLines and maxUpgrade then
-                if nextLevelLines then
-                    tooltip:AddLine("\n")
-                end
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    if nextLevelLines then
+                        tooltip:AddLine("\n")
+                    end
 
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
-                for _, newLine in pairs(totalLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    for _, newLine in pairs(totalLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Max Upgrade (%d):"]:format(maxUpgrade.itemLevel)),
+                        totalLines[1].right
+                    )
                 end
             end
         end
