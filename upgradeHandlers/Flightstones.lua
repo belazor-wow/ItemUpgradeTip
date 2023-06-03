@@ -601,20 +601,22 @@ local function HandleFlightstones(tooltip, upgradeCosts, bonusId, bonusInfo, ite
             end
         end
 
-        -- Fragment data collection: use the 'totalLines' because that have all needed crest in it
-        local emptyLineAdded = false
-        for _, data in ipairs(totalLines) do
-            if data.fragmentData and data.fragmentData.name then
-                local itemCount = GetItemCount(data.fragmentData.itemId, true)
-                if itemCount and itemCount >= 15 then
-                    if not emptyLineAdded then
-                        tooltip:AddLine("\n")
-                        emptyLineAdded = true
+        if not private.DB.profile.CompactTooltips then
+           -- Fragment data collection: use the 'totalLines' because that have all needed crest in it
+            local emptyLineAdded = false
+            for _, data in ipairs(totalLines) do
+                if data.fragmentData and data.fragmentData.name then
+                    local itemCount = GetItemCount(data.fragmentData.itemId, true)
+                    if itemCount and itemCount >= 15 then
+                        if not emptyLineAdded then
+                            tooltip:AddLine("\n")
+                            emptyLineAdded = true
+                        end
+                        tooltip:AddDoubleLine(
+                            (CreateTextureMarkup(data.fragmentData.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or "") .. " " .. data.color:WrapTextInColorCode(data.fragmentData.name),
+                            WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+                        )
                     end
-                    tooltip:AddDoubleLine(
-                        (CreateTextureMarkup(data.fragmentData.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or "") .. " " .. data.color:WrapTextInColorCode(data.fragmentData.name),
-                        WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
-                    )
                 end
             end
         end
