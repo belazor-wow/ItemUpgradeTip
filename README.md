@@ -1,12 +1,14 @@
 # ItemUpgradeTip
 
-ItemUpgradeTip is a lightweight, zero-config addon that shows the cost of upgrading an item in that item's tooltip.
+ItemUpgradeTip is a lightweight addon that shows the cost of upgrading an item in that item's tooltip.
 
 [CurseForge](https://www.curseforge.com/wow/addons/itemupgradetip) | [Wago](https://addons.wago.io/addons/itemupgradetip) | [WowInterface](https://www.wowinterface.com/downloads/info26580-ItemUpgradeTip.html)
 
 ### Features:
 - Displays upgrade information in the tooltip of an item that can be upgraded
 - Supports character and account wide discounts for Flightstones and Crests
+- (Optional) Compact tooltip format
+- (Optional) Disable individual item type integrations
  
 ### Supported item types / currencies:
 - Flightstone / Crest (Flightstone cost data and discount checking methodology provided by Nerc @ Wago)
