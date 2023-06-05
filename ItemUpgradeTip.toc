@@ -2,6 +2,7 @@
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
 ## OptionalDeps: _DebugLog
+## IconTexture: 463447
 ## SavedVariables: ItemUpgradeTipDB
 ## Author: Belazor
 ## Version: @project-version@
