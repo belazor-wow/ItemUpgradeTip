@@ -74,7 +74,11 @@ function ItemUpgradeTip:ChatCommand(input)
         if settingsPanel:IsVisible() then
             settingsPanel:Hide()
         else
-            Settings.OpenToCategory(private.Preferences.OptionsFrame)
+            InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
         end
     end
+end
+
+function ItemUpgradeTip_OnAddonCompartmentClick()
+	InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
 end
