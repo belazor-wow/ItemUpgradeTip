@@ -16,7 +16,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Honor = false;
 private.Preferences.DisabledIntegrations.Honor = {
     type = "toggle",
     name = L["Honor Upgrades"],
-    order = 30,
+    order = 130,
     width = "double",
 }
 

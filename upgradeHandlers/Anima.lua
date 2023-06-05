@@ -12,7 +12,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Anima = false;
 private.Preferences.DisabledIntegrations.Anima = {
     type = "toggle",
     name = L["Anima Upgrades"],
-    order = 20,
+    order = 120,
     width = "double",
 }
 

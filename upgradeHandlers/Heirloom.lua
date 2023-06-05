@@ -12,7 +12,7 @@ private.Preferences.DefaultValues.profile.DisabledIntegrations.Heirloom = false;
 private.Preferences.DisabledIntegrations.Heirloom = {
     type = "toggle",
     name = L["Heirloom Upgrades"],
-    order = 5,
+    order = 105,
     width = "double",
 }
 

@@ -33,13 +33,7 @@ local Options
 ---@class Preferences
 ---@field OptionsFrame Frame
 local Preferences = {
-    DisabledIntegrations = {
-        help = {
-            type = "description",
-            name = L["If you wish to disable certain tooltip integrations, you can do so via the options below."],
-            order = 1,
-        }
-    },
+    DisabledIntegrations = {},
     DefaultValues = {
         profile = {
             CompactTooltips = false,
@@ -64,7 +58,7 @@ local Preferences = {
                         type = "group",
                         name = L["General"],
                         args = {
-                            CompactTooltips = {
+                            compactTooltips = {
                                 order = increment(),
                                 type = "toggle",
                                 name = L["Compact tooltips"],
@@ -78,23 +72,33 @@ local Preferences = {
                                 end,
                             },
 
-                            DisabledIntegrations = {
+                            separatorIntegrations = {
                                 order = increment(),
-                                type = "group",
-                                inline = true,
+                                type = "header",
                                 name = L["Disabled Integrations"],
-                                get = function(info)
-                                    return DB.DisabledIntegrations[info[#info]]
-                                end,
-                                set = function(info, value)
-                                    DB.DisabledIntegrations[info[#info]] = value;
-                                end,
-                                args = private.Preferences.DisabledIntegrations,
                             },
+
+                            disabledIntegrationsHelp = {
+                                order = increment(),
+                                type = "description",
+                                name = L["If you wish to disable certain tooltip integrations, you can do so via the options below."],
+                            }
                         }
                     }
                 },
             }
+
+            for upgradeHandler, optionTable in pairs(private.Preferences.DisabledIntegrations) do
+                optionTable.get = function(info)
+                    return DB.DisabledIntegrations[info[#info]]
+                end
+
+                optionTable.set = function(info, value)
+                    DB.DisabledIntegrations[info[#info]] = value;
+                end
+
+                Options.args.general.args["disabledIntegrations_" .. upgradeHandler] = optionTable
+            end
 
             -- Get the option table for profiles
 	        Options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(private.DB)
