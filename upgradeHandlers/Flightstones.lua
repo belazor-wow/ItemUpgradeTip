@@ -373,7 +373,16 @@ local flightstoneBonusIds = {
     [9333] = {itemLevel = 437, rank = 5, upgradeLevel = 4, maxUpgradeLevel = 5, upgradeGroup = 16},
 
     -- Hero 5/5
-    [9334] = {itemLevel = 441, rank = 5, upgradeLevel = 5, maxUpgradeLevel = 5, upgradeGroup = 17}
+    [9334] = {itemLevel = 441, rank = 5, upgradeLevel = 5, maxUpgradeLevel = 5, upgradeGroup = 17},
+
+    -- Myth 1/3
+    [9380] = {itemLevel = 441, rank = 6, upgradeLevel = 1, maxUpgradeLevel = 3, upgradeGroup = 17},
+
+    -- Myth 2/3
+    [9381] = {itemLevel = 444, rank = 6, upgradeLevel = 2, maxUpgradeLevel = 3, upgradeGroup = 17},
+
+    -- Myth 3/3
+    [9382] = {itemLevel = 447, rank = 6, upgradeLevel = 3, maxUpgradeLevel = 3, upgradeGroup = 17}
 }
 
 ---@type { [number] : flightstoneUpgradeData }
