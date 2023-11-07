@@ -17,46 +17,39 @@
 ---@field color ColorMixin
 ---@field icon fileID|integer
 ---@field itemId integer?
----@field fragment flightstoneUpgradeFragmentData?
----@field currencyId number?
-
----@class flightstoneUpgradeFragmentData
----@field name string
----@field icon fileID|integer
----@field itemId integer
+---@field currencyId integer?
 
 ---@class flightstoneUpgradeCostData
----@field whelpCrests number
----@field drakeCrests number
----@field wyrmCrests number
----@field aspectCrests number
----@field flightstones number
+---@field whelpCrests integer
+---@field drakeCrests integer
+---@field wyrmCrests integer
+---@field aspectCrests integer
+---@field flightstones integer
 
 
 -- ----------------------------------------------------------------------------
 -- Flightstone Bonus Data
 -- ----------------------------------------------------------------------------
 ---@class flightstoneBonusData
----@field itemLevel number
----@field rank number
----@field upgradeLevel number
----@field maxUpgradeLevel number
----@field upgradeGroup number
+---@field itemLevel integer
+---@field rank integer
+---@field upgradeLevel integer
+---@field upgradeGroup integer
 
 
 -- ----------------------------------------------------------------------------
 -- Honor Bonus Data
 -- ----------------------------------------------------------------------------
 ---@class honorBonusData
----@field itemLevel number
----@field upgradeLevel number
----@field maxUpgradeLevel number
+---@field itemLevel integer
+---@field upgradeLevel integer
+---@field maxUpgradeLevel integer
 
 
 -- ----------------------------------------------------------------------------
 -- Bonus Data
 -- ----------------------------------------------------------------------------
 ---@class bonusData
----@field currencyId number
----@field amount number
----@field toMax number
+---@field currencyId integer
+---@field amount integer
+---@field toMax integer
