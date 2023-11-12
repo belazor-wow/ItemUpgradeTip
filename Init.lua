@@ -4,20 +4,30 @@
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
----@class private.currencyInfo : { [number]: CurrencyInfo }
+local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
+
+---@class private.currencyInfo : Array<CurrencyInfo>
 private.currencyInfo = {}
 
 ---@class private.currencyIds : { [string]: number }
 private.currencyIds = {}
 
----@class private.currencyIndexes : { [number]: boolean }
+---@class private.currencyIndexes : Array<boolean>
 private.currencyIndexes = {}
 
 ---@class private.upgradeHandlers : { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
 private.upgradeHandlers = {}
 
+---@class private.mythicPlusInfo : Array<MythicPlusInfo>
+private.mythicPlusInfo = {}
+
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
+
+-- Export constants into the global scope (for XML frames to use)
+for key, value in pairs(L) do
+    _G["ITEMUPGRADETIP_L_" .. key] = value
+end
 
 -- ----------------------------------------------------------------------------
 -- Preferences
@@ -56,13 +66,13 @@ local Preferences = {
                     general = {
                         order = increment(),
                         type = "group",
-                        name = L["General"],
+                        name = L["GENERAL"],
                         args = {
                             compactTooltips = {
                                 order = increment(),
                                 type = "toggle",
-                                name = L["Compact tooltips"],
-                                desc = L["If enabled, compatible tooltip integrations will use a more compact format rather than showing the full upgrade info."],
+                                name = L["COMPACT_TOOLTIPS"],
+                                desc = L["COMPACT_TOOLTIPS_DESC"],
                                 width = "double",
                                 get = function()
                                     return DB.CompactTooltips
@@ -75,13 +85,13 @@ local Preferences = {
                             separatorIntegrations = {
                                 order = increment(),
                                 type = "header",
-                                name = L["Disabled Integrations"],
+                                name = L["DISABLED_INTEGRATIONS"],
                             },
 
                             disabledIntegrationsHelp = {
                                 order = increment(),
                                 type = "description",
-                                name = L["If you wish to disable certain tooltip integrations, you can do so via the options below."],
+                                name = L["DISABLED_INTEGRATIONS_DESC"],
                             }
                         }
                     }
