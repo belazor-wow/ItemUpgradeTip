@@ -11,26 +11,241 @@ local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 private.currencyIds.Flightstones = 2245
 private.currencyIndexes[private.currencyIds.Flightstones] = true
 
-private.currencyIds.whelpDreamingCrest = 2706
-private.currencyIndexes[private.currencyIds.whelpDreamingCrest] = true
+private.currencyIds.whelpCrest = 2706
+private.currencyIndexes[private.currencyIds.whelpCrest] = true
 
-private.currencyIds.drakeDreamingCrest = 2707
-private.currencyIndexes[private.currencyIds.drakeDreamingCrest] = true
+private.currencyIds.drakeCrest = 2707
+private.currencyIndexes[private.currencyIds.drakeCrest] = true
 
-private.currencyIds.wyrmDreamingCrest = 2708
-private.currencyIndexes[private.currencyIds.wyrmDreamingCrest] = true
+private.currencyIds.wyrmCrest = 2708
+private.currencyIndexes[private.currencyIds.wyrmCrest] = true
 
-private.currencyIds.aspectDreamingCrest = 2709
-private.currencyIndexes[private.currencyIds.aspectDreamingCrest] = true
-
+private.currencyIds.aspectCrest = 2709
+private.currencyIndexes[private.currencyIds.aspectCrest] = true
 
 -- Add preferences
 private.Preferences.DefaultValues.profile.DisabledIntegrations.Flightstones = false;
 private.Preferences.DisabledIntegrations.Flightstones = {
     type = "toggle",
-    name = L["Flightstone / Crest Upgrades"],
+    name = L["FLIGHTSTONE_CREST_UPGRADES"],
     order = 110,
     width = "double",
+}
+
+---@class private.mythicPlusInfo : Array<MythicPlusInfo>
+private.mythicPlusInfo = {
+    {keyLevel = 2, lootDrops = 441, vaultReward = 454, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
+    {keyLevel = 3, lootDrops = 444, vaultReward = 457, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
+    {keyLevel = 4, lootDrops = 444, vaultReward = 460, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
+    {keyLevel = 5, lootDrops = 447, vaultReward = 460, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
+    {keyLevel = 6, lootDrops = 447, vaultReward = 463, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
+    {keyLevel = 7, lootDrops = 450, vaultReward = 463, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
+    {keyLevel = 8, lootDrops = 450, vaultReward = 467, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
+    {keyLevel = 9, lootDrops = 454, vaultReward = 467, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
+    {keyLevel = 10, lootDrops = 454, vaultReward = 470, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
+    {keyLevel = 11, lootDrops = 457, vaultReward = 470, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
+    {keyLevel = 12, lootDrops = 457, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
+    {keyLevel = 13, lootDrops = 460, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
+    {keyLevel = 14, lootDrops = 460, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
+    {keyLevel = 15, lootDrops = 463, vaultReward = 476, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
+    {keyLevel = 16, lootDrops = 463, vaultReward = 476, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+    {keyLevel = 17, lootDrops = 467, vaultReward = 476, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+    {keyLevel = 18, lootDrops = 467, vaultReward = 480, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+    {keyLevel = 19, lootDrops = 470, vaultReward = 480, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+    {keyLevel = "20+", lootDrops = 470, vaultReward = 483, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+}
+
+---@type Array<RaidInfo>
+private.raidInfo = {
+    {boss = 1,                      lfr = 441, normal = 454, heroic = 467, mythic = 480},
+    {boss = 2,                      lfr = 441, normal = 454, heroic = 467, mythic = 480},
+    {boss = 3,                      lfr = 444, normal = 457, heroic = 470, mythic = 483},
+    {boss = 4,                      lfr = 444, normal = 457, heroic = 470, mythic = 483},
+    {boss = L["X_RARE"]:format(3),  lfr = 450, normal = 463, heroic = 476, mythic = 489},
+    {boss = 5,                      lfr = 447, normal = 460, heroic = 473, mythic = 486},
+    {boss = 6,                      lfr = 447, normal = 460, heroic = 473, mythic = 486},
+    {boss = 7,                      lfr = 447, normal = 460, heroic = 473, mythic = 486},
+    {boss = 8,                      lfr = 450, normal = 463, heroic = 476, mythic = 489},
+    {boss = 9,                      lfr = 450, normal = 463, heroic = 476, mythic = 489},
+    {boss = L["X_RARE"]:format(9),  lfr = 457, normal = 470, heroic = 483, mythic = 496},
+}
+
+---@type RaidCurrencyInfo
+private.raidCurrencyInfo = {
+    -- LFR
+    lfrCurrencyId = private.currencyIds.whelpCrest,
+    lfrColor = UNCOMMON_GREEN_COLOR,
+    lfrCurrencyName = L["WHELP_CRESTS_SHORT"],
+
+    -- Normal
+    normalCurrencyId = private.currencyIds.drakeCrest,
+    normalColor = RARE_BLUE_COLOR,
+    normalCurrencyName = L["DRAKE_CRESTS_SHORT"],
+
+    -- Heroic
+    heroicCurrencyId = private.currencyIds.wyrmCrest,
+    heroicColor = EPIC_PURPLE_COLOR,
+    heroicCurrencyName = L["WYRM_CRESTS_SHORT"],
+
+    -- Mythic
+    mythicCurrencyId = private.currencyIds.aspectCrest,
+    mythicColor = LEGENDARY_ORANGE_COLOR,
+    mythicCurrencyName = L["ASPECT_CRESTS_SHORT"],
+}
+
+---@type Array<UpgradeTrackInfo>
+private.upgradeTrackInfo = {
+    {
+        itemLevel = 441,
+        upgrade1 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.whelpCrest,
+        currencyName = L["WHELP_CRESTS_SHORT"],
+        color = UNCOMMON_GREEN_COLOR
+    },
+    {
+        itemLevel = 444,
+        upgrade1 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.whelpCrest,
+        currencyName = L["WHELP_CRESTS_SHORT"],
+        color = UNCOMMON_GREEN_COLOR
+    },
+    {
+        itemLevel = 447,
+        upgrade1 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.whelpCrest,
+        currencyName = L["WHELP_CRESTS_SHORT"], color = UNCOMMON_GREEN_COLOR
+    },
+    {
+        itemLevel = 450,
+        upgrade1 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.whelpCrest,
+        currencyName = L["WHELP_CRESTS_SHORT"],
+        color = UNCOMMON_GREEN_COLOR
+    },
+    {
+        itemLevel = 454,
+        upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.drakeCrest,
+        currencyName = L["DRAKE_CRESTS_SHORT"],
+        color = RARE_BLUE_COLOR
+    },
+    {
+        itemLevel = 457,
+        upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.drakeCrest,
+        currencyName = L["DRAKE_CRESTS_SHORT"],
+        color = RARE_BLUE_COLOR},
+    {
+        itemLevel = 460,
+        upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.drakeCrest,
+        currencyName = L["DRAKE_CRESTS_SHORT"],
+        color = RARE_BLUE_COLOR
+    },
+    {
+        itemLevel = 463,
+        upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
+        currencyId = private.currencyIds.drakeCrest,
+        currencyName = L["DRAKE_CRESTS_SHORT"],
+        color = RARE_BLUE_COLOR
+    },
+    {
+        itemLevel = 467,
+        upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
+        currencyId = private.currencyIds.wyrmCrest,
+        currencyName = L["WYRM_CRESTS_SHORT"],
+        color = EPIC_PURPLE_COLOR
+    },
+    {
+        itemLevel = 470,
+        upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
+        currencyId = private.currencyIds.wyrmCrest,
+        currencyName = L["WYRM_CRESTS_SHORT"],
+        color = EPIC_PURPLE_COLOR
+    },
+    {
+        itemLevel = 473,
+        upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
+        currencyId = private.currencyIds.wyrmCrest,
+        currencyName = L["WYRM_CRESTS_SHORT"],
+        color = EPIC_PURPLE_COLOR
+    },
+    {
+        itemLevel = 476,
+        upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
+        currencyId = private.currencyIds.wyrmCrest,
+        currencyName = L["WYRM_CRESTS_SHORT"],
+        color = EPIC_PURPLE_COLOR
+    },
+    {
+        itemLevel = 480,
+        upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 4},
+        currencyId = private.currencyIds.aspectCrest,
+        currencyName = L["ASPECT_CRESTS_SHORT"],
+        color = LEGENDARY_ORANGE_COLOR
+    },
+    {
+        itemLevel = 483,
+        upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 4},
+        currencyId = private.currencyIds.aspectCrest,
+        currencyName = L["ASPECT_CRESTS_SHORT"],
+        color = LEGENDARY_ORANGE_COLOR
+    },
+    {
+        itemLevel = 486,
+        upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 4},
+        currencyId = private.currencyIds.aspectCrest,
+        currencyName = L["ASPECT_CRESTS_SHORT"],
+        color = LEGENDARY_ORANGE_COLOR
+    },
+    {
+        itemLevel = 489,
+        upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 4},
+        currencyId = private.currencyIds.aspectCrest,
+        currencyName = L["ASPECT_CRESTS_SHORT"],
+        color = LEGENDARY_ORANGE_COLOR
+    },
+}
+
+---@type Array<CraftingInfo>
+private.craftingInfo = {
+    -- Whelpling
+    {itemLevel = 434, itemId = 206977, rank = 1},
+    {itemLevel = 437, itemId = 206977, rank = 2},
+    {itemLevel = 441, itemId = 206977, rank = 3},
+    {itemLevel = 444, itemId = 206977, rank = 4},
+    {itemLevel = 444, itemId = 206977, rank = 5},
+
+    -- Spark
+    {itemLevel = 450, itemId = 206959, rank = 1},
+    {itemLevel = 454, itemId = 206959, rank = 2},
+    {itemLevel = 457, itemId = 206959, rank = 3},
+    {itemLevel = 460, itemId = 206959, rank = 4},
+    {itemLevel = 463, itemId = 206959, rank = 5},
+
+    -- Wyrm
+    {itemLevel = 463, itemId = 206960, rank = 1},
+    {itemLevel = 467, itemId = 206960, rank = 2},
+    {itemLevel = 470, itemId = 206960, rank = 3},
+    {itemLevel = 473, itemId = 206960, rank = 4},
+    {itemLevel = 476, itemId = 206960, rank = 5},
+
+    -- Aspect
+    {itemLevel = 473, itemId = 206961, rank = 1},
+    {itemLevel = 476, itemId = 206961, rank = 2},
+    {itemLevel = 480, itemId = 206961, rank = 3},
+    {itemLevel = 483, itemId = 206961, rank = 4},
+    {itemLevel = 486, itemId = 206961, rank = 5},
 }
 
 ---@type Array<flightstoneBonusData>
@@ -212,7 +427,7 @@ local itemExtendedCostLookup = {
 local flightstoneUpgradeData = {
     {
         id = "flightstones",
-        name = L["Flightstones"],
+        name = L["FLIGHTSTONES"],
         color = WHITE_FONT_COLOR,
         icon = 5172976,
         itemId = nil,
@@ -221,38 +436,38 @@ local flightstoneUpgradeData = {
 
     {
         id = "whelpCrests",
-        name = L["Whelpling's Crests"],
+        name = L["WHELP_CRESTS"],
         color = UNCOMMON_GREEN_COLOR,
         icon = 5309872,
         itemId = nil,
-        currencyId = private.currencyIds.whelpDreamingCrest
+        currencyId = private.currencyIds.whelpCrest
     },
 
     {
         id = "drakeCrests",
-        name = L["Drake's Crests"],
+        name = L["DRAKE_CRESTS"],
         color = RARE_BLUE_COLOR,
         icon = 5309870,
         itemId = nil,
-        currencyId = private.currencyIds.drakeDreamingCrest
+        currencyId = private.currencyIds.drakeCrest
     },
 
     {
         id = "wyrmCrests",
-        name = L["Wyrm's Crests"],
+        name = L["WYRM_CRESTS"],
         color = EPIC_PURPLE_COLOR,
         icon = 5309874,
         itemId = nil,
-        currencyId = private.currencyIds.wyrmDreamingCrest
+        currencyId = private.currencyIds.wyrmCrest
     },
 
     {
         id = "aspectCrests",
-        name = L["Aspect's Crests"],
+        name = L["ASPECT_CRESTS"],
         color = LEGENDARY_ORANGE_COLOR,
         icon = 5309868,
         itemId = nil,
-        currencyId = private.currencyIds.aspectDreamingCrest
+        currencyId = private.currencyIds.aspectCrest
     },
 }
 
@@ -504,12 +719,12 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
 
         if #nextLevelLines > 0 or #totalLines > 0 then
             tooltip:AddLine("\n")
-            tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["Flightstone / Crest Upgrades"]))
+            tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["FLIGHTSTONE_CREST_UPGRADES"]))
 
             if nextLevelLines then
                 if not private.DB.profile.CompactTooltips then
                     -- Standard tooltip
-                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost for next level:"] .. " (" .. nextUpgrade.itemLevel .. ")"))
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["COST_FOR_NEXT_LEVEL"] .. " (" .. nextUpgrade.itemLevel .. ")"))
 
                     for _, newLine in pairs(nextLevelLines) do
                         tooltip:AddDoubleLine(newLine.left, newLine.right)
@@ -517,7 +732,7 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
                 else
                     -- Compact tooltips
                     tooltip:AddDoubleLine(
-                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Next Upgrade (%d):"]:format(nextUpgrade.itemLevel)),
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["NEXT_UPGRADE_X"]:format(nextUpgrade.itemLevel)),
                         nextLevelLines[1].right
                     )
                 end
@@ -530,7 +745,7 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
                         tooltip:AddLine("\n")
                     end
 
-                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["Cost to upgrade to max level:"] .. " (" .. maxUpgrade.itemLevel .. ")"))
+                    tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["COST_TO_UPGRADE_TO_MAX"] .. " (" .. maxUpgrade.itemLevel .. ")"))
 
                     for _, newLine in pairs(totalLines) do
                         tooltip:AddDoubleLine(newLine.left, newLine.right)
@@ -538,7 +753,7 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
                 else
                     -- Compact tooltips
                     tooltip:AddDoubleLine(
-                        WHITE_FONT_COLOR:WrapTextInColorCode(L["Max Upgrade (%d):"]:format(maxUpgrade.itemLevel)),
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["MAX_UPGRADE_X"]:format(maxUpgrade.itemLevel)),
                         totalLines[1].right
                     )
                 end
