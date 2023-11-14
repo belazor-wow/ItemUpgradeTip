@@ -19,7 +19,7 @@ private.Preferences.DisabledIntegrations.Anima = {
 private.currencyIds.Anima = 1813
 private.currencyIndexes[private.currencyIds.Anima] = true
 
----@type { [number] : bonusData }
+---@type Array<BonusData>
 local animaBonusIds = {
     [7195] = {currencyId = private.currencyIds.Anima, amount = 50,  toMax = 1050},
     [7196] = {currencyId = private.currencyIds.Anima, amount = 100, toMax = 1000},
@@ -48,7 +48,7 @@ local function CheckAnimaBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
     end
 
     for i = 1, #bonusIds do
-        ---@type bonusData?
+        ---@type BonusData?
         local bonusInfo = animaBonusIds[bonusIds[i]]
 
         if bonusInfo ~= nil then

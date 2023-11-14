@@ -38,7 +38,7 @@ private.Preferences.DisabledIntegrations.Conquest = {
     https://wago.tools/db2/ItemLogicalCost?filter[ItemLogicalCostGroupID]=exact%3A3&page=1&sort[ItemExtendedCostID]=asc
 ]]
 
----@type { [number] : honorBonusData }
+---@type Array<HonorBonusData>
 local conquestBonusIds = {
     [9426] = { itemLevel = 408, upgradeLevel = 1, maxUpgradeLevel = 9},
     [9427] = { itemLevel = 411, upgradeLevel = 2, maxUpgradeLevel = 9},
@@ -51,7 +51,7 @@ local conquestBonusIds = {
     [9434] = { itemLevel = 434, upgradeLevel = 9, maxUpgradeLevel = 9},
 }
 
----@type { [number]: number }
+---@type Array<number>
 local itemExtendedCosts = {
     [7690] = 1175,
     [7691] = 950,
@@ -110,7 +110,7 @@ local itemUpgradeCostOverrides = {
 }
 
 -- Override costs for non-Gladiator trinkets
----@type { [number]: number } }
+---@type Array<number>
 local trinketUpgradeCostOverrides = {
     [205711] = itemExtendedCosts[7692],
     [205712] = itemExtendedCosts[7692],
@@ -156,7 +156,7 @@ end
 ---@param tooltip GameTooltip
 ---@param upgradeCost number
 ---@param bonusId number
----@param bonusInfo honorBonusData
+---@param bonusInfo HonorBonusData
 local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
     if not bonusId or not bonusInfo then
         private.Debug(bonusId, "or Conquest bonus info table was not found");
@@ -166,10 +166,10 @@ local function HandleConquest(tooltip, upgradeCost, bonusId, bonusInfo)
     ---@type number
     local nextUpgradeCost = 0
 
-    ---@type honorBonusData?
+    ---@type HonorBonusData?
     local nextUpgrade = nil
 
-    ---@type honorBonusData?
+    ---@type HonorBonusData?
     local maxUpgrade = nil
 
     ---@type number
@@ -287,7 +287,7 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
     end
 
     for i = 1, #bonusIds do
-        ---@type honorBonusData?
+        ---@type HonorBonusData?
         local bonusInfo = conquestBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
             private.Debug(bonusIds[i], "matched a Conquest bonus ID");

@@ -11,7 +11,7 @@
 -- ----------------------------------------------------------------------------
 -- Flightstone Upgrade Data
 -- ----------------------------------------------------------------------------
----@class flightstoneUpgradeData
+---@class FlightstoneUpgradeData
 ---@field id string
 ---@field name string
 ---@field color ColorMixin
@@ -19,7 +19,7 @@
 ---@field itemId integer?
 ---@field currencyId integer?
 
----@class flightstoneUpgradeCostData
+---@class FlightstoneUpgradeCostData
 ---@field whelpCrests integer
 ---@field drakeCrests integer
 ---@field wyrmCrests integer
@@ -30,7 +30,7 @@
 -- ----------------------------------------------------------------------------
 -- Flightstone Bonus Data
 -- ----------------------------------------------------------------------------
----@class flightstoneBonusData
+---@class FlightstoneBonusData
 ---@field itemLevel integer
 ---@field rank integer
 ---@field upgradeLevel integer
@@ -40,7 +40,7 @@
 -- ----------------------------------------------------------------------------
 -- Honor Bonus Data
 -- ----------------------------------------------------------------------------
----@class honorBonusData
+---@class HonorBonusData
 ---@field itemLevel integer
 ---@field upgradeLevel integer
 ---@field maxUpgradeLevel integer
@@ -49,7 +49,7 @@
 -- ----------------------------------------------------------------------------
 -- Bonus Data
 -- ----------------------------------------------------------------------------
----@class bonusData
+---@class BonusData
 ---@field currencyId integer
 ---@field amount integer
 ---@field toMax integer

@@ -34,7 +34,7 @@ private.Preferences.DisabledIntegrations.Honor = {
     https://wago.tools/db2/ItemLogicalCost?filter[ItemLogicalCostGroupID]=exact%3A4&page=1&sort[ItemExtendedCostID]=asc
 ]]
 
----@type { [number] : honorBonusData }
+---@type Array<HonorBonusData>
 local honorBonusIds = {
     [9421] = { itemLevel = 366, upgradeLevel = 1, maxUpgradeLevel = 5},
     [9422] = { itemLevel = 372, upgradeLevel = 2, maxUpgradeLevel = 5},
@@ -43,7 +43,7 @@ local honorBonusIds = {
     [9425] = { itemLevel = 392, upgradeLevel = 5, maxUpgradeLevel = 5},
 }
 
----@type { [number]: number }
+---@type Array<number>
 local itemExtendedCosts = {
     [7623] = 700,
     [7624] = 550,
@@ -148,7 +148,7 @@ end
 ---@param tooltip GameTooltip
 ---@param upgradeCost number
 ---@param bonusId number
----@param bonusInfo honorBonusData
+---@param bonusInfo HonorBonusData
 local function HandleHonor(tooltip, upgradeCost, bonusId, bonusInfo)
     if not bonusId or not bonusInfo then
         private.Debug(bonusId, "or Honor bonus info table was not found");
@@ -158,10 +158,10 @@ local function HandleHonor(tooltip, upgradeCost, bonusId, bonusInfo)
     ---@type number
     local nextUpgradeCost = 0
 
-    ---@type honorBonusData?
+    ---@type HonorBonusData?
     local nextUpgrade = nil
 
-    ---@type honorBonusData?
+    ---@type HonorBonusData?
     local maxUpgrade = nil
 
     ---@type number
@@ -279,7 +279,7 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
     end
 
     for i = 1, #bonusIds do
-        ---@type honorBonusData?
+        ---@type HonorBonusData?
         local bonusInfo = honorBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
             private.Debug(bonusIds[i], "matched an Honor bonus ID");
