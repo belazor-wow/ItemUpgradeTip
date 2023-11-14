@@ -248,7 +248,7 @@ private.craftingInfo = {
     {itemLevel = 486, itemId = 206961, rank = 5},
 }
 
----@type Array<flightstoneBonusData>
+---@type Array<FlightstoneBonusData>
 local flightstoneBonusIds = {
     -- Explorer
     [9544] = {itemLevel = 415, rank = 1, upgradeLevel = 1, upgradeGroup = 23},
@@ -305,7 +305,7 @@ local flightstoneBonusIds = {
     [9576] = {itemLevel = 489, rank = 6, upgradeLevel = 4, upgradeGroup = 28},
 }
 
----@type Array<flightstoneUpgradeCostData>
+---@type Array<FlightstoneUpgradeCostData>
 local itemExtendedCostTable = {
     [7984] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 50},
     [7991] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
@@ -423,7 +423,7 @@ local itemExtendedCostLookup = {
     },
 }
 
----@type Array<flightstoneUpgradeData>
+---@type Array<FlightstoneUpgradeData>
 local flightstoneUpgradeData = {
     {
         id = "flightstones",
@@ -519,8 +519,8 @@ local inventoryTypeSlotMaskOverrides = {
 
 --- Fetches all the upgrade costs for a given upgrade info
 ---@param itemExtendedCosts Array<integer>
----@param upgradeInfo flightstoneBonusData
----@return flightstoneUpgradeCostData?
+---@param upgradeInfo FlightstoneBonusData
+---@return FlightstoneUpgradeCostData?
 local function GetItemUpgradeCosts(itemExtendedCosts, upgradeInfo)
     local itemExtendedCost = itemExtendedCosts[upgradeInfo.upgradeGroup];
     if itemExtendedCost == nil then
@@ -570,7 +570,7 @@ local function GetItemExtendedCosts(equipLoc, itemLink)
 end
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
----@param upgradeCostData flightstoneUpgradeCostData
+---@param upgradeCostData FlightstoneUpgradeCostData
 ---@return table
 local function ParseUpgradeCost(upgradeCostData)
     local lines = {}
@@ -641,7 +641,7 @@ end
 ---@param tooltip GameTooltip
 ---@param itemExtendedCosts Array<integer>
 ---@param bonusId integer
----@param bonusInfo flightstoneBonusData
+---@param bonusInfo FlightstoneBonusData
 ---@param itemLink string
 local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
@@ -658,16 +658,16 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
         characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
     end
 
-    ---@type flightstoneUpgradeCostData?
+    ---@type FlightstoneUpgradeCostData?
     local nextUpgradeCost = nil
 
-    ---@type flightstoneBonusData?
+    ---@type FlightstoneBonusData?
     local nextUpgrade = nil
 
-    ---@type flightstoneBonusData?
+    ---@type FlightstoneBonusData?
     local maxUpgrade = nil
 
-    ---@type flightstoneUpgradeCostData
+    ---@type FlightstoneUpgradeCostData
     local totalUpgradeCosts = {
         whelpCrests = 0,
         drakeCrests = 0,
@@ -791,7 +791,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
     end
 
     for i = 1, #bonusIds do
-        ---@type flightstoneBonusData?
+        ---@type FlightstoneBonusData?
         local bonusInfo = flightstoneBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
             private.Debug(bonusIds[i], "matched a Flighstones bonus ID");

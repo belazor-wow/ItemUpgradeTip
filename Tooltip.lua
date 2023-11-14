@@ -7,14 +7,83 @@ local private = select(2, ...) ---@class PrivateNamespace
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
-local ITEM_UPGRADE_LEVEL = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
-local ITEM_UPGRADE_TRACK = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
+local ITEM_UPGRADE_LEVEL_PATTERN = ITEM_UPGRADE_TOOLTIP_FORMAT:gsub("%%d+", "(%%d+)")  -- Upgrade Level: %d/%d
+local ITEM_UPGRADE_TRACK_PATTERN = ITEM_UPGRADE_TOOLTIP_FORMAT_STRING:gsub("%%d", "(%%d+)"):gsub("%%s", "(.-)") -- "Upgrade Level: %s %d/%d"
+local KEYSTONE_LINK_PATTERN = "keystone:(%d+):(.-):(.-):(.-):(.-):(.-):(.-)"
+local TIMEWORN_KEYSTONE_ITEM_PATTERN = "item:(187786):(.+)" -- Timeworn Keystone
+local MYTHIC_KEYSTONE_ITEM_PATTERN = "item:(180653):(.+)" -- Mythic Keystone
+
+---@param tooltip GameTooltip
+---@param itemLink string
+---@return KeystoneInfo?
+function private.HandleKeystone(tooltip, itemLink)
+    local function ParseItemLink(pattern)
+        local itemId, raw = itemLink:match(pattern)
+        if not itemId then
+            return
+        end
+
+        ---@type table<number,any>
+        local itemSplit = {}
+
+        for v in string.gmatch(raw, "(%d*:?)") do
+            if v == ":" then
+                itemSplit[#itemSplit + 1] = 0
+            else
+                itemSplit[#itemSplit + 1] = string.gsub(v, ":", "")
+            end
+        end
+
+        local instanceId, keyLevel = strsplit(':', raw)
+        if not instanceId or not keyLevel then
+            return
+        end
+
+        return itemId, 0, itemSplit[15], 0, 0, 0, 0
+    end
+
+    local itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = itemLink:match(KEYSTONE_LINK_PATTERN)
+    if not itemId then
+        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = ParseItemLink(TIMEWORN_KEYSTONE_ITEM_PATTERN)
+    end
+    if not itemId then
+        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = ParseItemLink(MYTHIC_KEYSTONE_ITEM_PATTERN)
+    end
+
+    if not itemId then
+        private.Debug(itemLink, "was not a Mythic+ keystone");
+        return
+    end
+
+    itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 =
+        tonumber(itemId),
+        tonumber(instanceId),
+        tonumber(keyLevel),
+        tonumber(affix1),
+        tonumber(affix2),
+        tonumber(affix3),
+        tonumber(affix4)
+
+    if keyLevel >= 20 then
+        -- Adjust to match the Mythic+ info
+        keyLevel = "20+"
+    end
+
+    for _, mPlusKey in ipairs(ItemUpgradeTip:GetMythicPlusInfo()) do
+        if keyLevel == mPlusKey.keyLevel then
+            local icon = mPlusKey.currencyInfo.iconFileID and CreateTextureMarkup(mPlusKey.currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+
+            GameTooltip_AddBlankLineToTooltip(tooltip);
+            tooltip:AddDoubleLine(L["CREST_TYPE"], icon .. " " .. mPlusKey.color:WrapTextInColorCode(mPlusKey.currencyInfo.name))
+        end
+    end
+end
 
 --- Generic currency handler based on bonusInfo table
 ---@param tooltip GameTooltip
 ---@param currentUpgrade number
 ---@param maxUpgrade number
----@param bonusInfo bonusData
+---@param bonusInfo BonusData
 function private.HandleCurrency(tooltip, currentUpgrade, maxUpgrade, bonusInfo)
     local upgradesRemaining = maxUpgrade - currentUpgrade
     local currencyInfo = private.currencyInfo[bonusInfo.currencyId]
@@ -61,6 +130,15 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
         return
     end
 
+    local _, itemLink = tooltip:GetItem()
+    if not itemLink or type(itemLink) ~= "string" then
+        return
+    end
+
+    if private.HandleKeystone(tooltip, itemLink) then
+        return
+    end
+
     ---@type table<number, boolean>
     local processed = {};   --process each line once
 
@@ -71,16 +149,16 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
 
             private.Debug(tooltipLine.leftText)
 
-            local debugPattern = ITEM_UPGRADE_LEVEL
+            local debugPattern = ITEM_UPGRADE_LEVEL_PATTERN
 
             local currentUpgrade, ---@type number?
                 maxUpgrade ---@type number?
-            = tooltipLine.leftText:match(ITEM_UPGRADE_LEVEL)
+            = tooltipLine.leftText:match(ITEM_UPGRADE_LEVEL_PATTERN)
 
             if not currentUpgrade or not maxUpgrade then
-                _, currentUpgrade, maxUpgrade = tooltipLine.leftText:match(ITEM_UPGRADE_TRACK)
+                _, currentUpgrade, maxUpgrade = tooltipLine.leftText:match(ITEM_UPGRADE_TRACK_PATTERN)
 
-                debugPattern = ITEM_UPGRADE_TRACK
+                debugPattern = ITEM_UPGRADE_TRACK_PATTERN
             end
 
             if currentUpgrade and maxUpgrade then
@@ -88,12 +166,6 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
 
                 if currentUpgrade == maxUpgrade then
                     private.Debug(currentUpgrade, "was equal to", maxUpgrade)
-                    return
-                end
-
-                local _, itemLink = tooltip:GetItem()
-                if not itemLink then
-                    private.Debug("Tooltip does not have a valid item link")
                     return
                 end
 
