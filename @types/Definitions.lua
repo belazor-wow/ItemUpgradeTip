@@ -102,10 +102,7 @@
 ---@field itemLevel integer
 ---@field upgrade1 UpgradeTrackUpgrade
 ---@field upgrade2 UpgradeTrackUpgrade?
----@field currencyId integer
----@field currencyName string
----@field color ColorMixin
----@field currencyInfo CurrencyInfo?
+---@field currency FlightstoneUpgradeData
 
 ---@class UpgradeTrackUpgrade
 ---@field rank integer

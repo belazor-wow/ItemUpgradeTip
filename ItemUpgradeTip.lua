@@ -44,14 +44,7 @@ end
 -- Return the Upgrade info
 ---@return Array<UpgradeTrackInfo>
 function ItemUpgradeTip:GetupgradeTrackInfo()
-    local upgradeTrackInfo = private.upgradeTrackInfo
-
-    for index, upgradeTrack in ipairs(private.upgradeTrackInfo) do
-        -- Lookup cached currency info
-        upgradeTrackInfo[index]["currencyInfo"] = private.currencyInfo[upgradeTrack.currencyId]
-    end
-
-    return upgradeTrackInfo
+    return private.upgradeTrackInfo
 end
 
 -- Return the Crafting info

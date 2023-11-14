@@ -57,7 +57,8 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
     local UPGRADE_TIER_FORMAT_STRING = "%d/%d"
 
     for index, upgradeTrack in ipairs(ItemUpgradeTip:GetupgradeTrackInfo()) do
-        local icon = upgradeTrack.currencyInfo.iconFileID and CreateTextureMarkup(upgradeTrack.currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+        local currencyInfo = ItemUpgradeTip:GetCurrencyInfo(upgradeTrack.currency.currencyId)
+        local icon = currencyInfo.iconFileID and CreateTextureMarkup(currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
         local rank1 = upgradeTrack.upgrade1.rank
         local rank2 = nil
@@ -72,14 +73,14 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
 
         local upgradeInfo = {
             ilvl = upgradeTrack.itemLevel,
-            crestType = icon .. " " .. upgradeTrack.color:WrapTextInColorCode(upgradeTrack.currencyInfo.name),
+            crestType = icon .. " " .. upgradeTrack.currency.color:WrapTextInColorCode(currencyInfo.name),
             veteranTier = (rank1 == 3 and upgradeTierString1) or (rank2 == 3 and upgradeTierString2) or "",
             championTier = (rank1 == 4 and upgradeTierString1) or (rank2 == 4 and upgradeTierString2) or "",
             heroTier = (rank1 == 5 and upgradeTierString1) or (rank2 == 5 and upgradeTierString2) or "",
             mythTier = (rank1 == 6 and upgradeTierString1) or (rank2 == 6 and upgradeTierString2) or "",
             index = index,
             selected = self:IsSelected(index),
-            crestTypeCurrencyId = upgradeTrack.currencyId
+            crestTypeCurrencyId = upgradeTrack.currency.currencyId
         }
 
         table.insert(results, upgradeInfo)
