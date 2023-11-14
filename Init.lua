@@ -4,8 +4,6 @@
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
-local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
-
 ---@class private.currencyInfo : Array<CurrencyInfo>
 private.currencyInfo = {}
 
