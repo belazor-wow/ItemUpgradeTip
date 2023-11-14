@@ -38,14 +38,7 @@ end
 -- Return the Raid currency info
 ---@return RaidCurrencyInfo
 function ItemUpgradeTip:GetRaidCurrencyInfo()
-    local raidCurrencyInfo = private.raidCurrencyInfo
-
-    raidCurrencyInfo.lfrCurrencyInfo = private.currencyInfo[raidCurrencyInfo.lfrCurrencyId]
-    raidCurrencyInfo.normalCurrencyInfo = private.currencyInfo[raidCurrencyInfo.normalCurrencyId]
-    raidCurrencyInfo.heroicCurrencyInfo = private.currencyInfo[raidCurrencyInfo.heroicCurrencyId]
-    raidCurrencyInfo.mythicCurrencyInfo = private.currencyInfo[raidCurrencyInfo.mythicCurrencyId]
-
-    return raidCurrencyInfo
+    return private.raidCurrencyInfo
 end
 
 -- Return the Upgrade info

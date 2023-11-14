@@ -26,6 +26,7 @@
 -- ----------------------------------------------------------------------------
 ---@class FlightstoneUpgradeData
 ---@field name string
+---@field shortName string
 ---@field color ColorMixin
 ---@field icon fileID|integer
 ---@field itemId integer?
@@ -88,22 +89,10 @@
 ---@field mythic integer
 
 ---@class RaidCurrencyInfo
----@field lfrCurrencyId integer
----@field lfrColor ColorMixin
----@field lfrCurrencyName string
----@field lfrCurrencyInfo CurrencyInfo?
----@field normalCurrencyId integer
----@field normalColor ColorMixin
----@field normalCurrencyName string
----@field normalCurrencyInfo CurrencyInfo?
----@field heroicCurrencyId integer
----@field heroicColor ColorMixin
----@field heroicCurrencyName string
----@field heroicCurrencyInfo CurrencyInfo?
----@field mythicCurrencyId integer
----@field mythicColor ColorMixin
----@field mythicCurrencyName string
----@field mythicCurrencyInfo CurrencyInfo?
+---@field lfrCurrency FlightstoneUpgradeData
+---@field normalCurrency FlightstoneUpgradeData
+---@field heroicCurrency FlightstoneUpgradeData
+---@field mythicCurrency FlightstoneUpgradeData
 
 
 -- ----------------------------------------------------------------------------

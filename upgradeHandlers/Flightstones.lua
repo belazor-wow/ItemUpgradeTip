@@ -36,6 +36,7 @@ private.Preferences.DisabledIntegrations.Flightstones = {
 local flightstoneUpgradeData = {
     ["flightstones"] = {
         name = L["FLIGHTSTONES"],
+        shortName = L["FLIGHTSTONES"],
         color = WHITE_FONT_COLOR,
         icon = 5172976,
         itemId = nil,
@@ -44,6 +45,7 @@ local flightstoneUpgradeData = {
 
     ["whelpCrests"] = {
         name = L["WHELP_CRESTS"],
+        shortName = L["WHELP_CRESTS_SHORT"],
         color = UNCOMMON_GREEN_COLOR,
         icon = 5309872,
         itemId = nil,
@@ -52,6 +54,7 @@ local flightstoneUpgradeData = {
 
     ["drakeCrests"] = {
         name = L["DRAKE_CRESTS"],
+        shortName = L["DRAKE_CRESTS_SHORT"],
         color = RARE_BLUE_COLOR,
         icon = 5309870,
         itemId = nil,
@@ -60,6 +63,7 @@ local flightstoneUpgradeData = {
 
     ["wyrmCrests"] = {
         name = L["WYRM_CRESTS"],
+        shortName = L["WYRM_CRESTS_SHORT"],
         color = EPIC_PURPLE_COLOR,
         icon = 5309874,
         itemId = nil,
@@ -68,6 +72,7 @@ local flightstoneUpgradeData = {
 
     ["aspectCrests"] = {
         name = L["ASPECT_CRESTS"],
+        shortName = L["ASPECT_CRESTS_SHORT"],
         color = LEGENDARY_ORANGE_COLOR,
         icon = 5309868,
         itemId = nil,
@@ -116,24 +121,16 @@ private.raidInfo = {
 ---@type RaidCurrencyInfo
 private.raidCurrencyInfo = {
     -- LFR
-    lfrCurrencyId = private.currencyIds.whelpCrest,
-    lfrColor = UNCOMMON_GREEN_COLOR,
-    lfrCurrencyName = L["WHELP_CRESTS_SHORT"],
+    lfrCurrency = flightstoneUpgradeData["whelpCrests"],
 
     -- Normal
-    normalCurrencyId = private.currencyIds.drakeCrest,
-    normalColor = RARE_BLUE_COLOR,
-    normalCurrencyName = L["DRAKE_CRESTS_SHORT"],
+    normalCurrency = flightstoneUpgradeData["drakeCrests"],
 
     -- Heroic
-    heroicCurrencyId = private.currencyIds.wyrmCrest,
-    heroicColor = EPIC_PURPLE_COLOR,
-    heroicCurrencyName = L["WYRM_CRESTS_SHORT"],
+    heroicCurrency = flightstoneUpgradeData["wyrmCrests"],
 
     -- Mythic
-    mythicCurrencyId = private.currencyIds.aspectCrest,
-    mythicColor = LEGENDARY_ORANGE_COLOR,
-    mythicCurrencyName = L["ASPECT_CRESTS_SHORT"],
+    mythicCurrency = flightstoneUpgradeData["aspectCrests"],
 }
 
 ---@type Array<UpgradeTrackInfo>
