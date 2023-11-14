@@ -63,7 +63,7 @@ local itemExtendedCosts = {
     [7697] = 2375,
 }
 
----@type { [string]: number }
+---@type Dictionary<integer>
 local itemUpgradeCosts = {
 
     -- InventoryTypeSlotMask 1048738
@@ -99,7 +99,7 @@ local itemUpgradeCosts = {
 }
 
 -- Override costs for Intellect items
----@type { [string]: number }
+---@type Dictionary<integer>
 local itemUpgradeCostOverrides = {
     -- InventoryTypeSlotMask 131072
     ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7697],

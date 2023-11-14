@@ -7,7 +7,7 @@ local private = select(2, ...) ---@class PrivateNamespace
 ---@class private.currencyInfo : Array<CurrencyInfo>
 private.currencyInfo = {}
 
----@class private.currencyIds : { [string]: number }
+---@class private.currencyIds : Dictionary<integer>
 private.currencyIds = {}
 
 ---@class private.currencyIndexes : Array<boolean>
