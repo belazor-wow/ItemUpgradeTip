@@ -9,6 +9,19 @@
 
 
 -- ----------------------------------------------------------------------------
+-- Keystone Info
+-- ----------------------------------------------------------------------------
+---@class KeystoneInfo
+---@field itemId integer
+---@field instanceId integer
+---@field keyLevel integer
+---@field affix1 integer
+---@field affix2 integer
+---@field affix3 integer
+---@field affix4 integer
+
+
+-- ----------------------------------------------------------------------------
 -- Flightstone Upgrade Data
 -- ----------------------------------------------------------------------------
 ---@class FlightstoneUpgradeData
