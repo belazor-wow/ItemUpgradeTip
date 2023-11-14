@@ -26,14 +26,7 @@ end
 -- Return the Mythic+ info
 ---@return Array<MythicPlusInfo>
 function ItemUpgradeTip:GetMythicPlusInfo()
-    local mythicPlusInfo = private.mythicPlusInfo
-
-    for index, mPlusKey in ipairs(private.mythicPlusInfo) do
-        -- Lookup cached currency info
-        mythicPlusInfo[index]["currencyInfo"] = private.currencyInfo[mPlusKey.currencyId]
-    end
-
-    return mythicPlusInfo
+    return private.mythicPlusInfo
 end
 
 -- Return the Raid info
@@ -45,33 +38,26 @@ end
 -- Return the Raid currency info
 ---@return RaidCurrencyInfo
 function ItemUpgradeTip:GetRaidCurrencyInfo()
-    local raidCurrencyInfo = private.raidCurrencyInfo
-
-    raidCurrencyInfo.lfrCurrencyInfo = private.currencyInfo[raidCurrencyInfo.lfrCurrencyId]
-    raidCurrencyInfo.normalCurrencyInfo = private.currencyInfo[raidCurrencyInfo.normalCurrencyId]
-    raidCurrencyInfo.heroicCurrencyInfo = private.currencyInfo[raidCurrencyInfo.heroicCurrencyId]
-    raidCurrencyInfo.mythicCurrencyInfo = private.currencyInfo[raidCurrencyInfo.mythicCurrencyId]
-
-    return raidCurrencyInfo
+    return private.raidCurrencyInfo
 end
 
 -- Return the Upgrade info
 ---@return Array<UpgradeTrackInfo>
 function ItemUpgradeTip:GetupgradeTrackInfo()
-    local upgradeTrackInfo = private.upgradeTrackInfo
-
-    for index, upgradeTrack in ipairs(private.upgradeTrackInfo) do
-        -- Lookup cached currency info
-        upgradeTrackInfo[index]["currencyInfo"] = private.currencyInfo[upgradeTrack.currencyId]
-    end
-
-    return upgradeTrackInfo
+    return private.upgradeTrackInfo
 end
 
 -- Return the Crafting info
 ---@return Array<CraftingInfo>
 function ItemUpgradeTip:GetCraftingInfo()
     return private.craftingInfo
+end
+
+-- Return the Currency info from cache
+---@param currencyId integer
+---@return CurrencyInfo
+function ItemUpgradeTip:GetCurrencyInfo(currencyId)
+    return private.currencyInfo[currencyId]
 end
 
 -- Core initialisation

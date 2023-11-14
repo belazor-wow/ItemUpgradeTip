@@ -63,22 +63,22 @@ function ItemUpgradeTipRaidDataProviderMixin:Refresh()
         table.insert(results, bossData)
     end
 
-    local lfrIcon = raidCurrencyInfo.lfrCurrencyInfo.iconFileID and CreateTextureMarkup(raidCurrencyInfo.lfrCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local normalIcon = raidCurrencyInfo.normalCurrencyInfo.iconFileID and CreateTextureMarkup(raidCurrencyInfo.normalCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local heroicIcon = raidCurrencyInfo.heroicCurrencyInfo.iconFileID and CreateTextureMarkup(raidCurrencyInfo.heroicCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local mythicIcon = raidCurrencyInfo.mythicCurrencyInfo.iconFileID and CreateTextureMarkup(raidCurrencyInfo.mythicCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local lfrIcon = raidCurrencyInfo.lfrCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.lfrCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local normalIcon = raidCurrencyInfo.normalCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.normalCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local heroicIcon = raidCurrencyInfo.heroicCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.heroicCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local mythicIcon = raidCurrencyInfo.mythicCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.mythicCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
     local raidCurrencyData = {
         boss = _G["ITEMUPGRADETIP_L_CREST_TYPE"],
-        lfrTier = lfrIcon .. " " .. raidCurrencyInfo.lfrColor:WrapTextInColorCode(raidCurrencyInfo.lfrCurrencyName),
-        normalTier = normalIcon .. " " .. raidCurrencyInfo.normalColor:WrapTextInColorCode(raidCurrencyInfo.normalCurrencyName),
-        heroicTier = heroicIcon .. " " .. raidCurrencyInfo.heroicColor:WrapTextInColorCode(raidCurrencyInfo.heroicCurrencyName),
-        mythicTier = mythicIcon .. " " .. raidCurrencyInfo.mythicColor:WrapTextInColorCode(raidCurrencyInfo.mythicCurrencyName),
+        lfrTier = lfrIcon .. " " .. raidCurrencyInfo.lfrCurrency.color:WrapTextInColorCode(raidCurrencyInfo.lfrCurrency.shortName),
+        normalTier = normalIcon .. " " .. raidCurrencyInfo.normalCurrency.color:WrapTextInColorCode(raidCurrencyInfo.normalCurrency.shortName),
+        heroicTier = heroicIcon .. " " .. raidCurrencyInfo.heroicCurrency.color:WrapTextInColorCode(raidCurrencyInfo.heroicCurrency.shortName),
+        mythicTier = mythicIcon .. " " .. raidCurrencyInfo.mythicCurrency.color:WrapTextInColorCode(raidCurrencyInfo.mythicCurrency.shortName),
 
-        lfrTierCurrencyId = raidCurrencyInfo.lfrCurrencyId,
-        normalTierCurrencyId = raidCurrencyInfo.normalCurrencyId,
-        heroicTierCurrencyId = raidCurrencyInfo.heroicCurrencyId,
-        mythicTierCurrencyId = raidCurrencyInfo.mythicCurrencyId,
+        lfrTierCurrencyId = raidCurrencyInfo.lfrCurrency.currencyId,
+        normalTierCurrencyId = raidCurrencyInfo.normalCurrency.currencyId,
+        heroicTierCurrencyId = raidCurrencyInfo.heroicCurrency.currencyId,
+        mythicTierCurrencyId = raidCurrencyInfo.mythicCurrency.currencyId,
     }
 
     table.insert(results, raidCurrencyData)

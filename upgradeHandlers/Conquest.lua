@@ -8,7 +8,7 @@ local private = select(2, ...) ---@class PrivateNamespace
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 -- Add currency information
-private.currencyIds.Honor = 1792
+private.currencyIds["Honor"] = 1792
 private.currencyIndexes[private.currencyIds.Honor] = true
 
 -- Add preferences
@@ -63,7 +63,7 @@ local itemExtendedCosts = {
     [7697] = 2375,
 }
 
----@type { [string]: number }
+---@type Dictionary<integer>
 local itemUpgradeCosts = {
 
     -- InventoryTypeSlotMask 1048738
@@ -99,7 +99,7 @@ local itemUpgradeCosts = {
 }
 
 -- Override costs for Intellect items
----@type { [string]: number }
+---@type Dictionary<integer>
 local itemUpgradeCostOverrides = {
     -- InventoryTypeSlotMask 131072
     ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7697],

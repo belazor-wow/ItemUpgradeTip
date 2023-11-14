@@ -4,19 +4,19 @@
 local AddOnFolderName = ... ---@type string
 local private = select(2, ...) ---@class PrivateNamespace
 
----@class private.currencyInfo : Array<CurrencyInfo>
+---@type Array<CurrencyInfo>
 private.currencyInfo = {}
 
----@class private.currencyIds : { [string]: number }
+---@type Dictionary<integer>
 private.currencyIds = {}
 
----@class private.currencyIndexes : Array<boolean>
+---@type Array<boolean>
 private.currencyIndexes = {}
 
----@class private.upgradeHandlers : { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
+---@type { [number]: fun(tooltip: GameTooltip, itemId: number, itemLink: string, currentUpgrade: number, maxUpgrade: number, bonusIds: table<number, number>): boolean }
 private.upgradeHandlers = {}
 
----@class private.mythicPlusInfo : Array<MythicPlusInfo>
+---@type Array<MythicPlusInfo>
 private.mythicPlusInfo = {}
 
 ---@type Localizations

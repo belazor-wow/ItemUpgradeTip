@@ -16,7 +16,7 @@ private.Preferences.DisabledIntegrations.Anima = {
     width = "double",
 }
 
-private.currencyIds.Anima = 1813
+private.currencyIds["Anima"] = 1813
 private.currencyIndexes[private.currencyIds.Anima] = true
 
 ---@type Array<BonusData>

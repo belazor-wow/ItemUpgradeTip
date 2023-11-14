@@ -8,19 +8,19 @@ local private = select(2, ...) ---@class PrivateNamespace
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 -- Add currency information
-private.currencyIds.Flightstones = 2245
+private.currencyIds["Flightstones"] = 2245
 private.currencyIndexes[private.currencyIds.Flightstones] = true
 
-private.currencyIds.whelpCrest = 2706
+private.currencyIds["whelpCrest"] = 2706
 private.currencyIndexes[private.currencyIds.whelpCrest] = true
 
-private.currencyIds.drakeCrest = 2707
+private.currencyIds["drakeCrest"] = 2707
 private.currencyIndexes[private.currencyIds.drakeCrest] = true
 
-private.currencyIds.wyrmCrest = 2708
+private.currencyIds["wyrmCrest"] = 2708
 private.currencyIndexes[private.currencyIds.wyrmCrest] = true
 
-private.currencyIds.aspectCrest = 2709
+private.currencyIds["aspectCrest"] = 2709
 private.currencyIndexes[private.currencyIds.aspectCrest] = true
 
 -- Add preferences
@@ -32,27 +32,75 @@ private.Preferences.DisabledIntegrations.Flightstones = {
     width = "double",
 }
 
----@class private.mythicPlusInfo : Array<MythicPlusInfo>
+---@type Dictionary<FlightstoneUpgradeData>
+local flightstoneUpgradeData = {
+    ["flightstones"] = {
+        name = L["FLIGHTSTONES"],
+        shortName = L["FLIGHTSTONES"],
+        color = WHITE_FONT_COLOR,
+        icon = 5172976,
+        itemId = nil,
+        currencyId = private.currencyIds.Flightstones
+    },
+
+    ["whelpCrests"] = {
+        name = L["WHELP_CRESTS"],
+        shortName = L["WHELP_CRESTS_SHORT"],
+        color = UNCOMMON_GREEN_COLOR,
+        icon = 5309872,
+        itemId = nil,
+        currencyId = private.currencyIds.whelpCrest
+    },
+
+    ["drakeCrests"] = {
+        name = L["DRAKE_CRESTS"],
+        shortName = L["DRAKE_CRESTS_SHORT"],
+        color = RARE_BLUE_COLOR,
+        icon = 5309870,
+        itemId = nil,
+        currencyId = private.currencyIds.drakeCrest
+    },
+
+    ["wyrmCrests"] = {
+        name = L["WYRM_CRESTS"],
+        shortName = L["WYRM_CRESTS_SHORT"],
+        color = EPIC_PURPLE_COLOR,
+        icon = 5309874,
+        itemId = nil,
+        currencyId = private.currencyIds.wyrmCrest
+    },
+
+    ["aspectCrests"] = {
+        name = L["ASPECT_CRESTS"],
+        shortName = L["ASPECT_CRESTS_SHORT"],
+        color = LEGENDARY_ORANGE_COLOR,
+        icon = 5309868,
+        itemId = nil,
+        currencyId = private.currencyIds.aspectCrest
+    },
+}
+
+---@type Array<MythicPlusInfo>
 private.mythicPlusInfo = {
-    {keyLevel = 2, lootDrops = 441, vaultReward = 454, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
-    {keyLevel = 3, lootDrops = 444, vaultReward = 457, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
-    {keyLevel = 4, lootDrops = 444, vaultReward = 460, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
-    {keyLevel = 5, lootDrops = 447, vaultReward = 460, currencyId = private.currencyIds.whelpCrest, color = UNCOMMON_GREEN_COLOR},
-    {keyLevel = 6, lootDrops = 447, vaultReward = 463, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
-    {keyLevel = 7, lootDrops = 450, vaultReward = 463, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
-    {keyLevel = 8, lootDrops = 450, vaultReward = 467, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
-    {keyLevel = 9, lootDrops = 454, vaultReward = 467, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
-    {keyLevel = 10, lootDrops = 454, vaultReward = 470, currencyId = private.currencyIds.drakeCrest, color = RARE_BLUE_COLOR},
-    {keyLevel = 11, lootDrops = 457, vaultReward = 470, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
-    {keyLevel = 12, lootDrops = 457, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
-    {keyLevel = 13, lootDrops = 460, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
-    {keyLevel = 14, lootDrops = 460, vaultReward = 473, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
-    {keyLevel = 15, lootDrops = 463, vaultReward = 476, currencyId = private.currencyIds.wyrmCrest, color = EPIC_PURPLE_COLOR},
-    {keyLevel = 16, lootDrops = 463, vaultReward = 476, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
-    {keyLevel = 17, lootDrops = 467, vaultReward = 476, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
-    {keyLevel = 18, lootDrops = 467, vaultReward = 480, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
-    {keyLevel = 19, lootDrops = 470, vaultReward = 480, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
-    {keyLevel = "20+", lootDrops = 470, vaultReward = 483, currencyId = private.currencyIds.aspectCrest, color = LEGENDARY_ORANGE_COLOR},
+    {keyLevel = 2, lootDrops = 441, vaultReward = 454, currency = flightstoneUpgradeData["whelpCrests"]},
+    {keyLevel = 3, lootDrops = 444, vaultReward = 457, currency = flightstoneUpgradeData["whelpCrests"]},
+    {keyLevel = 4, lootDrops = 444, vaultReward = 460, currency = flightstoneUpgradeData["whelpCrests"]},
+    {keyLevel = 5, lootDrops = 447, vaultReward = 460, currency = flightstoneUpgradeData["whelpCrests"]},
+    {keyLevel = 6, lootDrops = 447, vaultReward = 463, currency = flightstoneUpgradeData["drakeCrests"]},
+    {keyLevel = 7, lootDrops = 450, vaultReward = 463, currency = flightstoneUpgradeData["drakeCrests"]},
+    {keyLevel = 8, lootDrops = 450, vaultReward = 467, currency = flightstoneUpgradeData["drakeCrests"]},
+    {keyLevel = 9, lootDrops = 454, vaultReward = 467, currency = flightstoneUpgradeData["drakeCrests"]},
+    {keyLevel = 10, lootDrops = 454, vaultReward = 470, currency = flightstoneUpgradeData["drakeCrests"]},
+    {keyLevel = 11, lootDrops = 457, vaultReward = 470, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 12, lootDrops = 457, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 13, lootDrops = 460, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 14, lootDrops = 460, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 15, lootDrops = 463, vaultReward = 476, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 16, lootDrops = 463, vaultReward = 476, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 17, lootDrops = 467, vaultReward = 476, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 18, lootDrops = 467, vaultReward = 480, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 19, lootDrops = 470, vaultReward = 480, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = "20+", lootDrops = 470, vaultReward = 483, currency = flightstoneUpgradeData["aspectCrests"]},
 }
 
 ---@type Array<RaidInfo>
@@ -73,24 +121,16 @@ private.raidInfo = {
 ---@type RaidCurrencyInfo
 private.raidCurrencyInfo = {
     -- LFR
-    lfrCurrencyId = private.currencyIds.whelpCrest,
-    lfrColor = UNCOMMON_GREEN_COLOR,
-    lfrCurrencyName = L["WHELP_CRESTS_SHORT"],
+    lfrCurrency = flightstoneUpgradeData["whelpCrests"],
 
     -- Normal
-    normalCurrencyId = private.currencyIds.drakeCrest,
-    normalColor = RARE_BLUE_COLOR,
-    normalCurrencyName = L["DRAKE_CRESTS_SHORT"],
+    normalCurrency = flightstoneUpgradeData["drakeCrests"],
 
     -- Heroic
-    heroicCurrencyId = private.currencyIds.wyrmCrest,
-    heroicColor = EPIC_PURPLE_COLOR,
-    heroicCurrencyName = L["WYRM_CRESTS_SHORT"],
+    heroicCurrency = flightstoneUpgradeData["wyrmCrests"],
 
     -- Mythic
-    mythicCurrencyId = private.currencyIds.aspectCrest,
-    mythicColor = LEGENDARY_ORANGE_COLOR,
-    mythicCurrencyName = L["ASPECT_CRESTS_SHORT"],
+    mythicCurrency = flightstoneUpgradeData["aspectCrests"],
 }
 
 ---@type Array<UpgradeTrackInfo>
@@ -98,122 +138,92 @@ private.upgradeTrackInfo = {
     {
         itemLevel = 441,
         upgrade1 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.whelpCrest,
-        currencyName = L["WHELP_CRESTS_SHORT"],
-        color = UNCOMMON_GREEN_COLOR
+        currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 444,
         upgrade1 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.whelpCrest,
-        currencyName = L["WHELP_CRESTS_SHORT"],
-        color = UNCOMMON_GREEN_COLOR
+        currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 447,
         upgrade1 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.whelpCrest,
-        currencyName = L["WHELP_CRESTS_SHORT"], color = UNCOMMON_GREEN_COLOR
+        currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 450,
         upgrade1 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.whelpCrest,
-        currencyName = L["WHELP_CRESTS_SHORT"],
-        color = UNCOMMON_GREEN_COLOR
+        currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 454,
         upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.drakeCrest,
-        currencyName = L["DRAKE_CRESTS_SHORT"],
-        color = RARE_BLUE_COLOR
+        currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
         itemLevel = 457,
         upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.drakeCrest,
-        currencyName = L["DRAKE_CRESTS_SHORT"],
-        color = RARE_BLUE_COLOR},
+        currency = flightstoneUpgradeData["drakeCrests"]
+    },
     {
         itemLevel = 460,
         upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.drakeCrest,
-        currencyName = L["DRAKE_CRESTS_SHORT"],
-        color = RARE_BLUE_COLOR
+        currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
         itemLevel = 463,
         upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currencyId = private.currencyIds.drakeCrest,
-        currencyName = L["DRAKE_CRESTS_SHORT"],
-        color = RARE_BLUE_COLOR
+        currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
         itemLevel = 467,
         upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
-        currencyId = private.currencyIds.wyrmCrest,
-        currencyName = L["WYRM_CRESTS_SHORT"],
-        color = EPIC_PURPLE_COLOR
+        currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
         itemLevel = 470,
         upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
-        currencyId = private.currencyIds.wyrmCrest,
-        currencyName = L["WYRM_CRESTS_SHORT"],
-        color = EPIC_PURPLE_COLOR
+        currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
         itemLevel = 473,
         upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
-        currencyId = private.currencyIds.wyrmCrest,
-        currencyName = L["WYRM_CRESTS_SHORT"],
-        color = EPIC_PURPLE_COLOR
+        currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
         itemLevel = 476,
         upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
-        currencyId = private.currencyIds.wyrmCrest,
-        currencyName = L["WYRM_CRESTS_SHORT"],
-        color = EPIC_PURPLE_COLOR
+        currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
         itemLevel = 480,
         upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 4},
-        currencyId = private.currencyIds.aspectCrest,
-        currencyName = L["ASPECT_CRESTS_SHORT"],
-        color = LEGENDARY_ORANGE_COLOR
+        currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
         itemLevel = 483,
         upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 4},
-        currencyId = private.currencyIds.aspectCrest,
-        currencyName = L["ASPECT_CRESTS_SHORT"],
-        color = LEGENDARY_ORANGE_COLOR
+        currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
         itemLevel = 486,
         upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 4},
-        currencyId = private.currencyIds.aspectCrest,
-        currencyName = L["ASPECT_CRESTS_SHORT"],
-        color = LEGENDARY_ORANGE_COLOR
+        currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
         itemLevel = 489,
         upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 4},
-        currencyId = private.currencyIds.aspectCrest,
-        currencyName = L["ASPECT_CRESTS_SHORT"],
-        color = LEGENDARY_ORANGE_COLOR
+        currency = flightstoneUpgradeData["aspectCrests"]
     },
 }
 
@@ -423,54 +433,6 @@ local itemExtendedCostLookup = {
     },
 }
 
----@type Array<FlightstoneUpgradeData>
-local flightstoneUpgradeData = {
-    {
-        id = "flightstones",
-        name = L["FLIGHTSTONES"],
-        color = WHITE_FONT_COLOR,
-        icon = 5172976,
-        itemId = nil,
-        currencyId = private.currencyIds.Flightstones
-    },
-
-    {
-        id = "whelpCrests",
-        name = L["WHELP_CRESTS"],
-        color = UNCOMMON_GREEN_COLOR,
-        icon = 5309872,
-        itemId = nil,
-        currencyId = private.currencyIds.whelpCrest
-    },
-
-    {
-        id = "drakeCrests",
-        name = L["DRAKE_CRESTS"],
-        color = RARE_BLUE_COLOR,
-        icon = 5309870,
-        itemId = nil,
-        currencyId = private.currencyIds.drakeCrest
-    },
-
-    {
-        id = "wyrmCrests",
-        name = L["WYRM_CRESTS"],
-        color = EPIC_PURPLE_COLOR,
-        icon = 5309874,
-        itemId = nil,
-        currencyId = private.currencyIds.wyrmCrest
-    },
-
-    {
-        id = "aspectCrests",
-        name = L["ASPECT_CRESTS"],
-        color = LEGENDARY_ORANGE_COLOR,
-        icon = 5309868,
-        itemId = nil,
-        currencyId = private.currencyIds.aspectCrest
-    },
-}
-
 ---@type Dictionary<integer>
 local inventoryTypeSlotMasks = {
 
@@ -576,11 +538,11 @@ local function ParseUpgradeCost(upgradeCostData)
     local lines = {}
     local compactCostLine = {}
 
-    for _, upgradeItem in ipairs(flightstoneUpgradeData) do
-        if upgradeCostData[upgradeItem.id] ~= nil and upgradeCostData[upgradeItem.id] > 0 then
+    for upgradeId, upgradeItem in pairs(flightstoneUpgradeData) do
+        if upgradeCostData[upgradeId] ~= nil and upgradeCostData[upgradeId] > 0 then
             local icon = upgradeItem.icon and CreateTextureMarkup(upgradeItem.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
             local costLine = ""
-            local upgradeCost = upgradeCostData[upgradeItem.id];
+            local upgradeCost = upgradeCostData[upgradeId];
 
             if upgradeItem.currencyId ~= nil then
                 -- Check currency against cap
