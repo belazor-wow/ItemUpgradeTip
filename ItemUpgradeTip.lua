@@ -92,7 +92,7 @@ function ItemUpgradeTip:OnEnable()
         private.currencyInfo[currencyId] = C_CurrencyInfo.GetCurrencyInfo(currencyId)
     end
 
-    self:RegisterEvent("CURRENCY_DISPLAY_UPDATE")    
+    self:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
 end
 
 -- Not super useful just now, but might be in the future
@@ -147,10 +147,25 @@ function ItemUpgradeTip:ChatCommand(input)
     end
 end
 
+function ItemUpgradeTip_OnAddonCompartmentEnter(_, menuButtonFrame)
+    GameTooltip:SetOwner(menuButtonFrame, "ANCHOR_NONE");
+    GameTooltip:SetPoint("TOPRIGHT", menuButtonFrame, "BOTTOMRIGHT", 0, 0);
+    GameTooltip:ClearLines();
+    GameTooltip:AddDoubleLine(AddOnFolderName, ItemUpgradeTip.Version);
+    GameTooltip_AddBlankLineToTooltip(GameTooltip);
+    GameTooltip:AddLine(L["LEFT_CLICK"] .. " " .. L["LEFT_CLICK_DESC"]:SetColorAddonBlue());
+    GameTooltip:AddLine(L["RIGHT_CLICK"] .. " "  .. L["RIGHT_CLICK_DESC"]:SetColorAddonBlue());
+    GameTooltip:Show();
+end
+
+function ItemUpgradeTip_OnAddonCompartmentLeave(addonName, button)
+    GameTooltip:Hide();
+end
+
 function ItemUpgradeTip_OnAddonCompartmentClick(addonName, button)
     if (button == "LeftButton") then
 		ItemUpgradeTip:ToggleView()
 	elseif (button == "RightButton") then
-	InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
+		InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
 	end
 end

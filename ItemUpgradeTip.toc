@@ -2,6 +2,8 @@
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
 ## OptionalDeps: _DebugLog
+## AddonCompartmentFuncOnEnter: ItemUpgradeTip_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: ItemUpgradeTip_OnAddonCompartmentLeave
 ## AddonCompartmentFunc: ItemUpgradeTip_OnAddonCompartmentClick
 ## IconTexture: 463447
 ## SavedVariables: ItemUpgradeTipDB
