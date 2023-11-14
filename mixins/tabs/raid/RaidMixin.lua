@@ -63,15 +63,10 @@ function ItemUpgradeTipRaidDataProviderMixin:Refresh()
         table.insert(results, bossData)
     end
 
-    local lfrCurrencyInfo = ItemUpgradeTip:GetCurrencyInfo(raidCurrencyInfo.lfrCurrency.currencyId)
-    local normalCurrencyInfo = ItemUpgradeTip:GetCurrencyInfo(raidCurrencyInfo.normalCurrency.currencyId)
-    local heroicCurrencyInfo = ItemUpgradeTip:GetCurrencyInfo(raidCurrencyInfo.heroicCurrency.currencyId)
-    local mythicCurrencyInfo = ItemUpgradeTip:GetCurrencyInfo(raidCurrencyInfo.mythicCurrency.currencyId)
-
-    local lfrIcon = lfrCurrencyInfo.iconFileID and CreateTextureMarkup(lfrCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local normalIcon = normalCurrencyInfo.iconFileID and CreateTextureMarkup(normalCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local heroicIcon = heroicCurrencyInfo.iconFileID and CreateTextureMarkup(heroicCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-    local mythicIcon = mythicCurrencyInfo.iconFileID and CreateTextureMarkup(mythicCurrencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local lfrIcon = raidCurrencyInfo.lfrCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.lfrCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local normalIcon = raidCurrencyInfo.normalCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.normalCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local heroicIcon = raidCurrencyInfo.heroicCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.heroicCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+    local mythicIcon = raidCurrencyInfo.mythicCurrency.icon and CreateTextureMarkup(raidCurrencyInfo.mythicCurrency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
     local raidCurrencyData = {
         boss = _G["ITEMUPGRADETIP_L_CREST_TYPE"],
