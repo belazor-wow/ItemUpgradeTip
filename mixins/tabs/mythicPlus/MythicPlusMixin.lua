@@ -43,16 +43,17 @@ function ItemUpgradeTipMythicPlusDataProviderMixin:Refresh()
     local results = {}
 
     for index, mPlusKey in ipairs(ItemUpgradeTip:GetMythicPlusInfo()) do
-        local icon = mPlusKey.currencyInfo.iconFileID and CreateTextureMarkup(mPlusKey.currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+        local currencyInfo = ItemUpgradeTip:GetCurrencyInfo(mPlusKey.currency.currencyId)
+        local icon = currencyInfo.iconFileID and CreateTextureMarkup(currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
         local keyRange = {
             keyLevel = mPlusKey.keyLevel,
             lootDrops = mPlusKey.lootDrops,
             vaultReward = mPlusKey.vaultReward,
-            crestReward = icon .. " " .. mPlusKey.color:WrapTextInColorCode(mPlusKey.currencyInfo.name),
+            crestReward = icon .. " " .. mPlusKey.currency.color:WrapTextInColorCode(currencyInfo.name),
             index = index,
             selected = self:IsSelected(index),
-            crestRewardCurrencyId = mPlusKey.currencyId
+            crestRewardCurrencyId = mPlusKey.currency.currencyId
         }
 
         table.insert(results, keyRange)

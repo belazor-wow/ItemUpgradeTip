@@ -25,7 +25,6 @@
 -- Flightstone Upgrade Data
 -- ----------------------------------------------------------------------------
 ---@class FlightstoneUpgradeData
----@field id string
 ---@field name string
 ---@field color ColorMixin
 ---@field icon fileID|integer
@@ -75,9 +74,7 @@
 ---@field keyLevel integer|string
 ---@field lootDrops integer
 ---@field vaultReward integer
----@field currencyId integer
----@field color ColorMixin
----@field currencyInfo CurrencyInfo?
+---@field currency FlightstoneUpgradeData
 
 
 -- ----------------------------------------------------------------------------
