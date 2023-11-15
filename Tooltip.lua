@@ -71,10 +71,12 @@ function private.HandleKeystone(tooltip, itemLink)
 
     for _, mPlusKey in ipairs(ItemUpgradeTip:GetMythicPlusInfo()) do
         if keyLevel == mPlusKey.keyLevel then
-            local icon = mPlusKey.currencyInfo.iconFileID and CreateTextureMarkup(mPlusKey.currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+            local icon = mPlusKey.currency.icon and CreateTextureMarkup(mPlusKey.currency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
             GameTooltip_AddBlankLineToTooltip(tooltip);
-            tooltip:AddDoubleLine(L["CREST_TYPE"], icon .. " " .. mPlusKey.color:WrapTextInColorCode(mPlusKey.currencyInfo.name))
+            tooltip:AddDoubleLine(L["LOOT_DROPS"], mPlusKey.lootDrops)
+            tooltip:AddDoubleLine(L["VAULT_REWARD"], mPlusKey.vaultReward)
+            tooltip:AddDoubleLine(L["CREST_TYPE"], icon .. " " .. mPlusKey.currency.color:WrapTextInColorCode(mPlusKey.currency.name))
         end
     end
 end
