@@ -30,7 +30,7 @@ end
 -- ----------------------------------------------------------------------------
 -- Preferences
 -- ----------------------------------------------------------------------------
-local metaVersion = GetAddOnMetadata(AddOnFolderName, "Version")
+local metaVersion = C_AddOns.GetAddOnMetadata(AddOnFolderName, "Version")
 local isDevelopmentVersion = metaVersion == "@project-version@"
 
 local buildVersion = isDevelopmentVersion and "Development Version" or metaVersion

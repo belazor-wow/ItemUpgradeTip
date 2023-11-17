@@ -10,7 +10,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 ---@class ItemUpgradeTip: AceAddon, AceConsole-3.0, AceEvent-3.0
 ItemUpgradeTip = LibStub("AceAddon-3.0"):NewAddon(AddOnFolderName, "AceConsole-3.0", "AceEvent-3.0")
 
-ItemUpgradeTip.Version = GetAddOnMetadata(AddOnFolderName, "Version");
+ItemUpgradeTip.Version = C_AddOns.GetAddOnMetadata(AddOnFolderName, "Version");
 ItemUpgradeTip.L = L;
 
 -- Toggle the upgrade pane
