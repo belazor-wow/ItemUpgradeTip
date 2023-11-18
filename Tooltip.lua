@@ -34,20 +34,17 @@ function private.HandleKeystone(tooltip, itemLink)
             end
         end
 
-        local instanceId, keyLevel = strsplit(':', raw)
-        if not instanceId or not keyLevel then
-            return
-        end
+        -- itemSplit[15] is where the mythicPlusMapID is found, lookup with C_ChallengeMode.GetMapUIInfo(mythicPlusMapID)
 
-        return itemId, 0, itemSplit[15], 0, 0, 0, 0
+        return itemId, itemSplit[15], itemSplit[17], itemSplit[19] or 0, itemSplit[21] or 0, itemSplit[23] or 0
     end
 
     local itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = itemLink:match(KEYSTONE_LINK_PATTERN)
     if not itemId then
-        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = ParseItemLink(TIMEWORN_KEYSTONE_ITEM_PATTERN)
+        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 = ParseItemLink(TIMEWORN_KEYSTONE_ITEM_PATTERN)
     end
     if not itemId then
-        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = ParseItemLink(MYTHIC_KEYSTONE_ITEM_PATTERN)
+        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 = ParseItemLink(MYTHIC_KEYSTONE_ITEM_PATTERN)
     end
 
     if not itemId then
