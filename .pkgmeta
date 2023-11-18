@@ -39,5 +39,5 @@ ignore:
   - README.md
   - _MACOSX
   - .previews
-  - .tocBump.ps1
-  - .tocBump.sh
+  - tocBump.ps1
+  - tocBump.sh
