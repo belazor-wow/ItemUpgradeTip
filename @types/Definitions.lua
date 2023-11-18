@@ -117,4 +117,5 @@
 ---@field itemLevel integer
 ---@field itemId integer
 ---@field rank integer
+---@field iconPath string
 ---@field itemInfo table?

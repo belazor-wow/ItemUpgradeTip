@@ -36,14 +36,26 @@ function ItemUpgradeTipCraftingDataProviderMixin:Refresh()
     local UPGRADE_TIER_FORMAT_STRING = "%d/%d"
 
     for index, craftingInfo in ipairs(ItemUpgradeTip:GetCraftingInfo()) do
-        local crafting = {
-            itemLevel = craftingInfo.itemLevel,
-            rank = UPGRADE_TIER_FORMAT_STRING:format(craftingInfo.rank, 5),
-            index = index,
-            selected = self:IsSelected(index),
-            itemId = craftingInfo.itemId,
-            itemNamePrettyItemId = craftingInfo.itemId,
-        }
+        local crafting = {}
+        if craftingInfo.itemLevel > 0 then
+            local icon = craftingInfo.iconPath and CreateAtlasMarkupWithAtlasSize(craftingInfo.iconPath, 0, 0, nil, nil, nil, 0.66) or ""
+
+            crafting = {
+                itemLevel = craftingInfo.itemLevel,
+                rank = icon or UPGRADE_TIER_FORMAT_STRING:format(craftingInfo.rank, 5),
+                index = index,
+                selected = self:IsSelected(index),
+                itemId = craftingInfo.itemId,
+                itemNamePrettyItemId = craftingInfo.itemId,
+            }
+        else
+            crafting = {
+                itemLevel = "",
+                rank = "",
+                index = index,
+                selected = self:IsSelected(index),
+            }
+        end
 
         table.insert(results, crafting)
     end
