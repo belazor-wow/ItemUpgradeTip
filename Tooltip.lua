@@ -125,7 +125,8 @@ end
 ---@param tooltip GameTooltip
 ---@param tooltipData TooltipData
 function private.HandleTooltipSetItem(tooltip, tooltipData)
-    if tooltip ~= _G.GameTooltip then
+    if tooltip ~= _G.GameTooltip and tooltip ~= _G.ItemRefTooltip then
+    -- if tooltip.GetItem == nil then
         return
     end
 
