@@ -7,7 +7,7 @@ local CRAFTING_DATA_PROVIDER_LAYOUT = {
         headerParameters = { "itemLevel" },
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "itemLevel" },
-        width = 100,
+        width = 85,
     },
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
@@ -15,7 +15,7 @@ local CRAFTING_DATA_PROVIDER_LAYOUT = {
         headerParameters = { "rank" },
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "rank" },
-        width = 100,
+        width = 50,
     },
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",

@@ -7,7 +7,14 @@ local UPGRADE_DATA_PROVIDER_LAYOUT = {
         headerParameters = { "ilvl" },
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "ilvl" },
-        width = 100,
+        width = 85,
+    },
+    {
+        headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
+        headerText = _G["ITEMUPGRADETIP_L_UPGRADE_TRACK_ADVENTURER"],
+        headerParameters = { "adventurerTier" },
+        cellTemplate = "ItemUpgradeTipStringCellTemplate",
+        cellParameters = { "adventurerTier" },
     },
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
@@ -43,7 +50,7 @@ local UPGRADE_DATA_PROVIDER_LAYOUT = {
         headerParameters = { "crestType" },
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "crestType" },
-        width = 244
+        width = 150
     },
 }
 
@@ -57,8 +64,7 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
     local UPGRADE_TIER_FORMAT_STRING = "%d/%d"
 
     for index, upgradeTrack in ipairs(ItemUpgradeTip:GetupgradeTrackInfo()) do
-        local currencyInfo = ItemUpgradeTip:GetCurrencyInfo(upgradeTrack.currency.currencyId)
-        local icon = currencyInfo.iconFileID and CreateTextureMarkup(currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+        local icon = upgradeTrack.currency.icon and CreateTextureMarkup(upgradeTrack.currency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
         local rank1 = upgradeTrack.upgrade1.rank
         local rank2 = nil
@@ -73,7 +79,8 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
 
         local upgradeInfo = {
             ilvl = upgradeTrack.itemLevel,
-            crestType = icon .. " " .. upgradeTrack.currency.color:WrapTextInColorCode(currencyInfo.name),
+            crestType = icon .. " " .. upgradeTrack.currency.color:WrapTextInColorCode(upgradeTrack.currency.name),
+            adventurerTier = (rank1 == 2 and upgradeTierString1) or (rank2 == 2 and upgradeTierString2) or "",
             veteranTier = (rank1 == 3 and upgradeTierString1) or (rank2 == 3 and upgradeTierString2) or "",
             championTier = (rank1 == 4 and upgradeTierString1) or (rank2 == 4 and upgradeTierString2) or "",
             heroTier = (rank1 == 5 and upgradeTierString1) or (rank2 == 5 and upgradeTierString2) or "",

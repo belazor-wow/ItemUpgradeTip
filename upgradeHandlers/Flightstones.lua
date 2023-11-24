@@ -136,23 +136,47 @@ private.raidCurrencyInfo = {
 ---@type Array<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
+        itemLevel = 428,
+        upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8},
+        currency = flightstoneUpgradeData["flightstones"]
+    },
+    {
+        itemLevel = 431,
+        upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8},
+        currency = flightstoneUpgradeData["flightstones"]
+    },
+    {
+        itemLevel = 434,
+        upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8},
+        currency = flightstoneUpgradeData["flightstones"]
+    },
+    {
+        itemLevel = 437,
+        upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8},
+        currency = flightstoneUpgradeData["flightstones"]
+    },
+    {
         itemLevel = 441,
-        upgrade1 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
+        upgrade1 = {rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 444,
-        upgrade1 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
+        upgrade1 = {rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 447,
-        upgrade1 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
+        upgrade1 = {rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
         itemLevel = 450,
-        upgrade1 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
+        upgrade1 = {rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
