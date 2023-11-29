@@ -378,6 +378,7 @@ local itemExtendedCostTable = {
     [8250] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 140},
     [8251] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 90},
     [8252] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 175},
+    [8253] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 350},
     [8254] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 275},
 
     [8241] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 190},
@@ -519,11 +520,13 @@ local inventoryTypeSlotMaskOverrides = {
 local function GetItemUpgradeCosts(itemExtendedCosts, upgradeInfo)
     local itemExtendedCost = itemExtendedCosts[upgradeInfo.upgradeGroup];
     if itemExtendedCost == nil then
+        private.Debug(upgradeInfo.upgradeGroup, "did not have an entry in itemExtendedCosts")
         return nil
     end
 
     local upgradeCosts = itemExtendedCostTable[itemExtendedCost];
     if upgradeCosts == nil then
+        private.Debug(itemExtendedCost, "did not have an entry in itemExtendedCostTable")
         return nil
     end
 
