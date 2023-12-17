@@ -647,11 +647,63 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
         return
     end
 
-    local watermarkSlot = C_ItemUpgrade.GetHighWatermarkSlotForItem(itemLink);
+    local WeaponSetHighWatermarkSlots = {
+        Enum.ItemRedundancySlot.Twohand,
+        Enum.ItemRedundancySlot.OnehandWeapon,
+        Enum.ItemRedundancySlot.MainhandWeapon,
+        Enum.ItemRedundancySlot.Offhand,
+    };
+
     local characterHighWatermark, accountHighWatermark
-    if watermarkSlot then
-        -- This seems more accurate for Wands
-        characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(watermarkSlot)
+
+    local highWatermarkSlot = C_ItemUpgrade.GetHighWatermarkSlotForItem(itemLink);
+    if highWatermarkSlot then
+        if tContains(WeaponSetHighWatermarkSlots, highWatermarkSlot) then
+            local twoHandCharacterWatermark, twoHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Twohand)
+            local oneHandCharacterWatermark, oneHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.OnehandWeapon)
+            local mainHandCharacterWatermark, mainHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.MainhandWeapon)
+            local offHandCharacterWatermark, offHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Offhand)
+
+            local highestCharacterWatermarkForSet = 0
+            local highestAccountWatermarkForSet = 0
+
+            if twoHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = twoHandCharacterWatermark end
+            if twoHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = twoHandAccountWatermark end
+
+            if oneHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = oneHandCharacterWatermark end
+            if oneHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = oneHandAccountWatermark end
+
+            if mainHandCharacterWatermark  > highestCharacterWatermarkForSet and offHandCharacterWatermark > highestCharacterWatermarkForSet then
+                highestCharacterWatermarkForSet = min(mainHandCharacterWatermark, offHandCharacterWatermark)
+            end
+
+            if mainHandAccountWatermark  > highestAccountWatermarkForSet and offHandAccountWatermark > highestAccountWatermarkForSet then
+                highestAccountWatermarkForSet = min(mainHandAccountWatermark, offHandAccountWatermark)
+            end
+
+            characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
+
+            private.Debug("2H Character Watermark:", twoHandCharacterWatermark)
+            private.Debug("2H Account Watermark:", twoHandAccountWatermark)
+            private.Debug("1H Character Watermark:", oneHandCharacterWatermark)
+            private.Debug("1H Account Watermark:", oneHandAccountWatermark)
+            private.Debug("Mainhand Character Watermark:", mainHandCharacterWatermark)
+            private.Debug("Mainhand Account Watermark:", mainHandAccountWatermark)
+            private.Debug("Off-Hand Character Watermark:", offHandCharacterWatermark)
+            private.Debug("Off-Hand Account Watermark:", offHandAccountWatermark)
+
+            if highWatermarkSlot == Enum.ItemRedundancySlot.Twohand then
+                -- 2H weapons can receive a partial discount if player has upgraded 1H weapons
+                -- but I don't have info on what that partial discount looks like
+            end
+
+            -- all weapons benefit from the highest ilvl "set" of all weapon slots (set = one 2H, two 1H, or main + offhand)
+            characterHighWatermark = max(characterHighWatermark, highestCharacterWatermarkForSet)
+            accountHighWatermark = max(accountHighWatermark, highestAccountWatermarkForSet)
+        else
+            -- Regular discount specific to this HWM slot
+            characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
+        end
     else
         characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
     end
