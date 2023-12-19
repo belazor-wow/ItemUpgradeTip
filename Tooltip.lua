@@ -130,6 +130,15 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
         return
     end
 
+    if private.DB.profile.ModifierKey ~= "NONE" and (
+        (private.DB.profile.ModifierKey == "ALT" and not IsAltKeyDown())
+        or (private.DB.profile.ModifierKey == "CTRL" and not IsControlKeyDown())
+        or (private.DB.profile.ModifierKey == "SHIFT" and not IsShiftKeyDown())
+    )
+    then
+        return
+    end
+
     local _, itemLink = tooltip:GetItem()
     if not itemLink or type(itemLink) ~= "string" then
         return

@@ -45,6 +45,7 @@ local Preferences = {
     DefaultValues = {
         profile = {
             CompactTooltips = false,
+            ModifierKey = "NONE",
 
             DisabledIntegrations = {},
         },
@@ -77,6 +78,26 @@ local Preferences = {
                                 end,
                                 set = function(info, value)
                                     DB.CompactTooltips = value
+                                end,
+                            },
+
+                            modifierKey = {
+                                order = increment(),
+                                type = "select",
+                                name = L["MODIFIER_KEY"],
+                                desc = L["MODIFIER_KEY_DESC"],
+                                values = {
+                                    NONE = NONE_KEY,
+                                    ALT = ALT_KEY,
+                                    CTRL = CTRL_KEY,
+                                    SHIFT = SHIFT_KEY
+                                },
+                                width = "double",
+                                get = function()
+                                    return DB.ModifierKey
+                                end,
+                                set = function(info, value)
+                                    DB.ModifierKey = value
                                 end,
                             },
 
