@@ -60,13 +60,15 @@ function ItemUpgradeTip:GetCurrencyInfo(currencyId)
     return private.currencyInfo[currencyId]
 end
 
+local optionsCategory;
+
 -- Core initialisation
 function ItemUpgradeTip:OnInitialize()
     local DB = private.Preferences:InitializeDatabase()
 
     private.DB = DB
 
-    private.Preferences:SetupOptions()
+    optionsCategory = private.Preferences:SetupOptions()
 
     self:RegisterChatCommand("itemupgradetip", "ChatCommand")
     self:RegisterChatCommand("iut", "ChatCommand")
@@ -113,7 +115,8 @@ local SUBCOMMAND_FUNCS = {
         if settingsPanel:IsVisible() then
             settingsPanel:Hide()
         else
-            InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
+            Settings.OpenToCategory(optionsCategory)
+            --InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
         end
     end
 }
@@ -152,6 +155,7 @@ function ItemUpgradeTip_OnAddonCompartmentClick(addonName, button)
     if (button == "LeftButton") then
 		ItemUpgradeTip:ToggleView()
 	elseif (button == "RightButton") then
-		InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
+        Settings.OpenToCategory(optionsCategory)
+		--InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
 	end
 end
