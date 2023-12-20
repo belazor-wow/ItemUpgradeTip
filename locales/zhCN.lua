@@ -1,8 +1,11 @@
+-- ItemUpgradeTip Locale
+-- Please use the Localization App on CurseForge to update this
+-- https://legacy.curseforge.com/wow/addons/itemupgradetip/localization
+
 -- ----------------------------------------------------------------------------
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
 
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):NewLocale(AddOnFolderName, "zhCN", false)
@@ -11,69 +14,4 @@ if not L then
     return
 end
 
-L["ANIMA_UPGRADES"] = "心能升级"
-L["ASPECT_CRESTS"] = "守护巨龙的暗影烈焰纹章"
-L["ASPECT_CRESTS_SHORT"] = "守护巨龙"
-L["AUTHOR"] = "作者"
-L["BOSS"] = "首领"
-L["BOSS_X"] = "首领 #%s"
-L["BUG_REPORT_SUGGEST"] = "上报问题 / 功能建议"
-L["BUG_REPORT_SUGGEST_TOOLTIP"] = "在Github上报告问题及提出建议"
-L["COMPACT_TOOLTIPS"] = "精简提示"
-L["COMPACT_TOOLTIPS_DESC"] = "如果启用，兼容的鼠标提示将使用更简约的格式，而不是显示完整的信息。"
-L["CONQUEST_UPGRADES"] = "征服点数"
-L["CONTACT"] = "联络"
-L["COST_FOR_NEXT_LEVEL"] = "下个等级:"
-L["COST_TO_UPGRADE_TO_MAX"] = "升到满级:"
-L["CRAFTING"] = "制造"
-L["CRAFTING_TITLE"] = "ItemUpgradeTip - 制造"
-L["CREST_TYPE"] = "纹章种类"
-L["CURRENCY_NEEDED_FOR_MAX"] = "到满级所需货币:"
-L["CURRENCY_REMAINING_AFTER_UPGRADING"] = "升级后剩余货币:"
-L["DISABLED_INTEGRATIONS"] = "选择需要禁用的功能"
-L["DISABLED_INTEGRATIONS_DESC"] = "如果您希望禁用某些功能提示，可以通过选择以下选项来关闭提示。"
-L["DRAKE_CRESTS"] = "幼龙纹章"
-L["DRAKE_CRESTS_SHORT"] = "幼龙"
-L["FLIGHTSTONE_CREST_UPGRADES"] = "飞珑石/纹章-升级"
-L["FLIGHTSTONES"] = "飞珑石"
-L["GENERAL"] = "一般"
-L["HEIRLOOM_UPGRADES"] = "传家宝升级"
-L["HEROIC"] = "英雄"
-L["HONOR_UPGRADES"] = "荣誉点数"
-L["INFO"] = "信息"
-L["INFO_TITLE"] = "ItemUpgradeTip - 信息"
-L["ITEM_CAN_BE_UPGRADED_TO_MAX"] = "物品可以升级到满级！"
-L["ITEM_LEVEL"] = "物品等级"
-L["ITEM_UPGRADED_TO_MAX"] = "物品已升到最大等级！"
-L["KEY_LEVEL"] = "钥石等级"
-L["LEFT_CLICK"] = "左键点击"
-L["LEFT_CLICK_DESC"] = "启用ItemUpgradeTip界面"
-L["LFR"] = "随机"
-L["LOOT_DROPS"] = "拾取掉落"
-L["MAX_UPGRADE_X"] = "升满等级 (%d)："
-L["MYTHIC"] = "史诗"
-L["MYTHICPLUS"] = "史诗+"
-L["MYTHICPLUS_TITLE"] = "ItemUpgradeTip - 史诗+"
-L["NEXT_UPGRADE_X"] = "下个等级 (%d)："
-L["NORMAL"] = "普通"
-L["RAID"] = "团队副本"
-L["RAID_TITLE"] = "ItemUpgradeTip - 团队副本"
-L["RANK"] = "阶级"
-L["REQUIRED_ITEM"] = "需要物品"
-L["RIGHT_CLICK"] = "右键点击"
-L["RIGHT_CLICK_DESC"] = "启用设置"
-L["UPGRADE_LEVEL_X_Y"] = "提升等级: %d / %d"
-L["UPGRADE_TRACK_CHAMPION"] = "勇士"
-L["UPGRADE_TRACK_HERO"] = "英雄"
-L["UPGRADE_TRACK_MYTH"] = "神話"
-L["UPGRADE_TRACK_VETERAN"] = "老兵"
-L["UPGRADE_TRACKS"] = "升级追踪"
-L["UPGRADE_TRACKS_TITLE"] = "ItemUpgradeTip - 升级追踪"
-L["VAULT_REWARD"] = "宝库奖励"
-L["VERSION"] = "版本"
-L["WHELP_CRESTS"] = "雏龙纹章"
-L["WHELP_CRESTS_SHORT"] = "雏龙"
-L["WYRM_CRESTS"] = "魔龙纹章"
-L["WYRM_CRESTS_SHORT"] = "魔龙"
-L["X_RARE"] = "%d (稀有)"
-L["X_UPGRADES"] = "%s 升级"
+--@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="ignore")@
