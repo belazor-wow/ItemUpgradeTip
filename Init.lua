@@ -175,7 +175,7 @@ local Preferences = {
                             --             min = 1,
                             --             max = 20,
                             --             step = 1,
-                            --             set = function(_, value) DB.TestSubToggle = value end,
+                            --             set = function(_, value) DB.TestSubRange = value end,
                             --             get = function() return DB.TestSubRange end,
                             --             order = increment(),
                             --             width = "double",
