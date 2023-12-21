@@ -46,6 +46,7 @@ local defaultValues = {
     DisabledIntegrations = {},
 
     -- TestSubToggle = false,
+    -- TestSubRange = 5,
 }
 
 ---@class Preferences
@@ -137,6 +138,15 @@ local Preferences = {
                             --             name = "Test Sub Header",
                             --         },
 
+                            --         testSubExecute = {
+                            --             order = increment(),
+                            --             type = "execute",
+                            --             name = "Test Sub Execute",
+                            --             func = function()
+                            --                 DevTools_Dump("ere")
+                            --             end
+                            --         },
+
                             --         testSubToggle = {
                             --             order = increment(),
                             --             type = "toggle",
@@ -149,9 +159,27 @@ local Preferences = {
                             --             set = function(_, value)
                             --                 DB.TestSubToggle = value
                             --             end,
-                            --             defaultValue = function()
-                            --                 return defaultValues.TestSubToggle
-                            --             end
+                            --             defaultValue = defaultValues.TestSubToggle
+                            --         },
+
+                            --         testSubKeybind = {
+                            --             type = "keybinding",
+                            --             action = "ASSISTTARGET",
+                            --             order = increment(),
+                            --         },
+
+                            --         testSubRange = {
+                            --             type = "range",
+                            --             name = "Test Sub Range",
+                            --             desc = "This is just a test",
+                            --             min = 1,
+                            --             max = 20,
+                            --             step = 1,
+                            --             set = function(_, value) DB.TestSubToggle = value end,
+                            --             get = function() return DB.TestSubRange end,
+                            --             order = increment(),
+                            --             width = "double",
+                            --             defaultValue = defaultValues.TestSubRange
                             --         },
                             --     }
                             -- }
