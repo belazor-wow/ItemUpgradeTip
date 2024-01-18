@@ -113,7 +113,8 @@ local SUBCOMMAND_FUNCS = {
         if settingsPanel:IsVisible() then
             settingsPanel:Hide()
         else
-            InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
+            Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
+            --InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
         end
     end
 }
@@ -152,6 +153,7 @@ function ItemUpgradeTip_OnAddonCompartmentClick(addonName, button)
     if (button == "LeftButton") then
 		ItemUpgradeTip:ToggleView()
 	elseif (button == "RightButton") then
-		InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
+        Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
+		--InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
 	end
 end

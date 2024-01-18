@@ -38,23 +38,27 @@ local buildVersion = isDevelopmentVersion and "Development Version" or metaVersi
 ---@type table
 local Options
 
+---@type table
+local defaultValues = {
+    CompactTooltips = false,
+    ModifierKey = "NONE",
+
+    DisabledIntegrations = {},
+}
+
 ---@class Preferences
 ---@field OptionsFrame Frame
+---@field SettingsPanel Frame
 local Preferences = {
     DisabledIntegrations = {},
     DefaultValues = {
-        profile = {
-            CompactTooltips = false,
-            ModifierKey = "NONE",
-
-            DisabledIntegrations = {},
-        },
+        profile = defaultValues,
     },
     GetOptions = function()
         if not Options then
             local DB = private.DB.profile
 
-            local count = 1;
+            local count = 1
             local function increment() count = count + 1; return count end;
 
             Options = {
@@ -76,9 +80,12 @@ local Preferences = {
                                 get = function()
                                     return DB.CompactTooltips
                                 end,
-                                set = function(info, value)
+                                set = function(arg1, value)
                                     DB.CompactTooltips = value
                                 end,
+                                defaultValue = function()
+                                    return defaultValues.CompactTooltips
+                                end
                             },
 
                             modifierKey = {
@@ -96,9 +103,12 @@ local Preferences = {
                                 get = function()
                                     return DB.ModifierKey
                                 end,
-                                set = function(info, value)
+                                set = function(_, value)
                                     DB.ModifierKey = value
                                 end,
+                                defaultValue = function()
+                                    return defaultValues.ModifierKey
+                                end
                             },
 
                             separatorIntegrations = {
@@ -111,26 +121,30 @@ local Preferences = {
                                 order = increment(),
                                 type = "description",
                                 name = L["DISABLED_INTEGRATIONS_DESC"],
-                            }
+                            },
                         }
                     }
                 },
             }
 
             for upgradeHandler, optionTable in pairs(private.Preferences.DisabledIntegrations) do
-                optionTable.get = function(info)
-                    return DB.DisabledIntegrations[info[#info]]
+                optionTable.get = function()
+                    return DB.DisabledIntegrations[upgradeHandler]
                 end
 
-                optionTable.set = function(info, value)
-                    DB.DisabledIntegrations[info[#info]] = value;
+                optionTable.set = function(_, value)
+                    DB.DisabledIntegrations[upgradeHandler] = value
+                end
+
+                optionTable.defaultValue = function()
+                    return defaultValues.DisabledIntegrations[upgradeHandler]
                 end
 
                 Options.args.general.args["disabledIntegrations_" .. upgradeHandler] = optionTable
             end
 
             -- Get the option table for profiles
-	        Options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(private.DB)
+	        --Options.args.profiles = LibStub("AceDBOptions-3.0"):GetOptionsTable(private.DB)
         end
 
         return Options
@@ -141,8 +155,9 @@ local Preferences = {
     end,
     ---@param self Preferences
     SetupOptions = function(self)
-        LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable(AddOnFolderName, self.GetOptions)
-        self.OptionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(AddOnFolderName)
+        LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable(AddOnFolderName, self.GetOptions, true)
+        --self.OptionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(AddOnFolderName)
+        self.OptionsFrame = LibStub("BlizzConfigDialog-1.0"):AddToBlizOptions(AddOnFolderName)
     end,
 }
 
