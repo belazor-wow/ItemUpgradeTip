@@ -1,37 +1,25 @@
 name: TOC Bump
+
 on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: 'Commit message'
-        required: false
-        default: 'TOC Bump'
+  schedule:
+    - cron: 0 12 * * *
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Clone project
+        uses: actions/checkout@v4
 
-      - name: Get next version
-        uses: reecetech/version-increment@2023.9.3
-        id: version
+      - name: Update TOC Interface version
+        uses: p3lim/toc-interface-updater@v3
         with:
-          scheme: semver
-          increment: patch
+          flavor: retail
 
-      - name: Create & push empty commit
-        run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
-          git commit --allow-empty -m "${{ github.event.inputs.message }}"
-          git push
-
-      - name: Publish release
-        uses: softprops/action-gh-release@v1
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
         with:
-          # this cannot be ${{ secrets.GITHUB_TOKEN }} because that'll block the on release publish workflow from running
-          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
-          name: ${{ steps.version.outputs.v-version }}
-          tag_name: ${{ steps.version.outputs.v-version }}
+          title: "chore: Update Interface version"
+          commit-message: "Update Interface version"
+          branch: toc-bump
+          delete-branch: true
