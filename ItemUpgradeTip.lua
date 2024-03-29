@@ -43,7 +43,7 @@ end
 
 -- Return the Upgrade info
 ---@return Array<UpgradeTrackInfo>
-function ItemUpgradeTip:GetupgradeTrackInfo()
+function ItemUpgradeTip:GetUpgradeTrackInfo()
     return private.upgradeTrackInfo
 end
 
