@@ -25,7 +25,7 @@ function ItemUpgradeTipDisplayDataProviderMixin:OnLoad()
 
         -- Use cached item level to reduce flickering and scroll jumping up and down
         if itemCache[entry.itemId] then
-            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = GetItemInfo(entry.itemId);
+            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = C_Item.GetItemInfo(entry.itemId);
             ApplyItemInfo(entry, itemCache[entry.itemId])
             self:NotifyCacheUsed()
             return
@@ -37,12 +37,12 @@ function ItemUpgradeTipDisplayDataProviderMixin:OnLoad()
                 return
             end
 
-            local itemIDr = GetItemInfoInstant(item:GetItemID())
+            local itemIDr = C_Item.GetItemInfoInstant(item:GetItemID())
             if not itemIDr then
                 return
             end
 
-            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = GetItemInfo(item:GetItemID());
+            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = C_Item.GetItemInfo(item:GetItemID());
 
             local itemLink = item:GetItemLink()
 

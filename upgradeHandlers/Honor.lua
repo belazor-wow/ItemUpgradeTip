@@ -252,7 +252,7 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
         return false
     end
 
-    local equipLoc = select(9, GetItemInfo(itemLink))
+    local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
 
     local upgradeCost = itemUpgradeCosts[equipLoc]
     if not upgradeCost then
@@ -262,7 +262,7 @@ local function CheckHonorBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
 
     local upgradeCostOverride = itemUpgradeCostOverrides[equipLoc];
     if upgradeCostOverride then
-        local stats = GetItemStats(itemLink)
+        local stats = C_Item.GetItemStats(itemLink)
         if not stats then
             private.Debug("Could not extract Honor item stats from", itemLink);
             return false

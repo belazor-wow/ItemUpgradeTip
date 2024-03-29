@@ -63,7 +63,7 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
     local results = {}
     local UPGRADE_TIER_FORMAT_STRING = "%d/%d"
 
-    for index, upgradeTrack in ipairs(ItemUpgradeTip:GetupgradeTrackInfo()) do
+    for index, upgradeTrack in ipairs(ItemUpgradeTip:GetUpgradeTrackInfo()) do
         local icon = upgradeTrack.currency.icon and CreateTextureMarkup(upgradeTrack.currency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
 
         local rank1 = upgradeTrack.upgrade1.rank
