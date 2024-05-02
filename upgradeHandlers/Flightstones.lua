@@ -11,16 +11,16 @@ local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 private.currencyIds["Flightstones"] = 2245
 private.currencyIndexes[private.currencyIds.Flightstones] = true
 
-private.currencyIds["whelpCrest"] = 2706
+private.currencyIds["whelpCrest"] = 2806
 private.currencyIndexes[private.currencyIds.whelpCrest] = true
 
-private.currencyIds["drakeCrest"] = 2707
+private.currencyIds["drakeCrest"] = 2807
 private.currencyIndexes[private.currencyIds.drakeCrest] = true
 
-private.currencyIds["wyrmCrest"] = 2708
+private.currencyIds["wyrmCrest"] = 2809
 private.currencyIndexes[private.currencyIds.wyrmCrest] = true
 
-private.currencyIds["aspectCrest"] = 2709
+private.currencyIds["aspectCrest"] = 2812
 private.currencyIndexes[private.currencyIds.aspectCrest] = true
 
 -- Add preferences
@@ -47,7 +47,7 @@ local flightstoneUpgradeData = {
         name = L["WHELP_CRESTS"],
         shortName = L["WHELP_CRESTS_SHORT"],
         color = UNCOMMON_GREEN_COLOR,
-        icon = 5309872,
+        icon = 5646099,
         itemId = nil,
         currencyId = private.currencyIds.whelpCrest
     },
@@ -56,7 +56,7 @@ local flightstoneUpgradeData = {
         name = L["DRAKE_CRESTS"],
         shortName = L["DRAKE_CRESTS_SHORT"],
         color = RARE_BLUE_COLOR,
-        icon = 5309870,
+        icon = 5646097,
         itemId = nil,
         currencyId = private.currencyIds.drakeCrest
     },
@@ -65,7 +65,7 @@ local flightstoneUpgradeData = {
         name = L["WYRM_CRESTS"],
         shortName = L["WYRM_CRESTS_SHORT"],
         color = EPIC_PURPLE_COLOR,
-        icon = 5309874,
+        icon = 5646101,
         itemId = nil,
         currencyId = private.currencyIds.wyrmCrest
     },
@@ -74,7 +74,7 @@ local flightstoneUpgradeData = {
         name = L["ASPECT_CRESTS"],
         shortName = L["ASPECT_CRESTS_SHORT"],
         color = LEGENDARY_ORANGE_COLOR,
-        icon = 5309868,
+        icon = 5646095,
         itemId = nil,
         currencyId = private.currencyIds.aspectCrest
     },
@@ -82,25 +82,15 @@ local flightstoneUpgradeData = {
 
 ---@type Array<MythicPlusInfo>
 private.mythicPlusInfo = {
-    {keyLevel = 2, lootDrops = 441, vaultReward = 454, currency = flightstoneUpgradeData["whelpCrests"]},
-    {keyLevel = 3, lootDrops = 444, vaultReward = 457, currency = flightstoneUpgradeData["whelpCrests"]},
-    {keyLevel = 4, lootDrops = 444, vaultReward = 460, currency = flightstoneUpgradeData["whelpCrests"]},
-    {keyLevel = 5, lootDrops = 447, vaultReward = 460, currency = flightstoneUpgradeData["whelpCrests"]},
-    {keyLevel = 6, lootDrops = 447, vaultReward = 463, currency = flightstoneUpgradeData["drakeCrests"]},
-    {keyLevel = 7, lootDrops = 450, vaultReward = 463, currency = flightstoneUpgradeData["drakeCrests"]},
-    {keyLevel = 8, lootDrops = 450, vaultReward = 467, currency = flightstoneUpgradeData["drakeCrests"]},
-    {keyLevel = 9, lootDrops = 454, vaultReward = 467, currency = flightstoneUpgradeData["drakeCrests"]},
-    {keyLevel = 10, lootDrops = 454, vaultReward = 470, currency = flightstoneUpgradeData["drakeCrests"]},
-    {keyLevel = 11, lootDrops = 457, vaultReward = 470, currency = flightstoneUpgradeData["wyrmCrests"]},
-    {keyLevel = 12, lootDrops = 457, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
-    {keyLevel = 13, lootDrops = 460, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
-    {keyLevel = 14, lootDrops = 460, vaultReward = 473, currency = flightstoneUpgradeData["wyrmCrests"]},
-    {keyLevel = 15, lootDrops = 463, vaultReward = 476, currency = flightstoneUpgradeData["wyrmCrests"]},
-    {keyLevel = 16, lootDrops = 463, vaultReward = 476, currency = flightstoneUpgradeData["aspectCrests"]},
-    {keyLevel = 17, lootDrops = 467, vaultReward = 476, currency = flightstoneUpgradeData["aspectCrests"]},
-    {keyLevel = 18, lootDrops = 467, vaultReward = 480, currency = flightstoneUpgradeData["aspectCrests"]},
-    {keyLevel = 19, lootDrops = 470, vaultReward = 480, currency = flightstoneUpgradeData["aspectCrests"]},
-    {keyLevel = "20+", lootDrops = 470, vaultReward = 483, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 2, lootDrops = 496, vaultReward = 509, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 3, lootDrops = 499, vaultReward = 509, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 4, lootDrops = 499, vaultReward = 512, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 5, lootDrops = 502, vaultReward = 512, currency = flightstoneUpgradeData["wyrmCrests"]},
+    {keyLevel = 6, lootDrops = 502, vaultReward = 515, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 7, lootDrops = 506, vaultReward = 515, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 8, lootDrops = 506, vaultReward = 519, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = 9, lootDrops = 509, vaultReward = 519, currency = flightstoneUpgradeData["aspectCrests"]},
+    {keyLevel = "10+", lootDrops = 509, vaultReward = 522, currency = flightstoneUpgradeData["aspectCrests"]},
 }
 
 ---@type Array<RaidInfo>
@@ -136,117 +126,151 @@ private.raidCurrencyInfo = {
 ---@type Array<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
-        itemLevel = 428,
+        itemLevel = 467,
         upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 431,
+        itemLevel = 470,
         upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 434,
+        itemLevel = 473,
         upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 437,
+        itemLevel = 476,
         upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 441,
+        itemLevel = 480,
         upgrade1 = {rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
-        itemLevel = 444,
+        itemLevel = 483,
         upgrade1 = {rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
-        itemLevel = 447,
+        itemLevel = 486,
         upgrade1 = {rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
-        itemLevel = 450,
+        itemLevel = 489,
         upgrade1 = {rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = flightstoneUpgradeData["whelpCrests"]
     },
     {
-        itemLevel = 454,
+        itemLevel = 493,
         upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
+        upgrade3 = {rank = 7, upgradeLevel = 1, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 1, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
-        itemLevel = 457,
+        itemLevel = 496,
         upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
+        upgrade3 = {rank = 7, upgradeLevel = 2, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 2, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
-        itemLevel = 460,
+        itemLevel = 499,
         upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
+        upgrade3 = {rank = 7, upgradeLevel = 3, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 3, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
-        itemLevel = 463,
+        itemLevel = 502,
         upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
+        upgrade3 = {rank = 7, upgradeLevel = 4, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 4, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["drakeCrests"]
     },
     {
-        itemLevel = 467,
+        itemLevel = 506,
         upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
+        upgrade3 = {rank = 7, upgradeLevel = 5, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 5, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
-        itemLevel = 470,
+        itemLevel = 509,
         upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
+        upgrade3 = {rank = 7, upgradeLevel = 6, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 6, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
-        itemLevel = 473,
+        itemLevel = 512,
         upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
+        upgrade3 = {rank = 7, upgradeLevel = 7, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 7, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
-        itemLevel = 476,
+        itemLevel = 515,
         upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
+        upgrade3 = {rank = 7, upgradeLevel = 8, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 8, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["wyrmCrests"]
     },
     {
-        itemLevel = 480,
+        itemLevel = 519,
         upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 4},
+        upgrade3 = {rank = 7, upgradeLevel = 9, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 9, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
-        itemLevel = 483,
+        itemLevel = 522,
         upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 4},
+        upgrade3 = {rank = 7, upgradeLevel = 10, maxUpgradeLevel = 12},
+        upgrade4 = {rank = 8, upgradeLevel = 10, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
-        itemLevel = 486,
+        itemLevel = 525,
         upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 4},
+        upgrade2 = {rank = 7, upgradeLevel = 11, maxUpgradeLevel = 12},
+        upgrade3 = {rank = 8, upgradeLevel = 11, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["aspectCrests"]
     },
     {
-        itemLevel = 489,
+        itemLevel = 528,
         upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 4},
+        upgrade2 = {rank = 7, upgradeLevel = 12, maxUpgradeLevel = 12},
+        upgrade3 = {rank = 8, upgradeLevel = 12, maxUpgradeLevel = 14},
+        currency = flightstoneUpgradeData["aspectCrests"]
+    },
+    {
+        itemLevel = 532,
+        upgrade1 = {rank = 8, upgradeLevel = 13, maxUpgradeLevel = 14},
+        currency = flightstoneUpgradeData["aspectCrests"]
+    },
+    {
+        itemLevel = 535,
+        upgrade1 = {rank = 8, upgradeLevel = 14, maxUpgradeLevel = 14},
         currency = flightstoneUpgradeData["aspectCrests"]
     },
 }
@@ -254,98 +278,128 @@ private.upgradeTrackInfo = {
 ---@type Array<CraftingInfo>
 private.craftingInfo = {
     -- Whelpling
-    {itemLevel = 434, itemId = 206977, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 437, itemId = 206977, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 441, itemId = 206977, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 444, itemId = 206977, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 444, itemId = 206977, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 473, itemId = 211520, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 476, itemId = 211520, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 480, itemId = 211520, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 483, itemId = 211520, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 486, itemId = 211520, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Spark
-    {itemLevel = 450, itemId = 206959, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 454, itemId = 206959, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 457, itemId = 206959, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 460, itemId = 206959, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 463, itemId = 206959, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 489, itemId = 211516, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 493, itemId = 211516, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 496, itemId = 211516, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 499, itemId = 211516, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 502, itemId = 211516, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Wyrm
-    {itemLevel = 463, itemId = 206960, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 467, itemId = 206960, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 470, itemId = 206960, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 473, itemId = 206960, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 476, itemId = 206960, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 502, itemId = 211518, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 506, itemId = 211518, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 509, itemId = 211518, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 512, itemId = 211518, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 515, itemId = 211518, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Aspect
-    {itemLevel = 473, itemId = 206961, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 476, itemId = 206961, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 480, itemId = 206961, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 483, itemId = 206961, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 486, itemId = 206961, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 512, itemId = 211519, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 515, itemId = 211519, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 519, itemId = 211519, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 522, itemId = 211519, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 525, itemId = 211519, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
 ---@type Array<FlightstoneBonusData>
 local flightstoneBonusIds = {
     -- Explorer
-    [9544] = {itemLevel = 415, rank = 1, upgradeLevel = 1, upgradeGroup = 23},
-    [9545] = {itemLevel = 418, rank = 1, upgradeLevel = 2, upgradeGroup = 23},
-    [9546] = {itemLevel = 421, rank = 1, upgradeLevel = 3, upgradeGroup = 23},
-    [9547] = {itemLevel = 424, rank = 1, upgradeLevel = 4, upgradeGroup = 23},
-    [9548] = {itemLevel = 428, rank = 1, upgradeLevel = 5, upgradeGroup = 24},
-    [9549] = {itemLevel = 431, rank = 1, upgradeLevel = 6, upgradeGroup = 24},
-    [9550] = {itemLevel = 434, rank = 1, upgradeLevel = 7, upgradeGroup = 24},
-    [9551] = {itemLevel = 437, rank = 1, upgradeLevel = 8, upgradeGroup = 24},
+    [10321] = {itemLevel = 454, rank = 1, upgradeLevel = 1, upgradeGroup = 23},
+    [10322] = {itemLevel = 457, rank = 1, upgradeLevel = 2, upgradeGroup = 23},
+    [10323] = {itemLevel = 460, rank = 1, upgradeLevel = 3, upgradeGroup = 23},
+    [10324] = {itemLevel = 463, rank = 1, upgradeLevel = 4, upgradeGroup = 23},
+    [10325] = {itemLevel = 467, rank = 1, upgradeLevel = 5, upgradeGroup = 24},
+    [10326] = {itemLevel = 470, rank = 1, upgradeLevel = 6, upgradeGroup = 24},
+    [10327] = {itemLevel = 473, rank = 1, upgradeLevel = 7, upgradeGroup = 24},
+    [10328] = {itemLevel = 476, rank = 1, upgradeLevel = 8, upgradeGroup = 24},
 
     -- Adventurer
-    [9536] = {itemLevel = 428, rank = 2, upgradeLevel = 1, upgradeGroup = 24},
-    [9537] = {itemLevel = 431, rank = 2, upgradeLevel = 2, upgradeGroup = 24},
-    [9538] = {itemLevel = 434, rank = 2, upgradeLevel = 3, upgradeGroup = 24},
-    [9539] = {itemLevel = 437, rank = 2, upgradeLevel = 4, upgradeGroup = 24},
-    [9540] = {itemLevel = 441, rank = 2, upgradeLevel = 5, upgradeGroup = 25},
-    [9541] = {itemLevel = 444, rank = 2, upgradeLevel = 6, upgradeGroup = 25},
-    [9542] = {itemLevel = 447, rank = 2, upgradeLevel = 7, upgradeGroup = 25},
-    [9543] = {itemLevel = 450, rank = 2, upgradeLevel = 8, upgradeGroup = 25},
+    [10305] = {itemLevel = 467, rank = 2, upgradeLevel = 1, upgradeGroup = 24},
+    [10306] = {itemLevel = 470, rank = 2, upgradeLevel = 2, upgradeGroup = 24},
+    [10307] = {itemLevel = 473, rank = 2, upgradeLevel = 3, upgradeGroup = 24},
+    [10308] = {itemLevel = 476, rank = 2, upgradeLevel = 4, upgradeGroup = 24},
+    [10309] = {itemLevel = 480, rank = 2, upgradeLevel = 5, upgradeGroup = 25},
+    [10310] = {itemLevel = 483, rank = 2, upgradeLevel = 6, upgradeGroup = 25},
+    [10311] = {itemLevel = 486, rank = 2, upgradeLevel = 7, upgradeGroup = 25},
+    [10312] = {itemLevel = 489, rank = 2, upgradeLevel = 8, upgradeGroup = 25},
 
     -- Veteran
-    [9552] = {itemLevel = 441, rank = 3, upgradeLevel = 1, upgradeGroup = 25},
-    [9553] = {itemLevel = 444, rank = 3, upgradeLevel = 2, upgradeGroup = 25},
-    [9554] = {itemLevel = 447, rank = 3, upgradeLevel = 3, upgradeGroup = 25},
-    [9555] = {itemLevel = 450, rank = 3, upgradeLevel = 4, upgradeGroup = 25},
-    [9556] = {itemLevel = 454, rank = 3, upgradeLevel = 5, upgradeGroup = 26},
-    [9557] = {itemLevel = 457, rank = 3, upgradeLevel = 6, upgradeGroup = 26},
-    [9558] = {itemLevel = 460, rank = 3, upgradeLevel = 7, upgradeGroup = 26},
-    [9559] = {itemLevel = 463, rank = 3, upgradeLevel = 8, upgradeGroup = 26},
+    [10341] = {itemLevel = 480, rank = 3, upgradeLevel = 1, upgradeGroup = 25},
+    [10342] = {itemLevel = 483, rank = 3, upgradeLevel = 2, upgradeGroup = 25},
+    [10343] = {itemLevel = 486, rank = 3, upgradeLevel = 3, upgradeGroup = 25},
+    [10344] = {itemLevel = 489, rank = 3, upgradeLevel = 4, upgradeGroup = 25},
+    [10345] = {itemLevel = 493, rank = 3, upgradeLevel = 5, upgradeGroup = 26},
+    [10346] = {itemLevel = 496, rank = 3, upgradeLevel = 6, upgradeGroup = 26},
+    [10347] = {itemLevel = 499, rank = 3, upgradeLevel = 7, upgradeGroup = 26},
+    [10348] = {itemLevel = 502, rank = 3, upgradeLevel = 8, upgradeGroup = 26},
 
     -- Champion
-    [9560] = {itemLevel = 454, rank = 4, upgradeLevel = 1, upgradeGroup = 26},
-    [9561] = {itemLevel = 457, rank = 4, upgradeLevel = 2, upgradeGroup = 26},
-    [9562] = {itemLevel = 460, rank = 4, upgradeLevel = 3, upgradeGroup = 26},
-    [9563] = {itemLevel = 463, rank = 4, upgradeLevel = 4, upgradeGroup = 26},
-    [9564] = {itemLevel = 467, rank = 4, upgradeLevel = 5, upgradeGroup = 27},
-    [9565] = {itemLevel = 470, rank = 4, upgradeLevel = 6, upgradeGroup = 27},
-    [9566] = {itemLevel = 473, rank = 4, upgradeLevel = 7, upgradeGroup = 27},
-    [9567] = {itemLevel = 476, rank = 4, upgradeLevel = 8, upgradeGroup = 27},
+    [10313] = {itemLevel = 493, rank = 4, upgradeLevel = 1, upgradeGroup = 26},
+    [10314] = {itemLevel = 496, rank = 4, upgradeLevel = 2, upgradeGroup = 26},
+    [10315] = {itemLevel = 499, rank = 4, upgradeLevel = 3, upgradeGroup = 26},
+    [10316] = {itemLevel = 502, rank = 4, upgradeLevel = 4, upgradeGroup = 26},
+    [10317] = {itemLevel = 506, rank = 4, upgradeLevel = 5, upgradeGroup = 27},
+    [10318] = {itemLevel = 509, rank = 4, upgradeLevel = 6, upgradeGroup = 27},
+    [10319] = {itemLevel = 512, rank = 4, upgradeLevel = 7, upgradeGroup = 27},
+    [10320] = {itemLevel = 515, rank = 4, upgradeLevel = 8, upgradeGroup = 27},
 
     -- Hero
-    [9568] = {itemLevel = 467, rank = 5, upgradeLevel = 1, upgradeGroup = 27},
-    [9569] = {itemLevel = 470, rank = 5, upgradeLevel = 2, upgradeGroup = 27},
-    [9570] = {itemLevel = 473, rank = 5, upgradeLevel = 3, upgradeGroup = 27},
-    [9571] = {itemLevel = 476, rank = 5, upgradeLevel = 4, upgradeGroup = 27},
-    [9572] = {itemLevel = 480, rank = 5, upgradeLevel = 5, upgradeGroup = 28},
-    [9581] = {itemLevel = 483, rank = 5, upgradeLevel = 6, upgradeGroup = 28},
+    [10329] = {itemLevel = 506, rank = 5, upgradeLevel = 1, upgradeGroup = 27},
+    [10330] = {itemLevel = 509, rank = 5, upgradeLevel = 2, upgradeGroup = 27},
+    [10331] = {itemLevel = 512, rank = 5, upgradeLevel = 3, upgradeGroup = 27},
+    [10332] = {itemLevel = 515, rank = 5, upgradeLevel = 4, upgradeGroup = 27},
+    [10333] = {itemLevel = 519, rank = 5, upgradeLevel = 5, upgradeGroup = 28},
+    [10334] = {itemLevel = 522, rank = 5, upgradeLevel = 6, upgradeGroup = 28},
 
     -- Myth
-    [9573] = {itemLevel = 480, rank = 6, upgradeLevel = 1, upgradeGroup = 28},
-    [9574] = {itemLevel = 483, rank = 6, upgradeLevel = 2, upgradeGroup = 28},
-    [9575] = {itemLevel = 486, rank = 6, upgradeLevel = 3, upgradeGroup = 28},
-    [9576] = {itemLevel = 489, rank = 6, upgradeLevel = 4, upgradeGroup = 28},
+    [10335] = {itemLevel = 519, rank = 6, upgradeLevel = 1, upgradeGroup = 28},
+    [10336] = {itemLevel = 522, rank = 6, upgradeLevel = 2, upgradeGroup = 28},
+    [10337] = {itemLevel = 525, rank = 6, upgradeLevel = 3, upgradeGroup = 28},
+    [10338] = {itemLevel = 528, rank = 6, upgradeLevel = 4, upgradeGroup = 28},
+
+    -- Awakened (12)
+    [10407] = {itemLevel = 493, rank = 7, upgradeLevel = 1, upgradeGroup = 26},
+    [10408] = {itemLevel = 496, rank = 7, upgradeLevel = 2, upgradeGroup = 26},
+    [10409] = {itemLevel = 499, rank = 7, upgradeLevel = 3, upgradeGroup = 26},
+    [10410] = {itemLevel = 502, rank = 7, upgradeLevel = 4, upgradeGroup = 26},
+    [10411] = {itemLevel = 506, rank = 7, upgradeLevel = 5, upgradeGroup = 27},
+    [10412] = {itemLevel = 509, rank = 7, upgradeLevel = 6, upgradeGroup = 27},
+    [10413] = {itemLevel = 512, rank = 7, upgradeLevel = 7, upgradeGroup = 27},
+    [10414] = {itemLevel = 515, rank = 7, upgradeLevel = 8, upgradeGroup = 27},
+    [10415] = {itemLevel = 519, rank = 7, upgradeLevel = 9, upgradeGroup = 28},
+    [10416] = {itemLevel = 522, rank = 7, upgradeLevel = 10, upgradeGroup = 28},
+    [10417] = {itemLevel = 525, rank = 7, upgradeLevel = 11, upgradeGroup = 28},
+    [10418] = {itemLevel = 528, rank = 7, upgradeLevel = 12, upgradeGroup = 28},
+
+    -- Awakened (14)
+    [10490] = {itemLevel = 493, rank = 8, upgradeLevel = 1, upgradeGroup = 26},
+    [10491] = {itemLevel = 496, rank = 8, upgradeLevel = 2, upgradeGroup = 26},
+    [10492] = {itemLevel = 499, rank = 8, upgradeLevel = 3, upgradeGroup = 26},
+    [10493] = {itemLevel = 502, rank = 8, upgradeLevel = 4, upgradeGroup = 26},
+    [10494] = {itemLevel = 506, rank = 8, upgradeLevel = 5, upgradeGroup = 27},
+    [10495] = {itemLevel = 509, rank = 8, upgradeLevel = 6, upgradeGroup = 27},
+    [10496] = {itemLevel = 512, rank = 8, upgradeLevel = 7, upgradeGroup = 27},
+    [10497] = {itemLevel = 515, rank = 8, upgradeLevel = 8, upgradeGroup = 27},
+    [10498] = {itemLevel = 519, rank = 8, upgradeLevel = 9, upgradeGroup = 28},
+    [10499] = {itemLevel = 522, rank = 8, upgradeLevel = 10, upgradeGroup = 28},
+    [10500] = {itemLevel = 525, rank = 8, upgradeLevel = 11, upgradeGroup = 28},
+    [10501] = {itemLevel = 528, rank = 8, upgradeLevel = 12, upgradeGroup = 28},
+    [10502] = {itemLevel = 532, rank = 8, upgradeLevel = 13, upgradeGroup = 28},
+    [10503] = {itemLevel = 535, rank = 8, upgradeLevel = 14, upgradeGroup = 28},
 }
 
 ---@type Array<FlightstoneUpgradeCostData>
@@ -530,7 +584,20 @@ local function GetItemUpgradeCosts(itemExtendedCosts, upgradeInfo)
         return nil
     end
 
-    return upgradeCosts
+    ---@type FlightstoneUpgradeCostData
+    local results = {
+        whelpCrests = upgradeCosts.whelpCrests,
+        drakeCrests = upgradeCosts.drakeCrests,
+        wyrmCrests = upgradeCosts.wyrmCrests,
+        aspectCrests = upgradeCosts.aspectCrests,
+        flightstones = upgradeCosts.flightstones
+    }
+    
+    if upgradeInfo.rank == 7 or upgradeInfo.rank == 8 then
+        results.flightstones = Round(results.flightstones * 0.5)
+    end
+
+    return results
 end
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
