@@ -613,7 +613,7 @@ local function GetItemExtendedCosts(equipLoc, itemLink)
 
     local inventoryTypeSlotMaskOverride = inventoryTypeSlotMaskOverrides[equipLoc];
     if inventoryTypeSlotMaskOverride then
-        local stats = GetItemStats(itemLink)
+        local stats = C_Item.GetItemStats(itemLink)
         if not stats then
             private.Debug("Could not extract Flightstones item stats from", itemLink);
             return nil
@@ -665,7 +665,7 @@ local function ParseUpgradeCost(upgradeCostData)
                 end
             elseif upgradeItem.itemId ~= nil then
                 -- Get item count and compare to required
-                local itemCount = GetItemCount(upgradeItem.itemId, true);
+                local itemCount = C_Item.GetItemCount(upgradeItem.itemId, true);
                 local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
 
                 costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
@@ -897,7 +897,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         return false
     end
 
-    local equipLoc = select(9, GetItemInfo(itemLink))
+    local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
 
     private.Debug(itemLink, "has equipLoc", equipLoc);
 
