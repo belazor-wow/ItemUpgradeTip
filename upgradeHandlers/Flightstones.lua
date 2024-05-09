@@ -385,7 +385,7 @@ local flightstoneBonusIds = {
     [10417] = {itemLevel = 525, rank = 7, upgradeLevel = 11, upgradeGroup = 28},
     [10418] = {itemLevel = 528, rank = 7, upgradeLevel = 12, upgradeGroup = 28},
 
-    -- Awakened (14)
+    -- Awakened (14 - Nasz'uro, the Unbound Legacy)
     [10490] = {itemLevel = 493, rank = 8, upgradeLevel = 1, upgradeGroup = 26},
     [10491] = {itemLevel = 496, rank = 8, upgradeLevel = 2, upgradeGroup = 26},
     [10492] = {itemLevel = 499, rank = 8, upgradeLevel = 3, upgradeGroup = 26},
@@ -400,6 +400,22 @@ local flightstoneBonusIds = {
     [10501] = {itemLevel = 528, rank = 8, upgradeLevel = 12, upgradeGroup = 28},
     [10502] = {itemLevel = 532, rank = 8, upgradeLevel = 13, upgradeGroup = 28},
     [10503] = {itemLevel = 535, rank = 8, upgradeLevel = 14, upgradeGroup = 28},
+
+    -- Awakened (14 - Fyr'alath the Dreamrender)
+    [10951] = {itemLevel = 493, rank = 8, upgradeLevel = 1, upgradeGroup = 26},
+    [10952] = {itemLevel = 496, rank = 8, upgradeLevel = 2, upgradeGroup = 26},
+    [10953] = {itemLevel = 499, rank = 8, upgradeLevel = 3, upgradeGroup = 26},
+    [10954] = {itemLevel = 502, rank = 8, upgradeLevel = 4, upgradeGroup = 26},
+    [10955] = {itemLevel = 506, rank = 8, upgradeLevel = 5, upgradeGroup = 27},
+    [10956] = {itemLevel = 509, rank = 8, upgradeLevel = 6, upgradeGroup = 27},
+    [10957] = {itemLevel = 512, rank = 8, upgradeLevel = 7, upgradeGroup = 27},
+    [10958] = {itemLevel = 515, rank = 8, upgradeLevel = 8, upgradeGroup = 27},
+    [10959] = {itemLevel = 519, rank = 8, upgradeLevel = 9, upgradeGroup = 28},
+    [10960] = {itemLevel = 522, rank = 8, upgradeLevel = 10, upgradeGroup = 28},
+    [10961] = {itemLevel = 525, rank = 8, upgradeLevel = 11, upgradeGroup = 28},
+    [10962] = {itemLevel = 528, rank = 8, upgradeLevel = 12, upgradeGroup = 28},
+    [10963] = {itemLevel = 532, rank = 8, upgradeLevel = 13, upgradeGroup = 28},
+    [10964] = {itemLevel = 535, rank = 8, upgradeLevel = 14, upgradeGroup = 28},
 }
 
 ---@type Array<FlightstoneUpgradeCostData>
