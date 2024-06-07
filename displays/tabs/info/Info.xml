@@ -5,6 +5,7 @@
         virtual="true"
     >
         <Scripts>
+            <OnLoad method="OnLoad" />
             <OnShow method="OnShow" />
         </Scripts>
         <Frames>

@@ -8,6 +8,7 @@
         <Size y="19" />
 
         <Scripts>
+            <OnLoad method="OnLoad" />
             <OnMouseUp method="OnMouseUp" />
             <OnEnter method="OnEnter" />
             <OnLeave method="OnLeave" />

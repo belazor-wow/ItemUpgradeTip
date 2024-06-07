@@ -7,6 +7,7 @@
     >
 
         <Scripts>
+            <OnLoad method="OnLoad" />
             <OnShow method="OnShow" />
         </Scripts>
 
@@ -32,11 +33,11 @@
                             <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" />
                         </Anchors>
                     </Frame>
-                    <EventFrame parentKey="ScrollBar" inherits="WowTrimScrollBar">
-                            <Anchors>
-                                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" />
-                                    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" />
-                            </Anchors>
+                    <EventFrame parentKey="ScrollBar" inherits="MinimalScrollBar">
+                        <Anchors>
+                            <Anchor point="TOPRIGHT" y="0" x="23"/>
+                            <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" />
+                        </Anchors>
                     </EventFrame>
                 </Frames>
                 <Layers>

@@ -9,4 +9,6 @@ function ItemUpgradeTipCopyAndPasteMixin:OnLoad()
         self.InputBox:SetText(self.copyText)
         self.InputBox:SetCursorPosition(0)
     end
+
+    ItemUpgradeTip:AddSkinnableFrame("EditBox", self.InputBox)
 end
