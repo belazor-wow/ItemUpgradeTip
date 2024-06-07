@@ -5,6 +5,10 @@ function ItemUpgradeTipStringColumnHeaderTemplateMixin:Init(name, tooltipText)
     self:SetText(name)
 end
 
+function ItemUpgradeTipStringColumnHeaderTemplateMixin:OnLoad()
+    ItemUpgradeTip:AddSkinnableFrame("NavBarButton", self)
+end
+
 function ItemUpgradeTipStringColumnHeaderTemplateMixin:OnMouseUp(button, ...)
 end
 
