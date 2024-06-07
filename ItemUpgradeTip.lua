@@ -13,8 +13,36 @@ ItemUpgradeTip = LibStub("AceAddon-3.0"):NewAddon(AddOnFolderName, "AceConsole-3
 ItemUpgradeTip.Version = C_AddOns.GetAddOnMetadata(AddOnFolderName, "Version");
 ItemUpgradeTip.L = L;
 
+private.allFrames = {}
+ItemUpgradeTip.Skins = {}
+
+function ItemUpgradeTip:GetAllFrames()
+  return private.allFrames
+end
+
+function ItemUpgradeTip:RegisterSkinListener(callback)
+    if not private.skinListeners then
+        private.skinListeners = {}
+    end
+    table.insert(private.skinListeners, callback)
+end
+
+function ItemUpgradeTip:AddSkinnableFrame(frameType, frame, extraInfo)
+    if not frame.added then
+        local details = {frameType = frameType, frame = frame, extraInfo = extraInfo}
+        table.insert(private.allFrames, details)
+        if private.skinListeners then
+            for _, listener in ipairs(private.skinListeners) do
+                xpcall(listener, CallErrorHandler, details)
+            end
+        end
+        frame.added = true
+    end
+  end
+
 -- Toggle the upgrade pane
 function ItemUpgradeTip:ToggleView()
+    ---@diagnostic disable-next-line: undefined-global
     if IUTView == nil then
         CreateFrame("Frame", "IUTView", UIParent, "ItemUpgradeTipUpgradeTemplate")
     end
@@ -113,8 +141,8 @@ local SUBCOMMAND_FUNCS = {
         if settingsPanel:IsVisible() then
             settingsPanel:Hide()
         else
+            ---@diagnostic disable-next-line: undefined-field
             Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
-            --InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
         end
     end
 }
@@ -153,7 +181,7 @@ function ItemUpgradeTip_OnAddonCompartmentClick(addonName, button)
     if (button == "LeftButton") then
 		ItemUpgradeTip:ToggleView()
 	elseif (button == "RightButton") then
+        ---@diagnostic disable-next-line: undefined-field
         Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
-		--InterfaceOptionsFrame_OpenToCategory(private.Preferences.OptionsFrame)
 	end
 end
