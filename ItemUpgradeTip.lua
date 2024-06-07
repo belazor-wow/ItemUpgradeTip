@@ -42,11 +42,6 @@ function ItemUpgradeTip:AddSkinnableFrame(frameType, frame, extraInfo)
 
 -- Toggle the upgrade pane
 function ItemUpgradeTip:ToggleView()
-    ---@diagnostic disable-next-line: undefined-global
-    if IUTView == nil then
-        CreateFrame("Frame", "IUTView", UIParent, "ItemUpgradeTipUpgradeTemplate")
-    end
-
     ---@diagnostic disable-next-line: need-check-nil
     IUTView:SetShown(not IUTView:IsShown())
 end
@@ -107,6 +102,8 @@ function ItemUpgradeTip:OnEnable()
     end
 
     self:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
+
+    CreateFrame("Frame", "IUTView", UIParent, "ItemUpgradeTipUpgradeTemplate")
 end
 
 -- Not super useful just now, but might be in the future

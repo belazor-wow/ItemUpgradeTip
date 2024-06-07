@@ -44,6 +44,10 @@ function ItemUpgradeTipResultsListingMixin:RestoreScrollPosition()
     end
 end
 
+function ItemUpgradeTipResultsListingMixin:OnLoad()
+    ItemUpgradeTip:AddSkinnableFrame("TrimScrollBar", self.ScrollArea.ScrollBar)
+end
+
 function ItemUpgradeTipResultsListingMixin:OnShow()
     if not self.isInitialized then
         return

@@ -11,7 +11,7 @@ function ItemUpgradeTipDisplayMixin:OnLoad()
     table.insert(UISpecialFrames, self:GetName())
 
     local lastTab = nil
-    for index, tab in ipairs(self.Tabs) do
+    for _, tab in ipairs(self.Tabs) do
         tab:ClearAllPoints()
         if lastTab == nil then
             tab:SetPoint("BOTTOMLEFT", 20, -30)
@@ -19,7 +19,11 @@ function ItemUpgradeTipDisplayMixin:OnLoad()
             tab:SetPoint("LEFT", lastTab, "RIGHT", 0, 0)
         end
         lastTab = tab
+
+        ItemUpgradeTip:AddSkinnableFrame("TabButton", tab, {tabs = self.Tabs})
     end
+
+    ItemUpgradeTip:AddSkinnableFrame("ContainerFrame", self)
 end
 
 function ItemUpgradeTipDisplayMixin:OnShow()
