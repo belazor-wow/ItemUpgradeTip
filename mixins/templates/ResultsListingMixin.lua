@@ -46,7 +46,7 @@ end
 
 function ItemUpgradeTipResultsListingMixin:OnLoad()
     ItemUpgradeTip:AddSkinnableFrame("NavBar", self.HeaderContainer)
-    ItemUpgradeTip:AddSkinnableFrame("TrimScrollBar", self.ScrollArea.ScrollBar)
+    ItemUpgradeTip:AddSkinnableFrame("ScrollArea", self.ScrollArea)
 end
 
 function ItemUpgradeTipResultsListingMixin:OnShow()

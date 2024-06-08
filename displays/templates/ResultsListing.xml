@@ -35,8 +35,8 @@
                     </Frame>
                     <EventFrame parentKey="ScrollBar" inherits="MinimalScrollBar">
                         <Anchors>
-                            <Anchor point="TOPRIGHT" y="0" x="23"/>
-                            <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT" />
+                            <Anchor point="TOPLEFT" relativeKey="$parent.ScrollBox" relativePoint="TOPRIGHT" x="0" y="0" />
+					        <Anchor point="BOTTOMLEFT" relativeKey="$parent.ScrollBox" relativePoint="BOTTOMRIGHT" x="0" y="0" />
                         </Anchors>
                     </EventFrame>
                 </Frames>
