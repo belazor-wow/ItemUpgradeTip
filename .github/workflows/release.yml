@@ -5,6 +5,9 @@ on:
     tags:
       - '**'
 
+    paths-ignore:
+    - ".github/**"
+
 jobs:
   release:
     runs-on: ubuntu-latest
