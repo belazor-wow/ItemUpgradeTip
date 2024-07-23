@@ -3848,10 +3848,8 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
         flightstones = 0,
     }
 
-    DevTools_Dump("----")
-
     for _, upgradeInfo in pairs(itemBonusIds) do
-        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
+        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeGroup == bonusInfo.upgradeGroup and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
             local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
             if upgradeCosts ~= nil then
                 local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
@@ -3875,8 +3873,6 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
                     }
                 end
 
-                DevTools_Dump("From " .. bonusInfo.upgradeLevel .. " to " .. upgradeInfo.upgradeLevel .. " costs " .. flightstones .. " flightstones")
-
                 totalUpgradeCosts.whelpCrests = totalUpgradeCosts.whelpCrests + whelpCrests
                 totalUpgradeCosts.drakeCrests = totalUpgradeCosts.drakeCrests + drakeCrests
                 totalUpgradeCosts.wyrmCrests = totalUpgradeCosts.wyrmCrests + wyrmCrests
@@ -3889,8 +3885,6 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
             end
         end
     end
-
-    DevTools_Dump("----")
 
     if nextUpgradeCost and nextUpgrade then
         local nextLevelLines = ParseUpgradeCost(nextUpgradeCost)
