@@ -32,7 +32,18 @@ private.Preferences.DisabledIntegrations.Flightstones = {
     width = "double",
 }
 
----@type Dictionary<FlightstoneUpgradeData>
+-- ----------------------------------------------------------------------------
+-- Flightstone Upgrade Cost
+-- ----------------------------------------------------------------------------
+---@class FlightstoneUpgradeCostData
+---@field whelpCrests integer
+---@field drakeCrests integer
+---@field wyrmCrests integer
+---@field aspectCrests integer
+---@field flightstones integer
+
+
+---@type Dictionary<UpgradeData>
 local flightstoneUpgradeData = {
     ["flightstones"] = {
         name = L["FLIGHTSTONES"],
@@ -315,7 +326,7 @@ private.craftingInfo = {
     {itemLevel = 525, itemId = 211519, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
----@type Array<FlightstoneBonusData>
+---@type Array<ItemBonusInfo>
 local itemBonusIds = {
 
         -- Adventurer (8)
@@ -481,10 +492,7 @@ local itemBonusIds = {
                      [1] = {currencyId = 2245, amount = 200},
                      [2] = {currencyId = 2806, amount = 15}
                 },
-                [131072] = {
-                     [1] = {currencyId = 2245, amount = 250},
-                     [2] = {currencyId = 2806, amount = 15}
-                }
+                [131072] = { [1] = {currencyId = 2245, amount = 250}, [2] = {currencyId = 2806, amount = 15} }
             }
         },
         [10310] = {
@@ -2959,125 +2967,6 @@ local itemBonusIds = {
         }
 }
 
----@type Array<FlightstoneUpgradeCostData>
-local itemExtendedCostTable = {
-    [7984] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 50},
-    [7991] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
-    [7992] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 25},
-    [7993] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 40},
-    [7994] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 65},
-    [7995] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 80},
-    [7997] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 100},
-    [7998] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
-    [8003] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 160},
-
-    [8235] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
-    [8236] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 100},
-    [8237] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 65},
-    [8238] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 125},
-    [8239] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 250},
-    [8240] = {whelpCrests = 15, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 0, flightstones = 200},
-
-    [8255] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 300},
-    [8256] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 75},
-    [8257] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 145},
-    [8258] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 120},
-    [8259] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 150},
-    [8260] = {whelpCrests = 0, drakeCrests = 15, wyrmCrests = 0, aspectCrests = 0, flightstones = 225},
-
-    [8249] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 170},
-    [8250] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 140},
-    [8251] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 90},
-    [8252] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 175},
-    [8253] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 350},
-    [8254] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 15, aspectCrests = 0, flightstones = 275},
-
-    [8241] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 190},
-    [8242] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 160},
-    [8243] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 100},
-    [8244] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 100},
-    [8245] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 200},
-    [8246] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 400},
-    [8247] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 300},
-    [8248] = {whelpCrests = 0, drakeCrests = 0, wyrmCrests = 0, aspectCrests = 15, flightstones = 400},
-}
-
----@type Array<Array<integer>>
-local itemExtendedCostLookup = {
-    -- INVTYPE_HEAD, INVTYPE_CHEST, INVTYPE_LEGS, INVTYPE_ROBE
-    [1048738] = {
-        [23] = 7984,
-        [24] = 7991,
-        [25] = 8235,
-        [26] = 8257,
-        [27] = 8249,
-        [28] = 8241,
-    },
-
-    [5448] = {
-        [23] = 7993,
-        [24] = 7994,
-        [25] = 8236,
-        [26] = 8258,
-        [27] = 8250,
-        [28] = 8242,
-    },
-
-    [68100] = {
-        [23] = 7992,
-        [24] = 7993,
-        [25] = 8237,
-        [26] = 8256,
-        [27] = 8251,
-        [28] = 8243,
-    },
-
-    [8404992] = {
-        [23] = 7992,
-        [24] = 7993,
-        [25] = 8237,
-        [26] = 8256,
-        [27] = 8251,
-        [28] = 8244,
-    },
-
-    [8192] = {
-        [23] = 7984,
-        [24] = 7995,
-        [25] = 8238,
-        [26] = 8259,
-        [27] = 8252,
-        [28] = 8245,
-    },
-
-    [67272704] = {
-        [23] = 7997,
-        [24] = 8003,
-        [25] = 8239,
-        [26] = 8255,
-        [27] = 8253,
-        [28] = 8246,
-    },
-
-    [131072] = {
-        [23] = 7997,
-        [24] = 8003,
-        [25] = 8239,
-        [26] = 8255,
-        [27] = 8253,
-        [28] = 8248,
-    },
-
-    [67117056] = {
-        [23] = 7991,
-        [24] = 7998,
-        [25] = 8240,
-        [26] = 8260,
-        [27] = 8254,
-        [28] = 8247,
-    },
-}
-
 ---@type Dictionary<integer>
 local inventoryTypeSlotMasks = {
 
@@ -3125,70 +3014,38 @@ local inventoryTypeSlotMaskOverrides = {
 }
 
 --- Fetches all the upgrade costs for a given upgrade info
----@param itemExtendedCosts Array<integer>
----@param upgradeInfo FlightstoneBonusData
+---@param upgradeCosts Array<UpgradeTrackCost>
+---@param upgradeInfo ItemBonusInfo
 ---@return FlightstoneUpgradeCostData?
-local function GetItemUpgradeCosts(itemExtendedCosts, upgradeInfo)
-    local itemExtendedCost = itemExtendedCosts[upgradeInfo.upgradeGroup];
-    if itemExtendedCost == nil then
-        private.Debug(upgradeInfo.upgradeGroup, "did not have an entry in itemExtendedCosts")
-        return nil
-    end
-
-    local upgradeCosts = itemExtendedCostTable[itemExtendedCost];
-    if upgradeCosts == nil then
-        private.Debug(itemExtendedCost, "did not have an entry in itemExtendedCostTable")
-        return nil
-    end
-
+local function GetItemUpgradeCosts(upgradeCosts, upgradeInfo)
     ---@type FlightstoneUpgradeCostData
     local results = {
-        whelpCrests = upgradeCosts.whelpCrests,
-        drakeCrests = upgradeCosts.drakeCrests,
-        wyrmCrests = upgradeCosts.wyrmCrests,
-        aspectCrests = upgradeCosts.aspectCrests,
-        flightstones = upgradeCosts.flightstones
+        whelpCrests = 0,
+        drakeCrests = 0,
+        wyrmCrests = 0,
+        aspectCrests = 0,
+        flightstones = 0
     }
-    
+
+    for _, upgradeCost in pairs(upgradeCosts) do
+        if upgradeCost.currencyId == private.currencyIds["Flightstones"] then
+            results.flightstones = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["whelpCrest"] then
+            results.whelpCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["drakeCrest"] then
+            results.drakeCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["wyrmCrest"] then
+            results.wyrmCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["aspectCrest"] then
+            results.aspectCrests = upgradeCost.amount
+        end
+    end
+
     if upgradeInfo.rank == 7 or upgradeInfo.rank == 8 then
         results.flightstones = Round(results.flightstones * 0.5)
     end
 
     return results
-end
-
---- Parses the given upgrade costs to generate a table for use in tooltip
----@param equipLoc string
----@param itemLink string
----@return Array<integer>?
-local function GetItemExtendedCosts(equipLoc, itemLink)
-    local inventoryTypeSlotMask = inventoryTypeSlotMasks[equipLoc]
-    if not inventoryTypeSlotMask then
-        private.Debug(equipLoc, "was not found in the Flightstones inventory slot mask table");
-        return nil
-    end
-
-    local inventoryTypeSlotMaskOverride = inventoryTypeSlotMaskOverrides[equipLoc];
-    if inventoryTypeSlotMaskOverride then
-        local stats = C_Item.GetItemStats(itemLink)
-        if not stats then
-            private.Debug("Could not extract Flightstones item stats from", itemLink);
-            return nil
-        end
-        local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
-        if hasInt then
-            private.Debug("Upgrade cost for has been overridden because the item has Intellect on it.");
-            inventoryTypeSlotMask = inventoryTypeSlotMaskOverride
-        end
-    end
-
-    local itemExtendedCosts = itemExtendedCostLookup[inventoryTypeSlotMask];
-    if not itemExtendedCosts then
-        private.Debug(inventoryTypeSlotMask, "was not found in the Flightstones item extended cost lookup table");
-        return nil
-    end
-
-    return itemExtendedCosts
 end
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
@@ -3261,11 +3118,11 @@ end
 
 --- Updates the tooltip when a Flightstone item is the item in question
 ---@param tooltip GameTooltip
----@param itemExtendedCosts Array<integer>
+---@param itemUpgradeCosts Array<UpgradeTrackCost>
 ---@param bonusId integer
----@param bonusInfo FlightstoneBonusData
+---@param bonusInfo ItemBonusInfo
 ---@param itemLink string
-local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo, itemLink)
+local function HandleFlightstones(tooltip, itemUpgradeCosts, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
         private.Debug(bonusId, "or Flightstones bonus info table was not found");
         return
@@ -3335,10 +3192,10 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
     ---@type FlightstoneUpgradeCostData?
     local nextUpgradeCost = nil
 
-    ---@type FlightstoneBonusData?
+    ---@type ItemBonusInfo?
     local nextUpgrade = nil
 
-    ---@type FlightstoneBonusData?
+    ---@type ItemBonusInfo?
     local maxUpgrade = nil
 
     ---@type FlightstoneUpgradeCostData
@@ -3352,7 +3209,7 @@ local function HandleFlightstones(tooltip, itemExtendedCosts, bonusId, bonusInfo
 
     for _, upgradeInfo in pairs(itemBonusIds) do
         if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
-            local upgradeCosts = GetItemUpgradeCosts(itemExtendedCosts, upgradeInfo);
+            local upgradeCosts = GetItemUpgradeCosts(itemUpgradeCosts, upgradeInfo);
             if upgradeCosts ~= nil then
                 local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
                 local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
@@ -3454,28 +3311,48 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         return false
     end
 
-    local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
-
-    private.Debug(itemLink, "has equipLoc", equipLoc);
-
-    local upgradeCosts = GetItemExtendedCosts(equipLoc, itemLink);
-    if upgradeCosts == nil then
-        -- Debug statements should already be added by GetItemExtendedCosts
-        return false
-    end
-
     for i = 1, #bonusIds do
-        ---@type FlightstoneBonusData?
+        ---@type ItemBonusInfo?
         local bonusInfo = itemBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
             private.Debug(bonusIds[i], "matched a Flighstones bonus ID");
+
+            local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
+            private.Debug(itemLink, "has equipLoc", equipLoc);
+
+            local inventoryTypeSlotMask = inventoryTypeSlotMasks[equipLoc]
+            if not inventoryTypeSlotMask then
+                private.Debug(equipLoc, "was not found in the Flightstones inventory slot mask table");
+                return false
+            end
+
+            local inventoryTypeSlotMaskOverride = inventoryTypeSlotMaskOverrides[equipLoc];
+            if inventoryTypeSlotMaskOverride then
+                local stats = C_Item.GetItemStats(itemLink)
+                if not stats then
+                    private.Debug("Could not extract Flightstones item stats from", itemLink);
+                    return false
+                end
+                local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
+                if hasInt then
+                    private.Debug("Upgrade cost for has been overridden because the item has Intellect on it.");
+                    inventoryTypeSlotMask = inventoryTypeSlotMaskOverride
+                end
+            end
+
+            local upgradeCosts = bonusInfo.costs[inventoryTypeSlotMask];
+            if not upgradeCosts then
+                private.Debug(inventoryTypeSlotMask, "was not found in the Flightstones item extended cost lookup table");
+                return false
+            end
+
             HandleFlightstones(tooltip, upgradeCosts, i, bonusInfo, itemLink)
             return true
         end
     end
 
     private.Debug(itemId, "did not match a Flightstones bonus ID");
-    return false
+    return false;
 end
 
 table.insert(private.upgradeHandlers, CheckFlightstoneBonusIDs)

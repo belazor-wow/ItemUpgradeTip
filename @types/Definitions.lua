@@ -22,32 +22,14 @@
 
 
 -- ----------------------------------------------------------------------------
--- Flightstone Upgrade Data
+-- Item Bonus Info
 -- ----------------------------------------------------------------------------
----@class FlightstoneUpgradeData
----@field name string
----@field shortName string
----@field color ColorMixin
----@field icon fileID|integer
----@field itemId integer?
----@field currencyId integer?
-
----@class FlightstoneUpgradeCostData
----@field whelpCrests integer
----@field drakeCrests integer
----@field wyrmCrests integer
----@field aspectCrests integer
----@field flightstones integer
-
-
--- ----------------------------------------------------------------------------
--- Flightstone Bonus Data
--- ----------------------------------------------------------------------------
----@class FlightstoneBonusData
+---@class ItemBonusInfo
 ---@field itemLevel integer
 ---@field rank integer
 ---@field upgradeLevel integer
----@field upgradeGroup integer
+---@field maxUpgradeLevel integer
+---@field costs Array<Array<UpgradeTrackCost>>
 
 
 -- ----------------------------------------------------------------------------
@@ -75,7 +57,7 @@
 ---@field keyLevel integer|string
 ---@field lootDrops integer
 ---@field vaultReward integer
----@field currency FlightstoneUpgradeData
+---@field currency UpgradeData
 
 
 -- ----------------------------------------------------------------------------
@@ -89,20 +71,32 @@
 ---@field mythic integer
 
 ---@class RaidCurrencyInfo
----@field lfrCurrency FlightstoneUpgradeData
----@field normalCurrency FlightstoneUpgradeData
----@field heroicCurrency FlightstoneUpgradeData
----@field mythicCurrency FlightstoneUpgradeData
+---@field lfrCurrency UpgradeData
+---@field normalCurrency UpgradeData
+---@field heroicCurrency UpgradeData
+---@field mythicCurrency UpgradeData
 
 
 -- ----------------------------------------------------------------------------
 -- Upgrade Table Data
 -- ----------------------------------------------------------------------------
+---@class UpgradeData
+---@field name string
+---@field shortName string
+---@field color ColorMixin
+---@field icon fileID|integer
+---@field itemId integer?
+---@field currencyId integer?
+
+---@class UpgradeTrackCost
+---@field currencyId integer
+---@field amount integer
+
 ---@class UpgradeTrackInfo
 ---@field itemLevel integer
 ---@field upgrade1 UpgradeTrackUpgrade
 ---@field upgrade2 UpgradeTrackUpgrade?
----@field currency FlightstoneUpgradeData
+---@field currency UpgradeData
 
 ---@class UpgradeTrackUpgrade
 ---@field rank integer
