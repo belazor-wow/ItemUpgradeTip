@@ -287,6 +287,8 @@ local function CheckConquestBonusIds(tooltip, itemId, itemLink, currentUpgrade, 
     end
 
     for i = 1, #bonusIds do
+        private.Debug("Checking Conquest bonus IDs for", bonusIds[i]);
+
         ---@type HonorBonusData?
         local bonusInfo = conquestBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
