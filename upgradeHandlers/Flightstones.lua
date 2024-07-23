@@ -492,7 +492,10 @@ local itemBonusIds = {
                      [1] = {currencyId = 2245, amount = 200},
                      [2] = {currencyId = 2806, amount = 15}
                 },
-                [131072] = { [1] = {currencyId = 2245, amount = 250}, [2] = {currencyId = 2806, amount = 15} }
+                [131072] = {
+                     [1] = {currencyId = 2245, amount = 250},
+                     [2] = {currencyId = 2806, amount = 15}
+                }
             }
         },
         [10310] = {
