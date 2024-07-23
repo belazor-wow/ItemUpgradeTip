@@ -3604,10 +3604,6 @@ local function GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo)
         end
     end
 
-    if upgradeInfo.rank == 7 or upgradeInfo.rank == 8 then
-        results.flightstones = Round(results.flightstones * 0.5)
-    end
-
     return results
 end
 
@@ -3770,6 +3766,8 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
         flightstones = 0,
     }
 
+    DevTools_Dump("----")
+
     for _, upgradeInfo in pairs(itemBonusIds) do
         if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
             local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
@@ -3794,6 +3792,9 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
                         flightstones = flightstones,
                     }
                 end
+
+                DevTools_Dump("From " .. bonusInfo.upgradeLevel .. " to " .. upgradeInfo.upgradeLevel .. " costs " .. flightstones .. " flightstones")
+
                 totalUpgradeCosts.whelpCrests = totalUpgradeCosts.whelpCrests + whelpCrests
                 totalUpgradeCosts.drakeCrests = totalUpgradeCosts.drakeCrests + drakeCrests
                 totalUpgradeCosts.wyrmCrests = totalUpgradeCosts.wyrmCrests + wyrmCrests
@@ -3806,6 +3807,8 @@ local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonus
             end
         end
     end
+
+    DevTools_Dump("----")
 
     if nextUpgradeCost and nextUpgrade then
         local nextLevelLines = ParseUpgradeCost(nextUpgradeCost)
