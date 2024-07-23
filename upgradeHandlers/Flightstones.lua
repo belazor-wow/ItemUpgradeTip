@@ -335,6 +335,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 1,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 50}
@@ -367,6 +368,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 2,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 50}
@@ -399,6 +401,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 3,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 50}
@@ -431,6 +434,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 4,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 50}
@@ -463,6 +467,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 5,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -495,6 +500,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 6,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -527,6 +533,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 7,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -559,6 +566,7 @@ local itemBonusIds = {
             rank = 1,
             upgradeLevel = 8,
             maxUpgradeLevel = 8,
+            upgradeGroup = 354,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -593,6 +601,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 1,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -625,6 +634,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 2,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -657,6 +667,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 3,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -689,6 +700,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 4,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 75}
@@ -721,6 +733,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 5,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -761,6 +774,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 6,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -801,6 +815,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 7,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -841,6 +856,7 @@ local itemBonusIds = {
             rank = 2,
             upgradeLevel = 8,
             maxUpgradeLevel = 8,
+            upgradeGroup = 342,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -883,6 +899,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 1,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -923,6 +940,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 2,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -963,6 +981,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 3,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -1003,6 +1022,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 4,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 120},
@@ -1043,6 +1063,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 5,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1083,6 +1104,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 6,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1123,6 +1145,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 7,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1163,6 +1186,7 @@ local itemBonusIds = {
             rank = 3,
             upgradeLevel = 8,
             maxUpgradeLevel = 8,
+            upgradeGroup = 355,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1205,6 +1229,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 1,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1245,6 +1270,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 2,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1285,6 +1311,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 3,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1325,6 +1352,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 4,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1365,6 +1393,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 5,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1405,6 +1434,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 6,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1445,6 +1475,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 7,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1485,6 +1516,7 @@ local itemBonusIds = {
             rank = 4,
             upgradeLevel = 8,
             maxUpgradeLevel = 8,
+            upgradeGroup = 356,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1527,6 +1559,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 1,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1567,6 +1600,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 2,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1607,6 +1641,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 3,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1647,6 +1682,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 4,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -1687,6 +1723,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 5,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1727,6 +1764,7 @@ local itemBonusIds = {
             rank = 5,
             upgradeLevel = 6,
             maxUpgradeLevel = 6,
+            upgradeGroup = 357,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1769,6 +1807,7 @@ local itemBonusIds = {
             rank = 6,
             upgradeLevel = 1,
             maxUpgradeLevel = 4,
+            upgradeGroup = 358,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1809,6 +1848,7 @@ local itemBonusIds = {
             rank = 6,
             upgradeLevel = 2,
             maxUpgradeLevel = 4,
+            upgradeGroup = 358,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1849,6 +1889,7 @@ local itemBonusIds = {
             rank = 6,
             upgradeLevel = 3,
             maxUpgradeLevel = 4,
+            upgradeGroup = 358,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1889,6 +1930,7 @@ local itemBonusIds = {
             rank = 6,
             upgradeLevel = 4,
             maxUpgradeLevel = 4,
+            upgradeGroup = 358,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -1931,6 +1973,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 1,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -1971,6 +2014,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 2,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2011,6 +2055,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 3,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2051,6 +2096,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 4,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2091,6 +2137,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 5,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2131,6 +2178,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 6,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2171,6 +2219,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 7,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2211,6 +2260,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 8,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2251,6 +2301,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 9,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2291,6 +2342,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 10,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2331,6 +2383,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 11,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2371,6 +2424,7 @@ local itemBonusIds = {
             rank = 7,
             upgradeLevel = 12,
             maxUpgradeLevel = 12,
+            upgradeGroup = 360,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2413,6 +2467,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 1,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2453,6 +2508,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 2,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2493,6 +2549,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 3,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2533,6 +2590,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 4,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -2573,6 +2631,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 5,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2613,6 +2672,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 6,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2653,6 +2713,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 7,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2693,6 +2754,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 8,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -2733,6 +2795,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 9,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2773,6 +2836,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 10,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2813,6 +2877,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 11,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2853,6 +2918,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 12,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2893,6 +2959,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 13,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2933,6 +3000,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 14,
             maxUpgradeLevel = 14,
+            upgradeGroup = 382,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -2973,6 +3041,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 1,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -3013,6 +3082,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 2,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -3053,6 +3123,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 3,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -3093,6 +3164,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 4,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 145},
@@ -3133,6 +3205,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 5,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -3173,6 +3246,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 6,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -3213,6 +3287,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 7,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -3253,6 +3328,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 8,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 170},
@@ -3293,6 +3369,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 9,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -3333,6 +3410,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 10,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -3373,6 +3451,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 11,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -3413,6 +3492,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 12,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -3453,6 +3533,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 13,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},
@@ -3493,6 +3574,7 @@ local itemBonusIds = {
             rank = 8,
             upgradeLevel = 14,
             maxUpgradeLevel = 14,
+            upgradeGroup = 405,
             costs = {
                 [1048738] = {
                      [1] = {currencyId = 2245, amount = 190},

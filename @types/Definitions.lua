@@ -29,6 +29,7 @@
 ---@field rank integer
 ---@field upgradeLevel integer
 ---@field maxUpgradeLevel integer
+---@field upgradeGroup integer
 ---@field costs Array<Array<UpgradeTrackCost>>
 
 
