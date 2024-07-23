@@ -3315,6 +3315,8 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
     end
 
     for i = 1, #bonusIds do
+        private.Debug("Checking Flightstone bonus IDs for", bonusIds[i]);
+
         ---@type ItemBonusInfo?
         local bonusInfo = itemBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
