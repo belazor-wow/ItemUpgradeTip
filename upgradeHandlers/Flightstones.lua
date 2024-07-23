@@ -3577,10 +3577,10 @@ local inventoryTypeSlotMaskOverrides = {
 }
 
 --- Fetches all the upgrade costs for a given upgrade info
----@param upgradeCosts Array<UpgradeTrackCost>
+---@param inventoryTypeSlotMask integer
 ---@param upgradeInfo ItemBonusInfo
 ---@return FlightstoneUpgradeCostData?
-local function GetItemUpgradeCosts(upgradeCosts, upgradeInfo)
+local function GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo)
     ---@type FlightstoneUpgradeCostData
     local results = {
         whelpCrests = 0,
@@ -3590,7 +3590,7 @@ local function GetItemUpgradeCosts(upgradeCosts, upgradeInfo)
         flightstones = 0
     }
 
-    for _, upgradeCost in pairs(upgradeCosts) do
+    for _, upgradeCost in pairs(upgradeInfo.costs[inventoryTypeSlotMask]) do
         if upgradeCost.currencyId == private.currencyIds["Flightstones"] then
             results.flightstones = upgradeCost.amount
         elseif upgradeCost.currencyId == private.currencyIds["whelpCrest"] then
@@ -3681,11 +3681,11 @@ end
 
 --- Updates the tooltip when a Flightstone item is the item in question
 ---@param tooltip GameTooltip
----@param itemUpgradeCosts Array<UpgradeTrackCost>
+---@param inventoryTypeSlotMask integer
 ---@param bonusId integer
 ---@param bonusInfo ItemBonusInfo
 ---@param itemLink string
-local function HandleFlightstones(tooltip, itemUpgradeCosts, bonusId, bonusInfo, itemLink)
+local function HandleFlightstones(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
         private.Debug(bonusId, "or Flightstones bonus info table was not found");
         return
@@ -3772,7 +3772,7 @@ local function HandleFlightstones(tooltip, itemUpgradeCosts, bonusId, bonusInfo,
 
     for _, upgradeInfo in pairs(itemBonusIds) do
         if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
-            local upgradeCosts = GetItemUpgradeCosts(itemUpgradeCosts, upgradeInfo);
+            local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
             if upgradeCosts ~= nil then
                 local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
                 local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
@@ -3905,13 +3905,12 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
                 end
             end
 
-            local upgradeCosts = bonusInfo.costs[inventoryTypeSlotMask];
-            if not upgradeCosts then
+            if not bonusInfo.costs[inventoryTypeSlotMask] then
                 private.Debug(inventoryTypeSlotMask, "was not found in the Flightstones item extended cost lookup table");
                 return false
             end
 
-            HandleFlightstones(tooltip, upgradeCosts, i, bonusInfo, itemLink)
+            HandleFlightstones(tooltip, inventoryTypeSlotMask, i, bonusInfo, itemLink)
             return true
         end
     end
