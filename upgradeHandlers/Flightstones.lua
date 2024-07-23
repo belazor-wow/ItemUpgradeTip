@@ -3959,7 +3959,7 @@ local function CheckFlightstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrad
         ---@type ItemBonusInfo?
         local bonusInfo = itemBonusIds[bonusIds[i]]
         if bonusInfo ~= nil then
-            private.Debug(bonusIds[i], "matched a Flighstones bonus ID");
+            private.Debug(bonusIds[i], "matched a Flightstone bonus ID");
 
             local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
             private.Debug(itemLink, "has equipLoc", equipLoc);
