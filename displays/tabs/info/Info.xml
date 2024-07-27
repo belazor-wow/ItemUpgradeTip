@@ -65,7 +65,7 @@
             <Frame inherits="ItemUpgradeTipCopyAndPasteFrame" parentKey="BugReportLink">
                 <KeyValues>
                     <KeyValue key="labelText" value="ITEMUPGRADETIP_L_BUG_REPORT_SUGGEST" type="global" />
-                    <KeyValue key="copyText" value="https://github.com/filliph/ItemUpgradeTip/issues" type="string" />
+                    <KeyValue key="copyText" value="https://github.com/belazor-wow/ItemUpgradeTip/issues" type="string" />
                     <KeyValue key="tooltipTitleText" value="ITEMUPGRADETIP_L_BUG_REPORT_SUGGEST_TOOLTIP" type="global" />
                 </KeyValues>
                 <Anchors>
