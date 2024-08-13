@@ -13,12 +13,13 @@ New in v3 is the "Upgrade UI":
 ### Features:
 - Displays upgrade information in the tooltip of an item that can be upgraded
 - `/iut` or `/itemupgradetip` to open the upgrade UI
-- Supports character and account wide discounts for Flightstones and Crests
+- Supports character and account wide discounts for upgrades
 - (Optional) Compact tooltip format
 - (Optional) Disable individual item type integrations
  
 ### Supported item types / currencies:
-- Flightstone / Crest (Flightstone cost data and discount checking methodology provided by Nerc @ Wago)
+- Flightstone / Crest
+- Valorstone / Crest
 - Honor gear (Honor)
 - Conquest gear (Honor)
 - Covenant gear (Reservoir Anima)

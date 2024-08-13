@@ -48,6 +48,8 @@ local function CheckAnimaBonusIds(tooltip, itemId, itemLink, currentUpgrade, max
     end
 
     for i = 1, #bonusIds do
+        private.Debug("Checking Anima bonus IDs for", bonusIds[i]);
+
         ---@type BonusData?
         local bonusInfo = animaBonusIds[bonusIds[i]]
 
