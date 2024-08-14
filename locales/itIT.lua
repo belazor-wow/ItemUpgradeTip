@@ -7,7 +7,7 @@
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
 
----@type Localizations
+---@type Localizations?
 local L = LibStub("AceLocale-3.0"):NewLocale(AddOnFolderName, "itIT", false)
 
 if not L then

@@ -5,7 +5,7 @@
 -- ----------------------------------------------------------------------------
 ---@class Array<T>: { [integer]: T }
 ---@class Dictionary<T>: { [string]: T }
----@class Localizations: Dictionary<string>
+---@class Localizations: Dictionary<boolean|string>
 
 
 -- ----------------------------------------------------------------------------
