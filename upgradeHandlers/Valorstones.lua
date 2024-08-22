@@ -140,22 +140,22 @@ private.upgradeTrackInfo = {
     {
         itemLevel = 572,
         upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["flightstones"]
+        currency = valorstoneUpgradeData["valorstones"]
     },
     {
         itemLevel = 575,
         upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["flightstones"]
+        currency = valorstoneUpgradeData["valorstones"]
     },
     {
         itemLevel = 578,
         upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["flightstones"]
+        currency = valorstoneUpgradeData["valorstones"]
     },
     {
         itemLevel = 581,
         upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["flightstones"]
+        currency = valorstoneUpgradeData["valorstones"]
     },
     {
         itemLevel = 584,
@@ -197,7 +197,7 @@ private.upgradeTrackInfo = {
         itemLevel = 603,
         upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedcarvedCrestsCrests"]
+        currency = valorstoneUpgradeData["carvedCrests"]
     },
     {
         itemLevel = 606,
