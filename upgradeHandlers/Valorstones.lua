@@ -109,14 +109,15 @@ private.raidInfo = {
     {boss = 1,                  lfr = 584, normal = 597, heroic = 610, mythic = 623},
     {boss = 2,                  lfr = 584, normal = 597, heroic = 610, mythic = 623},
     {boss = 3,                  lfr = 587, normal = 600, heroic = 613, mythic = 626},
+    {boss = L["X_RARE"]:format(3),  lfr = 600, normal = 613, heroic = 626, mythic = 639},
     {boss = 4,                  lfr = 587, normal = 600, heroic = 613, mythic = 626},
-    {boss = L["X_RARE"]:format(3),  lfr = 593, normal = 606, heroic = 619, mythic = 632},
+    {boss = L["X_RARE"]:format(4),  lfr = 600, normal = 606, heroic = 626, mythic = 639},
     {boss = 5,                  lfr = 590, normal = 603, heroic = 616, mythic = 629},
     {boss = 6,                  lfr = 590, normal = 603, heroic = 616, mythic = 629},
-    {boss = 7,                  lfr = 590, normal = 603, heroic = 616, mythic = 629},
+    {boss = L["X_RARE"]:format(6),  lfr = 600, normal = 606, heroic = 626, mythic = 639},
+    {boss = 7,                  lfr = 593, normal = 606, heroic = 619, mythic = 632},
     {boss = 8,                  lfr = 593, normal = 606, heroic = 619, mythic = 632},
-    {boss = 9,                  lfr = 593, normal = 606, heroic = 619, mythic = 632},
-    {boss = L["X_RARE"]:format(9),  lfr = 600, normal = 613, heroic = 626, mythic = 639},
+    {boss = L["X_RARE"]:format(8),  lfr = 600, normal = 613, heroic = 626, mythic = 639},
 }
 
 ---@type RaidCurrencyInfo
@@ -137,22 +138,22 @@ private.raidInfo = {
 ---@type Array<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
-        itemLevel = 571,
+        itemLevel = 572,
         upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 574,
+        itemLevel = 575,
         upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 577,
+        itemLevel = 578,
         upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["flightstones"]
     },
     {
-        itemLevel = 580,
+        itemLevel = 581,
         upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["flightstones"]
     },
@@ -184,49 +185,49 @@ private.upgradeTrackInfo = {
         itemLevel = 597,
         upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = valorstoneUpgradeData["carvedCrests"]
     },
     {
         itemLevel = 600,
         upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = valorstoneUpgradeData["carvedCrests"]
     },
     {
         itemLevel = 603,
         upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = valorstoneUpgradeData["runedcarvedCrestsCrests"]
     },
     {
         itemLevel = 606,
         upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = valorstoneUpgradeData["carvedCrests"]
     },
     {
         itemLevel = 610,
         upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 613,
         upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 616,
         upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 619,
         upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 623,
@@ -265,21 +266,21 @@ private.upgradeTrackInfo = {
 ---@type Array<CraftingInfo>
 private.craftingInfo = {
     -- Weathered
-    {itemLevel = 577, itemId = 224069, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 580, itemId = 224069, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 583, itemId = 224069, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 586, itemId = 224069, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 578, itemId = 224069, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 581, itemId = 224069, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 584, itemId = 224069, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 587, itemId = 224069, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
     {itemLevel = 590, itemId = 224069, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Spark
-    {itemLevel = 593, itemId = 211296, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 596, itemId = 211296, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 599, itemId = 211296, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 602, itemId = 211296, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 606, itemId = 211296, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 584, itemId = 211296, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 587, itemId = 211296, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 590, itemId = 211296, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 593, itemId = 211296, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 597, itemId = 211296, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
