@@ -97,6 +97,8 @@
 ---@field itemLevel integer
 ---@field upgrade1 UpgradeTrackUpgrade
 ---@field upgrade2 UpgradeTrackUpgrade?
+---@field upgrade3 UpgradeTrackUpgrade?
+---@field upgrade4 UpgradeTrackUpgrade?
 ---@field currency UpgradeData
 
 ---@class UpgradeTrackUpgrade
