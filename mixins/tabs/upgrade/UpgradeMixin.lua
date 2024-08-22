@@ -44,6 +44,7 @@ local UPGRADE_DATA_PROVIDER_LAYOUT = {
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "mythTier" },
     },
+    --[[
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
         headerText = _G["ITEMUPGRADETIP_L_UPGRADE_TRACK_AWAKENED"],
@@ -51,6 +52,7 @@ local UPGRADE_DATA_PROVIDER_LAYOUT = {
         cellTemplate = "ItemUpgradeTipStringCellTemplate",
         cellParameters = { "awakenedTier" },
     },
+    ]]
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
         headerText = _G["ITEMUPGRADETIP_L_CREST_TYPE"],
@@ -106,7 +108,7 @@ function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()
             championTier = (rank1 == 4 and upgradeTierString1) or (rank2 == 4 and upgradeTierString2) or (rank3 == 4 and upgradeTierString3) or (rank4 == 4 and upgradeTierString4) or "",
             heroTier = (rank1 == 5 and upgradeTierString1) or (rank2 == 5 and upgradeTierString2) or (rank3 == 5 and upgradeTierString3) or (rank4 == 5 and upgradeTierString4) or "",
             mythTier = (rank1 == 6 and upgradeTierString1) or (rank2 == 6 and upgradeTierString2) or (rank3 == 6 and upgradeTierString3) or (rank4 == 6 and upgradeTierString4) or "",
-            awakenedTier = ((rank1 == 7 or rank1 == 8) and upgradeTierString1) or ((rank2 == 7 or rank2 == 8) and upgradeTierString2) or ((rank3 == 7 or rank3 == 8) and upgradeTierString3) or ((rank4 == 7 or rank4 == 8) and upgradeTierString4) or "",
+            --awakenedTier = ((rank1 == 7 or rank1 == 8) and upgradeTierString1) or ((rank2 == 7 or rank2 == 8) and upgradeTierString2) or ((rank3 == 7 or rank3 == 8) and upgradeTierString3) or ((rank4 == 7 or rank4 == 8) and upgradeTierString4) or "",
             index = index,
             selected = self:IsSelected(index),
             crestTypeCurrencyId = upgradeTrack.currency.currencyId
