@@ -104,6 +104,8 @@ function ItemUpgradeTip:OnEnable()
     self:RegisterEvent("CURRENCY_DISPLAY_UPDATE")
 
     CreateFrame("Frame", "IUTView", UIParent, "ItemUpgradeTipUpgradeTemplate")
+
+    ItemUpgradeTip:AddSkinnableFrame("ContainerFrame", IUTView)
 end
 
 -- Not super useful just now, but might be in the future

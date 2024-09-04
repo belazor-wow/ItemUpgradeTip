@@ -22,8 +22,6 @@ function ItemUpgradeTipDisplayMixin:OnLoad()
 
         ItemUpgradeTip:AddSkinnableFrame("TabButton", tab, {tabs = self.Tabs})
     end
-
-    ItemUpgradeTip:AddSkinnableFrame("ContainerFrame", self)
 end
 
 function ItemUpgradeTipDisplayMixin:OnShow()
