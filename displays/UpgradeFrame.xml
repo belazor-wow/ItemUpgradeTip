@@ -28,7 +28,7 @@
         </Anchors>
 
         <Frames>
-            <Frame inherits="ItemUpgradeTipMythicPlusDisplayTemplate" parentArray="Views">
+            <Frame parentKey="MythicPlusFrame" inherits="ItemUpgradeTipMythicPlusDisplayTemplate" parentArray="Views">
                 <KeyValues>
                     <KeyValue key="displayMode" value="MythicPlus" type="string" />
                 </KeyValues>
@@ -38,7 +38,7 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipRaidDisplayTemplate" parentArray="Views">
+            <Frame parentKey="RaidFrame" inherits="ItemUpgradeTipRaidDisplayTemplate" parentArray="Views">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Raid" type="string" />
                 </KeyValues>
@@ -48,7 +48,7 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipUpgradeDisplayTemplate" parentArray="Views">
+            <Frame parentKey="UpgradeFrame" inherits="ItemUpgradeTipUpgradeDisplayTemplate" parentArray="Views">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Upgrade" type="string" />
                 </KeyValues>
@@ -58,7 +58,7 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipCraftingDisplayTemplate" parentArray="Views">
+            <Frame parentKey="CraftingFrame" inherits="ItemUpgradeTipCraftingDisplayTemplate" parentArray="Views">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Crafting" type="string" />
                 </KeyValues>
@@ -68,7 +68,7 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipInfoDisplayTemplate" parentArray="Views">
+            <Frame parentKey="InfoFrame" inherits="ItemUpgradeTipInfoDisplayTemplate" parentArray="Views">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Info" type="string" />
                 </KeyValues>
@@ -78,31 +78,31 @@
                 </Anchors>
             </Frame>
 
-            <Button parentKey="MythicPlusTab" inherits="ItemUpgradeTipTabButtonTemplate" name="ItemUpgradeTipMythicPlusTab_Button" text="ITEMUPGRADETIP_L_MYTHICPLUS">
+            <Button name="$parentMythicPlusTab" parentKey="MythicPlusTab" inherits="ItemUpgradeTipTabButtonTemplate" text="ITEMUPGRADETIP_L_MYTHICPLUS">
                 <KeyValues>
                     <KeyValue key="displayMode" value="MythicPlus" type="string" />
                     <KeyValue key="title" value="ITEMUPGRADETIP_L_MYTHICPLUS_TITLE" type="global" />
                 </KeyValues>
             </Button>
-            <Button parentKey="RaidTab" inherits="ItemUpgradeTipTabButtonTemplate" name="ItemUpgradeTipRaidTab_Button" text="ITEMUPGRADETIP_L_RAID">
+            <Button name="$parentRaidTab" parentKey="RaidTab" inherits="ItemUpgradeTipTabButtonTemplate" text="ITEMUPGRADETIP_L_RAID">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Raid" type="string" />
                     <KeyValue key="title" value="ITEMUPGRADETIP_L_RAID_TITLE" type="global" />
                 </KeyValues>
             </Button>
-            <Button parentKey="UpgradeTab" inherits="ItemUpgradeTipTabButtonTemplate" name="ItemUpgradeTipUpgradeTab_Button" text="ITEMUPGRADETIP_L_UPGRADE_TRACKS">
+            <Button name="$parentUpgradeTab" parentKey="UpgradeTab" inherits="ItemUpgradeTipTabButtonTemplate" text="ITEMUPGRADETIP_L_UPGRADE_TRACKS">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Upgrade" type="string" />
                     <KeyValue key="title" value="ITEMUPGRADETIP_L_UPGRADE_TRACKS_TITLE" type="global" />
                 </KeyValues>
             </Button>
-            <Button parentKey="CraftingTab" inherits="ItemUpgradeTipTabButtonTemplate" name="ItemUpgradeTipCraftingTab_Button" text="ITEMUPGRADETIP_L_CRAFTING">
+            <Button name="$parentCraftingTab" parentKey="CraftingTab" inherits="ItemUpgradeTipTabButtonTemplate" text="ITEMUPGRADETIP_L_CRAFTING">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Crafting" type="string" />
                     <KeyValue key="title" value="ITEMUPGRADETIP_L_CRAFTING_TITLE" type="global" />
                 </KeyValues>
             </Button>
-            <Button parentKey="InfoTab" inherits="ItemUpgradeTipTabButtonTemplate" name="ItemUpgradeTipInfoTab_Button" text="ITEMUPGRADETIP_L_INFO">
+            <Button name="$parentInfoTab" parentKey="InfoTab" inherits="ItemUpgradeTipTabButtonTemplate" text="ITEMUPGRADETIP_L_INFO">
                 <KeyValues>
                     <KeyValue key="displayMode" value="Info" type="string" />
                     <KeyValue key="title" value="ITEMUPGRADETIP_L_INFO_TITLE" type="global" />
