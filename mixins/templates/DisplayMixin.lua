@@ -1,10 +1,11 @@
+-- ----------------------------------------------------------------------------
+-- AddOn Namespace
+-- ----------------------------------------------------------------------------
+local AddOnFolderName = ... ---@type string
+
 ItemUpgradeTipDisplayMixin = {}
 
 function ItemUpgradeTipDisplayMixin:OnLoad()
-    ButtonFrameTemplate_HidePortrait(self)
-    ButtonFrameTemplate_HideButtonBar(self)
-    self.Inset:Hide()
-
     self:RegisterForDrag("LeftButton")
 
     PanelTemplates_SetNumTabs(self, #self.Tabs)
@@ -42,15 +43,23 @@ end
 function ItemUpgradeTipDisplayMixin:OnHide()
 end
 
+function ItemUpgradeTipDisplayMixin:GetBreadcrumb()
+	return self.TitleContainer.Breadcrumb;
+end
+
 function ItemUpgradeTipDisplayMixin:SetDisplayMode(displayMode)
     for index, tab in ipairs(self.Tabs) do
         if tab.displayMode == displayMode then
             PanelTemplates_SetTab(self, index)
-            if self.SetTitle then -- Dragonflight
-                self:SetTitle(tab.title)
-            else
-                self.TitleText:SetText(tab.title)
-            end
+            self:SetTitle(AddOnFolderName)
+
+            local titleText = self:GetTitleText();
+            local breadcrumb = self:GetBreadcrumb();
+            local prefix = not C_AddOns.IsAddOnLoaded("ItemUpgradeTip-GW2UI") and " - " or "     ";
+
+            breadcrumb:SetText(prefix .. tab.title)
+            breadcrumb:ClearAllPoints()
+            breadcrumb:SetPoint("RIGHT", titleText, "RIGHT", breadcrumb:GetStringWidth(), 0)
             break
         end
     end
