@@ -167,8 +167,8 @@ function ItemUpgradeTip_OnAddonCompartmentEnter(_, menuButtonFrame)
     GameTooltip:ClearLines();
     GameTooltip:AddDoubleLine(AddOnFolderName, ItemUpgradeTip.Version);
     GameTooltip_AddBlankLineToTooltip(GameTooltip);
-    GameTooltip:AddLine(L["LEFT_CLICK"] .. " " .. L["LEFT_CLICK_DESC"]:SetColorAddonBlue());
-    GameTooltip:AddLine(L["RIGHT_CLICK"] .. " "  .. L["RIGHT_CLICK_DESC"]:SetColorAddonBlue());
+    GameTooltip:AddLine(L["LEFT_CLICK"] .. " " .. BRIGHTBLUE_FONT_COLOR:WrapTextInColorCode(L["LEFT_CLICK_DESC"]));
+    GameTooltip:AddLine(L["RIGHT_CLICK"] .. " "  .. BRIGHTBLUE_FONT_COLOR:WrapTextInColorCode(L["RIGHT_CLICK_DESC"]));
     GameTooltip:Show();
 end
 
