@@ -252,7 +252,7 @@ private.upgradeTrackInfo = {
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
-        itemLevel = 635,
+        itemLevel = 636,
         upgrade1 = {rank = 6, upgradeLevel = 5, maxUpgradeLevel = 6},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
@@ -1779,6 +1779,88 @@ local itemBonusIds = {
        },
 
        -- Myth (6)
+       [10299] = {
+          itemLevel = 639,
+          rank = 6,
+          upgradeLevel = 6,
+          maxUpgradeLevel = 6,
+          upgradeGroup = 334,
+          costs = {
+             [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 2917, amount = 15}
+             }
+          }
+       },
+       [10298] = {
+          itemLevel = 636,
+          rank = 6,
+          upgradeLevel = 5,
+          maxUpgradeLevel = 6,
+          upgradeGroup = 334,
+          costs = {
+             [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 2917, amount = 15}
+             },
+             [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 2917, amount = 15}
+             }
+          }
+       },
        [10257] = {
           itemLevel = 632,
           rank = 6,
