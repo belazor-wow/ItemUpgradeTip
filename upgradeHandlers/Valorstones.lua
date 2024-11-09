@@ -99,7 +99,7 @@ private.mythicPlusInfo = {
     {keyLevel = 5, lootDrops = 603, vaultReward = 613, currency = valorstoneUpgradeData["runedCrests"]},
     {keyLevel = 6, lootDrops = 606, vaultReward = 613, currency = valorstoneUpgradeData["runedCrests"]},
     {keyLevel = 7, lootDrops = 610, vaultReward = 616, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 8, lootDrops = 610, vaultReward = 619, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 8, lootDrops = 610, vaultReward = 619, currency = valorstoneUpgradeData["gildedCrests"]},
     {keyLevel = 9, lootDrops = 613, vaultReward = 619, currency = valorstoneUpgradeData["gildedCrests"]},
     {keyLevel = "10+", lootDrops = 613, vaultReward = 623, currency = valorstoneUpgradeData["gildedCrests"]},
 }
