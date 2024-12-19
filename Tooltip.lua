@@ -144,7 +144,7 @@ function private.HandleTooltipSetItem(tooltip, tooltipData)
         return
     end
 
-    if private.HandleKeystone(tooltip, itemLink) then
+    if C_Item.IsItemKeystoneByID(itemLink) and private.HandleKeystone(tooltip, itemLink) then
         return
     end
 
