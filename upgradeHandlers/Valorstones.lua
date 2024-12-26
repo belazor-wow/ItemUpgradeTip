@@ -2270,10 +2270,10 @@ local function HandleValorstones(tooltip, inventoryTypeSlotMask, bonusId, bonusI
              local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
              local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
 
-             local weatheredCrests = upgradeCosts.weatheredCrests * (isCharacterDiscounted and 0 or 1)
-             local carvedCrests = upgradeCosts.carvedCrests * (isCharacterDiscounted and 0 or 1)
-             local runedCrests = upgradeCosts.runedCrests * (isCharacterDiscounted and 0 or 1)
-             local gildedCrests = upgradeCosts.gildedCrests * (isCharacterDiscounted and 0 or 1)
+             local weatheredCrests = Round(upgradeCosts.weatheredCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+             local carvedCrests = Round(upgradeCosts.carvedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+             local runedCrests = Round(upgradeCosts.runedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+             local gildedCrests = Round(upgradeCosts.gildedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
              local valorstones = Round(upgradeCosts.valorstones * (isAccountDiscounted and 0.5 or 1))
 
              if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
