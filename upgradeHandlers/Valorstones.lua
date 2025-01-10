@@ -58,7 +58,7 @@ local valorstoneUpgradeData = {
        name = L["WEATHERED_CRESTS"],
        shortName = L["WEATHERED_CRESTS_SHORT"],
        color = UNCOMMON_GREEN_COLOR,
-       icon = 5872034,
+       icon = 5872053,
        itemId = nil,
        currencyId = private.currencyIds.weatheredCrest
     },
@@ -67,7 +67,7 @@ local valorstoneUpgradeData = {
        name = L["CARVED_CRESTS"],
        shortName = L["CARVED_CRESTS_SHORT"],
        color = RARE_BLUE_COLOR,
-       icon = 5872028,
+       icon = 5872047,
        itemId = nil,
        currencyId = private.currencyIds.carvedCrest
     },
@@ -76,7 +76,7 @@ local valorstoneUpgradeData = {
        name = L["RUNED_CRESTS"],
        shortName = L["RUNED_CRESTS_SHORT"],
        color = EPIC_PURPLE_COLOR,
-       icon = 5872032,
+       icon = 5872051,
        itemId = nil,
        currencyId = private.currencyIds.runedCrest
     },
@@ -85,7 +85,7 @@ local valorstoneUpgradeData = {
        name = L["GILDED_CRESTS"],
        shortName = L["GILDED_CRESTS_SHORT"],
        color = LEGENDARY_ORANGE_COLOR,
-       icon = 5872030,
+       icon = 5872049,
        itemId = nil,
        currencyId = private.currencyIds.gildedCrest
     },
