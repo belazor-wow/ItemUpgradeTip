@@ -9,6 +9,18 @@
 ## SavedVariables: ItemUpgradeTipDB
 ## Author: Belazor
 ## Version: @project-version@
+## Group: ItemUpgradeTip
+## Category-enUS: Equipment
+## Category-deDE: Ausrüstung
+## Category-esES: Equipo
+## Category-esMX: Equipo
+## Category-frFR: Équipement
+## Category-itIT: Equipaggiamento
+## Category-koKR: 장비
+## Category-ptBR: 
+## Category-ruRU: снаряжение
+## Category-zhCN: 装备
+## Category-zhTW: 裝備
 ## X-Curse-Project-ID: 709548
 ## X-WoWI-ID: 26580
 ## X-Wago-ID: WYK938NL
