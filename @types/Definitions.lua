@@ -9,6 +9,16 @@
 
 
 -- ----------------------------------------------------------------------------
+-- Misc
+-- ----------------------------------------------------------------------------
+---@class ColorData
+---@field r number
+---@field b number
+---@field g number
+---@field hex ColorHexData
+---@field color ColorMixin 
+
+-- ----------------------------------------------------------------------------
 -- Keystone Info
 -- ----------------------------------------------------------------------------
 ---@class KeystoneInfo
@@ -84,7 +94,7 @@
 ---@class UpgradeData
 ---@field name string
 ---@field shortName string
----@field color ColorMixin
+---@field colorData ColorData
 ---@field icon fileID|integer
 ---@field itemId integer?
 ---@field currencyId integer?

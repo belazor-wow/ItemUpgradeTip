@@ -48,7 +48,7 @@ local valorstoneUpgradeData = {
     ["valorstones"] = {
        name = L["VALORSTONES"],
        shortName = L["VALORSTONES"],
-       color = WHITE_FONT_COLOR,
+       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Common),
        icon = 5868902,
        itemId = nil,
        currencyId = private.currencyIds.Valorstones
@@ -57,7 +57,7 @@ local valorstoneUpgradeData = {
     ["weatheredCrests"] = {
        name = L["WEATHERED_CRESTS"],
        shortName = L["WEATHERED_CRESTS_SHORT"],
-       color = UNCOMMON_GREEN_COLOR,
+       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Uncommon),
        icon = 5872053,
        itemId = nil,
        currencyId = private.currencyIds.weatheredCrest
@@ -66,7 +66,7 @@ local valorstoneUpgradeData = {
     ["carvedCrests"] = {
        name = L["CARVED_CRESTS"],
        shortName = L["CARVED_CRESTS_SHORT"],
-       color = RARE_BLUE_COLOR,
+       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Rare),
        icon = 5872047,
        itemId = nil,
        currencyId = private.currencyIds.carvedCrest
@@ -75,7 +75,7 @@ local valorstoneUpgradeData = {
     ["runedCrests"] = {
        name = L["RUNED_CRESTS"],
        shortName = L["RUNED_CRESTS_SHORT"],
-       color = EPIC_PURPLE_COLOR,
+       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
        icon = 5872051,
        itemId = nil,
        currencyId = private.currencyIds.runedCrest
@@ -84,7 +84,7 @@ local valorstoneUpgradeData = {
     ["gildedCrests"] = {
        name = L["GILDED_CRESTS"],
        shortName = L["GILDED_CRESTS_SHORT"],
-       color = LEGENDARY_ORANGE_COLOR,
+       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Legendary),
        icon = 5872049,
        itemId = nil,
        currencyId = private.currencyIds.gildedCrest
@@ -2150,9 +2150,9 @@ local function ParseUpgradeCost(upgradeCostData)
 
           if not private.DB.profile.CompactTooltips then
              table.insert(lines, {
-                left = icon .. " " .. upgradeItem.color:WrapTextInColorCode(upgradeItem.name),
+                left = icon .. " " .. upgradeItem.colorData.color:WrapTextInColorCode(upgradeItem.name),
                 right = costLine,
-                color = upgradeItem.color
+                color = upgradeItem.colorData.color
              })
           end
        end
@@ -2308,12 +2308,12 @@ local function HandleValorstones(tooltip, inventoryTypeSlotMask, bonusId, bonusI
 
        if #nextLevelLines > 0 or #totalLines > 0 then
           tooltip:AddLine("\n")
-          tooltip:AddLine(ARTIFACT_GOLD_COLOR:WrapTextInColorCode(L["VALORSTONE_CREST_UPGRADES"]))
+          tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["VALORSTONE_CREST_UPGRADES"], Enum.ItemQuality.Artifact))
 
           if nextLevelLines then
              if not private.DB.profile.CompactTooltips then
                 -- Standard tooltip
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["COST_FOR_NEXT_LEVEL"] .. " (" .. nextUpgrade.itemLevel .. ")"))
+                tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["COST_FOR_NEXT_LEVEL"] .. " (" .. nextUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
 
                 for _, newLine in pairs(nextLevelLines) do
                     tooltip:AddDoubleLine(newLine.left, newLine.right)
@@ -2334,7 +2334,7 @@ local function HandleValorstones(tooltip, inventoryTypeSlotMask, bonusId, bonusI
                     tooltip:AddLine("\n")
                 end
 
-                tooltip:AddLine(HEIRLOOM_BLUE_COLOR:WrapTextInColorCode(L["COST_TO_UPGRADE_TO_MAX"] .. " (" .. maxUpgrade.itemLevel .. ")"))
+                tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["COST_TO_UPGRADE_TO_MAX"] .. " (" .. maxUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
 
                 for _, newLine in pairs(totalLines) do
                     tooltip:AddDoubleLine(newLine.left, newLine.right)
