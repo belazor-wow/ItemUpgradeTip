@@ -116,6 +116,16 @@
 ---@field upgradeLevel integer
 ---@field maxUpgradeLevel integer
 
+---@class BountifulDelveInfo
+---@field tier integer
+---@field loot BountifulDelveDrops
+---@field vault BountifulDelveDrops
+---@field currency UpgradeData
+
+---@class BountifulDelveDrops
+---@field itemLevel integer
+---@field upgradeTrack string
+
 
 -- ----------------------------------------------------------------------------
 -- Crafting Data

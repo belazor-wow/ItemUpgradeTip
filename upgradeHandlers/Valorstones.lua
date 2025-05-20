@@ -276,6 +276,76 @@ private.upgradeTrackInfo = {
     },
 }
 
+---@type Array<BountifulDelveInfo>
+private.bountifulDelveInfo = {
+    {
+        tier = 1,
+        loot = {itemLevel = 610, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 623, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 2,
+        loot = {itemLevel = 613, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 626, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 3,
+        loot = {itemLevel = 616, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 629, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 4,
+        loot = {itemLevel = 619, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 632, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 5,
+        loot = {itemLevel = 623, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 636, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 6,
+        loot = {itemLevel = 626, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 642, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        currency = valorstoneUpgradeData["carvedCrests"]
+    },
+    {
+        tier = 7,
+        loot = {itemLevel = 636, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 645, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 8,
+        loot = {itemLevel = 639, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 649, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 9,
+        loot = {itemLevel = 639, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 649, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 10,
+        loot = {itemLevel = 639, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 649, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = valorstoneUpgradeData["weatheredCrests"]
+    },
+    {
+        tier = 11,
+        loot = {itemLevel = 639, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 649, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = valorstoneUpgradeData["gildedCrests"]
+    }
+}
+
 ---@type Array<CraftingInfo>
 private.craftingInfo = {
     -- Weathered
