@@ -209,57 +209,69 @@ private.upgradeTrackInfo = {
     {
         itemLevel = 649,
         upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 652,
         upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 655,
         upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 658,
         upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["runedCrests"]
     },
     {
         itemLevel = 662,
-        upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
-        upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
         itemLevel = 665,
-        upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
-        upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
         itemLevel = 668,
-        upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 5, upgradeLevel = 7, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
         itemLevel = 672,
-        upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 5, upgradeLevel = 8, maxUpgradeLevel = 8},
+        upgrade2 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
         itemLevel = 675,
-        upgrade1 = {rank = 6, upgradeLevel = 5, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 6, upgradeLevel = 5, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
     {
         itemLevel = 678,
-        upgrade1 = {rank = 6, upgradeLevel = 6, maxUpgradeLevel = 6},
+        upgrade1 = {rank = 6, upgradeLevel = 6, maxUpgradeLevel = 8},
+        currency = valorstoneUpgradeData["gildedCrests"]
+    },
+    {
+        itemLevel = 681,
+        upgrade1 = {rank = 6, upgradeLevel = 7, maxUpgradeLevel = 8},
+        currency = valorstoneUpgradeData["gildedCrests"]
+    },
+    {
+        itemLevel = 684,
+        upgrade1 = {rank = 6, upgradeLevel = 8, maxUpgradeLevel = 8},
         currency = valorstoneUpgradeData["gildedCrests"]
     },
 }
