@@ -56,7 +56,7 @@ local Preferences = {
     },
     GetOptions = function()
         if not Options then
-            local DB = private.DB.profile
+            local DB = private.DB.profile or {}
 
             local count = 1
             local function increment() count = count + 1; return count end;
@@ -80,6 +80,7 @@ local Preferences = {
                                 get = function()
                                     return DB.CompactTooltips
                                 end,
+                                ---@diagnostic disable-next-line: unused-local
                                 set = function(arg1, value)
                                     DB.CompactTooltips = value
                                 end,

@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+    "workspace.library": ["../../WoWAnnotations/vscode-wow-api/Annotations/", "../../WoWAnnotations/BlizzardInterfaceResources/Resources/GlobalStrings/enUS.lua"],
+    "runtime.version": "Lua 5.1",
+    "hint.enable": false,
+    "type.weakUnionCheck": true,
+    "diagnostics.globals": [
+        "IUTView"
+    ]
+}

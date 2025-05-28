@@ -15,8 +15,8 @@
 ---@field r number
 ---@field b number
 ---@field g number
----@field hex ColorHexData
----@field color ColorMixin 
+---@field hex string
+---@field color ColorMixin
 
 -- ----------------------------------------------------------------------------
 -- Keystone Info
