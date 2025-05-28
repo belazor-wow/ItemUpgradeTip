@@ -17,8 +17,8 @@
 ## Category-frFR: Équipement
 ## Category-itIT: Equipaggiamento
 ## Category-koKR: 장비
-## Category-ptBR: 
-## Category-ruRU: снаряжение
+## Category-ptBR: Equipamento
+## Category-ruRU: Экипировка
 ## Category-zhCN: 装备
 ## Category-zhTW: 裝備
 ## X-Curse-Project-ID: 709548
