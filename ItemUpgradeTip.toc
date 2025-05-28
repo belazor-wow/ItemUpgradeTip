@@ -1,7 +1,7 @@
 ## Interface: 110105
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
-## OptionalDeps: _DebugLog
+## OptionalDeps: _DebugLog, GW2_UI
 ## AddonCompartmentFuncOnEnter: ItemUpgradeTip_OnAddonCompartmentEnter
 ## AddonCompartmentFuncOnLeave: ItemUpgradeTip_OnAddonCompartmentLeave
 ## AddonCompartmentFunc: ItemUpgradeTip_OnAddonCompartmentClick
@@ -55,3 +55,5 @@ upgradeHandlers\Conquest.lua
 
 Tooltip.lua
 ItemUpgradeTip.lua
+
+skins\GW2\GW2.lua
