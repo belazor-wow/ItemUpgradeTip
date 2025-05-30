@@ -7,11 +7,6 @@
     "diagnostics.globals": [
         "IUTView",
         "IUTViewLeftPanel",
-        "GW2_ADDON",
-        "DAMAGE_TEXT_FONT",
-        "STANDARD_TEXT_FONT",
-        "UNIT_NAME_FONT",
-        "NAMEPLATE_FONT",
-        "NAMEPLATE_SPELLCAST_FONT"
+        "GW2_ADDON"
     ]
 }
