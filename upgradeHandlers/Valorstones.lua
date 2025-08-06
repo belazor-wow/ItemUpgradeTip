@@ -337,41 +337,41 @@ private.bountifulDelveInfo = {
 ---@type Array<CraftingInfo>
 private.craftingInfo = {
     -- Weathered
-    {itemLevel = 616, itemId = 230937, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 619, itemId = 230937, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 623, itemId = 230937, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 626, itemId = 230937, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 629, itemId = 230937, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 662, itemId = 231767, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 665, itemId = 231767, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 668, itemId = 231767, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 671, itemId = 231767, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 675, itemId = 231767, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Spark
-    {itemLevel = 623, itemId = 230906, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 626, itemId = 230906, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 629, itemId = 230906, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 632, itemId = 230906, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 639, itemId = 230906, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 678, itemId = 231756, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 681, itemId = 231756, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 684, itemId = 231756, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 688, itemId = 231756, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 691, itemId = 231756, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Runed
-    {itemLevel = 645, itemId = 230936, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 649, itemId = 230936, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 652, itemId = 230936, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 655, itemId = 230936, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 658, itemId = 230936, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 691, itemId = 231769, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 694, itemId = 231769, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 697, itemId = 231769, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 701, itemId = 231769, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 704, itemId = 231769, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
 
     -- Gilded
-    {itemLevel = 662, itemId = 230935, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 665, itemId = 230935, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 668, itemId = 230935, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 672, itemId = 230935, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 675, itemId = 230935, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 707, itemId = 231768, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 710, itemId = 231768, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 714, itemId = 231768, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 717, itemId = 231768, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 720, itemId = 231768, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
 ---@type Array<ItemBonusInfo>
