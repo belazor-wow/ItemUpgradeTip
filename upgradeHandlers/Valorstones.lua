@@ -93,16 +93,16 @@ local valorstoneUpgradeData = {
 
 ---@type Array<MythicPlusInfo>
 private.mythicPlusInfo = {
-    {keyLevel = 0,     lootDrops = 636, vaultReward = 645, currency = valorstoneUpgradeData["carvedCrests"]},
-    {keyLevel = 2,     lootDrops = 639, vaultReward = 649, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 3,     lootDrops = 639, vaultReward = 649, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 4,     lootDrops = 642, vaultReward = 652, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 5,     lootDrops = 645, vaultReward = 652, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 6,     lootDrops = 649, vaultReward = 655, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 7,     lootDrops = 649, vaultReward = 658, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = 8,     lootDrops = 652, vaultReward = 658, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = 9,     lootDrops = 652, vaultReward = 658, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = "10+", lootDrops = 655, vaultReward = 662, currency = valorstoneUpgradeData["gildedCrests"]},
+    {keyLevel = 0,     lootDrops = 681, vaultReward = 691, currency = valorstoneUpgradeData["carvedCrests"]},
+    {keyLevel = 2,     lootDrops = 684, vaultReward = 694, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 3,     lootDrops = 684, vaultReward = 694, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 4,     lootDrops = 688, vaultReward = 697, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 5,     lootDrops = 691, vaultReward = 697, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 6,     lootDrops = 694, vaultReward = 701, currency = valorstoneUpgradeData["runedCrests"]},
+    {keyLevel = 7,     lootDrops = 694, vaultReward = 704, currency = valorstoneUpgradeData["gildedCrests"]},
+    {keyLevel = 8,     lootDrops = 697, vaultReward = 704, currency = valorstoneUpgradeData["gildedCrests"]},
+    {keyLevel = 9,     lootDrops = 697, vaultReward = 704, currency = valorstoneUpgradeData["gildedCrests"]},
+    {keyLevel = "10+", lootDrops = 701, vaultReward = 707, currency = valorstoneUpgradeData["gildedCrests"]},
 }
 
 ---@type Array<RaidInfo>
