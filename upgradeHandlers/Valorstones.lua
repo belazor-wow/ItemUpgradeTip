@@ -11,16 +11,16 @@ local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 private.currencyIds["Valorstones"] = 3008
 private.currencyIndexes[private.currencyIds.Valorstones] = true
 
-private.currencyIds["weatheredCrest"] = 3107
+private.currencyIds["weatheredCrest"] = 3285
 private.currencyIndexes[private.currencyIds.weatheredCrest] = true
 
-private.currencyIds["carvedCrest"] = 3108
+private.currencyIds["carvedCrest"] = 3287
 private.currencyIndexes[private.currencyIds.carvedCrest] = true
 
-private.currencyIds["runedCrest"] = 3109
+private.currencyIds["runedCrest"] = 3289
 private.currencyIndexes[private.currencyIds.runedCrest] = true
 
-private.currencyIds["gildedCrest"] = 3110
+private.currencyIds["gildedCrest"] = 3290
 private.currencyIndexes[private.currencyIds.gildedCrest] = true
 
 -- Add preferences
@@ -58,7 +58,7 @@ local valorstoneUpgradeData = {
        name = L["WEATHERED_CRESTS"],
        shortName = L["WEATHERED_CRESTS_SHORT"],
        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Uncommon),
-       icon = 5872053,
+       icon = 5872061,
        itemId = nil,
        currencyId = private.currencyIds.weatheredCrest
     },
@@ -67,7 +67,7 @@ local valorstoneUpgradeData = {
        name = L["CARVED_CRESTS"],
        shortName = L["CARVED_CRESTS_SHORT"],
        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Rare),
-       icon = 5872047,
+       icon = 5872055,
        itemId = nil,
        currencyId = private.currencyIds.carvedCrest
     },
@@ -76,7 +76,7 @@ local valorstoneUpgradeData = {
        name = L["RUNED_CRESTS"],
        shortName = L["RUNED_CRESTS_SHORT"],
        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
-       icon = 5872051,
+       icon = 5872059,
        itemId = nil,
        currencyId = private.currencyIds.runedCrest
     },
@@ -85,7 +85,7 @@ local valorstoneUpgradeData = {
        name = L["GILDED_CRESTS"],
        shortName = L["GILDED_CRESTS_SHORT"],
        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Legendary),
-       icon = 5872049,
+       icon = 5872057,
        itemId = nil,
        currencyId = private.currencyIds.gildedCrest
     },
