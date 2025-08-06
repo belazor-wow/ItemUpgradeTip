@@ -107,18 +107,18 @@ private.mythicPlusInfo = {
 
 ---@type Array<RaidInfo>
 private.raidInfo = {
-    {boss = 1,                      lfr = 623, normal = 636, heroic = 649, mythic = 662},
-    {boss = 2,                      lfr = 626, normal = 639, heroic = 652, mythic = 665},
-    {boss = 3,                      lfr = 626, normal = 639, heroic = 652, mythic = 665},
-    {boss = L["X_RARE"]:format(3),  lfr = 639, normal = 652, heroic = 665, mythic = 678},
-    {boss = 4,                      lfr = 626, normal = 639, heroic = 652, mythic = 665},
-    {boss = L["X_RARE"]:format(4),  lfr = 639, normal = 652, heroic = 665, mythic = 678},
-    {boss = 5,                      lfr = 629, normal = 642, heroic = 655, mythic = 668},
-    {boss = 6,                      lfr = 629, normal = 642, heroic = 655, mythic = 668},
-    {boss = L["X_RARE"]:format(6),  lfr = 639, normal = 652, heroic = 665, mythic = 678},
-    {boss = 7,                      lfr = 632, normal = 645, heroic = 658, mythic = 672},
-    {boss = 8,                      lfr = 632, normal = 645, heroic = 658, mythic = 672},
-    {boss = L["X_RARE"]:format(8),  lfr = 639, normal = 652, heroic = 665, mythic = 678},
+    {boss = 1,                      lfr = 671, normal = 684, heroic = 697, mythic = 710},
+    {boss = 2,                      lfr = 671, normal = 684, heroic = 697, mythic = 710},
+    {boss = 3,                      lfr = 671, normal = 684, heroic = 697, mythic = 710},
+    {boss = L["X_RARE"]:format(3),  lfr = 684, normal = 697, heroic = 710, mythic = 723},
+    {boss = 4,                      lfr = 675, normal = 688, heroic = 701, mythic = 717},
+    {boss = L["X_RARE"]:format(4),  lfr = 684, normal = 697, heroic = 710, mythic = 723},
+    {boss = 5,                      lfr = 675, normal = 688, heroic = 701, mythic = 717},
+    {boss = 6,                      lfr = 675, normal = 688, heroic = 701, mythic = 717},
+    {boss = L["X_RARE"]:format(6),  lfr = 684, normal = 697, heroic = 710, mythic = 723},
+    {boss = 7,                      lfr = 678, normal = 691, heroic = 704, mythic = 717},
+    {boss = 8,                      lfr = 678, normal = 691, heroic = 704, mythic = 717},
+    {boss = L["X_RARE"]:format(8),  lfr = 684, normal = 697, heroic = 710, mythic = 723},
 }
 
 ---@type RaidCurrencyInfo
