@@ -11,13 +11,13 @@ local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 private.currencyIds["Valorstones"] = 3008
 private.currencyIndexes[private.currencyIds.Valorstones] = true
 
-private.currencyIds["weatheredCrest"] = 3285
+private.currencyIds["weatheredCrest"] = 3284
 private.currencyIndexes[private.currencyIds.weatheredCrest] = true
 
-private.currencyIds["carvedCrest"] = 3287
+private.currencyIds["carvedCrest"] = 3286
 private.currencyIndexes[private.currencyIds.carvedCrest] = true
 
-private.currencyIds["runedCrest"] = 3289
+private.currencyIds["runedCrest"] = 3288
 private.currencyIndexes[private.currencyIds.runedCrest] = true
 
 private.currencyIds["gildedCrest"] = 3290
