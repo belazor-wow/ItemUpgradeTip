@@ -1,4 +1,4 @@
-## Interface: 110200
+## Interface: 
 ## Title: ItemUpgradeTip
 ## Notes: Add information to item tooltips for item upgrade costs
 ## OptionalDeps: _DebugLog, GW2_UI
