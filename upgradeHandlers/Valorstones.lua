@@ -1601,12 +1601,12 @@ local itemBonusIds = {
         }
     },
 
-    -- Hero (6)
+    -- Hero (8)
     [12350] = {
         itemLevel = 694,
         rank = 5,
         upgradeLevel = 1,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1647,7 +1647,7 @@ local itemBonusIds = {
         itemLevel = 697,
         rank = 5,
         upgradeLevel = 2,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1688,7 +1688,7 @@ local itemBonusIds = {
         itemLevel = 701,
         rank = 5,
         upgradeLevel = 3,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1729,7 +1729,7 @@ local itemBonusIds = {
         itemLevel = 704,
         rank = 5,
         upgradeLevel = 4,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1770,7 +1770,7 @@ local itemBonusIds = {
         itemLevel = 707,
         rank = 5,
         upgradeLevel = 5,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1811,7 +1811,89 @@ local itemBonusIds = {
         itemLevel = 710,
         rank = 5,
         upgradeLevel = 6,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
+        upgradeGroup = 517,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            }
+        }
+    },
+    [13443] = {
+        itemLevel = 714,
+        rank = 5,
+        upgradeLevel = 7,
+        maxUpgradeLevel = 8,
+        upgradeGroup = 517,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            }
+        }
+    },
+    [13444] = {
+        itemLevel = 717,
+        rank = 5,
+        upgradeLevel = 8,
+        maxUpgradeLevel = 8,
         upgradeGroup = 517,
         costs = {
             [1048738] = {
@@ -1849,12 +1931,12 @@ local itemBonusIds = {
         }
     },
 
-    -- Myth (6)
+    -- Myth (8)
     [12356] = {
         itemLevel = 707,
         rank = 6,
         upgradeLevel = 1,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
@@ -1895,7 +1977,7 @@ local itemBonusIds = {
         itemLevel = 710,
         rank = 6,
         upgradeLevel = 2,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
@@ -1936,7 +2018,7 @@ local itemBonusIds = {
         itemLevel = 714,
         rank = 6,
         upgradeLevel = 3,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
@@ -1977,7 +2059,7 @@ local itemBonusIds = {
         itemLevel = 717,
         rank = 6,
         upgradeLevel = 4,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
@@ -2018,7 +2100,7 @@ local itemBonusIds = {
         itemLevel = 720,
         rank = 6,
         upgradeLevel = 5,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
@@ -2059,7 +2141,89 @@ local itemBonusIds = {
         itemLevel = 723,
         rank = 6,
         upgradeLevel = 6,
-        maxUpgradeLevel = 6,
+        maxUpgradeLevel = 8,
+        upgradeGroup = 518,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            }
+        }
+    },
+    [13445] = {
+        itemLevel = 727,
+        rank = 6,
+        upgradeLevel = 7,
+        maxUpgradeLevel = 8,
+        upgradeGroup = 518,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3008, amount = 190},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3008, amount = 160},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3008, amount = 100},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3008, amount = 200},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3008, amount = 300},
+                 [2] = {currencyId = 3290, amount = 15}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3008, amount = 400},
+                 [2] = {currencyId = 3290, amount = 15}
+            }
+        }
+    },
+    [13446] = {
+        itemLevel = 730,
+        rank = 6,
+        upgradeLevel = 8,
+        maxUpgradeLevel = 8,
         upgradeGroup = 518,
         costs = {
             [1048738] = {
