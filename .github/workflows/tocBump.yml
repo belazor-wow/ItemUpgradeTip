@@ -3,11 +3,14 @@ name: TOC Bump
 on:
   schedule:
     - cron: 0 12 * * *
-  workflow_dispatch:
+
+permissions: # required by the pull request action
+  contents: write
+  pull-requests: write
 
 jobs:
   run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Clone project
         uses: actions/checkout@v4
@@ -16,9 +19,11 @@ jobs:
         uses: p3lim/toc-interface-updater@v4
         with:
           flavor: retail
+          beta: false
+          ptr: false
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           title: "chore: Update Interface version"
           commit-message: "Update Interface version"
