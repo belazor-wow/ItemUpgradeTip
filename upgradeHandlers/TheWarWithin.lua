@@ -23,6 +23,10 @@ private.currencyIndexes[private.currencyIds.runedCrest] = true
 private.currencyIds["gildedCrest"] = 3290
 private.currencyIndexes[private.currencyIds.gildedCrest] = true
 
+if (GetExpansionLevel() == 10 and C_MythicPlus.GetCurrentSeason() <= 15) then
+    return
+end
+
 -- Add preferences
 private.Preferences.DefaultValues.profile.DisabledIntegrations.Valorstones = false;
 private.Preferences.DisabledIntegrations.Valorstones = {
