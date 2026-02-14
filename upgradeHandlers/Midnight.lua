@@ -2296,8 +2296,8 @@ local function GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo)
     }
 
     for _, upgradeCost in pairs(upgradeInfo.costs[inventoryTypeSlotMask]) do
-        if upgradeCost.currencyId == private.currencyIds["veteranCrests"] then
-            results.veteranCrests = upgradeCost.amount
+        if upgradeCost.currencyId == private.currencyIds["adventurerCrests"] then
+            results.adventurerCrests = upgradeCost.amount
         elseif upgradeCost.currencyId == private.currencyIds["veteranCrests"] then
             results.veteranCrests = upgradeCost.amount
         elseif upgradeCost.currencyId == private.currencyIds["championCrests"] then
