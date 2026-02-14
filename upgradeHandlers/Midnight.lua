@@ -2501,12 +2501,12 @@ local function HandleCrests(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, 
                         mythCrests = mythCrests,
                     }
                 end
-                totalUpgradeCosts.veteranCrests = totalUpgradeCosts.veteranCrests + veteranCrests
+
+                totalUpgradeCosts.adventurerCrests = totalUpgradeCosts.adventurerCrests + adventurerCrests
                 totalUpgradeCosts.veteranCrests = totalUpgradeCosts.veteranCrests + veteranCrests
                 totalUpgradeCosts.championCrests = totalUpgradeCosts.championCrests + championCrests
                 totalUpgradeCosts.heroCrests = totalUpgradeCosts.heroCrests + heroCrests
                 totalUpgradeCosts.mythCrests = totalUpgradeCosts.mythCrests + mythCrests
-                totalUpgradeCosts.valorstones = totalUpgradeCosts.valorstones + valorstones
 
                 if not maxUpgrade or maxUpgrade.upgradeLevel < upgradeInfo.upgradeLevel then
                     maxUpgrade = upgradeInfo
@@ -2521,7 +2521,7 @@ local function HandleCrests(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, 
 
         if #nextLevelLines > 0 or #totalLines > 0 then
             tooltip:AddLine("\n")
-            tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["VALORSTONE_CREST_UPGRADES"], Enum.ItemQuality.Artifact))
+            tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["GOLD_CREST_UPGRADES"], Enum.ItemQuality.Artifact))
 
             if nextLevelLines then
                 if not private.DB.profile.CompactTooltips then
