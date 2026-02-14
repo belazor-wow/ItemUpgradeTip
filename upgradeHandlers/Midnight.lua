@@ -8,259 +8,232 @@ local private = select(2, ...) ---@class PrivateNamespace
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 -- Add currency information
-private.currencyIds["Valorstones"] = 3008
-private.currencyIndexes[private.currencyIds.Valorstones] = true
+private.currencyIds["adventurerCrest"] = 3383
+private.currencyIndexes[private.currencyIds.adventurerCrest] = true
 
-private.currencyIds["weatheredCrest"] = 3284
-private.currencyIndexes[private.currencyIds.weatheredCrest] = true
+private.currencyIds["veteranCrest"] = 3341
+private.currencyIndexes[private.currencyIds.veteranCrest] = true
 
-private.currencyIds["carvedCrest"] = 3286
-private.currencyIndexes[private.currencyIds.carvedCrest] = true
+private.currencyIds["championCrest"] = 3343
+private.currencyIndexes[private.currencyIds.championCrest] = true
 
-private.currencyIds["runedCrest"] = 3288
-private.currencyIndexes[private.currencyIds.runedCrest] = true
+private.currencyIds["heroCrest"] = 3345
+private.currencyIndexes[private.currencyIds.heroCrest] = true
 
-private.currencyIds["gildedCrest"] = 3290
-private.currencyIndexes[private.currencyIds.gildedCrest] = true
+private.currencyIds["mythCrest"] = 3347
+private.currencyIndexes[private.currencyIds.mythCrest] = true
+
+if (GetExpansionLevel() == 11 and C_MythicPlus.GetCurrentSeason() > 15) then
+    return
+end
 
 -- Add preferences
-private.Preferences.DefaultValues.profile.DisabledIntegrations.Valorstones = false;
-private.Preferences.DisabledIntegrations.Valorstones = {
+private.Preferences.DefaultValues.profile.DisabledIntegrations.Crests = false;
+private.Preferences.DisabledIntegrations.Crests = {
     type = "toggle",
-    name = L["VALORSTONE_CREST_UPGRADES"],
+    name = L["GOLD_CREST_UPGRADES"],
     order = 110,
     width = "double",
 }
 
--- ----------------------------------------------------------------------------
--- Valorstone Upgrade Cost
--- ----------------------------------------------------------------------------
----@class ValorstoneUpgradeCostData
----@field weatheredCrests integer
----@field carvedCrests integer
----@field runedCrests integer
----@field gildedCrests integer
----@field valorstones integer
-
-
 ---@type Dictionary<UpgradeData>
-local valorstoneUpgradeData = {
-    ["valorstones"] = {
-       name = L["VALORSTONES"],
-       shortName = L["VALORSTONES"],
-       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Common),
-       icon = 5868902,
-       itemId = nil,
-       currencyId = private.currencyIds.Valorstones
+local upgradeData = {
+    ["adventurerCrests"] = {
+        name = L["ADVENTURER_CRESTS"],
+        shortName = L["ADVENTURER_CRESTS_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Uncommon),
+        icon = 7639517,
+        itemId = nil,
+        currencyId = private.currencyIds.adventurerCrest
     },
 
-    ["weatheredCrests"] = {
-       name = L["WEATHERED_CRESTS"],
-       shortName = L["WEATHERED_CRESTS_SHORT"],
-       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Uncommon),
-       icon = 5872061,
-       itemId = nil,
-       currencyId = private.currencyIds.weatheredCrest
+    ["veteranCrests"] = {
+        name = L["VETERAN_CRESTS"],
+        shortName = L["VETERAN_CRESTS_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Rare),
+        icon = 7639525,
+        itemId = nil,
+        currencyId = private.currencyIds.veteranCrest
     },
 
-    ["carvedCrests"] = {
-       name = L["CARVED_CRESTS"],
-       shortName = L["CARVED_CRESTS_SHORT"],
-       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Rare),
-       icon = 5872055,
-       itemId = nil,
-       currencyId = private.currencyIds.carvedCrest
+    ["championCrests"] = {
+        name = L["CHAMPION_CRESTS"],
+        shortName = L["CHAMPION_CRESTS_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
+        icon = 7639519,
+        itemId = nil,
+        currencyId = private.currencyIds.championCrest
     },
 
-    ["runedCrests"] = {
-       name = L["RUNED_CRESTS"],
-       shortName = L["RUNED_CRESTS_SHORT"],
-       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
-       icon = 5872059,
-       itemId = nil,
-       currencyId = private.currencyIds.runedCrest
+    ["heroCrests"] = {
+        name = L["HERO_CRESTS"],
+        shortName = L["HERO_CRESTS_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Legendary),
+        icon = 7639521,
+        itemId = nil,
+        currencyId = private.currencyIds.heroCrest
     },
 
-    ["gildedCrests"] = {
-       name = L["GILDED_CRESTS"],
-       shortName = L["GILDED_CRESTS_SHORT"],
-       colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Legendary),
-       icon = 5872057,
-       itemId = nil,
-       currencyId = private.currencyIds.gildedCrest
+    ["mythCrests"] = {
+        name = L["MYTH_CRESTS"],
+        shortName = L["MYTH_CRESTS_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Artifact),
+        icon = 7639523,
+        itemId = nil,
+        currencyId = private.currencyIds.mythCrest
     },
 }
 
 ---@type Array<MythicPlusInfo>
 private.mythicPlusInfo = {
-    {keyLevel = 0,     lootDrops = 121, vaultReward = 131, currency = valorstoneUpgradeData["carvedCrests"]},
-    {keyLevel = 2,     lootDrops = 124, vaultReward = 134, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 3,     lootDrops = 124, vaultReward = 134, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 4,     lootDrops = 128, vaultReward = 137, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 5,     lootDrops = 131, vaultReward = 137, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 6,     lootDrops = 134, vaultReward = 141, currency = valorstoneUpgradeData["runedCrests"]},
-    {keyLevel = 7,     lootDrops = 134, vaultReward = 144, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = 8,     lootDrops = 137, vaultReward = 144, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = 9,     lootDrops = 137, vaultReward = 144, currency = valorstoneUpgradeData["gildedCrests"]},
-    {keyLevel = "10+", lootDrops = 141, vaultReward = 147, currency = valorstoneUpgradeData["gildedCrests"]},
+    {keyLevel = 0,  lootDrops = 246, vaultReward = 256, currency = upgradeData["championCrests"]},
+    {keyLevel = 2,  lootDrops = 250, vaultReward = 259, currency = upgradeData["championCrests"]},
+    {keyLevel = 3,  lootDrops = 250, vaultReward = 259, currency = upgradeData["championCrests"]},
+    {keyLevel = 4,  lootDrops = 253, vaultReward = 263, currency = upgradeData["heroCrests"]},
+    {keyLevel = 5,  lootDrops = 256, vaultReward = 263, currency = upgradeData["heroCrests"]},
+    {keyLevel = 6,  lootDrops = 259, vaultReward = 266, currency = upgradeData["heroCrests"]},
+    {keyLevel = 7,  lootDrops = 259, vaultReward = 269, currency = upgradeData["heroCrests"]},
+    {keyLevel = 8,  lootDrops = 263, vaultReward = 269, currency = upgradeData["heroCrests"]},
+    {keyLevel = 9,  lootDrops = 263, vaultReward = 269, currency = upgradeData["mythCrests"]},
+    {keyLevel = "10+", lootDrops = 266, vaultReward = 272, currency = upgradeData["mythCrests"]},
 }
 
 ---@type Array<RaidInfo>
 private.raidInfo = {
-    {boss = 1,                      lfr = 111, normal = 124, heroic = 137, mythic = 150},
-    {boss = 2,                      lfr = 111, normal = 124, heroic = 137, mythic = 150},
-    {boss = 3,                      lfr = 111, normal = 124, heroic = 137, mythic = 150},
+    {boss = 1,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
+    {boss = 2,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
+    {boss = 3,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
     {boss = L["X_RARE"]:format(3),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 4,                      lfr = 115, normal = 128, heroic = 141, mythic = 157},
+    {boss = 4,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
     {boss = L["X_RARE"]:format(4),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 5,                      lfr = 115, normal = 128, heroic = 141, mythic = 157},
-    {boss = 6,                      lfr = 115, normal = 128, heroic = 141, mythic = 157},
+    {boss = 5,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
+    {boss = 6,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
     {boss = L["X_RARE"]:format(6),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 7,                      lfr = 118, normal = 131, heroic = 144, mythic = 157},
-    {boss = 8,                      lfr = 118, normal = 131, heroic = 144, mythic = 157},
+    {boss = 7,   lfr = 118, normal = 131, heroic = 144, mythic = 157},
+    {boss = 8,   lfr = 118, normal = 131, heroic = 144, mythic = 157},
     {boss = L["X_RARE"]:format(8),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
 }
 
 ---@type RaidCurrencyInfo
  private.raidCurrencyInfo = {
     -- LFR
-    lfrCurrency = valorstoneUpgradeData["weatheredCrests"],
+    lfrCurrency = upgradeData["veteranCrests"],
 
     -- Normal
-    normalCurrency = valorstoneUpgradeData["carvedCrests"],
+    normalCurrency = upgradeData["championCrests"],
 
     -- Heroic
-    heroicCurrency = valorstoneUpgradeData["runedCrests"],
+    heroicCurrency = upgradeData["heroCrests"],
 
     -- Mythic
-    mythicCurrency = valorstoneUpgradeData["gildedCrests"],
+    mythicCurrency = upgradeData["mythCrests"],
 }
 
 ---@type Array<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
-        itemLevel = 655,
-        upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["valorstones"]
-    },
-    {
-        itemLevel = 658,
-        upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["valorstones"]
-    },
-    {
-        itemLevel = 661,
-        upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["valorstones"]
-    },
-    {
-        itemLevel = 664,
-        upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["valorstones"]
-    },
-    {
         itemLevel = 108,
         upgrade1 = {rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         itemLevel = 111,
         upgrade1 = {rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         itemLevel = 115,
         upgrade1 = {rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         itemLevel = 118,
         upgrade1 = {rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         itemLevel = 121,
         upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["carvedCrests"]
+        currency = upgradeData["championCrests"]
     },
     {
         itemLevel = 124,
         upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["carvedCrests"]
+        currency = upgradeData["championCrests"]
     },
     {
         itemLevel = 128,
         upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["carvedCrests"]
+        currency = upgradeData["championCrests"]
     },
     {
         itemLevel = 131,
         upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["carvedCrests"]
+        currency = upgradeData["championCrests"]
     },
     {
         itemLevel = 134,
         upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = upgradeData["heroCrests"]
     },
     {
         itemLevel = 137,
         upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = upgradeData["heroCrests"]
     },
     {
         itemLevel = 141,
         upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = upgradeData["heroCrests"]
     },
     {
         itemLevel = 144,
         upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
         upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 8},
-        currency = valorstoneUpgradeData["runedCrests"]
+        currency = upgradeData["heroCrests"]
     },
     {
         itemLevel = 147,
         upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
     {
         itemLevel = 150,
         upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
     {
         itemLevel = 154,
         upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
     {
         itemLevel = 157,
         upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
     {
         itemLevel = 160,
         upgrade1 = {rank = 6, upgradeLevel = 5, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
     {
         itemLevel = 163,
         upgrade1 = {rank = 6, upgradeLevel = 6, maxUpgradeLevel = 6},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     },
 }
 
@@ -270,67 +243,67 @@ private.bountifulDelveInfo = {
         tier = 1,
         loot = {itemLevel = 655, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 108, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 2,
         loot = {itemLevel = 658, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 111, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 3,
         loot = {itemLevel = 661, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 115, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 4,
         loot = {itemLevel = 664, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 118, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 5,
         loot = {itemLevel = 108, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 121, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 6,
         loot = {itemLevel = 111, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
         vault = {itemLevel = 128, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        currency = valorstoneUpgradeData["carvedCrests"]
+        currency = upgradeData["championCrests"]
     },
     {
         tier = 7,
         loot = {itemLevel = 121, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         vault = {itemLevel = 131, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 8,
         loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 9,
         loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 10,
         loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = valorstoneUpgradeData["weatheredCrests"]
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 11,
         loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = valorstoneUpgradeData["gildedCrests"]
+        currency = upgradeData["mythCrests"]
     }
 }
 
@@ -2311,176 +2284,182 @@ local inventoryTypeSlotMaskOverrides = {
 --- Fetches all the upgrade costs for a given upgrade info
 ---@param inventoryTypeSlotMask integer
 ---@param upgradeInfo ItemBonusInfo
----@return ValorstoneUpgradeCostData?
+---@return UpgradeCostData?
 local function GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo)
-    ---@type ValorstoneUpgradeCostData
+    ---@type UpgradeCostData
     local results = {
-       weatheredCrests = 0,
-       carvedCrests = 0,
-       runedCrests = 0,
-       gildedCrests = 0,
-       valorstones = 0
+        adventurerCrests = 0,
+        veteranCrests = 0,
+        championCrests = 0,
+        heroCrests = 0,
+        mythCrests = 0
     }
 
     for _, upgradeCost in pairs(upgradeInfo.costs[inventoryTypeSlotMask]) do
-       if upgradeCost.currencyId == private.currencyIds["Valorstones"] then
-          results.valorstones = upgradeCost.amount
-       elseif upgradeCost.currencyId == private.currencyIds["weatheredCrest"] then
-          results.weatheredCrests = upgradeCost.amount
-       elseif upgradeCost.currencyId == private.currencyIds["carvedCrest"] then
-          results.carvedCrests = upgradeCost.amount
-       elseif upgradeCost.currencyId == private.currencyIds["runedCrest"] then
-          results.runedCrests = upgradeCost.amount
-       elseif upgradeCost.currencyId == private.currencyIds["gildedCrest"] then
-          results.gildedCrests = upgradeCost.amount
-       end
+        if upgradeCost.currencyId == private.currencyIds["veteranCrests"] then
+            results.veteranCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["veteranCrests"] then
+            results.veteranCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["championCrests"] then
+            results.championCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["heroCrests"] then
+            results.heroCrests = upgradeCost.amount
+        elseif upgradeCost.currencyId == private.currencyIds["mythCrests"] then
+            results.mythCrests = upgradeCost.amount
+        end
     end
 
     return results
 end
 
 --- Parses the given upgrade costs to generate a table for use in tooltip
----@param upgradeCostData ValorstoneUpgradeCostData
+---@param upgradeCostData UpgradeCostData
 ---@return table
 local function ParseUpgradeCost(upgradeCostData)
     local lines = {}
     local compactCostLine = {}
 
-    for upgradeId, upgradeItem in pairs(valorstoneUpgradeData) do
-       if upgradeCostData[upgradeId] ~= nil and upgradeCostData[upgradeId] > 0 then
-          local icon = upgradeItem.icon and CreateTextureMarkup(upgradeItem.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-          local costLine = ""
-          local upgradeCost = upgradeCostData[upgradeId];
+    for upgradeId, upgradeItem in pairs(upgradeData) do
+        if upgradeCostData[upgradeId] ~= nil and upgradeCostData[upgradeId] > 0 then
+            local icon = upgradeItem.icon and CreateTextureMarkup(upgradeItem.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or
+            ""
+            local costLine = ""
+            local upgradeCost = upgradeCostData[upgradeId];
 
-          if upgradeItem.currencyId ~= nil then
-             -- Check currency against cap
-             local currencyInfo = private.currencyInfo[upgradeItem.currencyId]
-             if currencyInfo == nil then
+            if upgradeItem.currencyId ~= nil then
+                -- Check currency against cap
+                local currencyInfo = private.currencyInfo[upgradeItem.currencyId]
+                if currencyInfo == nil then
+                    costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost))
+
+                    table.insert(compactCostLine, icon .. " " .. costLine)
+                else
+                    local itemCount = currencyInfo.quantity;
+                    local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
+                    local heldColor = (currencyInfo.maxQuantity > 0 and currencyInfo.quantity == currencyInfo.maxQuantity) and
+                    ERROR_COLOR or WHITE_FONT_COLOR
+
+                    costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) ..
+                    " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
+
+                    table.insert(compactCostLine,
+                        icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)))
+                end
+            elseif upgradeItem.itemId ~= nil then
+                -- Get item count and compare to required
+                local itemCount = C_Item.GetItemCount(upgradeItem.itemId, true);
+                local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
+
+                costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) ..
+                " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
+
+                table.insert(compactCostLine,
+                    icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)))
+            else
                 costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost))
 
                 table.insert(compactCostLine, icon .. " " .. costLine)
-             else
-                local itemCount = currencyInfo.quantity;
-                local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
-                local heldColor = (currencyInfo.maxQuantity > 0 and currencyInfo.quantity == currencyInfo.maxQuantity) and ERROR_COLOR or WHITE_FONT_COLOR
+            end
 
-                costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) .. " / " .. heldColor:WrapTextInColorCode(BreakUpLargeNumbers(currencyInfo.quantity))
-
-                table.insert(compactCostLine, icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)))
-             end
-          elseif upgradeItem.itemId ~= nil then
-             -- Get item count and compare to required
-             local itemCount = C_Item.GetItemCount(upgradeItem.itemId, true);
-             local requiredColor = itemCount >= upgradeCost and GREEN_FONT_COLOR or ERROR_COLOR;
-
-             costLine = requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)) .. " / " .. WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(itemCount))
-
-             table.insert(compactCostLine, icon .. " " .. requiredColor:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost)))
-          else
-             costLine = WHITE_FONT_COLOR:WrapTextInColorCode(BreakUpLargeNumbers(upgradeCost))
-
-             table.insert(compactCostLine, icon .. " " .. costLine)
-          end
-
-          if not private.DB.profile.CompactTooltips then
-             table.insert(lines, {
-                left = icon .. " " .. upgradeItem.colorData.color:WrapTextInColorCode(upgradeItem.name),
-                right = costLine,
-                color = upgradeItem.colorData.color
-             })
-          end
-       end
+            if not private.DB.profile.CompactTooltips then
+                table.insert(lines, {
+                    left = icon .. " " .. upgradeItem.colorData.color:WrapTextInColorCode(upgradeItem.name),
+                    right = costLine,
+                    color = upgradeItem.colorData.color
+                })
+            end
+        end
     end
 
     if private.DB.profile.CompactTooltips then
-       table.insert(lines, {
-          left = "",
-          right = table.concat(compactCostLine, "  "),
-          color = WHITE_FONT_COLOR
-       })
+        table.insert(lines, {
+            left = "",
+            right = table.concat(compactCostLine, " "),
+            color = WHITE_FONT_COLOR
+        })
     end
 
     if #lines == 0 then
-       private.Debug("Parsing Valorstones upgrade cost returned no tooltip lines");
+        private.Debug("Parsing Crests upgrade cost returned no tooltip lines");
     end
 
     return lines;
 end
 
---- Updates the tooltip when a Valorstone item is the item in question
+--- Updates the tooltip when a Crest item is the item in question
 ---@param tooltip GameTooltip
 ---@param inventoryTypeSlotMask integer
 ---@param bonusId integer
 ---@param bonusInfo ItemBonusInfo
 ---@param itemLink string
-local function HandleValorstones(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, itemLink)
+local function HandleCrests(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, itemLink)
     if not bonusId or not bonusInfo then
-       private.Debug(bonusId, "or Valorstones bonus info table was not found");
-       return
+        private.Debug(bonusId, "or Crests bonus info table was not found");
+        return
     end
 
     local WeaponSetHighWatermarkSlots = {
-       Enum.ItemRedundancySlot.Twohand,
-       Enum.ItemRedundancySlot.OnehandWeapon,
-       Enum.ItemRedundancySlot.MainhandWeapon,
-       Enum.ItemRedundancySlot.Offhand,
+        Enum.ItemRedundancySlot.Twohand,
+        Enum.ItemRedundancySlot.OnehandWeapon,
+        Enum.ItemRedundancySlot.MainhandWeapon,
+        Enum.ItemRedundancySlot.Offhand,
     };
 
     local characterHighWatermark, accountHighWatermark
 
     local highWatermarkSlot = C_ItemUpgrade.GetHighWatermarkSlotForItem(itemLink);
     if highWatermarkSlot then
-       if tContains(WeaponSetHighWatermarkSlots, highWatermarkSlot) then
-          local twoHandCharacterWatermark, twoHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Twohand)
-          local oneHandCharacterWatermark, oneHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.OnehandWeapon)
-          local mainHandCharacterWatermark, mainHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.MainhandWeapon)
-          local offHandCharacterWatermark, offHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Offhand)
+        if tContains(WeaponSetHighWatermarkSlots, highWatermarkSlot) then
+            local twoHandCharacterWatermark, twoHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Twohand)
+            local oneHandCharacterWatermark, oneHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.OnehandWeapon)
+            local mainHandCharacterWatermark, mainHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.MainhandWeapon)
+            local offHandCharacterWatermark, offHandAccountWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(Enum.ItemRedundancySlot.Offhand)
 
-          local highestCharacterWatermarkForSet = 0
-          local highestAccountWatermarkForSet = 0
+            local highestCharacterWatermarkForSet = 0
+            local highestAccountWatermarkForSet = 0
 
-          if twoHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = twoHandCharacterWatermark end
-          if twoHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = twoHandAccountWatermark end
+            if twoHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = twoHandCharacterWatermark end
+            if twoHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = twoHandAccountWatermark end
 
-          if oneHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = oneHandCharacterWatermark end
-          if oneHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = oneHandAccountWatermark end
+            if oneHandCharacterWatermark > highestCharacterWatermarkForSet then highestCharacterWatermarkForSet = oneHandCharacterWatermark end
+            if oneHandAccountWatermark > highestAccountWatermarkForSet then highestAccountWatermarkForSet = oneHandAccountWatermark end
 
-          if mainHandCharacterWatermark  > highestCharacterWatermarkForSet and offHandCharacterWatermark > highestCharacterWatermarkForSet then
-             highestCharacterWatermarkForSet = min(mainHandCharacterWatermark, offHandCharacterWatermark)
-          end
+            if mainHandCharacterWatermark   > highestCharacterWatermarkForSet and offHandCharacterWatermark > highestCharacterWatermarkForSet then
+                highestCharacterWatermarkForSet = min(mainHandCharacterWatermark, offHandCharacterWatermark)
+            end
 
-          if mainHandAccountWatermark  > highestAccountWatermarkForSet and offHandAccountWatermark > highestAccountWatermarkForSet then
-             highestAccountWatermarkForSet = min(mainHandAccountWatermark, offHandAccountWatermark)
-          end
+            if mainHandAccountWatermark > highestAccountWatermarkForSet and offHandAccountWatermark > highestAccountWatermarkForSet then
+                highestAccountWatermarkForSet = min(mainHandAccountWatermark, offHandAccountWatermark)
+            end
 
-          characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
+            characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
 
-          private.Debug("2H Character Watermark:", twoHandCharacterWatermark)
-          private.Debug("2H Account Watermark:", twoHandAccountWatermark)
-          private.Debug("1H Character Watermark:", oneHandCharacterWatermark)
-          private.Debug("1H Account Watermark:", oneHandAccountWatermark)
-          private.Debug("Mainhand Character Watermark:", mainHandCharacterWatermark)
-          private.Debug("Mainhand Account Watermark:", mainHandAccountWatermark)
-          private.Debug("Off-Hand Character Watermark:", offHandCharacterWatermark)
-          private.Debug("Off-Hand Account Watermark:", offHandAccountWatermark)
+            private.Debug("2H Character Watermark:", twoHandCharacterWatermark)
+            private.Debug("2H Account Watermark:", twoHandAccountWatermark)
+            private.Debug("1H Character Watermark:", oneHandCharacterWatermark)
+            private.Debug("1H Account Watermark:", oneHandAccountWatermark)
+            private.Debug("Mainhand Character Watermark:", mainHandCharacterWatermark)
+            private.Debug("Mainhand Account Watermark:", mainHandAccountWatermark)
+            private.Debug("Off-Hand Character Watermark:", offHandCharacterWatermark)
+            private.Debug("Off-Hand Account Watermark:", offHandAccountWatermark)
 
-          if highWatermarkSlot == Enum.ItemRedundancySlot.Twohand then
+            if highWatermarkSlot == Enum.ItemRedundancySlot.Twohand then
              -- 2H weapons can receive a partial discount if player has upgraded 1H weapons
              -- but I don't have info on what that partial discount looks like
-          end
+            end
 
-          -- all weapons benefit from the highest ilvl "set" of all weapon slots (set = one 2H, two 1H, or main + offhand)
-          characterHighWatermark = max(characterHighWatermark, highestCharacterWatermarkForSet)
-          accountHighWatermark = max(accountHighWatermark, highestAccountWatermarkForSet)
-       else
-          -- Regular discount specific to this HWM slot
-          characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
-       end
+            -- all weapons benefit from the highest ilvl "set" of all weapon slots (set = one 2H, two 1H, or main + offhand)
+            characterHighWatermark = max(characterHighWatermark, highestCharacterWatermarkForSet)
+            accountHighWatermark = max(accountHighWatermark, highestAccountWatermarkForSet)
+        else
+            -- Regular discount specific to this HWM slot
+            characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForSlot(highWatermarkSlot)
+        end
     else
-       characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
+        characterHighWatermark, accountHighWatermark = C_ItemUpgrade.GetHighWatermarkForItem(itemLink)
     end
 
-    ---@type ValorstoneUpgradeCostData?
+    ---@type UpgradeCostData?
     local nextUpgradeCost = nil
 
     ---@type ItemBonusInfo?
@@ -2489,105 +2468,106 @@ local function HandleValorstones(tooltip, inventoryTypeSlotMask, bonusId, bonusI
     ---@type ItemBonusInfo?
     local maxUpgrade = nil
 
-    ---@type ValorstoneUpgradeCostData
+    ---@type UpgradeCostData
     local totalUpgradeCosts = {
-       weatheredCrests = 0,
-       carvedCrests = 0,
-       runedCrests = 0,
-       gildedCrests = 0,
-       valorstones = 0,
+        adventurerCrests = 0,
+        veteranCrests = 0,
+        championCrests = 0,
+        heroCrests = 0,
+        mythCrests = 0
     }
 
     for _, upgradeInfo in pairs(itemBonusIds) do
-       if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeGroup == bonusInfo.upgradeGroup and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
-          local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
-          if upgradeCosts ~= nil then
-             local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
-             local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
+        if upgradeInfo.rank == bonusInfo.rank and upgradeInfo.upgradeGroup == bonusInfo.upgradeGroup and upgradeInfo.upgradeLevel > bonusInfo.upgradeLevel then
+            local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
+            if upgradeCosts ~= nil then
+                local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
+                local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
 
-             local weatheredCrests = Round(upgradeCosts.weatheredCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-             local carvedCrests = Round(upgradeCosts.carvedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-             local runedCrests = Round(upgradeCosts.runedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-             local gildedCrests = Round(upgradeCosts.gildedCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-             local valorstones = Round(upgradeCosts.valorstones * (isAccountDiscounted and 0.5 or 1))
+                local adventurerCrests = Round(upgradeCosts.adventurerCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+                local veteranCrests = Round(upgradeCosts.veteranCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+                local championCrests = Round(upgradeCosts.championCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+                local heroCrests = Round(upgradeCosts.heroCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+                local mythCrests = Round(upgradeCosts.mythCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
 
-             if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
-                nextUpgrade = upgradeInfo
+                if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
+                    nextUpgrade = upgradeInfo
 
-                nextUpgradeCost = {
-                    weatheredCrests = weatheredCrests,
-                    carvedCrests = carvedCrests,
-                    runedCrests = runedCrests,
-                    gildedCrests = gildedCrests,
-                    valorstones = valorstones,
-                }
-             end
+                    nextUpgradeCost = {
+                        adventurerCrests = adventurerCrests,
+                        veteranCrests = veteranCrests,
+                        championCrests = championCrests,
+                        heroCrests = heroCrests,
+                        mythCrests = mythCrests,
+                    }
+                end
+                totalUpgradeCosts.veteranCrests = totalUpgradeCosts.veteranCrests + veteranCrests
+                totalUpgradeCosts.veteranCrests = totalUpgradeCosts.veteranCrests + veteranCrests
+                totalUpgradeCosts.championCrests = totalUpgradeCosts.championCrests + championCrests
+                totalUpgradeCosts.heroCrests = totalUpgradeCosts.heroCrests + heroCrests
+                totalUpgradeCosts.mythCrests = totalUpgradeCosts.mythCrests + mythCrests
+                totalUpgradeCosts.valorstones = totalUpgradeCosts.valorstones + valorstones
 
-             totalUpgradeCosts.weatheredCrests = totalUpgradeCosts.weatheredCrests + weatheredCrests
-             totalUpgradeCosts.carvedCrests = totalUpgradeCosts.carvedCrests + carvedCrests
-             totalUpgradeCosts.runedCrests = totalUpgradeCosts.runedCrests + runedCrests
-             totalUpgradeCosts.gildedCrests = totalUpgradeCosts.gildedCrests + gildedCrests
-             totalUpgradeCosts.valorstones = totalUpgradeCosts.valorstones + valorstones
-
-             if not maxUpgrade or maxUpgrade.upgradeLevel < upgradeInfo.upgradeLevel then
-                maxUpgrade = upgradeInfo
-             end
-          end
-       end
+                if not maxUpgrade or maxUpgrade.upgradeLevel < upgradeInfo.upgradeLevel then
+                    maxUpgrade = upgradeInfo
+                end
+            end
+        end
     end
 
     if nextUpgradeCost and nextUpgrade then
-       local nextLevelLines = ParseUpgradeCost(nextUpgradeCost)
-       local totalLines = ParseUpgradeCost(totalUpgradeCosts)
+        local nextLevelLines = ParseUpgradeCost(nextUpgradeCost)
+        local totalLines = ParseUpgradeCost(totalUpgradeCosts)
 
-       if #nextLevelLines > 0 or #totalLines > 0 then
-          tooltip:AddLine("\n")
-          tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["VALORSTONE_CREST_UPGRADES"], Enum.ItemQuality.Artifact))
+        if #nextLevelLines > 0 or #totalLines > 0 then
+            tooltip:AddLine("\n")
+            tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["VALORSTONE_CREST_UPGRADES"], Enum.ItemQuality.Artifact))
 
-          if nextLevelLines then
-             if not private.DB.profile.CompactTooltips then
-                -- Standard tooltip
-                tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["COST_FOR_NEXT_LEVEL"] .. " (" .. nextUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
+            if nextLevelLines then
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["COST_FOR_NEXT_LEVEL"] .. " (" .. nextUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
 
-                for _, newLine in pairs(nextLevelLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    for _, newLine in pairs(nextLevelLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["NEXT_UPGRADE_X"]:format(nextUpgrade.itemLevel)),
+                        nextLevelLines[1].right
+                    )
                 end
-             else
-                -- Compact tooltips
-                tooltip:AddDoubleLine(
-                    WHITE_FONT_COLOR:WrapTextInColorCode(L["NEXT_UPGRADE_X"]:format(nextUpgrade.itemLevel)),
-                    nextLevelLines[1].right
-                )
-             end
-          end
+            end
 
-          if totalLines and maxUpgrade then
-             if not private.DB.profile.CompactTooltips then
-                -- Standard tooltip
-                if nextLevelLines then
-                    tooltip:AddLine("\n")
+            if totalLines and maxUpgrade then
+                if not private.DB.profile.CompactTooltips then
+                    -- Standard tooltip
+                    if nextLevelLines then
+                        tooltip:AddLine("\n")
+                    end
+
+                    tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(
+                    L["COST_TO_UPGRADE_TO_MAX"] .. " (" .. maxUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
+
+                    for _, newLine in pairs(totalLines) do
+                        tooltip:AddDoubleLine(newLine.left, newLine.right)
+                    end
+                else
+                    -- Compact tooltips
+                    tooltip:AddDoubleLine(
+                        WHITE_FONT_COLOR:WrapTextInColorCode(L["MAX_UPGRADE_X"]:format(maxUpgrade.itemLevel)),
+                        totalLines[1].right
+                    )
                 end
-
-                tooltip:AddLine(ColorManager.GetFormattedStringForItemQuality(L["COST_TO_UPGRADE_TO_MAX"] .. " (" .. maxUpgrade.itemLevel .. ")", Enum.ItemQuality.Heirloom))
-
-                for _, newLine in pairs(totalLines) do
-                    tooltip:AddDoubleLine(newLine.left, newLine.right)
-                end
-             else
-                -- Compact tooltips
-                tooltip:AddDoubleLine(
-                    WHITE_FONT_COLOR:WrapTextInColorCode(L["MAX_UPGRADE_X"]:format(maxUpgrade.itemLevel)),
-                    totalLines[1].right
-                )
-             end
-          end
-       end
+            end
+        end
     else
-       private.Debug("No next Valorstones upgrade cost could be found for", itemLink);
+        private.Debug("No next Crests upgrade cost could be found for", itemLink);
     end
 end
 
---- Checks for valid bonus IDs and chains call to HandleValorstones if found
+--- Checks for valid bonus IDs and chains call to HandleCrests if found
 ---@diagnostic disable: unused-local
 ---@param tooltip GameTooltip
 ---@param itemId integer
@@ -2596,56 +2576,57 @@ end
 ---@param maxUpgrade integer
 ---@param bonusIds table<integer, integer>
 ---@return boolean
-local function CheckValorstoneBonusIDs(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
-    if private.DB.profile.DisabledIntegrations.Valorstones then
-       private.Debug("Valorstones integration is disabled");
+local function CheckCrestBonusIDs(tooltip, itemId, itemLink, currentUpgrade, maxUpgrade, bonusIds)
+    if private.DB.profile.DisabledIntegrations.Crests then
+        private.Debug("Crest upgrade integration is disabled");
 
-       return false
+        return false
     end
 
     for i = 1, #bonusIds do
-       private.Debug("Checking Valorstone bonus IDs for", bonusIds[i]);
+        private.Debug("Checking Crest bonus IDs for", bonusIds[i]);
 
-       ---@type ItemBonusInfo?
-       local bonusInfo = itemBonusIds[bonusIds[i]]
-       if bonusInfo ~= nil then
-          private.Debug(bonusIds[i], "matched a Valorstone bonus ID");
+        ---@type ItemBonusInfo?
+        local bonusInfo = itemBonusIds[bonusIds[i]]
+        if bonusInfo ~= nil then
+            private.Debug(bonusIds[i], "matched a Crest bonus ID");
 
-          local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
-          private.Debug(itemLink, "has equipLoc", equipLoc);
+            local equipLoc = select(9, C_Item.GetItemInfo(itemLink))
+            private.Debug(itemLink, "has equipLoc", equipLoc);
 
-          local inventoryTypeSlotMask = inventoryTypeSlotMasks[equipLoc]
-          if not inventoryTypeSlotMask then
-             private.Debug(equipLoc, "was not found in the Valorstones inventory slot mask table");
-             return false
-          end
-
-          local inventoryTypeSlotMaskOverride = inventoryTypeSlotMaskOverrides[equipLoc];
-          if inventoryTypeSlotMaskOverride then
-             local stats = C_Item.GetItemStats(itemLink)
-             if not stats then
-                private.Debug("Could not extract Valorstones item stats from", itemLink);
+            local inventoryTypeSlotMask = inventoryTypeSlotMasks[equipLoc]
+            if not inventoryTypeSlotMask then
+                private.Debug(equipLoc, "was not found in the Crests inventory slot mask table");
                 return false
-             end
-             local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
-             if hasInt then
-                private.Debug("Upgrade cost for has been overridden because the item has Intellect on it.");
-                inventoryTypeSlotMask = inventoryTypeSlotMaskOverride
-             end
-          end
+            end
 
-          if not bonusInfo.costs[inventoryTypeSlotMask] then
-             private.Debug(inventoryTypeSlotMask, "was not found in the Valorstones item extended cost lookup table");
-             return false
-          end
+            local inventoryTypeSlotMaskOverride = inventoryTypeSlotMaskOverrides[equipLoc];
+            if inventoryTypeSlotMaskOverride then
+                local stats = C_Item.GetItemStats(itemLink)
+                if not stats then
+                    private.Debug("Could not extract Crests item stats from", itemLink);
+                    return false
+                end
 
-          HandleValorstones(tooltip, inventoryTypeSlotMask, i, bonusInfo, itemLink)
-          return true
-       end
+                local hasInt = (stats["ITEM_MOD_INTELLECT_SHORT"] and stats["ITEM_MOD_INTELLECT_SHORT"] > 0)
+                if hasInt then
+                    private.Debug("Upgrade cost for has been overridden because the item has Intellect on it.");
+                    inventoryTypeSlotMask = inventoryTypeSlotMaskOverride
+                end
+            end
+
+            if not bonusInfo.costs[inventoryTypeSlotMask] then
+                private.Debug(inventoryTypeSlotMask, "was not found in the Crests item extended cost lookup table");
+                return false
+            end
+
+            HandleCrests(tooltip, inventoryTypeSlotMask, i, bonusInfo, itemLink)
+            return true
+        end
     end
 
-    private.Debug(itemId, "did not match a Valorstones bonus ID");
+    private.Debug(itemId, "did not match a Crests bonus ID");
     return false;
 end
 
-table.insert(private.upgradeHandlers, CheckValorstoneBonusIDs)
+table.insert(private.upgradeHandlers, CheckCrestBonusIDs)
