@@ -100,18 +100,18 @@ private.mythicPlusInfo = {
 
 ---@type Array<RaidInfo>
 private.raidInfo = {
-    {boss = 1,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
-    {boss = 2,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
-    {boss = 3,   lfr = 111, normal = 124, heroic = 137, mythic = 150},
-    {boss = L["X_RARE"]:format(3),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 4,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
-    {boss = L["X_RARE"]:format(4),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 5,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
-    {boss = 6,   lfr = 115, normal = 128, heroic = 141, mythic = 157},
-    {boss = L["X_RARE"]:format(6),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
-    {boss = 7,   lfr = 118, normal = 131, heroic = 144, mythic = 157},
-    {boss = 8,   lfr = 118, normal = 131, heroic = 144, mythic = 157},
-    {boss = L["X_RARE"]:format(8),  lfr = 124, normal = 137, heroic = 150, mythic = 163},
+    {boss = 1,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
+    {boss = 2,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
+    {boss = 3,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
+    {boss = L["X_RARE"]:format(3),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
+    {boss = 4,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
+    {boss = L["X_RARE"]:format(4),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
+    {boss = 5,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
+    {boss = 6,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
+    {boss = L["X_RARE"]:format(6),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
+    {boss = 7,                      lfr = 243, normal = 256, heroic = 266, mythic = 279},
+    {boss = 8,                      lfr = 243, normal = 256, heroic = 266, mythic = 279},
+    {boss = L["X_RARE"]:format(8),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
 }
 
 ---@type RaidCurrencyInfo
@@ -132,106 +132,120 @@ private.raidInfo = {
 ---@type Array<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
-        itemLevel = 108,
-        upgrade1 = {rank = 2, upgradeLevel = 5, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 8},
+        itemLevel = 220,
+        upgrade1 = {rank = 2, upgradeLevel = 1, maxUpgradeLevel = 6},
+        currency = upgradeData["adventurerCrests"]
+    },
+    {
+        itemLevel = 224,
+        upgrade1 = {rank = 2, upgradeLevel = 2, maxUpgradeLevel = 6},
+        currency = upgradeData["adventurerCrests"]
+    },
+    {
+        itemLevel = 227,
+        upgrade1 = {rank = 2, upgradeLevel = 3, maxUpgradeLevel = 6},
+        currency = upgradeData["adventurerCrests"]
+    },
+    {
+        itemLevel = 230,
+        upgrade1 = {rank = 2, upgradeLevel = 4, maxUpgradeLevel = 6},
+        currency = upgradeData["adventurerCrests"]
+    },
+    {
+        itemLevel = 233,
+        upgrade1 = {rank = 2, upgradeLevel = 5, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 3, upgradeLevel = 1, maxUpgradeLevel = 6},
         currency = upgradeData["veteranCrests"]
     },
     {
-        itemLevel = 111,
-        upgrade1 = {rank = 2, upgradeLevel = 6, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 8},
+        itemLevel = 237,
+        upgrade1 = {rank = 2, upgradeLevel = 6, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 3, upgradeLevel = 2, maxUpgradeLevel = 6},
         currency = upgradeData["veteranCrests"]
     },
     {
-        itemLevel = 115,
-        upgrade1 = {rank = 2, upgradeLevel = 7, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 8},
+        itemLevel = 246,
+        upgrade1 = {rank = 3, upgradeLevel = 3, maxUpgradeLevel = 6},
         currency = upgradeData["veteranCrests"]
     },
     {
-        itemLevel = 118,
-        upgrade1 = {rank = 2, upgradeLevel = 8, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 8},
+        itemLevel = 243,
+        upgrade1 = {rank = 3, upgradeLevel = 4, maxUpgradeLevel = 6},
         currency = upgradeData["veteranCrests"]
     },
     {
-        itemLevel = 121,
-        upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 8},
+        itemLevel = 246,
+        upgrade1 = {rank = 3, upgradeLevel = 5, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 4, upgradeLevel = 1, maxUpgradeLevel = 6},
         currency = upgradeData["championCrests"]
     },
     {
-        itemLevel = 124,
-        upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 8},
+        itemLevel = 250,
+        upgrade1 = {rank = 3, upgradeLevel = 6, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 4, upgradeLevel = 2, maxUpgradeLevel = 6},
         currency = upgradeData["championCrests"]
     },
     {
-        itemLevel = 128,
-        upgrade1 = {rank = 3, upgradeLevel = 7, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 8},
+        itemLevel = 253,
+        upgrade1 = {rank = 4, upgradeLevel = 3, maxUpgradeLevel = 6},
         currency = upgradeData["championCrests"]
     },
     {
-        itemLevel = 131,
-        upgrade1 = {rank = 3, upgradeLevel = 8, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 8},
+        itemLevel = 256,
+        upgrade1 = {rank = 4, upgradeLevel = 4, maxUpgradeLevel = 6},
         currency = upgradeData["championCrests"]
     },
     {
-        itemLevel = 134,
-        upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 8},
+        itemLevel = 259,
+        upgrade1 = {rank = 4, upgradeLevel = 5, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 1, maxUpgradeLevel = 6},
         currency = upgradeData["heroCrests"]
     },
     {
-        itemLevel = 137,
-        upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 8},
+        itemLevel = 263,
+        upgrade1 = {rank = 4, upgradeLevel = 6, maxUpgradeLevel = 6},
+        upgrade2 = {rank = 5, upgradeLevel = 2, maxUpgradeLevel = 6},
         currency = upgradeData["heroCrests"]
     },
     {
-        itemLevel = 141,
-        upgrade1 = {rank = 4, upgradeLevel = 7, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 8},
+        itemLevel = 266,
+        upgrade1 = {rank = 5, upgradeLevel = 3, maxUpgradeLevel = 6},
         currency = upgradeData["heroCrests"]
     },
     {
-        itemLevel = 144,
-        upgrade1 = {rank = 4, upgradeLevel = 8, maxUpgradeLevel = 8},
-        upgrade2 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 8},
+        itemLevel = 269,
+        upgrade1 = {rank = 5, upgradeLevel = 4, maxUpgradeLevel = 6},
         currency = upgradeData["heroCrests"]
     },
     {
-        itemLevel = 147,
+        itemLevel = 272,
         upgrade1 = {rank = 5, upgradeLevel = 5, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 1, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
     {
-        itemLevel = 150,
+        itemLevel = 276,
         upgrade1 = {rank = 5, upgradeLevel = 6, maxUpgradeLevel = 6},
         upgrade2 = {rank = 6, upgradeLevel = 2, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
     {
-        itemLevel = 154,
+        itemLevel = 279,
         upgrade1 = {rank = 6, upgradeLevel = 3, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
     {
-        itemLevel = 157,
+        itemLevel = 282,
         upgrade1 = {rank = 6, upgradeLevel = 4, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
     {
-        itemLevel = 160,
+        itemLevel = 285,
         upgrade1 = {rank = 6, upgradeLevel = 5, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
     {
-        itemLevel = 163,
+        itemLevel = 289,
         upgrade1 = {rank = 6, upgradeLevel = 6, maxUpgradeLevel = 6},
         currency = upgradeData["mythCrests"]
     },
@@ -241,110 +255,120 @@ private.upgradeTrackInfo = {
 private.bountifulDelveInfo = {
     {
         tier = 1,
-        loot = {itemLevel = 655, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 108, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 220, upgradeTrack = L["UPGRADE_TRACK_ADVENTURER"]},
+        vault = {itemLevel = 233, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = upgradeData["adventurerCrests"]
     },
     {
         tier = 2,
-        loot = {itemLevel = 658, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 111, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 224, upgradeTrack = L["UPGRADE_TRACK_ADVENTURER"]},
+        vault = {itemLevel = 237, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = upgradeData["adventurerCrests"]
     },
     {
         tier = 3,
-        loot = {itemLevel = 661, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 115, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 227, upgradeTrack = L["UPGRADE_TRACK_ADVENTURER"]},
+        vault = {itemLevel = 240, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = upgradeData["adventurerCrests"]
     },
     {
         tier = 4,
-        loot = {itemLevel = 664, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 118, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 230, upgradeTrack = L["UPGRADE_TRACK_ADVENTURER"]},
+        vault = {itemLevel = 243, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        currency = upgradeData["adventurerCrests"]
     },
     {
         tier = 5,
-        loot = {itemLevel = 108, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 121, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        loot = {itemLevel = 233, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 246, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
         currency = upgradeData["veteranCrests"]
     },
     {
         tier = 6,
-        loot = {itemLevel = 111, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
-        vault = {itemLevel = 128, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        currency = upgradeData["championCrests"]
+        loot = {itemLevel = 237, upgradeTrack = L["UPGRADE_TRACK_VETERAN"]},
+        vault = {itemLevel = 253, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        currency = upgradeData["veteranCrests"]
     },
     {
         tier = 7,
-        loot = {itemLevel = 121, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        vault = {itemLevel = 131, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 250, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 256, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        currency = upgradeData["championCrests"]
     },
     {
         tier = 8,
-        loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 250, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 259, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = upgradeData["championCrests"]
     },
     {
         tier = 9,
-        loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 250, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 259, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = upgradeData["championCrests"]
     },
     {
         tier = 10,
-        loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = upgradeData["veteranCrests"]
+        loot = {itemLevel = 250, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 259, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = upgradeData["championCrests"]
     },
     {
         tier = 11,
-        loot = {itemLevel = 124, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
-        vault = {itemLevel = 134, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
-        currency = upgradeData["mythCrests"]
+        loot = {itemLevel = 250, upgradeTrack = L["UPGRADE_TRACK_CHAMPION"]},
+        vault = {itemLevel = 259, upgradeTrack = L["UPGRADE_TRACK_HERO"]},
+        currency = upgradeData["heroCrests"]
     }
 }
 
 ---@type Array<CraftingInfo>
 private.craftingInfo = {
-    -- Weathered
-    {itemLevel = 104, itemId = 231767, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 105, itemId = 231767, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 108, itemId = 231767, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 111, itemId = 231767, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 115, itemId = 231767, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    -- Adventurer
+    {itemLevel = 220, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 224, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 227, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 230, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 233, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
-    {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
+    {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
-    -- Spark
-    {itemLevel = 118, itemId = 231756, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 121, itemId = 231756, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 124, itemId = 231756, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 128, itemId = 231756, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 131, itemId = 231756, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
-
-    -- Line break
-    {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
-
-    -- Runed
-    {itemLevel = 131, itemId = 231769, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 134, itemId = 231769, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 137, itemId = 231769, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 141, itemId = 231769, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 144, itemId = 231769, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    -- Veteran
+    {itemLevel = 233, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 237, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 240, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 243, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 246, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
-    {itemLevel = 0, itemId = 0, rank = 0, iconPath = ""},
+    {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
-    -- Gilded
-    {itemLevel = 147, itemId = 231768, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 150, itemId = 231768, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 154, itemId = 231768, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 157, itemId = 231768, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 160, itemId = 231768, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    -- Champion
+    {itemLevel = 246, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 250, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 253, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 256, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 259, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+
+    -- Line break
+    {itemLevel = 0, rank = 0, iconPath = ""},
+
+    -- Hero
+    {itemLevel = 259, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 263, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 266, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 269, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 272, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+
+    -- Line break
+    {itemLevel = 0, rank = 0, iconPath = ""},
+
+    -- Myth
+    {itemLevel = 272, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 276, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 279, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 282, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 285, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
 ---@type Array<ItemBonusInfo>
