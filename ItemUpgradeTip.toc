@@ -46,9 +46,9 @@ Debug.lua
 
 Manifest.xml
 
+upgradeHandlers\TheWarWithin.lua
+upgradeHandlers\Midnight.lua
 upgradeHandlers\Heirloom.lua
-upgradeHandlers\Flightstones.lua
-upgradeHandlers\Valorstones.lua
 upgradeHandlers\Anima.lua
 upgradeHandlers\Honor.lua
 upgradeHandlers\Conquest.lua
