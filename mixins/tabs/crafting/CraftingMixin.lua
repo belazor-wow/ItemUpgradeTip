@@ -53,7 +53,7 @@ function ItemUpgradeTipCraftingDataProviderMixin:Refresh()
                 index = index,
                 selected = self:IsSelected(index),
                 crestsRequired = crestsRequired,
-                crestRequiredCurrencyId = craftingInfo.currency and craftingInfo.currency.currencyId or nil,
+                crestsRequiredCurrencyId = craftingInfo.currency and craftingInfo.currency.currencyId or nil,
             }
         else
             crafting = {
