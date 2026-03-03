@@ -46,7 +46,6 @@ Debug.lua
 
 Manifest.xml
 
-upgradeHandlers\TheWarWithin.lua
 upgradeHandlers\Midnight.lua
 upgradeHandlers\Heirloom.lua
 upgradeHandlers\Anima.lua
