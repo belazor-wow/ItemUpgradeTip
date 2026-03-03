@@ -139,7 +139,7 @@
 -- ----------------------------------------------------------------------------
 ---@class CraftingInfo
 ---@field itemLevel integer
----@field currency UpgradeData
+---@field currency UpgradeData?
 ---@field currencyAmount integer
 ---@field rank integer
 ---@field iconPath string
