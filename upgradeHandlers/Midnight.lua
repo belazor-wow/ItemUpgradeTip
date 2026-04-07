@@ -1618,13 +1618,13 @@ local function HandleCrests(tooltip, inventoryTypeSlotMask, bonusId, bonusInfo, 
             local upgradeCosts = GetItemUpgradeCosts(inventoryTypeSlotMask, upgradeInfo);
             if upgradeCosts ~= nil then
                 local isCharacterDiscounted = upgradeInfo.itemLevel <= characterHighWatermark
-                local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
+                --local isAccountDiscounted = upgradeInfo.itemLevel <= accountHighWatermark
 
-                local adventurerCrests = Round(upgradeCosts.adventurerCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-                local veteranCrests = Round(upgradeCosts.veteranCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-                local championCrests = Round(upgradeCosts.championCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-                local heroCrests = Round(upgradeCosts.heroCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
-                local mythCrests = Round(upgradeCosts.mythCrests * (isCharacterDiscounted and 0 or (isAccountDiscounted and 0.66 or 1)))
+                local adventurerCrests = Round(upgradeCosts.adventurerCrests * (isCharacterDiscounted and 0 or (--[[isAccountDiscounted and 0.66 or]] 1)))
+                local veteranCrests = Round(upgradeCosts.veteranCrests * (isCharacterDiscounted and 0 or (--[[isAccountDiscounted and 0.66 or]] 1)))
+                local championCrests = Round(upgradeCosts.championCrests * (isCharacterDiscounted and 0 or (--[[isAccountDiscounted and 0.66 or]] 1)))
+                local heroCrests = Round(upgradeCosts.heroCrests * (isCharacterDiscounted and 0 or (--[[isAccountDiscounted and 0.66 or]] 1)))
+                local mythCrests = Round(upgradeCosts.mythCrests * (isCharacterDiscounted and 0 or (--[[isAccountDiscounted and 0.66 or]] 1)))
 
                 if upgradeInfo.upgradeLevel == (bonusInfo.upgradeLevel + 1) then
                     nextUpgrade = upgradeInfo
