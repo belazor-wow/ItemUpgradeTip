@@ -14,7 +14,7 @@
             <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" />
         </Anchors>
         <Frames>
-            <EditBox autoFocus="false" inherits="InputBoxTemplate" parentKey="InputBox" letters="150">
+            <EditBox parentKey="InputBox" autoFocus="false" inherits="InputBoxTemplate" letters="150">
                 <Size x="295" y="20" />
                 <Anchors>
                     <Anchor point="TOPLEFT" x="20" />
@@ -30,7 +30,7 @@
 
         <Layers>
             <Layer level="BACKGROUND">
-                <FontString inherits="GameFontHighlight" parentKey="Label">
+                <FontString parentKey="Label" inherits="GameFontHighlight">
                     <Anchors>
                         <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeKey="$parent.InputBox" x="8" y="-4" />
                     </Anchors>

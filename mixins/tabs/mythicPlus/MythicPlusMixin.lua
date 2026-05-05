@@ -32,6 +32,7 @@ local MYTHICPLUS_DATA_PROVIDER_LAYOUT = {
     }
 }
 
+---@class ItemUpgradeTipMythicPlusDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipMythicPlusDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
 function ItemUpgradeTipMythicPlusDataProviderMixin:Refresh()

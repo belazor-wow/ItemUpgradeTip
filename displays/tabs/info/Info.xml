@@ -16,9 +16,9 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipHeadingFrame" parentKey="AuthorHeading">
+            <Frame parentKey="AuthorHeading" inherits="ItemUpgradeTipHeadingFrame">
                 <KeyValues>
-                    <KeyValue key="headingText" value="ITEMUPGRADETIP_L_AUTHOR" type="global" />
+                    <KeyValue key="headingTextKeyValue" value="ITEMUPGRADETIP_L_AUTHOR" type="global" />
                 </KeyValues>
                 <Anchors>
                     <Anchor point="RIGHT" relativeKey="$parent" relativePoint="CENTER" x="-150" />
@@ -26,43 +26,43 @@
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipSubHeadingFrame" parentKey="Author">
+            <Frame parentKey="Author" inherits="ItemUpgradeTipSubHeadingFrame">
                 <KeyValues>
-                    <KeyValue key="subHeadingText" value="Ilyxiana@Ravencrest" type="string" />
+                    <KeyValue key="subHeadingTextKeyValue" value="Ilyxiana@Ravencrest" type="string" />
                 </KeyValues>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeKey="$parent.AuthorHeading" relativePoint="BOTTOMLEFT" y="10" />
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipHeadingFrame" parentKey="VersionHeading">
+            <Frame parentKey="VersionHeading" inherits="ItemUpgradeTipHeadingFrame">
                 <KeyValues>
-                    <KeyValue key="headingText" value="ITEMUPGRADETIP_L_VERSION" type="global" />
+                    <KeyValue key="headingTextKeyValue" value="ITEMUPGRADETIP_L_VERSION" type="global" />
                 </KeyValues>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeKey="$parent.AuthorHeading" relativePoint="TOPRIGHT" x="140" />
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipSubHeadingFrame" parentKey="Version">
+            <Frame parentKey="Version" inherits="ItemUpgradeTipSubHeadingFrame">
                 <KeyValues>
-                    <KeyValue key="subHeadingText" value="ItemUpgradeTip.Version" type="global" />
+                    <KeyValue key="subHeadingTextKeyValue" value="ItemUpgradeTip.Version" type="global" />
                 </KeyValues>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeKey="$parent.VersionHeading" relativePoint="BOTTOMLEFT" y="10" />
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipHeadingFrame" parentKey="EngageHeading">
+            <Frame parentKey="EngageHeading" inherits="ItemUpgradeTipHeadingFrame">
                 <KeyValues>
-                    <KeyValue key="headingText" value="ITEMUPGRADETIP_L_CONTACT" type="global" />
+                    <KeyValue key="headingTextKeyValue" value="ITEMUPGRADETIP_L_CONTACT" type="global" />
                 </KeyValues>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeKey="$parent.Author" relativePoint="BOTTOMLEFT" y="-20" />
                 </Anchors>
             </Frame>
 
-            <Frame inherits="ItemUpgradeTipCopyAndPasteFrame" parentKey="BugReportLink">
+            <Frame parentKey="BugReportLink" inherits="ItemUpgradeTipCopyAndPasteFrame">
                 <KeyValues>
                     <KeyValue key="labelText" value="ITEMUPGRADETIP_L_BUG_REPORT_SUGGEST" type="global" />
                     <KeyValue key="copyText" value="https://github.com/belazor-wow/ItemUpgradeTip/issues" type="string" />

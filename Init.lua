@@ -7,7 +7,7 @@ local private = select(2, ...)
 ---@type table<CurrencyInfo>
 private.currencyInfo = {}
 
----@type Dictionary<integer>
+---@type { [string]: number }
 private.currencyIds = {}
 
 ---@type table<number, boolean>
@@ -47,8 +47,8 @@ local defaultValues = {
 }
 
 ---@class Preferences
----@field OptionsFrame Frame?
----@field SettingsPanel Frame?
+---@field OptionsFrame SettingsCategoryMixin?
+---@field SettingsPanel SettingsFrameTemplate?
 ---@field InitializeDatabase fun
 ---@field SetupOptions fun
 local Preferences = {

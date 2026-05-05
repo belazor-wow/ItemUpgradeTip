@@ -13,7 +13,7 @@ ItemUpgradeTip = LibStub("AceAddon-3.0"):NewAddon(AddOnFolderName, "AceConsole-3
 ---@class IUTView
 IUTView = nil
 
----@class IUTViewLeftPanel : Frame
+---@class IUTViewLeftPanel: Frame
 IUTViewLeftPanel = nil
 
 ItemUpgradeTip.Version = C_AddOns.GetAddOnMetadata(AddOnFolderName, "Version");
@@ -152,8 +152,7 @@ local SUBCOMMAND_FUNCS = {
         if settingsPanel:IsVisible() then
             settingsPanel:Hide()
         else
-            ---@diagnostic disable-next-line: undefined-field
-            Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
+            Settings.OpenToCategory(private.Preferences.OptionsFrame.ID) ---@diagnostic disable-line: need-check-nil
         end
     end
 }
@@ -193,7 +192,6 @@ function ItemUpgradeTip_OnAddonCompartmentClick(addonName, button)
     if (button == "LeftButton") then
 		ItemUpgradeTip:ToggleView()
 	elseif (button == "RightButton") then
-        ---@diagnostic disable-next-line: undefined-field
-        Settings.OpenToCategory(private.Preferences.OptionsFrame.ID)
+        Settings.OpenToCategory(private.Preferences.OptionsFrame.ID) ---@diagnostic disable-line: need-check-nil
 	end
 end

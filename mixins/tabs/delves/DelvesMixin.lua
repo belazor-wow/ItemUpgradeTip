@@ -32,6 +32,7 @@ local DELVES_DATA_PROVIDER_LAYOUT = {
     }
 }
 
+---@class ItemUpgradeTipBountifulDelvesDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipBountifulDelvesDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
 function ItemUpgradeTipBountifulDelvesDataProviderMixin:Refresh()

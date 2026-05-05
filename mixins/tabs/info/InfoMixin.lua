@@ -1,10 +1,10 @@
----@class ItemUpgradeTipInfoDisplayMixin : Frame
----@field Inset Frame
----@field AuthorHeading Frame
----@field Author Frame
----@field VersionHeading Frame
----@field Version Frame
----@field EngageHeading Frame
+---@class ItemUpgradeTipInfoDisplayMixin: Frame
+---@field Inset InsetFrameTemplate
+---@field AuthorHeading ItemUpgradeTipHeadingMixin
+---@field Author ItemUpgradeTipSubHeadingMixin
+---@field VersionHeading ItemUpgradeTipHeadingMixin
+---@field Version ItemUpgradeTipSubHeadingMixin
+---@field EngageHeading ItemUpgradeTipHeadingMixin
 ---@field BugReportLink ItemUpgradeTipCopyAndPasteMixin
 ItemUpgradeTipInfoDisplayMixin = {}
 

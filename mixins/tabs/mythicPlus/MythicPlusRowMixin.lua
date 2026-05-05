@@ -1,3 +1,4 @@
+---@class ItemUpgradeTipMythicPlusRowMixin: ItemUpgradeTipResultsRowTemplateMixin
 ItemUpgradeTipMythicPlusRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
 ItemUpgradeTipMythicPlusRowMixin.Populate = ItemUpgradeTipTableResultsRowMixin.Populate

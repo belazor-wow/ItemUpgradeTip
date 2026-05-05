@@ -1,3 +1,4 @@
+---@class ItemUpgradeTipUpgradeRowMixin: ItemUpgradeTipResultsRowTemplateMixin
 ItemUpgradeTipUpgradeRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
 ItemUpgradeTipUpgradeRowMixin.Populate = ItemUpgradeTipTableResultsRowMixin.Populate

@@ -1,4 +1,4 @@
----@class ItemUpgradeTipDisplayDataProviderMixin : ItemUpgradeTipDataProviderMixin
+---@class ItemUpgradeTipDisplayDataProviderMixin: ItemUpgradeTipDataProviderMixin
 ItemUpgradeTipDisplayDataProviderMixin = CreateFromMixins(ItemUpgradeTipDataProviderMixin)
 
 local itemCache = {}

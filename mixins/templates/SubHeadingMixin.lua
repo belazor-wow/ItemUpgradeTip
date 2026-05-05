@@ -1,12 +1,16 @@
+---@class ItemUpgradeTipSubHeadingMixin
+---@field OnLoad fun()
+---@field HeadingText FontString
+---@field subHeadingTextKeyValue string?
 ItemUpgradeTipSubHeadingMixin = {}
 
 function ItemUpgradeTipSubHeadingMixin:InitializeSubHeading()
-    if self.subHeadingText ~= nil then
-        self.HeadingText:SetText(self.subHeadingText)
+    if self.subHeadingTextKeyValue ~= nil then
+        self.HeadingText:SetText(self.subHeadingTextKeyValue)
     end
 end
 
 function ItemUpgradeTipSubHeadingMixin:SetText(newHeading)
-    self.subHeadingText = newHeading
+    self.subHeadingTextKeyValue = newHeading
     self:OnLoad()
 end

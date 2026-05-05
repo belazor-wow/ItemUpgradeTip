@@ -1,3 +1,4 @@
+---@class ItemUpgradeTipBountifulDelvesRowMixin: ItemUpgradeTipResultsRowTemplateMixin
 ItemUpgradeTipBountifulDelvesRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
 ItemUpgradeTipBountifulDelvesRowMixin.Populate = ItemUpgradeTipTableResultsRowMixin.Populate

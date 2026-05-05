@@ -1,5 +1,5 @@
----@class ItemUpgradeTipInfoDisplayMixin : Frame
----@field Inset Frame
+---@class ItemUpgradeTipInfoDisplayMixin: Frame
+---@field Inset InsetFrameTemplate
 ---@field tooltipTitleText string?
 ---@field tooltipText string?
 ItemUpgradeTipTooltipMixin = {}

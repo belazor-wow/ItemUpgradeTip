@@ -24,7 +24,7 @@ local CRAFTING_DATA_PROVIDER_LAYOUT = {
     }
 }
 
----@class ItemUpgradeTipCraftingDataProviderMixin : ItemUpgradeTipDisplayDataProviderMixin
+---@class ItemUpgradeTipCraftingDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipCraftingDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
 function ItemUpgradeTipCraftingDataProviderMixin:Refresh()

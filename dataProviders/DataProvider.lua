@@ -1,4 +1,4 @@
----@class ItemUpgradeTipDataProviderMixin : table
+---@class ItemUpgradeTipDataProviderMixin: table
 ---@field results table
 ---@field cachedResults table
 ---@field insertedKeys table
@@ -69,6 +69,7 @@ end
 --     6. OPTIONAL width - Integer
 --            If supplied, this will be used to define the column's fixed width.
 --            If omitted, the column will use ColumnWidthConstraints.Fill from TableBuilder
+---@return ResultsListingTableLayout|table
 function ItemUpgradeTipDataProviderMixin:GetTableLayout()
     return {}
 end

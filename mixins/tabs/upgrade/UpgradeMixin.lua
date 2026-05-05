@@ -61,6 +61,7 @@ local UPGRADE_DATA_PROVIDER_LAYOUT = {
     },
 }
 
+---@class ItemUpgradeTipUpgradeDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipUpgradeDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
 function ItemUpgradeTipUpgradeDataProviderMixin:Refresh()

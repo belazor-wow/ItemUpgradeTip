@@ -2,7 +2,7 @@
     <Frame name="ItemUpgradeTipSubHeadingFrame" mixin="ItemUpgradeTipSubHeadingMixin" virtual="true">
         <!--
             <KeyValues>
-                <KeyValue key="subHeadingText" value="" type="string" />
+                <KeyValue key="subHeadingTextKeyValue" value="" type="string" />
             </KeyValues>
         -->
         <Size y="20" />
