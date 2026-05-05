@@ -2,7 +2,7 @@
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
@@ -19,7 +19,7 @@ private.Preferences.DisabledIntegrations.Anima = {
 private.currencyIds["Anima"] = 1813
 private.currencyIndexes[private.currencyIds.Anima] = true
 
----@type Array<BonusData>
+---@type table<BonusData>
 local animaBonusIds = {
     [7195] = {currencyId = private.currencyIds.Anima, amount = 50,  toMax = 1050},
     [7196] = {currencyId = private.currencyIds.Anima, amount = 100, toMax = 1000},

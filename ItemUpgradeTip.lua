@@ -2,13 +2,19 @@
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 ---@class ItemUpgradeTip: AceAddon, AceConsole-3.0, AceEvent-3.0
 ItemUpgradeTip = LibStub("AceAddon-3.0"):NewAddon(AddOnFolderName, "AceConsole-3.0", "AceEvent-3.0")
+
+---@class IUTView
+IUTView = nil
+
+---@class IUTViewLeftPanel : Frame
+IUTViewLeftPanel = nil
 
 ItemUpgradeTip.Version = C_AddOns.GetAddOnMetadata(AddOnFolderName, "Version");
 ItemUpgradeTip.L = L;
@@ -47,19 +53,19 @@ function ItemUpgradeTip:ToggleView()
 end
 
 -- Return the Mythic+ info
----@return Array<MythicPlusInfo>
+---@return table<MythicPlusInfo>
 function ItemUpgradeTip:GetMythicPlusInfo()
     return private.mythicPlusInfo
 end
 
 -- Return the Bountiful Delve info
----@return Array<BountifulDelveInfo>
+---@return table<BountifulDelveInfo>
 function ItemUpgradeTip:GetBountifulDelvesInfo()
     return private.bountifulDelveInfo
 end
 
 -- Return the Raid info
----@return Array<RaidInfo>
+---@return table<RaidInfo>
 function ItemUpgradeTip:GetRaidInfo()
     return private.raidInfo
 end
@@ -71,13 +77,13 @@ function ItemUpgradeTip:GetRaidCurrencyInfo()
 end
 
 -- Return the Upgrade info
----@return Array<UpgradeTrackInfo>
+---@return table<UpgradeTrackInfo>
 function ItemUpgradeTip:GetUpgradeTrackInfo()
     return private.upgradeTrackInfo
 end
 
 -- Return the Crafting info
----@return Array<CraftingInfo>
+---@return table<CraftingInfo>
 function ItemUpgradeTip:GetCraftingInfo()
     return private.craftingInfo
 end
@@ -160,6 +166,7 @@ function ItemUpgradeTip:ChatCommand(input)
         local func = SUBCOMMAND_FUNCS[subcommand:upper()]
 
         if func then
+            ---@diagnostic disable-next-line: redundant-parameter
             func(arguments or "")
         end
     else

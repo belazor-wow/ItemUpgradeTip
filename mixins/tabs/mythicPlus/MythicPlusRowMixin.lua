@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-set-field
 ItemUpgradeTipMythicPlusRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
 ItemUpgradeTipMythicPlusRowMixin.Populate = ItemUpgradeTipTableResultsRowMixin.Populate

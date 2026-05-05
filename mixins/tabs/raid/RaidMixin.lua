@@ -1,5 +1,3 @@
----@diagnostic disable: duplicate-set-field
-
 local RAID_DATA_PROVIDER_LAYOUT = {
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",

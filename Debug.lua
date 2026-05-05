@@ -1,5 +1,5 @@
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 -- the DebugLog addon
 ---@diagnostic disable-next-line: undefined-global

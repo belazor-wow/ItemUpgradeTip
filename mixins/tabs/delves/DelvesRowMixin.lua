@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-set-field
 ItemUpgradeTipBountifulDelvesRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
 ItemUpgradeTipBountifulDelvesRowMixin.Populate = ItemUpgradeTipTableResultsRowMixin.Populate

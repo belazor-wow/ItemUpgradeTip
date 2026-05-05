@@ -1,5 +1,4 @@
----@diagnostic disable: duplicate-set-field
-
+---@class ItemUpgradeTipDisplayDataProviderMixin : ItemUpgradeTipDataProviderMixin
 ItemUpgradeTipDisplayDataProviderMixin = CreateFromMixins(ItemUpgradeTipDataProviderMixin)
 
 local itemCache = {}
@@ -62,10 +61,6 @@ end
 -- Load/refresh the current view
 function ItemUpgradeTipDisplayDataProviderMixin:Refresh()
     error("This should be overridden.")
-end
-
-function ItemUpgradeTipDisplayDataProviderMixin:UniqueKey(entry)
-    return tostring(entry)
 end
 
 function ItemUpgradeTipDisplayDataProviderMixin:IsSelected(index)

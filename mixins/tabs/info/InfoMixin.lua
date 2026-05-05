@@ -1,3 +1,11 @@
+---@class ItemUpgradeTipInfoDisplayMixin : Frame
+---@field Inset Frame
+---@field AuthorHeading Frame
+---@field Author Frame
+---@field VersionHeading Frame
+---@field Version Frame
+---@field EngageHeading Frame
+---@field BugReportLink ItemUpgradeTipCopyAndPasteMixin
 ItemUpgradeTipInfoDisplayMixin = {}
 
 function ItemUpgradeTipInfoDisplayMixin:OnLoad()

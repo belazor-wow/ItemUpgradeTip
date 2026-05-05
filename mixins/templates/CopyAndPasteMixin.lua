@@ -1,3 +1,4 @@
+---@class ItemUpgradeTipCopyAndPasteMixin : Frame
 ItemUpgradeTipCopyAndPasteMixin = {}
 
 function ItemUpgradeTipCopyAndPasteMixin:OnLoad()

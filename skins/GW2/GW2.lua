@@ -1,8 +1,3 @@
--- ----------------------------------------------------------------------------
--- AddOn Namespace
--- ----------------------------------------------------------------------------
-local private = select(2, ...) ---@class PrivateNamespace
-
 local GW = GW2_ADDON
 
 local function SkinContainerFrame(frame)

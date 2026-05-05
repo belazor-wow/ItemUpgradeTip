@@ -1,4 +1,3 @@
----@diagnostic disable: duplicate-set-field
 ItemUpgradeTipStringCellTemplateMixin = CreateFromMixins(ItemUpgradeTipCellMixin, TableBuilderCellMixin)
 
 function ItemUpgradeTipStringCellTemplateMixin:Init(columnName)

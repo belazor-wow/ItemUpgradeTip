@@ -1,0 +1,12 @@
+{
+  "ignore": ["libs/"],
+  "flavors": ["retail"],
+  "diagnostics": {
+    "enable": ["need-check-nil"],
+    "disable": ["create-global"]
+  },
+  "globals": {
+    "read": ["LibStub", "AceDB", "AceLocale", "GW2_ADDON"],
+    "write": ["ItemUpgradeTipDB"]
+  }
+}
