@@ -32,16 +32,19 @@ function ItemUpgradeTipDisplayDataProviderMixin:OnLoad()
 
         local item = Item:CreateFromItemID(entry.itemId)
         item:ContinueOnItemLoad(function()
-            if (not item:GetItemID()) then
+            ---@type number?
+            local origItemId = item:GetItemID()
+
+            if (not origItemId) then
                 return
             end
 
-            local itemIDr = C_Item.GetItemInfoInstant(item:GetItemID())
+            local itemIDr = C_Item.GetItemInfoInstant(origItemId)
             if not itemIDr then
                 return
             end
 
-            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = C_Item.GetItemInfo(item:GetItemID());
+            entry.itemName, _, _, _, _, _, _, _, _, entry.itemIcon = C_Item.GetItemInfo(origItemId);
 
             local itemLink = item:GetItemLink()
 

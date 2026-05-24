@@ -39,12 +39,12 @@ function private.HandleKeystone(tooltip, itemLink)
         return itemId, itemSplit[15], itemSplit[17], itemSplit[19] or 0, itemSplit[21] or 0, itemSplit[23] or 0
     end
 
-    local itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4, _ = itemLink:match(KEYSTONE_LINK_PATTERN)
+    local itemId, instanceId, keyLevel, _ = itemLink:match(KEYSTONE_LINK_PATTERN)
     if not itemId then
-        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 = ParseItemLink(TIMEWORN_KEYSTONE_ITEM_PATTERN)
+        itemId, instanceId, keyLevel = ParseItemLink(TIMEWORN_KEYSTONE_ITEM_PATTERN)
     end
     if not itemId then
-        itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 = ParseItemLink(MYTHIC_KEYSTONE_ITEM_PATTERN)
+        itemId, instanceId, keyLevel = ParseItemLink(MYTHIC_KEYSTONE_ITEM_PATTERN)
     end
 
     if not itemId then
@@ -52,14 +52,10 @@ function private.HandleKeystone(tooltip, itemLink)
         return
     end
 
-    itemId, instanceId, keyLevel, affix1, affix2, affix3, affix4 =
+    itemId, instanceId, keyLevel =
         tonumber(itemId),
         tonumber(instanceId),
-        tonumber(keyLevel),
-        tonumber(affix1),
-        tonumber(affix2),
-        tonumber(affix3),
-        tonumber(affix4)
+        tonumber(keyLevel)
 
     if keyLevel >= 20 then
         -- Adjust to match the Mythic+ info
