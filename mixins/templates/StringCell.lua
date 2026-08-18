@@ -61,7 +61,7 @@ end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnEnter()
     if ItemUpgradeTipCellMixin.OnEnter ~= nil then
-        ItemUpgradeTipCellMixin.OnEnter()
+        ItemUpgradeTipCellMixin.OnEnter(self) ---@diagnostic disable-line: redundant-parameter
     end
 
     self:CancelContinuable()
@@ -71,7 +71,7 @@ end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnLeave()
     if ItemUpgradeTipCellMixin.OnLeave ~= nil then
-        ItemUpgradeTipCellMixin.OnLeave()
+        ItemUpgradeTipCellMixin.OnLeave(self) ---@diagnostic disable-line: redundant-parameter
     end
 
     self.UpdateTooltip = nil
