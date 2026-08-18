@@ -8,19 +8,19 @@ local private = select(2, ...)
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
 
 -- Add currency information
-private.currencyIds["adventurerCrest"] = 3383
+private.currencyIds["adventurerCrest"] = 3442
 private.currencyIndexes[private.currencyIds.adventurerCrest] = true
 
-private.currencyIds["veteranCrest"] = 3341
+private.currencyIds["veteranCrest"] = 3443
 private.currencyIndexes[private.currencyIds.veteranCrest] = true
 
-private.currencyIds["championCrest"] = 3343
+private.currencyIds["championCrest"] = 3444
 private.currencyIndexes[private.currencyIds.championCrest] = true
 
-private.currencyIds["heroCrest"] = 3345
+private.currencyIds["heroCrest"] = 3445
 private.currencyIndexes[private.currencyIds.heroCrest] = true
 
-private.currencyIds["mythCrest"] = 3347
+private.currencyIds["mythCrest"] = 3446
 private.currencyIndexes[private.currencyIds.mythCrest] = true
 
 -- Add preferences
