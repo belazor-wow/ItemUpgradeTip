@@ -27,6 +27,8 @@ local CRAFTING_DATA_PROVIDER_LAYOUT = {
 ---@class ItemUpgradeTipCraftingDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipCraftingDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
+local sparkItemNameCache = {}
+
 function ItemUpgradeTipCraftingDataProviderMixin:Refresh()
     self.onPreserveScroll()
     self:Reset()
@@ -38,13 +40,34 @@ function ItemUpgradeTipCraftingDataProviderMixin:Refresh()
         local crafting = {}
         if craftingInfo.itemLevel > 0 then
             local itemIcon = craftingInfo.iconPath and CreateAtlasMarkupWithAtlasSize(craftingInfo.iconPath, 0, 0, nil, nil, nil, 0.66) or ""
+            local crestsRequired = ""
 
-            local currencyInfo = ItemUpgradeTip:GetCurrencyInfo(craftingInfo.currency.currencyId)
-            local currencyIcon = currencyInfo.iconFileID and CreateTextureMarkup(currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
-            local crestsRequired = _G["ITEMUPGRADETIP_L_X_REQUIRED_Y"]:format(
-                craftingInfo.currencyAmount,
-                currencyIcon .. " " .. craftingInfo.currency.colorData.color:WrapTextInColorCode(currencyInfo.name)
-            )
+            if craftingInfo.currency.currencyId ~= nil then
+                local currencyInfo = ItemUpgradeTip:GetCurrencyInfo(craftingInfo.currency.currencyId)
+                local currencyIcon = currencyInfo.iconFileID and CreateTextureMarkup(currencyInfo.iconFileID, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+                crestsRequired = _G["ITEMUPGRADETIP_L_X_REQUIRED_Y"]:format(
+                    craftingInfo.currencyAmount,
+                    currencyIcon .. " " .. craftingInfo.currency.colorData.color:WrapTextInColorCode(currencyInfo.name)
+                )
+            else
+                -- This is sparks only so we can make some assumptions
+                local currencyIcon = craftingInfo.currency.icon and CreateTextureMarkup(craftingInfo.currency.icon, 64, 64, 0, 0, 0.1, 0.9, 0.1, 0.9) or ""
+                local itemId = craftingInfo.currency.itemId
+                local itemName = sparkItemNameCache[itemId] or C_Item.GetItemInfo(itemId)
+
+                if not itemName then
+                    local item = Item:CreateFromItemID(itemId)
+                    item:ContinueOnItemLoad(function()
+                        sparkItemNameCache[itemId] = item:GetItemName()
+                        self:SetDirty()
+                    end)
+                end
+
+                crestsRequired = _G["ITEMUPGRADETIP_L_X_REQUIRED_Y"]:format(
+                    "2-4",
+                    currencyIcon .. " " .. craftingInfo.currency.colorData.color:WrapTextInColorCode(itemName or "")
+                )
+            end
 
             crafting = {
                 itemLevel = craftingInfo.itemLevel,
