@@ -376,6 +376,39 @@ private.craftingInfo = {
 local itemBonusIds = {
 
     -- Adventurer (6)
+    [12817] = {
+        itemLevel = 266,
+        rank = 2,
+        upgradeLevel = 1,
+        maxUpgradeLevel = 6,
+        upgradeGroup = 614,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3442, amount = 20}
+            }
+        }
+    },
     [12818] = {
         itemLevel = 269,
         rank = 2,
@@ -543,6 +576,39 @@ local itemBonusIds = {
     },
 
     -- Veteran (6)
+    [12825] = {
+        itemLevel = 279,
+        rank = 3,
+        upgradeLevel = 1,
+        maxUpgradeLevel = 6,
+        upgradeGroup = 615,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3443, amount = 20}
+            }
+        }
+    },
     [12826] = {
         itemLevel = 282,
         rank = 3,
@@ -710,6 +776,39 @@ local itemBonusIds = {
     },
 
     -- Champion (6)
+    [12833] = {
+        itemLevel = 292,
+        rank = 4,
+        upgradeLevel = 1,
+        maxUpgradeLevel = 6,
+        upgradeGroup = 616,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3444, amount = 20}
+            }
+        }
+    },
     [12834] = {
         itemLevel = 295,
         rank = 4,
@@ -877,6 +976,39 @@ local itemBonusIds = {
     },
 
     -- Hero (6)
+    [12841] = {
+        itemLevel = 305,
+        rank = 5,
+        upgradeLevel = 1,
+        maxUpgradeLevel = 6,
+        upgradeGroup = 617,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3445, amount = 20}
+            }
+        }
+    },
     [12842] = {
         itemLevel = 308,
         rank = 5,
@@ -1044,6 +1176,39 @@ local itemBonusIds = {
     },
 
     -- Myth (6)
+    [12849] = {
+        itemLevel = 318,
+        rank = 6,
+        upgradeLevel = 1,
+        maxUpgradeLevel = 6,
+        upgradeGroup = 618,
+        costs = {
+            [1048738] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [5448] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [68100] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [8404992] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [8192] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [67272704] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [67117056] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            },
+            [131072] = {
+                 [1] = {currencyId = 3446, amount = 20}
+            }
+        }
+    },
     [12850] = {
         itemLevel = 321,
         rank = 6,
