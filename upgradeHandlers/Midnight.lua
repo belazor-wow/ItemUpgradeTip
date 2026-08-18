@@ -96,18 +96,14 @@ private.mythicPlusInfo = {
 
 ---@type table<RaidInfo>
 private.raidInfo = {
-    {boss = 1,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
-    {boss = 2,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
-    {boss = 3,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
-    {boss = L["X_RARE"]:format(3),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
-    {boss = 4,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
-    {boss = L["X_RARE"]:format(4),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
-    {boss = 5,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
-    {boss = 6,                      lfr = 237, normal = 237, heroic = 263, mythic = 276},
-    {boss = L["X_RARE"]:format(6),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
-    {boss = 7,                      lfr = 243, normal = 256, heroic = 266, mythic = 279},
-    {boss = 8,                      lfr = 243, normal = 256, heroic = 266, mythic = 279},
-    {boss = L["X_RARE"]:format(8),  lfr = 246, normal = 259, heroic = 272, mythic = 285},
+    {boss = 1,                      lfr = 279, normal = 292, heroic = 305, mythic = 318},
+    {boss = 2,                      lfr = 282, normal = 295, heroic = 308, mythic = 321},
+    {boss = 3,                      lfr = 282, normal = 295, heroic = 308, mythic = 321},
+    {boss = 4,                      lfr = 285, normal = 298, heroic = 311, mythic = 324},
+    {boss = 5,                      lfr = 285, normal = 298, heroic = 311, mythic = 324},
+    {boss = 6,                      lfr = 285, normal = 298, heroic = 311, mythic = 324},
+    {boss = 7,                      lfr = 289, normal = 302, heroic = 315, mythic = 344},
+    {boss = 8,                      lfr = 289, normal = 302, heroic = 315, mythic = 344},
 }
 
 ---@type RaidCurrencyInfo
