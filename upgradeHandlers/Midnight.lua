@@ -34,6 +34,15 @@ private.Preferences.DisabledIntegrations.Crests = {
 
 ---@type Dictionary<UpgradeData>
 local upgradeData = {
+    ["spark"] = {
+        name = L["SPARK_SHORT"],
+        shortName = L["SPARK_SHORT"],
+        colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
+        icon = 7551419,
+        itemId = 274476,
+        currencyId = nil
+    },
+
     ["adventurerCrests"] = {
         name = L["ADVENTURER_CRESTS"],
         shortName = L["ADVENTURER_CRESTS_SHORT"],
@@ -335,12 +344,12 @@ private.craftingInfo = {
     -- Line break
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
-    -- Champion
-    {itemLevel = 246, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 250, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 253, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 256, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 259, currency = upgradeData["championCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    -- Spark only
+    {itemLevel = 292, currency = upgradeData["spark"], currencyAmount = 0, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 295, currency = upgradeData["spark"], currencyAmount = 0, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 298, currency = upgradeData["spark"], currencyAmount = 0, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 302, currency = upgradeData["spark"], currencyAmount = 0, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 305, currency = upgradeData["spark"], currencyAmount = 0, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
