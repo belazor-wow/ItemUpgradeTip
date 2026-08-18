@@ -316,21 +316,21 @@ private.bountifulDelveInfo = {
 ---@type table<CraftingInfo>
 private.craftingInfo = {
     -- Adventurer
-    {itemLevel = 220, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 224, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 227, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 230, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 233, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 266, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 269, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 272, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 276, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 279, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
     -- Veteran
-    {itemLevel = 233, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 237, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 240, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 243, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 246, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 279, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 282, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 285, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 289, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 292, currency = upgradeData["veteranCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
@@ -346,21 +346,21 @@ private.craftingInfo = {
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
     -- Hero
-    {itemLevel = 259, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 263, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 266, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 269, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 272, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 305, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 308, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 311, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 315, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 318, currency = upgradeData["heroCrests"], currencyAmount = 45, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 
     -- Line break
     {itemLevel = 0, currencyAmount = 0, rank = 0, iconPath = ""},
 
     -- Myth
-    {itemLevel = 272, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
-    {itemLevel = 276, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
-    {itemLevel = 279, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
-    {itemLevel = 282, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
-    {itemLevel = 285, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
+    {itemLevel = 318, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
+    {itemLevel = 321, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 2, iconPath = "Professions-ChatIcon-Quality-Tier2"},
+    {itemLevel = 324, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 3, iconPath = "Professions-ChatIcon-Quality-Tier3"},
+    {itemLevel = 328, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 4, iconPath = "Professions-ChatIcon-Quality-Tier4"},
+    {itemLevel = 331, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
 ---@type table<ItemBonusInfo>
