@@ -1,3 +1,18 @@
+---@class ItemUpgradeTipDataProviderMixin: table
+---@field results table
+---@field cachedResults table
+---@field insertedKeys table
+---@field entriesToProcess table
+---@field processCountPerUpdate number
+---@field processingIndex number
+---@field cacheUsedCount number
+---@field isDirty boolean
+---@field onEntryProcessed fun(_)
+---@field onUpdate fun(_)
+---@field onSearchStarted fun()
+---@field onSearchEnded fun()
+---@field onPreserveScroll fun()
+---@field onResetScroll fun()
 ItemUpgradeTipDataProviderMixin = {}
 
 function ItemUpgradeTipDataProviderMixin:OnLoad()
@@ -41,19 +56,20 @@ end
 -- The table layout should be an array of table layout column entries consisting of:
 --     1. REQUIRED headerTemplate - String
 --            The name of the frame template that should be used for the column header
---     2. OPTIONAL headerParameters - Array<Any>
+--     2. OPTIONAL headerParameters - table<Any>
 --            An array of any elements that we want to pass to the column header; these will
 --            be supplied to the column header's Init method
 --     3. REQUIRED headerText - String
 --            The text that should be displayed in the column header
 --     4. REQUIRED cellTemplate - String
 --            The name of the frame template that should be used for cells in this column
---     5. OPTIONAL cellParameters - Array<Any>
+--     5. OPTIONAL cellParameters - table<Any>
 --            An array of any elements that we want to pass to the cell; these will be
 --            supplied to the cell's Init method
 --     6. OPTIONAL width - Integer
 --            If supplied, this will be used to define the column's fixed width.
 --            If omitted, the column will use ColumnWidthConstraints.Fill from TableBuilder
+---@return ResultsListingTableLayout|table
 function ItemUpgradeTipDataProviderMixin:GetTableLayout()
     return {}
 end
@@ -142,4 +158,8 @@ function ItemUpgradeTipDataProviderMixin:CheckForEntriesToProcess()
     self.onUpdate(self.results)
     self.isDirty = false
 
+end
+
+function ItemUpgradeTipDataProviderMixin:UniqueKey(entry)
+    return tostring(entry)
 end

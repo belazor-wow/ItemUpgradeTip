@@ -3,7 +3,6 @@
 -- ----------------------------------------------------------------------------
 -- Types
 -- ----------------------------------------------------------------------------
----@class Array<T>: { [integer]: T }
 ---@class Dictionary<T>: { [string]: T }
 ---@class Localizations: Dictionary<boolean|string>
 
@@ -11,6 +10,35 @@
 -- ----------------------------------------------------------------------------
 -- Misc
 -- ----------------------------------------------------------------------------
+
+---@class IUTScrollAreaFrame: Frame
+---@field ScrollBox WowScrollBoxList
+---@field ScrollBar MinimalScrollBar
+---@field SpinnerAnim Animation
+---@field NoResultsText FontString
+---@field ResultsText FontString
+---@field LoadingSpinner Texture
+
+---@class IUTTitleContainerFrame: Frame
+---@field TitleText FontString
+---@field Breadcrumb FontString
+
+---@class ResultsListingTableLayout
+---@field headerTemplate string
+---@field headerParameters table?
+---@field headerText string
+---@field cellTemplate string
+---@field cellParameters table?
+---@field width number?
+
+---@class IUTView: Frame
+---@field BountifulDelvesFrame Frame
+---@field MythicPlusFrame Frame
+---@field RaidFrame Frame
+---@field UpgradeFrame Frame
+---@field CraftingFrame Frame
+---@field InfoFrame Frame
+
 ---@class ColorData
 ---@field r number
 ---@field b number
@@ -40,7 +68,7 @@
 ---@field upgradeLevel integer
 ---@field maxUpgradeLevel integer
 ---@field upgradeGroup integer
----@field costs Array<Array<UpgradeTrackCost>>
+---@field costs table<table<UpgradeTrackCost>>
 
 
 -- ----------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+---@class ItemUpgradeTipStringColumnHeaderTemplateMixin: Frame & Button & TableBuilderElementMixin
 ItemUpgradeTipStringColumnHeaderTemplateMixin = CreateFromMixins(TableBuilderElementMixin)
 
 function ItemUpgradeTipStringColumnHeaderTemplateMixin:Init(name, tooltipText)

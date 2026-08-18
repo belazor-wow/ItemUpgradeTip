@@ -2,7 +2,7 @@
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
@@ -80,7 +80,7 @@ local upgradeData = {
     },
 }
 
----@type Array<MythicPlusInfo>
+---@type table<MythicPlusInfo>
 private.mythicPlusInfo = {
     {keyLevel = 0,  lootDrops = 246, vaultReward = 256, currency = upgradeData["championCrests"]},
     {keyLevel = 2,  lootDrops = 250, vaultReward = 259, currency = upgradeData["championCrests"]},
@@ -94,7 +94,7 @@ private.mythicPlusInfo = {
     {keyLevel = "10+", lootDrops = 266, vaultReward = 272, currency = upgradeData["mythCrests"]},
 }
 
----@type Array<RaidInfo>
+---@type table<RaidInfo>
 private.raidInfo = {
     {boss = 1,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
     {boss = 2,                      lfr = 233, normal = 246, heroic = 259, mythic = 272},
@@ -125,7 +125,7 @@ private.raidInfo = {
     mythicCurrency = upgradeData["mythCrests"],
 }
 
----@type Array<UpgradeTrackInfo>
+---@type table<UpgradeTrackInfo>
 private.upgradeTrackInfo = {
     {
         itemLevel = 220,
@@ -247,7 +247,7 @@ private.upgradeTrackInfo = {
     },
 }
 
----@type Array<BountifulDelveInfo>
+---@type table<BountifulDelveInfo>
 private.bountifulDelveInfo = {
     {
         tier = 1,
@@ -317,7 +317,7 @@ private.bountifulDelveInfo = {
     }
 }
 
----@type Array<CraftingInfo>
+---@type table<CraftingInfo>
 private.craftingInfo = {
     -- Adventurer
     {itemLevel = 220, currency = upgradeData["adventurerCrests"], currencyAmount = 30, rank = 1, iconPath = "Professions-ChatIcon-Quality-Tier1"},
@@ -367,7 +367,7 @@ private.craftingInfo = {
     {itemLevel = 285, currency = upgradeData["mythCrests"], currencyAmount = 60, rank = 5, iconPath = "Professions-ChatIcon-Quality-Tier5"},
 }
 
----@type Array<ItemBonusInfo>
+---@type table<ItemBonusInfo>
 local itemBonusIds = {
 
     -- Adventurer (6)

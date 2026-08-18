@@ -3,6 +3,16 @@
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
 
+---@class ItemUpgradeTipDisplayMixin: DefaultPanelTemplate & Frame
+---@field OnLoad fun()
+---@field OnShow fun()
+---@field OnHide fun()
+---@field OnDragStart fun()
+---@field OnDragEnd fun()
+---@field TitleContainer IUTTitleContainerFrame
+---@field CloseButton Button
+---@field Views ItemUpgradeTipDataTabDisplayMixin[]
+---@field Tabs ItemUpgradeTipTabButtonMixin[]
 ItemUpgradeTipDisplayMixin = {}
 
 function ItemUpgradeTipDisplayMixin:OnLoad()

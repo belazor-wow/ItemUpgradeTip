@@ -1,12 +1,21 @@
----@diagnostic disable: duplicate-set-field
+---@class ItemUpgradeTipStringCellTemplateMixin: ItemUpgradeTipCellMixin & TableBuilderCellMixin
+---@field OnLineEnter fun()
+---@field OnLineLeave fun()
+---@field UpdateTooltip fun()?
+---@field continuableContainer ContinuableContainer?
+---@field columnName string
+---@field text FontString
 ItemUpgradeTipStringCellTemplateMixin = CreateFromMixins(ItemUpgradeTipCellMixin, TableBuilderCellMixin)
 
+---@param columnName string
 function ItemUpgradeTipStringCellTemplateMixin:Init(columnName)
     self.columnName = columnName
 
     self.text:SetJustifyH("LEFT")
 end
 
+---@param rowData table
+---@param index number
 function ItemUpgradeTipStringCellTemplateMixin:Populate(rowData, index)
     ItemUpgradeTipCellMixin.Populate(self, rowData, index)
 
@@ -35,7 +44,7 @@ end
 -- Used to prevent tooltip triggering too late and interfering with another
 -- tooltip
 function ItemUpgradeTipStringCellTemplateMixin:CancelContinuable()
-    if self.continuableContainer then
+    if self.continuableContainer ~= nil then
         self.continuableContainer:Cancel()
         self.continuableContainer = nil
     end
@@ -51,7 +60,9 @@ function ItemUpgradeTipStringCellTemplateMixin:OnShow()
 end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnEnter()
-    ItemUpgradeTipCellMixin.OnEnter(self)
+    if ItemUpgradeTipCellMixin.OnEnter ~= nil then
+        ItemUpgradeTipCellMixin.OnEnter()
+    end
 
     self:CancelContinuable()
 
@@ -59,7 +70,9 @@ function ItemUpgradeTipStringCellTemplateMixin:OnEnter()
 end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnLeave()
-    ItemUpgradeTipCellMixin.OnLeave(self)
+    if ItemUpgradeTipCellMixin.OnLeave ~= nil then
+        ItemUpgradeTipCellMixin.OnLeave()
+    end
 
     self.UpdateTooltip = nil
     self:CancelContinuable()

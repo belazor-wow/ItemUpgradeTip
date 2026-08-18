@@ -2,7 +2,7 @@
 -- AddOn Namespace
 -- ----------------------------------------------------------------------------
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 ---@type Localizations
 local L = LibStub("AceLocale-3.0"):GetLocale(AddOnFolderName)
@@ -34,7 +34,7 @@ private.Preferences.DisabledIntegrations.Honor = {
     https://wago.tools/db2/ItemLogicalCost?filter[ItemLogicalCostGroupID]=exact%3A4&page=1&sort[ItemExtendedCostID]=asc
 ]]
 
----@type Array<HonorBonusData>
+---@type table<HonorBonusData>
 local honorBonusIds = {
     [9421] = { itemLevel = 366, upgradeLevel = 1, maxUpgradeLevel = 5},
     [9422] = { itemLevel = 372, upgradeLevel = 2, maxUpgradeLevel = 5},
@@ -43,7 +43,7 @@ local honorBonusIds = {
     [9425] = { itemLevel = 392, upgradeLevel = 5, maxUpgradeLevel = 5},
 }
 
----@type Array<number>
+---@type table<number>
 local itemExtendedCosts = {
     [7623] = 700,
     [7624] = 550,
@@ -95,14 +95,14 @@ local itemUpgradeCosts = {
 local itemUpgradeCostOverrides = {
     -- InventoryTypeSlotMask 131072
     ["INVTYPE_2HWEAPON"] = itemExtendedCosts[7630],
-    
+
     -- InventoryTypeSlotMask 67117056
     ["INVTYPE_WEAPON"] = itemExtendedCosts[7629],
     ["INVTYPE_RANGEDRIGHT"] = itemExtendedCosts[7629],
 }
 
 -- Override costs for non-Gladiator trinkets
----@type { [number]: number } }
+---@type { [number]: number }
 local trinketUpgradeCostOverrides = {
     [205779] = itemExtendedCosts[7625],
     [205782] = itemExtendedCosts[7625],

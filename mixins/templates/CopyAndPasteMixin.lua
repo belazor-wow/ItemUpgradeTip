@@ -1,3 +1,10 @@
+---@class ItemUpgradeTipCopyAndPasteMixin: Frame
+---@field OnLoad fun()?
+---@field InputBox InputBoxTemplate
+---@field Label FontString
+---@field labelText string?
+---@field copyText string?
+---@field tooltipTitleText string?
 ItemUpgradeTipCopyAndPasteMixin = {}
 
 function ItemUpgradeTipCopyAndPasteMixin:OnLoad()

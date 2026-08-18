@@ -1,3 +1,8 @@
+---@class ItemUpgradeTipTabButtonMixin: PanelTabButtonMixin & Frame
+---@field OnShow fun()
+---@field OnCLick fun()
+---@field displayMode string
+---@field title string?
 ItemUpgradeTipTabButtonMixin = {}
 
 function ItemUpgradeTipTabButtonMixin:OnShow()

@@ -1,3 +1,13 @@
+---@class ItemUpgradeTipResultsListingMixin: Frame
+---@field OnLoad fun()
+---@field OnShow fun()
+---@field HeaderContainer Frame
+---@field ScrollArea IUTScrollAreaFrame
+---@field isInitialized boolean
+---@field dataProvider ItemUpgradeTipDisplayDataProviderMixin
+---@field columnSpecification table
+---@field tableBuilder TableBuilderMixin
+---@field savedScrollPosition number?
 ItemUpgradeTipResultsListingMixin = {}
 
 function ItemUpgradeTipResultsListingMixin:Init(dataProvider)

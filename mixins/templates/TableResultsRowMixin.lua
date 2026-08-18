@@ -1,6 +1,7 @@
----@diagnostic disable: duplicate-set-field
+---@class ItemUpgradeTipTableResultsRowMixin: ItemUpgradeTipResultsRowTemplateMixin
 ItemUpgradeTipTableResultsRowMixin = CreateFromMixins(ItemUpgradeTipResultsRowTemplateMixin)
 
+---@param rowData table
 function ItemUpgradeTipTableResultsRowMixin:Populate(rowData, ...)
     ItemUpgradeTipResultsRowTemplateMixin.Populate(self, rowData, ...)
     self.SelectedHighlight:SetShown(rowData.selected)

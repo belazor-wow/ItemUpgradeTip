@@ -1,5 +1,5 @@
 local AddOnFolderName = ... ---@type string
-local private = select(2, ...) ---@class PrivateNamespace
+local private = select(2, ...)
 
 -- the DebugLog addon
 ---@diagnostic disable-next-line: undefined-global
@@ -21,7 +21,6 @@ local function Debug(...)
 end
 
 --- Adds a stack trace to the DebugLog log
----@diagnostic disable: undefined-field
 local function Trace()
     D.DebugLog(AddOnFolderName, "%s", "======== Trace ==")
     local stack = debugstack(2)

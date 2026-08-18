@@ -1,5 +1,3 @@
----@diagnostic disable: duplicate-set-field
-
 local CRAFTING_DATA_PROVIDER_LAYOUT = {
     {
         headerTemplate = "ItemUpgradeTipStringColumnHeaderTemplate",
@@ -26,6 +24,7 @@ local CRAFTING_DATA_PROVIDER_LAYOUT = {
     }
 }
 
+---@class ItemUpgradeTipCraftingDataProviderMixin: ItemUpgradeTipDisplayDataProviderMixin
 ItemUpgradeTipCraftingDataProviderMixin = CreateFromMixins(ItemUpgradeTipDisplayDataProviderMixin)
 
 function ItemUpgradeTipCraftingDataProviderMixin:Refresh()
