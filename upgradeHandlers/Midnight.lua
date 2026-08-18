@@ -82,16 +82,16 @@ local upgradeData = {
 
 ---@type table<MythicPlusInfo>
 private.mythicPlusInfo = {
-    {keyLevel = 0,  lootDrops = 246, vaultReward = 256, currency = upgradeData["championCrests"]},
-    {keyLevel = 2,  lootDrops = 250, vaultReward = 259, currency = upgradeData["championCrests"]},
-    {keyLevel = 3,  lootDrops = 250, vaultReward = 259, currency = upgradeData["championCrests"]},
-    {keyLevel = 4,  lootDrops = 253, vaultReward = 263, currency = upgradeData["heroCrests"]},
-    {keyLevel = 5,  lootDrops = 256, vaultReward = 263, currency = upgradeData["heroCrests"]},
-    {keyLevel = 6,  lootDrops = 259, vaultReward = 266, currency = upgradeData["heroCrests"]},
-    {keyLevel = 7,  lootDrops = 259, vaultReward = 269, currency = upgradeData["heroCrests"]},
-    {keyLevel = 8,  lootDrops = 263, vaultReward = 269, currency = upgradeData["heroCrests"]},
-    {keyLevel = 9,  lootDrops = 263, vaultReward = 269, currency = upgradeData["mythCrests"]},
-    {keyLevel = "10+", lootDrops = 266, vaultReward = 272, currency = upgradeData["mythCrests"]},
+    {keyLevel = 0,  lootDrops = 292, vaultReward = 302, currency = upgradeData["championCrests"]},
+    {keyLevel = 2,  lootDrops = 295, vaultReward = 305, currency = upgradeData["championCrests"]},
+    {keyLevel = 3,  lootDrops = 295, vaultReward = 305, currency = upgradeData["championCrests"]},
+    {keyLevel = 4,  lootDrops = 298, vaultReward = 308, currency = upgradeData["heroCrests"]},
+    {keyLevel = 5,  lootDrops = 302, vaultReward = 308, currency = upgradeData["heroCrests"]},
+    {keyLevel = 6,  lootDrops = 305, vaultReward = 311, currency = upgradeData["heroCrests"]},
+    {keyLevel = 7,  lootDrops = 305, vaultReward = 315, currency = upgradeData["heroCrests"]},
+    {keyLevel = 8,  lootDrops = 308, vaultReward = 315, currency = upgradeData["heroCrests"]},
+    {keyLevel = 9,  lootDrops = 308, vaultReward = 315, currency = upgradeData["mythCrests"]},
+    {keyLevel = "10+", lootDrops = 311, vaultReward = 318, currency = upgradeData["mythCrests"]},
 }
 
 ---@type table<RaidInfo>
