@@ -38,7 +38,7 @@ local upgradeData = {
         name = L["ADVENTURER_CRESTS"],
         shortName = L["ADVENTURER_CRESTS_SHORT"],
         colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Uncommon),
-        icon = 7639517,
+        icon = 7734054,
         itemId = nil,
         currencyId = private.currencyIds.adventurerCrest
     },
@@ -47,7 +47,7 @@ local upgradeData = {
         name = L["VETERAN_CRESTS"],
         shortName = L["VETERAN_CRESTS_SHORT"],
         colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Rare),
-        icon = 7639525,
+        icon = 7734062,
         itemId = nil,
         currencyId = private.currencyIds.veteranCrest
     },
@@ -56,7 +56,7 @@ local upgradeData = {
         name = L["CHAMPION_CRESTS"],
         shortName = L["CHAMPION_CRESTS_SHORT"],
         colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Epic),
-        icon = 7639519,
+        icon = 7734056,
         itemId = nil,
         currencyId = private.currencyIds.championCrest
     },
@@ -65,7 +65,7 @@ local upgradeData = {
         name = L["HERO_CRESTS"],
         shortName = L["HERO_CRESTS_SHORT"],
         colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Legendary),
-        icon = 7639521,
+        icon = 7734058,
         itemId = nil,
         currencyId = private.currencyIds.heroCrest
     },
@@ -74,7 +74,7 @@ local upgradeData = {
         name = L["MYTH_CRESTS"],
         shortName = L["MYTH_CRESTS_SHORT"],
         colorData = ColorManager.GetColorDataForItemQuality(Enum.ItemQuality.Artifact),
-        icon = 7639523,
+        icon = 7734060,
         itemId = nil,
         currencyId = private.currencyIds.mythCrest
     },
