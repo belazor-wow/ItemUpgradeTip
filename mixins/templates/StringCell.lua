@@ -61,7 +61,7 @@ end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnEnter()
     if ItemUpgradeTipCellMixin.OnEnter ~= nil then
-        ItemUpgradeTipCellMixin.OnEnter(self)
+        ItemUpgradeTipCellMixin.OnEnter()
     end
 
     self:CancelContinuable()
@@ -71,7 +71,7 @@ end
 
 function ItemUpgradeTipStringCellTemplateMixin:OnLeave()
     if ItemUpgradeTipCellMixin.OnLeave ~= nil then
-        ItemUpgradeTipCellMixin.OnLeave(self)
+        ItemUpgradeTipCellMixin.OnLeave()
     end
 
     self.UpdateTooltip = nil
